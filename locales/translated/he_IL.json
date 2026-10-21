@@ -1,0 +1,200 @@
+{
+  "plugin": {
+    "name": "פרוקסי הפוך",
+    "description": "פרוקסי הפוך ל-TCP, UDP, HTTP ו-HTTPS עם תעודות חינמיות והתחברות ל-Termix, מנוהל לכל מארח."
+  },
+  "common": {
+    "save": "שמירה",
+    "cancel": "ביטול",
+    "delete": "מחיקה",
+    "edit": "עריכה"
+  },
+  "tab": {
+    "title": "פרוקסי הפוך",
+    "error": "לא ניתן לטעון את הפרוקסי ההפוך.",
+    "notListening": "כבוי",
+    "viewRoutes": "מסלולים",
+    "viewCerts": "תעודות",
+    "needsBaseUrl": "חלק מהנתיבים דורשים התחברות ל-Termix, אך כתובת ה-Termix לא הוגדרה. הגדר אותה בהגדרות ה-Reverse Proxy, אחרת לא ניתן יהיה לפתוח את הנתיבים הללו.",
+    "status": "{{running}} מתוך {{total}} פעילים",
+    "refresh": "רענן",
+    "search": "חפש נתיבים",
+    "filterAll": "הכל",
+    "ports": "מאזין ב-HTTP {{http}} וב-HTTPS {{https}}.",
+    "noHost": "פתח את ה-Reverse Proxy מארח.",
+    "hostOff": "ה-Reverse proxy כבוי עבור מארח זה בהגדרותיו. נתיבים קיימים מושהים."
+  },
+  "form": {
+    "saveFailed": "לא ניתן לשמור את הנתיב.",
+    "editTitle": "עריכת מסלול",
+    "addTitle": "הוספת מסלול",
+    "name": "שם",
+    "namePlaceholder": "ויקי בית",
+    "type": "סוג",
+    "typeHttp": "אינטרנט (HTTP ו-HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "דומיין",
+    "domainHint": "הפנה את ה-DNS של הדומיין הזה לשרת הזה. כוכבית כמו *.example.com עובדת לניתוב.",
+    "publicPort": "פורט ציבורי",
+    "publicPortHint": "הפורט שבו השרת מקשיב. פרסם אותו גם בהגדרות Docker שלך.",
+    "targetAddress": "כתובת יעד",
+    "targetAddressPlaceholder": "כתובת מארח",
+    "targetAddressHint": "השאר ריק כדי להשתמש בכתובת של המארח הזה.",
+    "targetPort": "פורט יעד",
+    "certificate": "תעודה",
+    "certAcme": "Let's Encrypt (אוטומטי)",
+    "certSelfSigned": "חתום עצמית",
+    "certCustom": "התעודה שלי",
+    "certOff": "אף אחד (HTTP רגיל)",
+    "certHint": {
+      "acme": "תעודה חינמית תתבקש ותתחדש עבורך. פורט 80 חייב להגיע לפורט ה-HTTP של תוסף זה.",
+      "selfsigned": "דפדפנים יזהירו לגביה. מתאים לשימוש פרטי.",
+      "custom": "הוסף את התעודה שלך בתצוגת התעודות קודם.",
+      "off": "מבקרים מתחברים ללא הצפנה."
+    },
+    "pickCertificate": "תעודה",
+    "pickCertificatePlaceholder": "בחר תעודה",
+    "forceHttps": "הפנה HTTP ל-HTTPS",
+    "forceHttpsDesc": "מבקרים ב-HTTP רגיל מופנים לכתובת המאובטחת.",
+    "access": "מי יכול לפתוח את זה",
+    "accessNone": "כולם",
+    "accessUser": "משתמשים מחוברים ב-Termix",
+    "accessHost": "משתמשים עם גישה למארח הזה",
+    "accessHint": {
+      "none": "אין התחברות לפני מסלול זה.",
+      "user": "מבקרים מתחברים ל-Termix קודם.",
+      "host": "מבקרים מתחברים ל-Termix וצריכים להיות מסוגלים להתחבר למארח הזה."
+    },
+    "targetHttps": "היעד משתמש ב-HTTPS",
+    "targetHttpsDesc": "התחבר ליעד עם TLS.",
+    "insecureTarget": "אמון כל תעודת יעד",
+    "insecureTargetDesc": "דלג על בדיקות תעודה ביעד. השתמש לשירותים עם תעודה עצמאית.",
+    "preserveHost": "שמור על כותרת Host המקורית",
+    "preserveHostDesc": "שלח את הדומיין של המבקד ליעד במקום את כתובת היעד.",
+    "httpsPublicPort": "פורט HTTPS ציבורי",
+    "httpsPublicPortHint": "רק אם מבקדים מגיעים ל-HTTPS דרך פורט שאינו 443. משמש להפניה. 0 פירושו 443.",
+    "headers": "כותרות בקשה נוספות",
+    "headersHint": "אחת בשורה כשם: ערך. נשלח ליעד.",
+    "allowIps": "אפשר רק את הכתובות הבאות",
+    "allowIpsHint": "כתובות IP או טווחים, אחת בשורה. ריק מאפשר לכולם.",
+    "denyIps": "חסום את הכתובות הבאות",
+    "idleSeconds": "זמן המתנה ללא פעילות בשניות",
+    "idleSecondsHint": "סגור חיבור רגוע לאחר זמן זה. 0 משתמש בהגדרה ברירת המחדל.",
+    "enabled": "מופעל"
+  },
+  "list": {
+    "empty": "אין מסלולים תואמים. הוסף אחד באמצעות כפתור הוספת מסלול.",
+    "deleteTitle": "למחוק את {{name}}?",
+    "deleteDesc": "המסלול יופסק מיד. התעודות יישארו.",
+    "deleteFailed": "לא ניתן למחוק את המסלול.",
+    "hostAddress": "מארח",
+    "disabled": "כבוי",
+    "protected": "התחברות",
+    "state": {
+      "running": "פעיל",
+      "stopped": "עצור",
+      "error": "שגיאה"
+    },
+    "traffic": "{{count}} חיבורים, {{inbound}} נכנסים, {{outbound}} יוצאים",
+    "toggleFailed": "לא ניתן לשנות את המסלול.",
+    "add": "הוסף מסלול"
+  },
+  "certs": {
+    "autoNote": "תעודות Let's Encrypt מתבקשות בעת הוספת מסלול ומתחדשות באופן אוטומטי.",
+    "needsEmail": "הגדר כתובת דוא״ל עבור Let's Encrypt בהגדרות ה-Reverse Proxy לפני השימוש בתעודות אוטומטיות.",
+    "empty": "אין תעודות עדיין.",
+    "addSelfSigned": "חתום עצמית",
+    "addOwn": "העלה",
+    "domains": "תחומים",
+    "domainsHint": "תחום אחד או יותר, מופרדים ברווחים או בפסיקים.",
+    "certPem": "תעודה (PEM)",
+    "keyPem": "מפתח פרטי (PEM)",
+    "saveFailed": "לא ניתן לשמור את התעודה.",
+    "deleteTitle": "למחוק את התעודה עבור {{name}}?",
+    "deleteDesc": "יש לשנות קודם כל את המסלולים שמשתמשים בה.",
+    "deleteFailed": "לא ניתן למחוק את התעודה.",
+    "renew": "לבקש שוב",
+    "renewStarted": "מבקש את התעודה.",
+    "renewFailed": "לא ניתן היה להתחיל את הבקשה.",
+    "expires": "פג תוקף ב-{{date}}",
+    "waiting": "ממתין לתעודה",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "חתימה עצמית",
+      "custom": "הועלה"
+    },
+    "status": {
+      "pending": "בהמתנה",
+      "ready": "מוכן",
+      "error": "בעיה"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "ניהול מסלולי פרוקסי הפוך",
+      "description": "פתח את הלשונית Reverse Proxy והוסף מסלולים למארחים שיש לך הרשאות עריכה עליהם."
+    },
+    "access": {
+      "title": "פתיחת מסלולים מוגנים",
+      "description": "התחבר למסלולי אינטרנט הדורשים התחברות ל-Termix."
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "פורט HTTP",
+        "description": "הפורט שבו תוסף זה מקשיב ל-HTTP. מיפוי הפורט הציבורי 80 אליו נדרש עבור Let's Encrypt."
+      },
+      "httpsPort": {
+        "label": "פורט HTTPS",
+        "description": "הפורט שבו תוסף זה מקשיב ל-HTTPS. מיפוי הפורט הציבורי 443 אליו."
+      },
+      "bindHost": {
+        "label": "כתובת האזנה",
+        "description": "השתמש ב-0.0.0.0 כדי לקבל חיבורים מכל מקום, או ב-127.0.0.1 כדי להשאיר את המסלולים מקומיים."
+      },
+      "publicBaseUrl": {
+        "label": "כתובת Termix",
+        "description": "הכתובת שאנשים משתמשים בה כדי לפתוח את Termix, כמו https://termix.example.com. נדרש עבור מסלולים הדורשים התחברות ל-Termix."
+      },
+      "acmeEmail": {
+        "label": "דוא״ל לתעודה",
+        "description": "Let's Encrypt משתמש בו להודעות על פקיעת תוקף."
+      },
+      "acmeStaging": {
+        "label": "השתמש בסביבת הבדיקה של Let's Encrypt",
+        "description": "תעודות בדיקה שדפדפנים לא סומכים עליהן. השתמש בזמן ההגדרה כדי להימנע ממגבלות קצב."
+      },
+      "cookieHours": {
+        "label": "משך ההתחברות בשעות",
+        "description": "כמה זמן מבקר נשאר מחובר במסלול מוגן."
+      },
+      "acmeDirectoryUrl": {
+        "label": "רשות אימות מותאמת אישית",
+        "description": "כתובת ספריית ה-ACME של רשות אימות אחרת, כמו step-ca פרטי. השאר ריק כדי להשתמש ב-Let's Encrypt."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "אפשר מסלולי reverse proxy",
+        "description": "מסלולים עבור מארח זה מנוהלים בלשונית Reverse Proxy. כבה זאת כדי לעצור אותם."
+      },
+      "targetAddress": {
+        "label": "כתובת יעד",
+        "description": "לאן שולחות מסלולים את התעבורה. השאר ריק כדי להשתמש בכתובת של המארח עצמו. הגדר כדי להגיע למיכל או למכונה אחרת."
+      },
+      "defaultAccess": {
+        "label": "התחברות ברירת מחדל למסלולי אינטרנט חדשים",
+        "description": "מה שכל נתיב אינטרנט חדש במארח זה מתחיל בו.",
+        "none": "כל אחד",
+        "user": "משתמשים מחוברים ב-Termix",
+        "host": "משתמשים עם גישה למארח זה"
+      }
+    }
+  },
+  "editor": {
+    "connections": "חיבורים: {{count}}",
+    "traffic": "{{inbound}} נכנס, {{outbound}} יוצא"
+  }
+}

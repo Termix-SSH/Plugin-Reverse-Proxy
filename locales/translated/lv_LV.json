@@ -1,0 +1,200 @@
+{
+  "plugin": {
+    "name": "Apgrieztā starpniekserveris",
+    "description": "Apgrieztā starpniekserveris TCP, UDP, HTTP un HTTPS protokoliem ar bezmaksas sertifikātiem un Termix pieteikšanos, pārvaldīts katram mezglam atsevišķi."
+  },
+  "common": {
+    "save": "Saglabāt",
+    "cancel": "Atcelt",
+    "delete": "Dzēst",
+    "edit": "Rediģēt"
+  },
+  "tab": {
+    "title": "Apgrieztā starpniekserveris",
+    "error": "Neizdevās ielādēt apgriezto starpniekserveri.",
+    "notListening": "izslēgts",
+    "viewRoutes": "Maršruti",
+    "viewCerts": "Sertifikāti",
+    "needsBaseUrl": "Dažas maršrutas pieprasa Termix pieteikšanos, taču Termix adrese nav iestatīta. Iestatiet to apgrieztā starpniekservera iestatījumos, pretējā gadījumā šīs maršrutas nevarēs atvērt.",
+    "status": "Darbojas {{running}} no {{total}}",
+    "refresh": "Atsvaidzināt",
+    "search": "Meklēt maršrutas",
+    "filterAll": "Visas",
+    "ports": "Klausās HTTP {{http}} un HTTPS {{https}}.",
+    "noHost": "Atveriet apgriezto starpniekserveri no mezgla.",
+    "hostOff": "Apgrieztais starpniekserveris šim mezglam ir izslēgts tā iestatījumos. Esošās maršrutas ir apturētas."
+  },
+  "form": {
+    "saveFailed": "Neizdevās saglabāt maršrutu.",
+    "editTitle": "Rediģēt maršrutu",
+    "addTitle": "Pievienot maršrutu",
+    "name": "Nosaukums",
+    "namePlaceholder": "Mājas wiki",
+    "type": "Tips",
+    "typeHttp": "Tīmeklis (HTTP un HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "Domēns",
+    "domainHint": "Novirziet šī domēna DNS uz šo serveri. Maršrutēšanai der arī savvaļas simbols, piemēram, *.example.com.",
+    "publicPort": "Publiskais ports",
+    "publicPortHint": "Ports, uz kuru šis serveris klausās. Publicējiet to arī savā Docker konfigurācijā.",
+    "targetAddress": "Mērķa adrese",
+    "targetAddressPlaceholder": "Resursdatora adrese",
+    "targetAddressHint": "Atstājiet tukšu, lai izmantotu šī resursdatora paša adresi.",
+    "targetPort": "Mērķa ports",
+    "certificate": "Sertifikāts",
+    "certAcme": "Let's Encrypt (automātiski)",
+    "certSelfSigned": "Pašparakstīts",
+    "certCustom": "Manis pats izveidots sertifikāts",
+    "certOff": "Nav (parasts HTTP)",
+    "certHint": {
+      "acme": "Bez maksas tiek pieprasīts un atjaunots sertifikāts jums. Portam 80 ir jābūt pieejamam šī spraudņa HTTP portam.",
+      "selfsigned": "Pārlūkprogrammas brīdinās par to. Derīgi privātai lietošanai.",
+      "custom": "Vispirms pievienojiet savu sertifikātu Sertifikātu skatā.",
+      "off": "Apmeklētāji savienojas bez šifrēšanas."
+    },
+    "pickCertificate": "Sertifikāts",
+    "pickCertificatePlaceholder": "Izvēlieties sertifikātu",
+    "forceHttps": "Novirzīt HTTP uz HTTPS",
+    "forceHttpsDesc": "Apmeklētāji no parasta HTTP tiek novirzīti uz drošo adresi.",
+    "access": "Kurš var to atvērt",
+    "accessNone": "Jebkurš",
+    "accessUser": "Pieslēgušies Termix lietotāji",
+    "accessHost": "Lietotāji, kuriem ir piekļuve šim mezglam",
+    "accessHint": {
+      "none": "Šim maršrutam nav pieteikšanās.",
+      "user": "Apmeklētāji vispirms pieslēdzas Termix.",
+      "host": "Apmeklētājiem jāpieslēdzas Termix un jāspēj izveidot savienojumu ar šo mezglu."
+    },
+    "targetHttps": "Mērķis izmanto HTTPS",
+    "targetHttpsDesc": "Izveidot savienojumu ar mērķi, izmantojot TLS.",
+    "insecureTarget": "Uzticēties jebkurai mērķa sertifikātam",
+    "insecureTargetDesc": "Izlaist mērķa sertifikāta pārbaudes. Izmantojiet pašparakstītām pakalpojumiem.",
+    "preserveHost": "Saglabāt sākotnējo Host virsrakstu",
+    "preserveHostDesc": "Nosūtīt apmeklētāja domēnu uz mērķi, nevis mērķa adresi.",
+    "httpsPublicPort": "Publiskais HTTPS ports",
+    "httpsPublicPortHint": "Tikai gadījumā, ja apmeklētāji pieslēdzas HTTPS citā portā nekā 443. Izmantojums pāradresēšanai. 0 nozīmē 443.",
+    "headers": "Papildu pieprasījuma virsraksti",
+    "headersHint": "Viens rindā formātā Nosaukums: vērtība. Nosūtīts uz mērķi.",
+    "allowIps": "Atļaut tikai šīs adreses",
+    "allowIpsHint": "IP adreses vai diapazoni, viens rindā. Tukšs lauks nozīmē atļaut visiem.",
+    "denyIps": "Bloķēt šīs adreses",
+    "idleSeconds": "Neaktivitātes laika limits sekundēs",
+    "idleSecondsHint": "Aizvērt klusu savienojumu pēc šī laika. 0 izmanto noklusējuma vērtību.",
+    "enabled": "Iespējots"
+  },
+  "list": {
+    "empty": "Nav atbilstošu maršrutu. Pievienojiet vienu, izmantojot pogu Pievienot maršrutu.",
+    "deleteTitle": "Dzēst {{name}}?",
+    "deleteDesc": "Maršruts apstājas uzreiz. Sertifikāti paliek.",
+    "deleteFailed": "Neizdevās dzēst maršrutu.",
+    "hostAddress": "resursdators",
+    "disabled": "Izslēgts",
+    "protected": "Pieteikšanās",
+    "state": {
+      "running": "Darbojas",
+      "stopped": "Apturēts",
+      "error": "Kļūda"
+    },
+    "traffic": "{{count}} savienojumi, {{inbound}} ienākošie, {{outbound}} izejošie",
+    "toggleFailed": "Neizdevās mainīt maršrutu.",
+    "add": "Pievienot maršrutu"
+  },
+  "certs": {
+    "autoNote": "Let's Encrypt sertifikāti tiek pieprasīti, kad pievienojat maršrutu, un tiek atjaunoti automātiski.",
+    "needsEmail": "Pirms automātisko sertifikātu izmantošanas Reverse Proxy iestatījumos norādiet e-pasta adresi Let's Encrypt.",
+    "empty": "Vēl nav sertifikātu.",
+    "addSelfSigned": "Pašparakstīts",
+    "addOwn": "Augšupielādēt",
+    "domains": "Domēni",
+    "domainsHint": "Viens vai vairāki domēni, atdalīti ar atstarpēm vai komatiem.",
+    "certPem": "Sertifikāts (PEM)",
+    "keyPem": "Privātā atslēga (PEM)",
+    "saveFailed": "Neizdevās saglabāt sertifikātu.",
+    "deleteTitle": "Vai dzēst sertifikātu domēnam {{name}}?",
+    "deleteDesc": "Vispirms ir jāmaina maršrutēšanas noteikumi, kas to izmanto.",
+    "deleteFailed": "Neizdevās dzēst sertifikātu.",
+    "renew": "Pieprasīt vēlreiz",
+    "renewStarted": "Sertifikāta pieprasīšana.",
+    "renewFailed": "Neizdevās uzsākt pieprasījumu.",
+    "expires": "Beidzas {{date}}",
+    "waiting": "Gaida sertifikātu",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "Pašparakstīts",
+      "custom": "Augšupielādēts"
+    },
+    "status": {
+      "pending": "Gaida apstrādi",
+      "ready": "Gatavs",
+      "error": "Kļūda"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "Pārvaldīt apgrieztā proxy maršrutus",
+      "description": "Atveriet Reverse Proxy cilni un pievienojiet maršrutus uz hostiem, kurus varat rediģēt."
+    },
+    "access": {
+      "title": "Atvērt aizsargātos maršrutus",
+      "description": "Pieslēdzieties tīmekļa maršrutiem, kas prasa Termix pieteikšanos."
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "HTTP ports",
+        "description": "Ports, uz kuru šis spraudnis klausās HTTP. Kartējiet savu publisko 80. portu uz to. Nepieciešams Let's Encrypt."
+      },
+      "httpsPort": {
+        "label": "HTTPS ports",
+        "description": "Ports, uz kuru šis spraudnis klausās HTTPS. Kartējiet savu publisko 443. portu uz to."
+      },
+      "bindHost": {
+        "label": "Klausīšanās adrese",
+        "description": "Izmantojiet 0.0.0.0, lai pieņemtu savienojumus no jebkuras vietas, vai 1.27.0.0.1, lai turētu maršrutus lokālus."
+      },
+      "publicBaseUrl": {
+        "label": "Termix adrese",
+        "description": "Adrese, ko cilvēki izmanto, lai atvērtu Termix, piemēram, https://termix.example.com. Nepieciešama maršrutiem, kas prasa Termix pieteikšanos."
+      },
+      "acmeEmail": {
+        "label": "Sertifikāta e-pasts",
+        "description": "Let's Encrypt to izmanto derīguma termiņa beigu paziņojumiem."
+      },
+      "acmeStaging": {
+        "label": "Izmantot Let's Encrypt testvidi",
+        "description": "Testa sertifikāti, kurus pārlūkprogrammas neuzticas. Izmantojiet iestatīšanas laikā, lai izvairītos no ātruma ierobežojumiem."
+      },
+      "cookieHours": {
+        "label": "Pieteikšanās ilgums stundās",
+        "description": "Cik ilgi apmeklētājs paliek pieteikts aizsargātā maršrutā."
+      },
+      "acmeDirectoryUrl": {
+        "label": "Pielāgots sertifikātu izdevējs",
+        "description": "Cita CA ACME kataloga adrese, piemēram, privāta step-ca. Atstājiet tukšu, lai izmantotu Let's Encrypt."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "Atļaut reversā proxy maršrutus",
+        "description": "Šī hosta maršrutus pārvalda cilnē Reverse Proxy. Izslēdziet šo opciju, lai tos apturētu."
+      },
+      "targetAddress": {
+        "label": "Mērķa adrese",
+        "description": "Kur maršruti nosūta trafiku. Atstājiet tukšu, lai izmantotu šī hosta paša adresi. Iestatiet to, lai sasniegtu konteineru vai citu ierīci."
+      },
+      "defaultAccess": {
+        "label": "Noklusējuma pieteikšanās jaunām tīmekļa maršrutiem",
+        "description": "Ar ko šī hosta jauni tīmekļa maršruti sākas.",
+        "none": "Ikviens",
+        "user": "Pieteikušies Termix lietotāji",
+        "host": "Lietotāji, kuriem ir piekļuve šim hostam"
+      }
+    }
+  },
+  "editor": {
+    "connections": "Savienojumi: {{count}}",
+    "traffic": "{{inbound}} ienākošs, {{outbound}} izejošs"
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "plugin": {
+    "name": "Pöördproksüü",
+    "description": "Pöördproksüü TCP, UDP, HTTP ja HTTPS jaoks koos tasuta sertifikaatide ja Termix sisselogimisega, haldatav iga hosti kohta eraldi."
+  },
+  "common": {
+    "save": "Salvesta",
+    "cancel": "Tühista",
+    "delete": "Kustuta",
+    "edit": "Muuda"
+  },
+  "tab": {
+    "title": "Pöördproksüü",
+    "error": "Pöördproksüüd ei õnnestunud laadida.",
+    "notListening": "väljas",
+    "viewRoutes": "Marsruudid",
+    "viewCerts": "Sertifikaadid",
+    "needsBaseUrl": "Mõned marsruudid nõuavad Termixi sisselogimist, kuid Termixi aadress ei ole määratud. Määra see pöördproksy seadetes, vastasel juhul neid marsruute ei avane.",
+    "status": "{{running}}/{{total}} töötab",
+    "refresh": "Värskenda",
+    "search": "Otsi marsruute",
+    "filterAll": "Kõik",
+    "ports": "Kuulab HTTP {{http}} ja HTTPS {{https}}.",
+    "noHost": "Ava pöördproksy hostist.",
+    "hostOff": "Pöördproksy on selle hosti seadetes välja lülitatud. Olemasolevad marsruudid on peatatud."
+  },
+  "form": {
+    "saveFailed": "Marsruuti ei õnnestunud salvestada.",
+    "editTitle": "Muuda marsruuti",
+    "addTitle": "Lisa marsruut",
+    "name": "Nimi",
+    "namePlaceholder": "Koduwiki",
+    "type": "Tüüp",
+    "typeHttp": "Veeb (HTTP ja HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "Domeen",
+    "domainHint": "Suuna selle domeeni DNS sellele serverile. Lõikudega domeen, nagu *.example.com, sobib marsruutimiseks.",
+    "publicPort": "Avalik port",
+    "publicPortHint": "Port, millel see server kuulab. Avalda see ka oma Dockeri seadistuses.",
+    "targetAddress": "Sihtasjade aadress",
+    "targetAddressPlaceholder": "Hosti aadress",
+    "targetAddressHint": "Jäta tühjaks, et kasutada selle hosti enda aadressi.",
+    "targetPort": "Sihtport",
+    "certificate": "Sertifikaat",
+    "certAcme": "Let's Encrypt (automaatne)",
+    "certSelfSigned": "Enesertifitseeritud",
+    "certCustom": "Minu enda sertifikaat",
+    "certOff": "Puudub (tavaline HTTP)",
+    "certHint": {
+      "acme": "Tasuta sertifikaat taotletakse ja uuendatakse sinu eest. Port 80 peab jõudma selle plugini HTTP-pordile.",
+      "selfsigned": "Brauserid hoiatavad selle eest. Sobib erakasutuseks.",
+      "custom": "Lisa oma sertifikaat esmalt sertifikaatide vaates.",
+      "off": "Külastajad ühenduvad krüpteerimata."
+    },
+    "pickCertificate": "Sertifikaat",
+    "pickCertificatePlaceholder": "Vali sertifikaat",
+    "forceHttps": "Suuna HTTP HTTPS-ile",
+    "forceHttpsDesc": "Tavalise HTTP kaudu külastajad suunatakse turvalisele aadressile.",
+    "access": "Kes saab selle avada",
+    "accessNone": "Igaüks",
+    "accessUser": "Sisse logitud Termixi kasutajad",
+    "accessHost": "Kasutajatel, kellel on ligipääs sellele hostile",
+    "accessHint": {
+      "none": "Selle marsruudi ees pole sisselogimist.",
+      "user": "Külastajad logivad esmalt sisse Termixi.",
+      "host": "Külastajad logivad sisse Termixi ja peavad suutma sellele hostile ühendust luua."
+    },
+    "targetHttps": "Sihtmärk kasutab HTTPS-i",
+    "targetHttpsDesc": "Ühendu sihtmärgiga TLS-i kaudu.",
+    "insecureTarget": "Usalda igasugust sihtmärgi sertifikaati",
+    "insecureTargetDesc": "Jäta sihtmärgi sertifikaadi kontrollimine vahele. Kasuta isesertifitseeritud teenuste puhul.",
+    "preserveHost": "Säilita algne Host-pea",
+    "preserveHostDesc": "Saada külastaja domeen sihtmärgile sihtaseme asemel.",
+    "httpsPublicPort": "Avalik HTTPS-port",
+    "httpsPublicPortHint": "Ainult juhul, kui külastajad jõuavad HTTPS-i poolele, mis ei ole 443. Kasutatakse ümbersuunamiseks. 0 tähendab 443.",
+    "headers": "Lisapead päringus",
+    "headersHint": "Üks rida nime: väärtus. Saadetakse sihtmärgile.",
+    "allowIps": "Luba ainult need aadressid",
+    "allowIpsHint": "IP-d või vahemikud, üks rida. Tühi lubab kõiki.",
+    "denyIps": "Blokeeri need aadressid",
+    "idleSeconds": "Tühikäigu aeg sekundites",
+    "idleSecondsHint": "Sulge vaikne ühendus pärast seda aega. 0 kasutab vaikimisi väärtust.",
+    "enabled": "Lubatud"
+  },
+  "list": {
+    "empty": "Ühtegi marsruuti ei leitud. Lisa uus nupuga Lisa marsruut.",
+    "deleteTitle": "Kas kustutada {{name}}?",
+    "deleteDesc": "Marsruut peatub kohe. Sertifikaadid jäävad alles.",
+    "deleteFailed": "Marsruuti ei õnnestunud kustutada.",
+    "hostAddress": "peremeesmasin",
+    "disabled": "Väljas",
+    "protected": "Sisselogimine",
+    "state": {
+      "running": "Töötab",
+      "stopped": "Peatatud",
+      "error": "Viga"
+    },
+    "traffic": "{{count}} ühendust, {{inbound}} sisse, {{outbound}} välja",
+    "toggleFailed": "Marsruuti ei õnnestunud muuta.",
+    "add": "Lisa marsruut"
+  },
+  "certs": {
+    "autoNote": "Let's Encrypti sertifikaadid taotletakse marsruudi lisamisel ja uuenduvad automaatselt.",
+    "needsEmail": "Määra Let's Encrypti jaoks e-posti aadress pöördproksy seadetes enne automaatsete sertifikaatide kasutamist.",
+    "empty": "Sertifikaate pole veel.",
+    "addSelfSigned": "Enesekinnitatud",
+    "addOwn": "Laadi üles",
+    "domains": "Domeenid",
+    "domainsHint": "Üks või mitu domeeni, eraldatud tühikute või koolonitega.",
+    "certPem": "Sertifikaat (PEM)",
+    "keyPem": "Privaatvõti (PEM)",
+    "saveFailed": "Sertifikaati ei õnnestunud salvestada.",
+    "deleteTitle": "Kas kustutada sertifikaat domeenile {{name}}?",
+    "deleteDesc": "Enne kustutamist tuleb muuta marsruudid, mis seda kasutavad.",
+    "deleteFailed": "Sertifikaati ei õnnestunud kustutada.",
+    "renew": "Taotle uuesti",
+    "renewStarted": "Sertifikaadi taotlemine.",
+    "renewFailed": "Päringu alustamine ei õnnestunud.",
+    "expires": "Aegub {{date}}",
+    "waiting": "Ootame sertifikaati",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "Enesetõendav",
+      "custom": "Üles laaditud"
+    },
+    "status": {
+      "pending": "Ootel",
+      "ready": "Valmis",
+      "error": "Viga"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "Pöördproksy marsruutide haldamine",
+      "description": "Ava Pöördproksüü vaheleht ja lisa marsruute hostidele, mida sa muuta saad."
+    },
+    "access": {
+      "title": "Kaitstud marsruutide avamine",
+      "description": "Logi sisse veebimarsruutidesse, mis nõuavad Termixi sisselogimist."
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "HTTP-port",
+        "description": "Port, millel see plugin HTTP-päringuid kuulab. Kaardista oma avalik port 80 sellele. Vajalik Let's Encrypti jaoks."
+      },
+      "httpsPort": {
+        "label": "HTTPS-port",
+        "description": "Port, millel see plugin HTTPS-päringuid kuulab. Kaardista oma avalik port 443 sellele."
+      },
+      "bindHost": {
+        "label": "Kuulamis-aadress",
+        "description": "Kasuta 0.0.0.0, et aktsepteerida ühendusi kõikjalt, või 127.0.0.1, et hoida marsruudid kohalikuks."
+      },
+      "publicBaseUrl": {
+        "label": "Termixi aadress",
+        "description": "Aadress, mida inimesed kasutavad Termixi avamiseks, näiteks https://termix.example.com. Vajalik marsruutide jaoks, mis nõuavad Termixi sisselogimist."
+      },
+      "acmeEmail": {
+        "label": "Sertifikaadi e-post",
+        "description": "Let's Encrypt kasutab seda aegumise teavituste saatmiseks."
+      },
+      "acmeStaging": {
+        "label": "Kasuta Let's Encrypti testkeskkonda",
+        "description": "Testsertifikaadid, mida brauserid ei usalda. Kasuta seadistamise ajal, et vältida kiiruspiiranguid."
+      },
+      "cookieHours": {
+        "label": "Sisselogimise kestus tundides",
+        "description": "Kui kaua külastaja jääb kaitstud marsruudil sisse logitud."
+      },
+      "acmeDirectoryUrl": {
+        "label": "Kohandatud sertifikaadi väljastaja",
+        "description": "Teise sertifikaadi väljastaja (nt privaatne step-ca) ACME kataloogi aadress. Jäta tühjaks, et kasutada Let's Encrypti."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "Luba pöördproksy marsruudid",
+        "description": "Selle hosti marsruudid haldatakse pöördproksüüdi vahekaardil. Lülitage see välja, et peatada nende töö."
+      },
+      "targetAddress": {
+        "label": "Sihtasjade aadress",
+        "description": "Kuhu marsruudid liiklust suunavad. Jätke tühjaks, et kasutada selle hosti enda aadressi. Määrake see, et jõuda konteinerini või teise masinani."
+      },
+      "defaultAccess": {
+        "label": "Uute veebimarsruutide vaikimisi sisselogimine",
+        "description": "Millest selle hosti uued veebimarsruudid algavad.",
+        "none": "Igaüks",
+        "user": "Sisse logitud Termixi kasutajad",
+        "host": "Kasutajad, kellel on selle hosti ligipääs"
+      }
+    }
+  },
+  "editor": {
+    "traffic": "{{inbound}} sisse, {{outbound}} välja"
+  }
+}

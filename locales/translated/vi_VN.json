@@ -1,0 +1,200 @@
+{
+  "plugin": {
+    "name": "Reverse Proxy",
+    "description": "Reverse proxy cho TCP, UDP, HTTP và HTTPS với chứng chỉ miễn phí và đăng nhập Termix, được quản lý theo từng host."
+  },
+  "common": {
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "delete": "Xóa",
+    "edit": "Chỉnh sửa"
+  },
+  "tab": {
+    "title": "Reverse Proxy",
+    "error": "Không thể tải reverse proxy.",
+    "notListening": "tắt",
+    "viewRoutes": "Routes",
+    "viewCerts": "Chứng chỉ",
+    "needsBaseUrl": "Một số tuyến đường yêu cầu đăng nhập Termix, nhưng địa chỉ Termix chưa được đặt. Hãy đặt nó trong cài đặt Reverse Proxy, nếu không các tuyến đường đó sẽ không thể mở.",
+    "status": "{{running}} trong số {{total}} đang chạy",
+    "refresh": "Làm mới",
+    "search": "Tìm kiếm tuyến đường",
+    "filterAll": "Tất cả",
+    "ports": "Đang lắng nghe trên HTTP {{http}} và HTTPS {{https}}.",
+    "noHost": "Mở reverse proxy từ một host.",
+    "hostOff": "Reverse proxy đã bị tắt cho host này trong cài đặt của nó. Các tuyến đường hiện có đang tạm dừng."
+  },
+  "form": {
+    "saveFailed": "Không thể lưu tuyến đường.",
+    "editTitle": "Chỉnh sửa tuyến đường",
+    "addTitle": "Thêm tuyến đường",
+    "name": "Tên",
+    "namePlaceholder": "Wiki trang chủ",
+    "type": "Loại",
+    "typeHttp": "Web (HTTP và HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "Tên miền",
+    "domainHint": "Chỉ định DNS của tên miền này đến máy chủ này. Một ký tự đại diện như *.example.com hoạt động cho việc định tuyến.",
+    "publicPort": "Cổng công khai",
+    "publicPortHint": "Cổng mà máy chủ này lắng nghe. Hãy công khai nó trong cấu hình Docker của bạn nữa.",
+    "targetAddress": "Địa chỉ đích",
+    "targetAddressPlaceholder": "Địa chỉ máy chủ",
+    "targetAddressHint": "Để trống để sử dụng địa chỉ của chính máy chủ này.",
+    "targetPort": "Cổng đích",
+    "certificate": "Chứng chỉ",
+    "certAcme": "Let's Encrypt (tự động)",
+    "certSelfSigned": "Tự ký",
+    "certCustom": "Chứng chỉ của tôi",
+    "certOff": "Không có (HTTP thường)",
+    "certHint": {
+      "acme": "Chứng chỉ miễn phí sẽ được yêu cầu và gia hạn tự động cho bạn. Cổng 80 phải có thể truy cập đến cổng HTTP của plugin này.",
+      "selfsigned": "Trình duyệt sẽ cảnh báo về điều này. Phù hợp cho mục đích sử dụng cá nhân.",
+      "custom": "Hãy thêm chứng chỉ của bạn trong mục Chứng chỉ trước.",
+      "off": "Người dùng kết nối mà không có mã hóa."
+    },
+    "pickCertificate": "Chứng chỉ",
+    "pickCertificatePlaceholder": "Chọn một chứng chỉ",
+    "forceHttps": "Chuyển hướng HTTP sang HTTPS",
+    "forceHttpsDesc": "Người dùng truy cập qua HTTP thường sẽ được chuyển đến địa chỉ bảo mật.",
+    "access": "Ai có thể mở nó",
+    "accessNone": "Bất kỳ ai",
+    "accessUser": "Người dùng Termix đã đăng nhập",
+    "accessHost": "Người dùng có quyền truy cập vào máy chủ này",
+    "accessHint": {
+      "none": "Không yêu cầu đăng nhập cho tuyến đường này.",
+      "user": "Khách truy cập đăng nhập bằng Termix trước.",
+      "host": "Khách truy cập đăng nhập bằng Termix và phải có khả năng kết nối đến máy chủ này."
+    },
+    "targetHttps": "Mục tiêu sử dụng HTTPS",
+    "targetHttpsDesc": "Kết nối đến mục tiêu bằng TLS.",
+    "insecureTarget": "Tin tưởng mọi chứng chỉ mục tiêu",
+    "insecureTargetDesc": "Bỏ qua kiểm tra chứng chỉ trên mục tiêu. Dùng cho các dịch vụ tự ký.",
+    "preserveHost": "Giữ nguyên tiêu đề Host gốc",
+    "preserveHostDesc": "Gửi tên miền của người truy cập đến đích thay vì địa chỉ đích.",
+    "httpsPublicPort": "Cổng HTTPS công khai",
+    "httpsPublicPortHint": "Chỉ khi người truy cập kết nối HTTPS qua cổng khác 443. Dùng cho chuyển hướng. 0 nghĩa là 443.",
+    "headers": "Tiêu đề yêu cầu bổ sung",
+    "headersHint": "Mỗi dòng một tiêu đề theo định dạng Tên: giá trị. Được gửi đến đích.",
+    "allowIps": "Chỉ cho phép các địa chỉ này",
+    "allowIpsHint": "IP hoặc dải IP, mỗi dòng một mục. Để trống để cho phép tất cả.",
+    "denyIps": "Chặn các địa chỉ này",
+    "idleSeconds": "Thời gian chờ không hoạt động (giây)",
+    "idleSecondsHint": "Đóng kết nối không hoạt động sau khoảng thời gian này. 0 sử dụng cài đặt mặc định.",
+    "enabled": "Đã bật"
+  },
+  "list": {
+    "empty": "Không có tuyến đường nào khớp. Thêm một tuyến bằng nút Thêm tuyến đường.",
+    "deleteTitle": "Xóa {{name}}?",
+    "deleteDesc": "Tuyến đường sẽ dừng ngay lập tức. Chứng chỉ vẫn được giữ lại.",
+    "deleteFailed": "Không thể xóa tuyến đường.",
+    "hostAddress": "chủ máy",
+    "disabled": "Tắt",
+    "protected": "Đăng nhập",
+    "state": {
+      "running": "Đang chạy",
+      "stopped": "Đã dừng",
+      "error": "Lỗi"
+    },
+    "traffic": "{{count}} kết nối, {{inbound}} vào, {{outbound}} ra",
+    "toggleFailed": "Không thể thay đổi tuyến đường.",
+    "add": "Thêm tuyến đường"
+  },
+  "certs": {
+    "autoNote": "Chứng chỉ Let's Encrypt sẽ được yêu cầu khi bạn thêm một tuyến đường và tự động gia hạn.",
+    "needsEmail": "Đặt email cho Let's Encrypt trong cài đặt Reverse Proxy trước khi sử dụng chứng chỉ tự động.",
+    "empty": "Chưa có chứng chỉ nào.",
+    "addSelfSigned": "Tự ký",
+    "addOwn": "Tải lên",
+    "domains": "Tên miền",
+    "domainsHint": "Một hoặc nhiều tên miền, cách nhau bằng dấu cách hoặc dấu phẩy.",
+    "certPem": "Chứng chỉ (PEM)",
+    "keyPem": "Khóa riêng (PEM)",
+    "saveFailed": "Không thể lưu chứng chỉ.",
+    "deleteTitle": "Xóa chứng chỉ cho {{name}}?",
+    "deleteDesc": "Các tuyến đường sử dụng chứng chỉ này phải được thay đổi trước.",
+    "deleteFailed": "Không thể xóa chứng chỉ.",
+    "renew": "Yêu cầu lại",
+    "renewStarted": "Đang yêu cầu chứng chỉ.",
+    "renewFailed": "Không thể bắt đầu yêu cầu.",
+    "expires": "Hết hạn {{date}}",
+    "waiting": "Đang chờ chứng chỉ",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "Tự ký",
+      "custom": "Đã tải lên"
+    },
+    "status": {
+      "pending": "Đang chờ xử lý",
+      "ready": "Sẵn sàng",
+      "error": "Lỗi"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "Quản lý tuyến đường proxy ngược",
+      "description": "Mở tab Reverse Proxy và thêm các route đến các host mà bạn có thể chỉnh sửa."
+    },
+    "access": {
+      "title": "Mở các route được bảo vệ",
+      "description": "Đăng nhập vào các route web yêu cầu đăng nhập Termix."
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "Cổng HTTP",
+        "description": "Cổng mà plugin này lắng nghe cho HTTP. Ánh xạ cổng công khai 80 của bạn vào cổng này. Cần thiết cho Let's Encrypt."
+      },
+      "httpsPort": {
+        "label": "Cổng HTTPS",
+        "description": "Cổng mà plugin này lắng nghe cho HTTPS. Ánh xạ cổng công khai 443 của bạn vào cổng này."
+      },
+      "bindHost": {
+        "label": "Địa chỉ lắng nghe",
+        "description": "Sử dụng 0.0.0.0 để chấp nhận kết nối từ mọi nơi, hoặc 127.0.0.1 để giữ các route ở chế độ cục bộ."
+      },
+      "publicBaseUrl": {
+        "label": "Địa chỉ Termix",
+        "description": "Địa chỉ mọi người dùng để mở Termix, ví dụ https://termix.example.com. Cần thiết cho các tuyến đường yêu cầu đăng nhập Termix."
+      },
+      "acmeEmail": {
+        "label": "Email chứng chỉ",
+        "description": "Let's Encrypt sử dụng email này để gửi thông báo hết hạn."
+      },
+      "acmeStaging": {
+        "label": "Sử dụng môi trường thử nghiệm của Let's Encrypt",
+        "description": "Chứng chỉ thử nghiệm mà trình duyệt không tin cậy. Sử dụng trong quá trình thiết lập để tránh giới hạn tốc độ."
+      },
+      "cookieHours": {
+        "label": "Thời gian đăng nhập (giờ)",
+        "description": "Thời gian một khách truy cập vẫn được đăng nhập trên các tuyến đường được bảo vệ."
+      },
+      "acmeDirectoryUrl": {
+        "label": "Cơ quan cấp chứng chỉ tùy chỉnh",
+        "description": "Địa chỉ thư mục ACME của một CA khác, như step-ca riêng. Để trống để sử dụng Let's Encrypt."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "Cho phép các tuyến đường proxy ngược",
+        "description": "Các tuyến đường cho host này được quản lý trong tab Proxy ngược. Tắt tùy chọn này để dừng chúng."
+      },
+      "targetAddress": {
+        "label": "Địa chỉ đích",
+        "description": "Nơi các tuyến đường gửi lưu lượng truy cập. Để trống để sử dụng địa chỉ của chính host này. Đặt nó để truy cập một container hoặc máy khác."
+      },
+      "defaultAccess": {
+        "label": "Đăng nhập mặc định cho các tuyến đường web mới",
+        "description": "Các tuyến đường web mới trên host này bắt đầu với điều gì.",
+        "none": "Bất kỳ ai",
+        "user": "Người dùng Termix đã đăng nhập",
+        "host": "Người dùng có quyền truy cập vào host này"
+      }
+    }
+  },
+  "editor": {
+    "connections": "{{count}} kết nối",
+    "traffic": "{{inbound}} vào, {{outbound}} ra"
+  }
+}

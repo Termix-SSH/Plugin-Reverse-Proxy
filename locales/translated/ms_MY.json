@@ -1,0 +1,200 @@
+{
+  "plugin": {
+    "name": "Pelayan Songsang",
+    "description": "Pelayan songsang untuk TCP, UDP, HTTP dan HTTPS dengan sijil percuma dan log masuk Termix, diuruskan mengikut hos."
+  },
+  "common": {
+    "save": "Simpan",
+    "cancel": "Batal",
+    "delete": "Padam",
+    "edit": "Sunting"
+  },
+  "tab": {
+    "title": "Pelayan Songsang",
+    "error": "Tidak dapat memuatkan pelayan songsang.",
+    "notListening": "mati",
+    "viewRoutes": "Laluan",
+    "viewCerts": "Sijil",
+    "needsBaseUrl": "Sebilangan laluan memerlukan log masuk Termix, tetapi alamat Termix belum ditetapkan. Tetapkannya dalam tetapan Proksi Songsang atau laluan tersebut tidak boleh dibuka.",
+    "status": "{{running}} daripada {{total}} sedang berjalan",
+    "refresh": "Muat Semula",
+    "search": "Cari laluan",
+    "filterAll": "Semua",
+    "ports": "Mendengar pada HTTP {{http}} dan HTTPS {{https}}.",
+    "noHost": "Buka proksi songsang dari hos.",
+    "hostOff": "Proksi songsang dimatikan untuk hos ini dalam tetapannya. Laluan sedia ada dijeda."
+  },
+  "form": {
+    "saveFailed": "Gagal menyimpan laluan.",
+    "editTitle": "Sunting laluan",
+    "addTitle": "Tambah laluan",
+    "name": "Nama",
+    "namePlaceholder": "Wiki rumah",
+    "type": "Jenis",
+    "typeHttp": "Web (HTTP dan HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "Domain",
+    "domainHint": "Arahkan DNS domain ini ke pelayan ini. Liar seperti *.example.com berfungsi untuk penglaluan.",
+    "publicPort": "Port awam",
+    "publicPortHint": "Port yang digunakan oleh pelayan ini. Terbitkan juga dalam tetapan Docker anda.",
+    "targetAddress": "Alamat sasaran",
+    "targetAddressPlaceholder": "Alamat hos",
+    "targetAddressHint": "Biarkan kosong untuk menggunakan alamat hos ini sendiri.",
+    "targetPort": "Port sasaran",
+    "certificate": "Sijil",
+    "certAcme": "Let's Encrypt (automatik)",
+    "certSelfSigned": "Tandatangan sendiri",
+    "certCustom": "Sijil saya sendiri",
+    "certOff": "Tiada (HTTP biasa)",
+    "certHint": {
+      "acme": "Sijil percuma diminta dan diperbaharui untuk anda. Port 80 mesti boleh mencapai port HTTP plugin ini.",
+      "selfsigned": "Pelayar akan memberi amaran tentangnya. Sesuai untuk kegunaan peribadi.",
+      "custom": "Tambah sijil anda pada pandangan Sijil terlebih dahulu.",
+      "off": "Pelawat menyambung tanpa penyulitan."
+    },
+    "pickCertificate": "Sijil",
+    "pickCertificatePlaceholder": "Pilih sijil",
+    "forceHttps": "Arahkan semula HTTP ke HTTPS",
+    "forceHttpsDesc": "Pelawat pada HTTP biasa dialihkan ke alamat yang selamat.",
+    "access": "Siapa yang boleh membukanya",
+    "accessNone": "Siapa saja",
+    "accessUser": "Pengguna Termix yang telah log masuk",
+    "accessHost": "Pengguna yang mempunyai akses ke hos ini",
+    "accessHint": {
+      "none": "Tiada log masuk diperlukan untuk laluan ini.",
+      "user": "Pelawat perlu log masuk ke Termix terlebih dahulu.",
+      "host": "Pelawat perlu log masuk ke Termix dan mesti boleh menyambung ke hos ini."
+    },
+    "targetHttps": "Sasaran menggunakan HTTPS",
+    "targetHttpsDesc": "Sambung ke sasaran menggunakan TLS.",
+    "insecureTarget": "Percayai mana-mana sijil sasaran",
+    "insecureTargetDesc": "Langkau pemeriksaan sijil pada sasaran. Gunakan untuk perkhidmatan yang ditandatangani sendiri.",
+    "preserveHost": "Kekalkan pelayan asal Host",
+    "preserveHostDesc": "Hantar domain pelawat ke sasaran bukannya alamat sasaran.",
+    "httpsPublicPort": "Port awam HTTPS",
+    "httpsPublicPortHint": "Hanya jika pelawat mengakses HTTPS pada port selain 443. Digunakan untuk pengalihan. 0 bermaksud 443.",
+    "headers": "Pelayan permintaan tambahan",
+    "headersHint": "Satu setiap baris sebagai Nama: nilai. Dihantar ke sasaran.",
+    "allowIps": "Benarkan hanya alamat ini",
+    "allowIpsHint": "IP atau julat, satu setiap baris. Kosong membenarkan semua orang.",
+    "denyIps": "Sekat alamat ini",
+    "idleSeconds": "Had masa tidak aktif dalam saat",
+    "idleSecondsHint": "Tutup sambungan yang tidak aktif selepas tempoh ini. 0 menggunakan lalai.",
+    "enabled": "Dihidupkan"
+  },
+  "list": {
+    "empty": "Tiada laluan sepadan. Tambah satu dengan butang Tambah laluan.",
+    "deleteTitle": "Padam {{name}}?",
+    "deleteDesc": "Laluan berhenti serta-merta. Sijil kekal.",
+    "deleteFailed": "Gagal memadam laluan.",
+    "hostAddress": "hos",
+    "disabled": "Mati",
+    "protected": "Log masuk",
+    "state": {
+      "running": "Berjalan",
+      "stopped": "Berhenti",
+      "error": "Masalah"
+    },
+    "traffic": "{{count}} sambungan, {{inbound}} masuk, {{outbound}} keluar",
+    "toggleFailed": "Tidak dapat mengubah laluan.",
+    "add": "Tambah laluan"
+  },
+  "certs": {
+    "autoNote": "Sijil Let's Encrypt diminta apabila anda menambah laluan dan diperbaharui secara automatik.",
+    "needsEmail": "Tetapkan e-mel untuk Let's Encrypt dalam tetapan Proksi Songsang sebelum menggunakan sijil automatik.",
+    "empty": "Tiada sijil lagi.",
+    "addSelfSigned": "Tandatangan sendiri",
+    "addOwn": "Muat naik",
+    "domains": "Domain",
+    "domainsHint": "Satu atau lebih domain, dipisahkan dengan ruang atau koma.",
+    "certPem": "Sijil (PEM)",
+    "keyPem": "Kunci peribadi (PEM)",
+    "saveFailed": "Tidak dapat menyimpan sijil.",
+    "deleteTitle": "Padam sijil untuk {{name}}?",
+    "deleteDesc": "Laluan yang menggunakannya perlu diubah terlebih dahulu.",
+    "deleteFailed": "Tidak dapat memadam sijil.",
+    "renew": "Minta semula",
+    "renewStarted": "Meminta sijil.",
+    "renewFailed": "Tidak dapat memulakan permintaan.",
+    "expires": "Tamat tempoh {{date}}",
+    "waiting": "Menunggu sijil",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "Tandatangan sendiri",
+      "custom": "Dimuat naik"
+    },
+    "status": {
+      "pending": "Menunggu",
+      "ready": "Sedia",
+      "error": "Masalah"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "Urus laluan pelayan songsang",
+      "description": "Buka tab Proksi Songsang dan tambah laluan ke hos yang boleh anda sunting."
+    },
+    "access": {
+      "title": "Buka laluan yang dilindungi",
+      "description": "Log masuk ke laluan web yang meminta log masuk Termix."
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "Port HTTP",
+        "description": "Port yang plugin ini dengar untuk HTTP. Petakan port awam 80 anda ke sini. Diperlukan untuk Let's Encrypt."
+      },
+      "httpsPort": {
+        "label": "Port HTTPS",
+        "description": "Port yang plugin ini dengar untuk HTTPS. Petakan port awam 443 anda ke sini."
+      },
+      "bindHost": {
+        "label": "Alamat dengar",
+        "description": "Gunakan 0.0.0.0 untuk menerima sambungan dari mana-mana, atau 127.0.0.1 untuk mengekalkan laluan secara tempatan."
+      },
+      "publicBaseUrl": {
+        "label": "Alamat Termix",
+        "description": "Alamat yang digunakan orang untuk membuka Termix, seperti https://termix.example.com. Diperlukan untuk laluan yang meminta log masuk Termix."
+      },
+      "acmeEmail": {
+        "label": "E-mel sijil",
+        "description": "Let's Encrypt menggunakannya untuk pemberitahuan tamat tempoh."
+      },
+      "acmeStaging": {
+        "label": "Gunakan persekitaran ujian Let's Encrypt",
+        "description": "Sijil ujian yang tidak dipercayai oleh pelayar. Gunakan semasa persediaan untuk mengelakkan had kadar."
+      },
+      "cookieHours": {
+        "label": "Tempoh log masuk dalam jam",
+        "description": "Lama pelawat kekal log masuk pada laluan yang dilindungi."
+      },
+      "acmeDirectoryUrl": {
+        "label": "Pihak berkuasa sijil tersuai",
+        "description": "Alamat direktori ACME bagi CA lain, seperti step-ca peribadi. Biarkan kosong untuk menggunakan Let's Encrypt."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "Benarkan laluan pelayan songsang",
+        "description": "Laluan untuk hos ini diuruskan dalam tab Pelayan Songsang. Matikan ini untuk menghentikannya."
+      },
+      "targetAddress": {
+        "label": "Alamat sasaran",
+        "description": "Ke mana laluan menghantar trafik. Biarkan kosong untuk menggunakan alamat hos ini sendiri. Tetapkan untuk mencapai bekas atau mesin lain."
+      },
+      "defaultAccess": {
+        "label": "Log masuk lalai untuk laluan web baharu",
+        "description": "Apa yang laluan web baharu pada hos ini mula dengan.",
+        "none": "Siapa sahaja",
+        "user": "Pengguna Termix yang log masuk",
+        "host": "Pengguna dengan akses ke hos ini"
+      }
+    }
+  },
+  "editor": {
+    "connections": "{{count}} sambungan",
+    "traffic": "{{inbound}} masuk, {{outbound}} keluar"
+  }
+}

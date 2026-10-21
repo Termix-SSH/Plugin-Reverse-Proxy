@@ -1,0 +1,200 @@
+{
+  "plugin": {
+    "name": "Proxy Balik",
+    "description": "Proxy balik untuk TCP, UDP, HTTP, dan HTTPS dengan sertifikat gratis dan login Termix, dikelola per host."
+  },
+  "common": {
+    "save": "Simpan",
+    "cancel": "Batal",
+    "delete": "Hapus",
+    "edit": "Sunting"
+  },
+  "tab": {
+    "title": "Proxy Balik",
+    "error": "Gagal memuat proxy balik.",
+    "notListening": "mati",
+    "viewRoutes": "Rute",
+    "viewCerts": "Sertifikat",
+    "needsBaseUrl": "Beberapa rute memerlukan login Termix, tetapi alamat Termix belum diatur. Atur di pengaturan Reverse Proxy, atau rute tersebut tidak dapat dibuka.",
+    "status": "{{running}} dari {{total}} berjalan",
+    "refresh": "Segarkan",
+    "search": "Cari rute",
+    "filterAll": "Semua",
+    "ports": "Mendengarkan pada HTTP {{http}} dan HTTPS {{https}}.",
+    "noHost": "Buka reverse proxy dari host.",
+    "hostOff": "Reverse proxy dimatikan untuk host ini di pengaturannya. Rute yang ada dijeda."
+  },
+  "form": {
+    "saveFailed": "Gagal menyimpan rute.",
+    "editTitle": "Edit rute",
+    "addTitle": "Tambah rute",
+    "name": "Nama",
+    "namePlaceholder": "Wiki rumah",
+    "type": "Tipe",
+    "typeHttp": "Web (HTTP dan HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "Domain",
+    "domainHint": "Arahkan DNS domain ini ke server ini. Wildcard seperti *.example.com berfungsi untuk perutean.",
+    "publicPort": "Port publik",
+    "publicPortHint": "Port yang digunakan server ini untuk mendengarkan koneksi. Publikasikan juga dalam konfigurasi Docker Anda.",
+    "targetAddress": "Alamat target",
+    "targetAddressPlaceholder": "Alamat host",
+    "targetAddressHint": "Biarkan kosong untuk menggunakan alamat host ini sendiri.",
+    "targetPort": "Port target",
+    "certificate": "Sertifikat",
+    "certAcme": "Let's Encrypt (otomatis)",
+    "certSelfSigned": "Tertanda tangan sendiri",
+    "certCustom": "Sertifikat saya sendiri",
+    "certOff": "Tidak ada (HTTP biasa)",
+    "certHint": {
+      "acme": "Sertifikat gratis akan diminta dan diperbarui untuk Anda. Port 80 harus dapat mengakses port HTTP plugin ini.",
+      "selfsigned": "Peramban akan memperingatkan tentang hal ini. Cocok untuk penggunaan pribadi.",
+      "custom": "Tambahkan sertifikat Anda di tampilan Sertifikat terlebih dahulu.",
+      "off": "Pengunjung terhubung tanpa enkripsi."
+    },
+    "pickCertificate": "Sertifikat",
+    "pickCertificatePlaceholder": "Pilih sertifikat",
+    "forceHttps": "Alihkan HTTP ke HTTPS",
+    "forceHttpsDesc": "Pengunjung yang menggunakan HTTP biasa akan dialihkan ke alamat yang aman.",
+    "access": "Siapa yang dapat membukanya",
+    "accessNone": "Siapa saja",
+    "accessUser": "Pengguna Termix yang telah masuk",
+    "accessHost": "Pengguna dengan akses ke host ini",
+    "accessHint": {
+      "none": "Tidak ada login di depan rute ini.",
+      "user": "Pengunjung masuk dengan Termix terlebih dahulu.",
+      "host": "Pengunjung masuk dengan Termix dan harus dapat terhubung ke host ini."
+    },
+    "targetHttps": "Target menggunakan HTTPS",
+    "targetHttpsDesc": "Terhubung ke target dengan TLS.",
+    "insecureTarget": "Percayai sertifikat target apa pun",
+    "insecureTargetDesc": "Lewati pemeriksaan sertifikat pada target. Gunakan untuk layanan self-signed.",
+    "preserveHost": "Pertahankan header Host asli",
+    "preserveHostDesc": "Kirim domain pengunjung ke target alih-alih alamat target.",
+    "httpsPublicPort": "Port HTTPS publik",
+    "httpsPublicPortHint": "Hanya jika pengunjung mengakses HTTPS melalui port selain 443. Digunakan untuk pengalihan. 0 berarti 443.",
+    "headers": "Header permintaan tambahan",
+    "headersHint": "Satu per baris sebagai Nama: nilai. Dikirim ke target.",
+    "allowIps": "Izinkan hanya alamat ini",
+    "allowIpsHint": "IP atau rentang, satu per baris. Kosong berarti mengizinkan semua.",
+    "denyIps": "Blokir alamat ini",
+    "idleSeconds": "Batas waktu tidak aktif dalam detik",
+    "idleSecondsHint": "Tutup koneksi yang tidak aktif setelah durasi ini. 0 menggunakan pengaturan default.",
+    "enabled": "Diaktifkan"
+  },
+  "list": {
+    "empty": "Tidak ada rute yang cocok. Tambahkan satu dengan tombol Tambah rute.",
+    "deleteTitle": "Hapus {{name}}?",
+    "deleteDesc": "Rute akan berhenti segera. Sertifikat tetap tersimpan.",
+    "deleteFailed": "Gagal menghapus rute.",
+    "hostAddress": "host",
+    "disabled": "Nonaktif",
+    "protected": "Login",
+    "state": {
+      "running": "Berjalan",
+      "stopped": "Berhenti",
+      "error": "Masalah"
+    },
+    "traffic": "{{count}} koneksi, {{inbound}} masuk, {{outbound}} keluar",
+    "toggleFailed": "Tidak dapat mengubah rute.",
+    "add": "Tambahkan rute"
+  },
+  "certs": {
+    "autoNote": "Sertifikat Let's Encrypt diminta saat Anda menambahkan rute dan diperbarui secara otomatis.",
+    "needsEmail": "Atur email untuk Let's Encrypt di pengaturan Reverse Proxy sebelum menggunakan sertifikat otomatis.",
+    "empty": "Belum ada sertifikat.",
+    "addSelfSigned": "Tandatangan sendiri",
+    "addOwn": "Unggah",
+    "domains": "Domain",
+    "domainsHint": "Satu atau lebih domain, dipisahkan oleh spasi atau koma.",
+    "certPem": "Sertifikat (PEM)",
+    "keyPem": "Kunci privat (PEM)",
+    "saveFailed": "Gagal menyimpan sertifikat.",
+    "deleteTitle": "Hapus sertifikat untuk {{name}}?",
+    "deleteDesc": "Rute yang menggunakannya harus diubah terlebih dahulu.",
+    "deleteFailed": "Gagal menghapus sertifikat.",
+    "renew": "Minta ulang",
+    "renewStarted": "Meminta sertifikat.",
+    "renewFailed": "Tidak dapat memulai permintaan.",
+    "expires": "Kadaluarsa {{date}}",
+    "waiting": "Menunggu sertifikat",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "Tertanda tangan sendiri",
+      "custom": "Diunggah"
+    },
+    "status": {
+      "pending": "Menunggu",
+      "ready": "Siap",
+      "error": "Masalah"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "Kelola rute reverse proxy",
+      "description": "Buka tab Reverse Proxy dan tambahkan rute ke host yang dapat Anda edit."
+    },
+    "access": {
+      "title": "Buka rute yang dilindungi",
+      "description": "Masuk ke rute web yang meminta login Termix."
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "Port HTTP",
+        "description": "Port di mana plugin ini mendengarkan untuk HTTP. Petakan port publik 80 Anda ke port ini. Diperlukan untuk Let's Encrypt."
+      },
+      "httpsPort": {
+        "label": "Port HTTPS",
+        "description": "Port di mana plugin ini mendengarkan untuk HTTPS. Petakan port publik 443 Anda ke port ini."
+      },
+      "bindHost": {
+        "label": "Alamat dengarkan",
+        "description": "Gunakan 0.0.0.0 untuk menerima koneksi dari mana saja, atau 127.0.0.1 untuk menjaga rute tetap lokal."
+      },
+      "publicBaseUrl": {
+        "label": "Alamat Termix",
+        "description": "Alamat yang digunakan orang untuk membuka Termix, seperti https://termix.example.com. Diperlukan untuk rute yang meminta login Termix."
+      },
+      "acmeEmail": {
+        "label": "Email sertifikat",
+        "description": "Let's Encrypt menggunakannya untuk pemberitahuan kedaluwarsa."
+      },
+      "acmeStaging": {
+        "label": "Gunakan staging Let's Encrypt",
+        "description": "Sertifikat uji yang tidak dipercaya oleh browser. Gunakan saat pengaturan untuk menghindari batas laju."
+      },
+      "cookieHours": {
+        "label": "Durasi login dalam jam",
+        "description": "Seberapa lama pengunjung tetap masuk di rute yang dilindungi."
+      },
+      "acmeDirectoryUrl": {
+        "label": "Otoritas sertifikat kustom",
+        "description": "Alamat direktori ACME dari CA lain, seperti step-ca pribadi. Kosongkan untuk menggunakan Let's Encrypt."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "Izinkan rute reverse proxy",
+        "description": "Rute untuk host ini dikelola di tab Reverse Proxy. Matikan ini untuk menghentikannya."
+      },
+      "targetAddress": {
+        "label": "Alamat target",
+        "description": "Ke mana rute mengirim lalu lintas. Kosongkan untuk menggunakan alamat host ini sendiri. Atur untuk menjangkau kontainer atau mesin lain."
+      },
+      "defaultAccess": {
+        "label": "Login default untuk rute web baru",
+        "description": "Pengaturan awal untuk rute web baru di host ini.",
+        "none": "Siapa saja",
+        "user": "Pengguna Termix yang masuk",
+        "host": "Pengguna dengan akses ke host ini"
+      }
+    }
+  },
+  "editor": {
+    "connections": "Koneksi {{count}}",
+    "traffic": "{{inbound}} masuk, {{outbound}} keluar"
+  }
+}

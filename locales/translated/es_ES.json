@@ -1,0 +1,199 @@
+{
+  "plugin": {
+    "name": "Proxy inverso",
+    "description": "Proxy inverso para TCP, UDP, HTTP y HTTPS con certificados gratuitos e inicio de sesión de Termix, gestionado por host."
+  },
+  "common": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar"
+  },
+  "tab": {
+    "title": "Proxy inverso",
+    "error": "No se ha podido cargar el proxy inverso.",
+    "notListening": "desactivado",
+    "viewRoutes": "Rutas",
+    "viewCerts": "Certificados",
+    "needsBaseUrl": "Algunas rutas requieren iniciar sesión en Termix, pero la dirección de Termix no está configurada. Configúrala en la configuración del proxy inverso o esas rutas no se podrán abrir.",
+    "status": "{{running}} de {{total}} en ejecución",
+    "refresh": "Actualizar",
+    "search": "Buscar rutas",
+    "filterAll": "Todas",
+    "ports": "Escuchando en HTTP {{http}} y HTTPS {{https}}.",
+    "noHost": "Abre el proxy inverso desde un host.",
+    "hostOff": "El proxy inverso está desactivado para este host en su configuración. Las rutas existentes están en pausa."
+  },
+  "form": {
+    "saveFailed": "No se ha podido guardar la ruta.",
+    "editTitle": "Editar ruta",
+    "addTitle": "Añadir ruta",
+    "name": "Nombre",
+    "namePlaceholder": "Wiki principal",
+    "type": "Tipo",
+    "typeHttp": "Web (HTTP y HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "Dominio",
+    "domainHint": "Apunta el DNS de este dominio a este servidor. Un comodín como *.example.com funciona para el enrutamiento.",
+    "publicPort": "Puerto público",
+    "publicPortHint": "El puerto en el que este servidor escucha. También publícalo en tu configuración de Docker.",
+    "targetAddress": "Dirección de destino",
+    "targetAddressPlaceholder": "Dirección del host",
+    "targetAddressHint": "Déjalo vacío para usar la propia dirección de este host.",
+    "targetPort": "Puerto de destino",
+    "certificate": "Certificado",
+    "certAcme": "Let's Encrypt (automático)",
+    "certSelfSigned": "Autofirmado",
+    "certCustom": "Mi propio certificado",
+    "certOff": "Ninguno (HTTP sin cifrar)",
+    "certHint": {
+      "acme": "Se solicita y renueva un certificado gratuito por ti. El puerto 80 debe llegar al puerto HTTP de este complemento.",
+      "selfsigned": "Los navegadores mostrarán una advertencia. Apto para uso privado.",
+      "custom": "Añade tu certificado primero en la vista de Certificados.",
+      "off": "Los visitantes se conectan sin cifrado."
+    },
+    "pickCertificate": "Certificado",
+    "pickCertificatePlaceholder": "Selecciona un certificado",
+    "forceHttps": "Redirigir HTTP a HTTPS",
+    "forceHttpsDesc": "Los visitantes que usen HTTP sin cifrar serán redirigidos a la dirección segura.",
+    "access": "Quién puede abrirlo",
+    "accessNone": "Cualquiera",
+    "accessUser": "Usuarios de Termix iniciados sesión",
+    "accessHost": "Usuarios con acceso a este host",
+    "accessHint": {
+      "none": "No se requiere inicio de sesión para esta ruta.",
+      "user": "Los visitantes deben iniciar sesión en Termix primero.",
+      "host": "Los visitantes deben iniciar sesión en Termix y tener permiso para conectarse a este host."
+    },
+    "targetHttps": "El destino usa HTTPS",
+    "targetHttpsDesc": "Conectar al destino con TLS.",
+    "insecureTarget": "Confiar en cualquier certificado del destino",
+    "insecureTargetDesc": "Omitir la verificación de certificados en el destino. Úsalo para servicios con autofirma.",
+    "preserveHost": "Mantener el encabezado Host original",
+    "preserveHostDesc": "Enviar el dominio del visitante al destino en lugar de la dirección del destino.",
+    "httpsPublicPort": "Puerto HTTPS público",
+    "httpsPublicPortHint": "Solo si los visitantes acceden a HTTPS en un puerto distinto de 443. Se usa para la redirección. 0 significa 443.",
+    "headers": "Encabezados de solicitud adicionales",
+    "headersHint": "Uno por línea en formato Nombre: valor. Se envían al destino.",
+    "allowIps": "Permitir solo estas direcciones",
+    "allowIpsHint": "Direcciones IP o rangos, uno por línea. Si está vacío, permite a todos.",
+    "denyIps": "Bloquear estas direcciones",
+    "idleSeconds": "Tiempo de espera por inactividad en segundos",
+    "idleSecondsHint": "Cierra una conexión inactiva después de este tiempo. 0 usa el valor predeterminado.",
+    "enabled": "Habilitado"
+  },
+  "list": {
+    "empty": "No hay rutas que coincidan. Añade una con el botón Añadir ruta.",
+    "deleteTitle": "¿Eliminar {{name}}?",
+    "deleteDesc": "La ruta se detiene inmediatamente. Los certificados se conservan.",
+    "deleteFailed": "No se ha podido eliminar la ruta.",
+    "hostAddress": "host",
+    "disabled": "Desactivado",
+    "protected": "Inicio de sesión",
+    "state": {
+      "running": "En ejecución",
+      "stopped": "Detenido",
+      "error": "Error"
+    },
+    "traffic": "{{count}} conexiones, {{inbound}} entrantes, {{outbound}} salientes",
+    "toggleFailed": "No se ha podido cambiar la ruta.",
+    "add": "Añadir ruta"
+  },
+  "certs": {
+    "autoNote": "Los certificados de Let's Encrypt se solicitan al añadir una ruta y se renuevan automáticamente.",
+    "needsEmail": "Configura un correo electrónico para Let's Encrypt en la configuración del proxy inverso antes de usar certificados automáticos.",
+    "empty": "Aún no hay certificados.",
+    "addSelfSigned": "Autofirmado",
+    "addOwn": "Subir",
+    "domains": "Dominios",
+    "domainsHint": "Uno o más dominios, separados por espacios o comas.",
+    "certPem": "Certificado (PEM)",
+    "keyPem": "Clave privada (PEM)",
+    "saveFailed": "No se ha podido guardar el certificado.",
+    "deleteTitle": "¿Eliminar el certificado de {{name}}?",
+    "deleteDesc": "Debes modificar primero las rutas que lo utilizan.",
+    "deleteFailed": "No se ha podido eliminar el certificado.",
+    "renew": "Solicitar de nuevo",
+    "renewStarted": "Solicitando el certificado.",
+    "renewFailed": "No se ha podido iniciar la solicitud.",
+    "expires": "Expira el {{date}}",
+    "waiting": "Esperando el certificado",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "Autofirmado",
+      "custom": "Subido"
+    },
+    "status": {
+      "pending": "Pendiente",
+      "ready": "Listo",
+      "error": "Error"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "Gestionar rutas del proxy inverso",
+      "description": "Abre la pestaña Proxy inverso y añade rutas a los hosts que puedas editar."
+    },
+    "access": {
+      "title": "Abrir rutas protegidas",
+      "description": "Inicia sesión en las rutas web que soliciten un inicio de sesión de Termix."
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "Puerto HTTP",
+        "description": "El puerto en el que este plugin escucha para HTTP. Asigna tu puerto público 80 a este. Necesario para Let's Encrypt."
+      },
+      "httpsPort": {
+        "label": "Puerto HTTPS",
+        "description": "El puerto en el que este plugin escucha para HTTPS. Asigna tu puerto público 443 a este."
+      },
+      "bindHost": {
+        "label": "Dirección de escucha",
+        "description": "Usa 0.0.0.0 para aceptar conexiones desde cualquier lugar, o 127.0.0.1 para mantener las rutas locales."
+      },
+      "publicBaseUrl": {
+        "label": "Dirección de Termix",
+        "description": "La dirección que usan las personas para abrir Termix, como https://termix.example.com. Necesaria para las rutas que solicitan iniciar sesión en Termix."
+      },
+      "acmeEmail": {
+        "label": "Correo electrónico del certificado",
+        "description": "Let's Encrypt lo usa para los avisos de caducidad."
+      },
+      "acmeStaging": {
+        "label": "Usar entorno de pruebas de Let's Encrypt",
+        "description": "Certificados de prueba que los navegadores no confían. Úsalo durante la configuración para evitar los límites de tasa."
+      },
+      "cookieHours": {
+        "label": "Duración de la sesión en horas",
+        "description": "Cuánto tiempo permanece un visitante conectado en una ruta protegida."
+      },
+      "acmeDirectoryUrl": {
+        "label": "Autoridad de certificación personalizada",
+        "description": "La dirección del directorio ACME de otra CA, como un step-ca privado. Déjalo vacío para usar Let's Encrypt."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "Permitir rutas de proxy inverso",
+        "description": "Las rutas de este host se gestionan en la pestaña Proxy inverso. Desactívalo para detenerlas."
+      },
+      "targetAddress": {
+        "label": "Dirección de destino",
+        "description": "A dónde envían el tráfico las rutas. Déjalo vacío para usar la propia dirección de este host. Configúralo para llegar a un contenedor o a otra máquina."
+      },
+      "defaultAccess": {
+        "label": "Inicio de sesión predeterminado para nuevas rutas web",
+        "description": "Con qué empiezan las nuevas rutas web en este host.",
+        "none": "Cualquiera",
+        "user": "Usuarios de Termix conectados",
+        "host": "Usuarios con acceso a este host"
+      }
+    }
+  },
+  "editor": {
+    "traffic": "{{inbound}} de entrada, {{outbound}} de salida"
+  }
+}

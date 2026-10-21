@@ -1,0 +1,200 @@
+{
+  "plugin": {
+    "name": "Ters Proxy",
+    "description": "Ücretsiz sertifikalar ve Termix oturumu ile TCP, UDP, HTTP ve HTTPS için ters proxy, her ana bilgisayar için yönetilir."
+  },
+  "common": {
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "delete": "Sil",
+    "edit": "Düzenle"
+  },
+  "tab": {
+    "title": "Ters Proxy",
+    "error": "Ters proxy yüklenemedi.",
+    "notListening": "kapalı",
+    "viewRoutes": "Yollar",
+    "viewCerts": "Sertifikalar",
+    "needsBaseUrl": "Bazı rotalar Termix oturum açmasını gerektiriyor, ancak Termix adresi ayarlanmamış. Ters proxy ayarlarında adresi ayarlayın, aksi takdirde bu rotalar açılamaz.",
+    "status": "{{total}} üzerinden {{running}} çalışıyor",
+    "refresh": "Yenile",
+    "search": "Rotaları ara",
+    "filterAll": "Tümü",
+    "ports": "HTTP {{http}} ve HTTPS {{https}} üzerinde dinleniyor.",
+    "noHost": "Ters proxy'yi bir sunucudan açın.",
+    "hostOff": "Ters proxy, bu sunucu için ayarlarında devre dışı bırakıldı. Mevcut rotalar duraklatıldı."
+  },
+  "form": {
+    "saveFailed": "Rota kaydedilemedi.",
+    "editTitle": "Rotayı düzenle",
+    "addTitle": "Rota ekle",
+    "name": "Ad",
+    "namePlaceholder": "Ana wiki",
+    "type": "Tür",
+    "typeHttp": "Web (HTTP ve HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "Alan adı",
+    "domainHint": "Bu alan adının DNS'ini bu sunucuya yönlendirin. Yönlendirme için *.example.com gibi bir joker karakter işe yarar.",
+    "publicPort": "Halka açık bağlantı noktası",
+    "publicPortHint": "Bu sunucunun dinlediği bağlantı noktası. Docker kurulumunuzda da bunu yayınlayın.",
+    "targetAddress": "Hedef adres",
+    "targetAddressPlaceholder": "Sunucu adresi",
+    "targetAddressHint": "Bu sunucunun kendi adresini kullanmak için boş bırakın.",
+    "targetPort": "Hedef bağlantı noktası",
+    "certificate": "Sertifika",
+    "certAcme": "Let's Encrypt (otomatik)",
+    "certSelfSigned": "Kendi kendine imzalı",
+    "certCustom": "Kendi sertifikam",
+    "certOff": "Hiçbiri (düz HTTP)",
+    "certHint": {
+      "acme": "Sizin için ücretsiz bir sertifika istenir ve yenilenir. 80. portun bu eklentinin HTTP portuna ulaşması gerekir.",
+      "selfsigned": "Tarayıcılar bununla ilgili uyarı verecektir. Özel kullanım için uygundur.",
+      "custom": "Önce Sertifikalar görünümüne sertifikanızı ekleyin.",
+      "off": "Ziyaretçiler şifreleme olmadan bağlanır."
+    },
+    "pickCertificate": "Sertifika",
+    "pickCertificatePlaceholder": "Bir sertifika seçin",
+    "forceHttps": "HTTP'yi HTTPS'ye yönlendir",
+    "forceHttpsDesc": "Düz HTTP'deki ziyaretçiler güvenli adrese yönlendirilir.",
+    "access": "Kim açabilir",
+    "accessNone": "Herkes",
+    "accessUser": "Giriş yapmış Termix kullanıcıları",
+    "accessHost": "Bu ana bilgisayara erişimi olan kullanıcılar",
+    "accessHint": {
+      "none": "Bu rotanın önünde giriş yok.",
+      "user": "Ziyaretçiler önce Termix ile giriş yapar.",
+      "host": "Ziyaretçiler Termix ile giriş yapmalı ve bu ana bilgisayara bağlanabilmelidir."
+    },
+    "targetHttps": "Hedef HTTPS kullanıyor",
+    "targetHttpsDesc": "Hedefe TLS ile bağlan.",
+    "insecureTarget": "Herhangi bir hedef sertifikasına güven",
+    "insecureTargetDesc": "Hedefte sertifika kontrollerini atla. Kendinden imzalı hizmetler için kullanın.",
+    "preserveHost": "Orijinal Host başlığını koru",
+    "preserveHostDesc": "Hedef adresi yerine ziyaretçinin alan adını hedefe gönder.",
+    "httpsPublicPort": "Herkese açık HTTPS bağlantı noktası",
+    "httpsPublicPortHint": "Sadece ziyaretçiler HTTPS'ye 443 dışındaki bir bağlantı noktasından ulaşıyorsa kullanılır. Yönlendirme için kullanılır. 0, 443 anlamına gelir.",
+    "headers": "Ek istek başlıkları",
+    "headersHint": "Her satırda bir tane, Ad: değer formatında. Hedefe gönderilir.",
+    "allowIps": "Sadece bu adreslere izin ver",
+    "allowIpsHint": "IP'ler veya aralıklar, her satırda bir tane. Boş bırakılırsa herkese izin verilir.",
+    "denyIps": "Bu adresleri engelle",
+    "idleSeconds": "Boşta kalma süresi (saniye)",
+    "idleSecondsHint": "Sessiz bağlantıyı bu süre sonunda kapatın. 0 varsayılanı kullanır.",
+    "enabled": "Etkin"
+  },
+  "list": {
+    "empty": "Eşleşen rota yok. Rota ekle düğmesiyle bir tane ekleyin.",
+    "deleteTitle": "{{name}} silinsin mi?",
+    "deleteDesc": "Rota hemen durur. Sertifikalar korunur.",
+    "deleteFailed": "Rota silinemedi.",
+    "hostAddress": "sunucu",
+    "disabled": "Kapalı",
+    "protected": "Giriş",
+    "state": {
+      "running": "Çalışıyor",
+      "stopped": "Durduruldu",
+      "error": "Sorun"
+    },
+    "traffic": "{{count}} bağlantı, {{inbound}} giren, {{outbound}} çıkan",
+    "toggleFailed": "Yol değiştirilemedi.",
+    "add": "Yol ekle"
+  },
+  "certs": {
+    "autoNote": "Let's Encrypt sertifikaları, bir yol eklediğinizde istenir ve kendiliğinden yenilenir.",
+    "needsEmail": "Otomatik sertifikaları kullanmadan önce Ters Proxy ayarlarında Let's Encrypt için bir e-posta adresi belirleyin.",
+    "empty": "Henüz sertifika yok.",
+    "addSelfSigned": "Kendi kendine imzalı",
+    "addOwn": "Yükle",
+    "domains": "Alan Adları",
+    "domainsHint": "Bir veya daha fazla alan adı, boşluk veya virgül ile ayrılmış.",
+    "certPem": "Sertifika (PEM)",
+    "keyPem": "Özel Anahtar (PEM)",
+    "saveFailed": "Sertifika kaydedilemedi.",
+    "deleteTitle": "{{name}} için sertifika silinsin mi?",
+    "deleteDesc": "Bunu kullanan rotalar önce değiştirilmelidir.",
+    "deleteFailed": "Sertifika silinemedi.",
+    "renew": "Yeniden İste",
+    "renewStarted": "Sertifika isteniyor.",
+    "renewFailed": "İstek başlatılamadı.",
+    "expires": "{{date}} tarihinde sona eriyor",
+    "waiting": "Sertifika bekleniyor",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "Kendi kendine imzalı",
+      "custom": "Yüklenen"
+    },
+    "status": {
+      "pending": "Beklemede",
+      "ready": "Hazır",
+      "error": "Sorun"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "Ters proxy rotalarını yönet",
+      "description": "Ters Proxy sekmesini açın ve düzenleyebileceğiniz ana makineler için rotalar ekleyin."
+    },
+    "access": {
+      "title": "Korumalı rotaları aç",
+      "description": "Termix oturum açması isteyen web rotalarında oturum açın."
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "HTTP bağlantı noktası",
+        "description": "Bu eklentinin HTTP için dinlediği bağlantı noktası. Let's Encrypt için gerekli olan genel 80 numaralı bağlantı noktanızı buna eşleyin."
+      },
+      "httpsPort": {
+        "label": "HTTPS bağlantı noktası",
+        "description": "Bu eklentinin HTTPS için dinlediği bağlantı noktası. Genel 443 numaralı bağlantı noktanızı buna eşleyin."
+      },
+      "bindHost": {
+        "label": "Dinleme adresi",
+        "description": "Her yerden bağlantı kabul etmek için 0.0.0.0 kullanın veya rotaları yerel tutmak için 127.0.0.1 kullanın."
+      },
+      "publicBaseUrl": {
+        "label": "Termix adresi",
+        "description": "Termix'i açmak için insanların kullandığı adres, örneğin https://termix.example.com. Termix oturum açmasını gerektiren yollar için gereklidir."
+      },
+      "acmeEmail": {
+        "label": "Sertifika e-postası",
+        "description": "Let's Encrypt, süresi dolma bildirimleri için bunu kullanır."
+      },
+      "acmeStaging": {
+        "label": "Let's Encrypt test ortamını kullan",
+        "description": "Tarayıcıların güvenmediği test sertifikaları. Kotaları aşmamak için kurulum sırasında kullanın."
+      },
+      "cookieHours": {
+        "label": "Oturum süresi (saat)",
+        "description": "Bir ziyaretçinin korunan bir yolda ne kadar süre oturum açık kalır."
+      },
+      "acmeDirectoryUrl": {
+        "label": "Özel sertifika yetkisi",
+        "description": "Özel bir step-ca gibi başka bir sertifika yetkilisinin ACME dizin adresi. Let's Encrypt kullanmak için boş bırakın."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "Ters proxy yollarına izin ver",
+        "description": "Bu ana bilgisayar için yollar, Ters Proxy sekmesinde yönetilir. Bunları durdurmak için bunu kapatın."
+      },
+      "targetAddress": {
+        "label": "Hedef adres",
+        "description": "Yolların trafiği yönlendirdiği yer. Bu ana bilgisayarın kendi adresini kullanmak için boş bırakın. Bir kapsayıcıya veya başka bir makineye erişmek için ayarlayın."
+      },
+      "defaultAccess": {
+        "label": "Yeni web yolları için varsayılan oturum açma",
+        "description": "Bu ana bilgisayardaki yeni web yollarının başlangıç durumu.",
+        "none": "Herkes",
+        "user": "Oturum açmış Termix kullanıcıları",
+        "host": "Bu ana bilgisayara erişimi olan kullanıcılar"
+      }
+    }
+  },
+  "editor": {
+    "connections": "{{count}} bağlantı",
+    "traffic": "{{inbound}} giren, {{outbound}} giden"
+  }
+}

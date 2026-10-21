@@ -1,0 +1,199 @@
+{
+  "plugin": {
+    "name": "Omvänd proxy",
+    "description": "Omvänd proxy för TCP, UDP, HTTP och HTTPS med gratis certifikat och Termix-inloggning, hanterad per värd."
+  },
+  "common": {
+    "save": "Spara",
+    "cancel": "Avbryt",
+    "delete": "Ta bort",
+    "edit": "Redigera"
+  },
+  "tab": {
+    "title": "Omvänd proxy",
+    "error": "Kunde inte ladda omvänd proxy.",
+    "notListening": "av",
+    "viewRoutes": "Rutter",
+    "viewCerts": "Certifikat",
+    "needsBaseUrl": "Vissa rutter kräver inloggning i Termix, men Termix-adressen är inte inställd. Ställ in den i inställningarna för omvänd proxy, annars kan dessa rutter inte öppnas.",
+    "status": "{{running}} av {{total}} körs",
+    "refresh": "Uppdatera",
+    "search": "Sök i rutter",
+    "filterAll": "Alla",
+    "ports": "Lyssnar på HTTP {{http}} och HTTPS {{https}}.",
+    "noHost": "Öppna den omvända proxyn från en värd.",
+    "hostOff": "Den omvända proxyn är inaktiverad för denna värd i dess inställningar. Befintliga rutter är pausade."
+  },
+  "form": {
+    "saveFailed": "Kunde inte spara rutten.",
+    "editTitle": "Redigera rutt",
+    "addTitle": "Lägg till rutt",
+    "name": "Namn",
+    "namePlaceholder": "Hemwiki",
+    "type": "Typ",
+    "typeHttp": "Webb (HTTP och HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "Domän",
+    "domainHint": "Peaka denna domäns DNS mot denna server. Ett jokertecken som *.example.com fungerar för ruttning.",
+    "publicPort": "Offentlig port",
+    "publicPortHint": "Porten som servern lyssnar på. Publicera den också i din Docker-inställning.",
+    "targetAddress": "Måladress",
+    "targetAddressPlaceholder": "Värdadress",
+    "targetAddressHint": "Lämna tomt för att använda värdens egen adress.",
+    "targetPort": "Målport",
+    "certificate": "Certifikat",
+    "certAcme": "Let's Encrypt (automatiskt)",
+    "certSelfSigned": "Självsignerat",
+    "certCustom": "Eget certifikat",
+    "certOff": "Ingen (ren HTTP)",
+    "certHint": {
+      "acme": "Ett gratis certifikat begärs och förnyas åt dig. Port 80 måste nå HTTP-porten för detta plugin.",
+      "selfsigned": "Webbläsare kommer att visa en varning. Fungerar bra för privat användning.",
+      "custom": "Lägg till ditt certifikat i vyn Certifikat först.",
+      "off": "Besökare ansluter utan kryptering."
+    },
+    "pickCertificate": "Certifikat",
+    "pickCertificatePlaceholder": "Välj ett certifikat",
+    "forceHttps": "Omdirigera HTTP till HTTPS",
+    "forceHttpsDesc": "Besökare som använder ren HTTP skickas till den säkra adressen.",
+    "access": "Vem som kan öppna det",
+    "accessNone": "Alla",
+    "accessUser": "Inloggade Termix-användare",
+    "accessHost": "Användare med åtkomst till denna värd",
+    "accessHint": {
+      "none": "Ingen inloggning krävs för denna rutt.",
+      "user": "Besökare loggar in med Termix först.",
+      "host": "Besökare loggar in med Termix och måste kunna ansluta till denna värd."
+    },
+    "targetHttps": "Målet använder HTTPS",
+    "targetHttpsDesc": "Anslut till målet med TLS.",
+    "insecureTarget": "Lita på alla målcertifikat",
+    "insecureTargetDesc": "Hoppa över certifikatkontroller för målet. Använd för tjänster med självsignerade certifikat.",
+    "preserveHost": "Behåll den ursprungliga Host-rubriken",
+    "preserveHostDesc": "Skicka besökarens domän till målet istället för måladressen.",
+    "httpsPublicPort": "Offentlig HTTPS-port",
+    "httpsPublicPortHint": "Endast om besökare når HTTPS på en annan port än 443. Används för omdirigeringen. 0 innebär 443.",
+    "headers": "Extra förfrågningsrubriker",
+    "headersHint": "En per rad som Namn: värde. Skickas till målet.",
+    "allowIps": "Tillåt endast dessa adresser",
+    "allowIpsHint": "IP-adresser eller intervall, en per rad. Tomt tillåter alla.",
+    "denyIps": "Blockera dessa adresser",
+    "idleSeconds": "Inaktivitetstid i sekunder",
+    "idleSecondsHint": "Stäng en inaktiv anslutning efter denna tid. 0 använder standardvärdet.",
+    "enabled": "Aktiverad"
+  },
+  "list": {
+    "empty": "Inga rutter matchar. Lägg till en med knappen Lägg till rutt.",
+    "deleteTitle": "Vill du ta bort {{name}}?",
+    "deleteDesc": "Rutten stoppas omedelbart. Certifikat behålls.",
+    "deleteFailed": "Kunde inte ta bort rutten.",
+    "hostAddress": "värd",
+    "disabled": "Av",
+    "protected": "Inloggning",
+    "state": {
+      "running": "Kör",
+      "stopped": "Stoppad",
+      "error": "Problem"
+    },
+    "traffic": "{{count}} anslutningar, {{inbound}} in, {{outbound}} ut",
+    "toggleFailed": "Kunde inte ändra rutten.",
+    "add": "Lägg till rutt"
+  },
+  "certs": {
+    "autoNote": "Let's Encrypt-certifikat begärs när du lägger till en rutt och förnyas automatiskt.",
+    "needsEmail": "Ställ in en e-postadress för Let's Encrypt i inställningarna för omvänd proxy innan du använder automatiska certifikat.",
+    "empty": "Inga certifikat ännu.",
+    "addSelfSigned": "Självsignerat",
+    "addOwn": "Ladda upp",
+    "domains": "Domäner",
+    "domainsHint": "En eller flera domäner, separerade med mellanslag eller kommatecken.",
+    "certPem": "Certifikat (PEM)",
+    "keyPem": "Privat nyckel (PEM)",
+    "saveFailed": "Kunde inte spara certifikatet.",
+    "deleteTitle": "Vill du ta bort certifikatet för {{name}}?",
+    "deleteDesc": "Rutter som använder det måste ändras först.",
+    "deleteFailed": "Kunde inte ta bort certifikatet.",
+    "renew": "Begär igen",
+    "renewStarted": "Begär certifikatet.",
+    "renewFailed": "Kunde inte starta begäran.",
+    "expires": "Utlöper {{date}}",
+    "waiting": "Väntar på certifikatet",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "Självsignerat",
+      "custom": "Uppladdat"
+    },
+    "status": {
+      "pending": "Väntande",
+      "ready": "Redo",
+      "error": "Problem"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "Hantera omvända proxy-rutter",
+      "description": "Öppna fliken Reverse Proxy och lägg till rutter till värdar du kan redigera."
+    },
+    "access": {
+      "title": "Öppna skyddade rutter",
+      "description": "Logga in på webb-rutter som kräver en Termix-inloggning."
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "HTTP-port",
+        "description": "Porten som detta plugin lyssnar på för HTTP. Mappa din offentliga port 80 till den. Krävs för Let's Encrypt."
+      },
+      "httpsPort": {
+        "label": "HTTPS-port",
+        "description": "Porten som detta plugin lyssnar på för HTTPS. Mappa din offentliga port 443 till den."
+      },
+      "bindHost": {
+        "label": "Lyssningsadress",
+        "description": "Använd 0.0.0.0 för att acceptera anslutningar från var som helst, eller 127.0.0.1 för att hålla rutterna lokala."
+      },
+      "publicBaseUrl": {
+        "label": "Termix-adress",
+        "description": "Adressen som användare använder för att öppna Termix, till exempel https://termix.example.com. Krävs för rutter som begär inloggning i Termix."
+      },
+      "acmeEmail": {
+        "label": "E-postadress för certifikat",
+        "description": "Let's Encrypt använder den för påminnelser om utgångsdatum."
+      },
+      "acmeStaging": {
+        "label": "Använd Let's Encrypt staging",
+        "description": "Testcertifikat som webbläsare inte litar på. Använd under installation för att undvika hastighetsbegränsningar."
+      },
+      "cookieHours": {
+        "label": "Inloggningslängd i timmar",
+        "description": "Hur länge en besökare förblir inloggad på en skyddad ruta."
+      },
+      "acmeDirectoryUrl": {
+        "label": "Anpassad certifikatutfärdare",
+        "description": "ACME-katalogadressen för en annan CA, till exempel en privat step-ca. Lämna tomt för att använda Let's Encrypt."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "Tillåt omvänd proxy-rutter",
+        "description": "Vägar för denna värd hanteras i fliken Omvänd proxy. Stäng av detta för att stoppa dem."
+      },
+      "targetAddress": {
+        "label": "Måladress",
+        "description": "Dit vägar skickar trafik. Lämna tomt för att använda värdens egen adress. Ange den för att nå en behållare eller en annan maskin."
+      },
+      "defaultAccess": {
+        "label": "Standardinloggning för nya webbvägar",
+        "description": "Vad nya webbvägar på denna värd startar med.",
+        "none": "Alla",
+        "user": "Inloggade Termix-användare",
+        "host": "Användare med åtkomst till denna värd"
+      }
+    }
+  },
+  "editor": {
+    "traffic": "{{inbound}} in, {{outbound}} ut"
+  }
+}

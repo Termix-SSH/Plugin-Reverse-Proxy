@@ -1,0 +1,199 @@
+{
+  "plugin": {
+    "name": "Fordított proxy",
+    "description": "Fordított proxy TCP, UDP, HTTP és HTTPS protokollokhoz, ingyenes tanúsítványokkal és Termix bejelentkezéssel, hostonkénti kezeléssel."
+  },
+  "common": {
+    "save": "Mentés",
+    "cancel": "Mégse",
+    "delete": "Törlés",
+    "edit": "Szerkesztés"
+  },
+  "tab": {
+    "title": "Fordított proxy",
+    "error": "A fordított proxy nem tölthető be.",
+    "notListening": "kikapcsolva",
+    "viewRoutes": "Útvonalak",
+    "viewCerts": "Tanúsítványok",
+    "needsBaseUrl": "Néhány útvonal Termix-bejelentkezést kér, de a Termix címe nincs beállítva. Állítsd be a fordított proxy beállításaiban, különben ezek az útvonalak nem nyithatók meg.",
+    "status": "{{running}}/{{total}} fut",
+    "refresh": "Frissítés",
+    "search": "Útvonalak keresése",
+    "filterAll": "Összes",
+    "ports": "Figyel a HTTP {{http}} és HTTPS {{https}} portokon.",
+    "noHost": "Nyisd meg a fordított proxyt egy gazdagépről.",
+    "hostOff": "A fordított proxy kikapcsolva van ezen a gazdagépen a beállításaiban. A meglévő útvonalak szünetelnek."
+  },
+  "form": {
+    "saveFailed": "Az útvonal mentése sikertelen.",
+    "editTitle": "Útvonal szerkesztése",
+    "addTitle": "Útvonal hozzáadása",
+    "name": "Név",
+    "namePlaceholder": "Otthoni wiki",
+    "type": "Típus",
+    "typeHttp": "Web (HTTP és HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "Domain",
+    "domainHint": "Állítsa be ennek a domainnek a DNS-bejegyzését erre a szerverre. Egy *.example.com formátumú wildcard is működik az útválasztáshoz.",
+    "publicPort": "Nyilvános port",
+    "publicPortHint": "A port, amelyen ez a szerver figyel. Ezt is publikáld a Docker konfigurációdban.",
+    "targetAddress": "Célcím",
+    "targetAddressPlaceholder": "Host címe",
+    "targetAddressHint": "Hagyd üresen, ha a host saját címét szeretnéd használni.",
+    "targetPort": "Célport",
+    "certificate": "Tanúsítvány",
+    "certAcme": "Let's Encrypt (automatikus)",
+    "certSelfSigned": "Önaláírt",
+    "certCustom": "Saját tanúsítvány",
+    "certOff": "Nincs (sima HTTP)",
+    "certHint": {
+      "acme": "Egy ingyenes tanúsítványt kérünk és megújítunk helyetted. A 80-as portnak elérhetőnek kell lennie a plugin HTTP portján.",
+      "selfsigned": "A böngészők figyelmeztetést fognak megjeleníteni. Személyes használatra megfelel.",
+      "custom": "Először add hozzá a tanúsítványt a Tanúsítványok nézeten.",
+      "off": "A látogatók titkosítás nélkül csatlakoznak."
+    },
+    "pickCertificate": "Tanúsítvány",
+    "pickCertificatePlaceholder": "Válassz egy tanúsítványt",
+    "forceHttps": "HTTP átirányítása HTTPS-re",
+    "forceHttpsDesc": "A sima HTTP-n érkező látogatókat a biztonságos címre irányítjuk.",
+    "access": "Ki nyithatja meg",
+    "accessNone": "Bárki",
+    "accessUser": "Bejelentkezett Termix-felhasználók",
+    "accessHost": "Akkorok, akiknek hozzáférésük van ehhez a gazdagéphez",
+    "accessHint": {
+      "none": "Nincs bejelentkezés szükséges ehhez az útvonalhoz.",
+      "user": "A látogatóknak először be kell jelentkezniük a Termixbe.",
+      "host": "A látogatóknak be kell jelentkezniük a Termixbe, és képesnek kell lenniük csatlakozni ehhez a gazdagéphez."
+    },
+    "targetHttps": "A cél HTTPS-t használ",
+    "targetHttpsDesc": "Csatlakozás a célhoz TLS segítségével.",
+    "insecureTarget": "Bármelyik céltanúsítvány megbízható",
+    "insecureTargetDesc": "Kihagyja a tanúsítványellenőrzést a célnál. Önaláírt szolgáltatásokhoz használja.",
+    "preserveHost": "Tartsa meg az eredeti Host fejlécet",
+    "preserveHostDesc": "Küldje a látogató domainjét a célnak a cél címe helyett.",
+    "httpsPublicPort": "Nyilvános HTTPS port",
+    "httpsPublicPortHint": "Csak akkor, ha a látogatók nem a 443-as porton érik el az HTTPS-t. Az átirányításhoz használják. A 0 a 443-at jelenti.",
+    "headers": "További kérésfejlécek",
+    "headersHint": "Egy sorban egy, Névtér: érték formátumban. A célnak küldik.",
+    "allowIps": "Csak ezeknek a címeknek engedélyezze",
+    "allowIpsHint": "IP-címek vagy tartományok, egy sorban egy. Üresen mindenkinek engedélyezi.",
+    "denyIps": "Blokkolja ezeket a címeket",
+    "idleSeconds": "Tétlenségi időtúllépés másodpercben",
+    "idleSecondsHint": "Bezárja a csendes kapcsolatot ennyi idő után. 0 esetén az alapértelmezett érték használatos.",
+    "enabled": "Engedélyezve"
+  },
+  "list": {
+    "empty": "Nincs egyező útvonal. Adj hozzá egyet az Útvonal hozzáadása gombbal.",
+    "deleteTitle": "Törli a(z) {{name}} elemet?",
+    "deleteDesc": "Az útvonal azonnal leáll. A tanúsítványok megmaradnak.",
+    "deleteFailed": "Az útvonal törlése sikertelen.",
+    "hostAddress": "gazdagép",
+    "disabled": "Ki",
+    "protected": "Bejelentkezés",
+    "state": {
+      "running": "Fut",
+      "stopped": "Leállítva",
+      "error": "Hiba"
+    },
+    "traffic": "{{count}} kapcsolat, {{inbound}} bejövő, {{outbound}} kijövő",
+    "toggleFailed": "Nem sikerült módosítani az útvonalat.",
+    "add": "Útvonal hozzáadása"
+  },
+  "certs": {
+    "autoNote": "A Let's Encrypt tanúsítványokat automatikusan kéri, amikor útvonalat ad hozzá, és azok önmaguk megújulnak.",
+    "needsEmail": "Állítson be egy e-mail címet a Let's Encrypt számára a Fordított Proxy beállításaiban, mielőtt az automatikus tanúsítványokat használná.",
+    "empty": "Még nincsenek tanúsítványok.",
+    "addSelfSigned": "Önaláírt",
+    "addOwn": "Feltöltés",
+    "domains": "Domainek",
+    "domainsHint": "Egy vagy több domain, szóközzel vagy vesszővel elválasztva.",
+    "certPem": "Tanúsítvány (PEM)",
+    "keyPem": "Privát kulcs (PEM)",
+    "saveFailed": "A tanúsítvány mentése sikertelen.",
+    "deleteTitle": "Törli a(z) {{name}} tanúsítványát?",
+    "deleteDesc": "Először módosítani kell azokat az útvonalakat, amelyek ezt használják.",
+    "deleteFailed": "A tanúsítvány törlése sikertelen.",
+    "renew": "Újra kérni",
+    "renewStarted": "Tanúsítvány kérése folyamatban.",
+    "renewFailed": "A kérés indítása sikertelen.",
+    "expires": "Lejárati idő: {{date}}",
+    "waiting": "Várakozás a tanúsítványra",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "Önaláírt",
+      "custom": "Feltöltött"
+    },
+    "status": {
+      "pending": "Függőben",
+      "ready": "Kész",
+      "error": "Hiba"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "Fordított proxy útvonalak kezelése",
+      "description": "Nyisd meg a Reverse Proxy fület, és adj hozzá útvonalakat azokat a hostokhoz, amelyeket szerkeszthetsz."
+    },
+    "access": {
+      "title": "Védett útvonalak megnyitása",
+      "description": "Jelentkezz be azokra a webes útvonalakra, amelyek Termix-bejelentkezést kérnek."
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "HTTP-port",
+        "description": "A port, amelyen ez a plugin HTTP-kéréseket fogad. Töröld hozzá a nyilvános 80-as portot. Szükséges a Let's Encrypthez."
+      },
+      "httpsPort": {
+        "label": "HTTPS-port",
+        "description": "A port, amelyen ez a plugin HTTPS-kéréseket fogad. Töröld hozzá a nyilvános 443-as portot."
+      },
+      "bindHost": {
+        "label": "Kötési cím",
+        "description": "Használd a 0.0.0.0-t, ha bárhol fogadni szeretnéd a kapcsolatokat, vagy a 127.0.0.1-et, ha helyben szeretnéd tartani az útvonalakat."
+      },
+      "publicBaseUrl": {
+        "label": "Termix-cím",
+        "description": "Az a cím, amelyet a felhasználók a Termix megnyitásához használnak, például https://termix.example.com. Szükséges azokra az útvonalakra, amelyek Termix-bejelentkezést kérnek."
+      },
+      "acmeEmail": {
+        "label": "Tanúsítvány e-mail-cím",
+        "description": "A Let's Encrypt ezt használja a lejárati értesítések küldéséhez."
+      },
+      "acmeStaging": {
+        "label": "Let's Encrypt teszt környezet használata",
+        "description": "Olyan teszt tanúsítványok, amelyeket a böngészők nem bíznak meg. Használja beállítás közben a sebességkorlátozások elkerülése érdekében."
+      },
+      "cookieHours": {
+        "label": "Bejelentkezési időtartam órákban",
+        "description": "Meddig marad bejelentkezve egy látogató egy védett útvonalon."
+      },
+      "acmeDirectoryUrl": {
+        "label": "Egyéni tanúsítványkiadó",
+        "description": "Egy másik tanúsítványkiadó ACME-könyvtárának címe, például egy privát step-ca. Hagyja üresen a Let's Encrypt használatához."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "Fordított proxy útvonalak engedélyezése",
+        "description": "Ennek a hosztjának az útvonalai a Reverse Proxy fülön kezelhetők. Kapcsold ki, ha le szeretnéd állítani őket."
+      },
+      "targetAddress": {
+        "label": "Cél cím",
+        "description": "Ide irányítják az útvonalak a forgalmat. Hagyd üresen, ha a hoszt saját címét szeretnéd használni. Állítsd be, ha egy konténerhez vagy egy másik géphez szeretnél kapcsolódni."
+      },
+      "defaultAccess": {
+        "label": "Alapértelmezett bejelentkezés az új webes útvonalakhoz",
+        "description": "Mivel indulnak az ezen a hoszton létrehozott új webes útvonalak.",
+        "none": "Bármelyik",
+        "user": "Bejelentkezett Termix felhasználók",
+        "host": "Azok a felhasználók, akiknek hozzáférésük van ehhez a hoszthoz"
+      }
+    }
+  },
+  "editor": {
+    "traffic": "{{inbound}} be, {{outbound}} ki"
+  }
+}

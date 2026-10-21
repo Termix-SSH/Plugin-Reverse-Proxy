@@ -1,0 +1,199 @@
+{
+  "plugin": {
+    "name": "Reverzný proxy",
+    "description": "Reverzný proxy pre TCP, UDP, HTTP a HTTPS s bezplatnými certifikátmi a prihlásením cez Termix, spravovaný pre jednotlivé hosty."
+  },
+  "common": {
+    "save": "Uložiť",
+    "cancel": "Zrušiť",
+    "delete": "Odstrániť",
+    "edit": "Upraviť"
+  },
+  "tab": {
+    "title": "Reverzný proxy",
+    "error": "Nepodarilo sa načítať reverzný proxy.",
+    "notListening": "vypnutý",
+    "viewRoutes": "Trasy",
+    "viewCerts": "Certifikáty",
+    "needsBaseUrl": "Niektoré trasy vyžadujú prihlásenie do Termixu, ale adresa Termixu nie je nastavená. Nastavte ju v nastaveniach reverzného proxy, inak tieto trasy nemožno otvoriť.",
+    "status": "{{running}} z {{total}} beží",
+    "refresh": "Obnoviť",
+    "search": "Hľadať trasy",
+    "filterAll": "Všetky",
+    "ports": "Počúva na HTTP {{http}} a HTTPS {{https}}.",
+    "noHost": "Otvorte reverzné proxy z hostiteľa.",
+    "hostOff": "Reverzné proxy je pre tento hostiteľa v jeho nastaveniach vypnuté. Existujúce trasy sú pozastavené."
+  },
+  "form": {
+    "saveFailed": "Trasu sa nepodarilo uložiť.",
+    "editTitle": "Upraviť trasu",
+    "addTitle": "Pridať trasu",
+    "name": "Názov",
+    "namePlaceholder": "Domáca wiki",
+    "type": "Typ",
+    "typeHttp": "Web (HTTP a HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "Doména",
+    "domainHint": "Nastavte DNS tejto domény tak, aby smerovala na tento server. Zlomienko ako *.example.com funguje na smerovanie.",
+    "publicPort": "Verejný port",
+    "publicPortHint": "Port, na ktorom tento server počúva. Publikujte ho aj vo svojom Docker nastavení.",
+    "targetAddress": "Cieľová adresa",
+    "targetAddressPlaceholder": "Adresa hostiteľa",
+    "targetAddressHint": "Nechajte prázdne, ak chcete použiť vlastnú adresu tohto hostiteľa.",
+    "targetPort": "Cieľový port",
+    "certificate": "Certifikát",
+    "certAcme": "Let's Encrypt (automaticky)",
+    "certSelfSigned": "Vlastne podpísaný",
+    "certCustom": "Môj vlastný certifikát",
+    "certOff": "Žiadne (obyčajný HTTP)",
+    "certHint": {
+      "acme": "Bezplatný certifikát sa za vás vyžiada a obnoví. Port 80 musí smerovať na HTTP port tohto pluginu.",
+      "selfsigned": "Prehliadače budú upozorňovať na nebezpečenstvo. Vhodné pre súkromné použitie.",
+      "custom": "Najprv pridajte svoj certifikát v zobrazení Certifikáty.",
+      "off": "Návštevníci sa pripájajú bez šifrovania."
+    },
+    "pickCertificate": "Certifikát",
+    "pickCertificatePlaceholder": "Vyberte certifikát",
+    "forceHttps": "Presmerovať HTTP na HTTPS",
+    "forceHttpsDesc": "Návštevníci na obyčajnom HTTP sú presmerovaní na zabezpečenú adresu.",
+    "access": "Kto ho môže otvoriť",
+    "accessNone": "Niekto",
+    "accessUser": "Prihlásení používatelia Termixu",
+    "accessHost": "Používatelia s prístupom k tomuto hostiteľovi",
+    "accessHint": {
+      "none": "Pred touto trasou nie je vyžadované prihlásenie.",
+      "user": "Návštevníci sa najprv prihlásia do Termixu.",
+      "host": "Návštevníci sa prihlásia do Termixu a musia mať možnosť pripojiť sa k tomuto hostiteľovi."
+    },
+    "targetHttps": "Cieľ používa HTTPS",
+    "targetHttpsDesc": "Pripojiť sa k cieľu pomocou TLS.",
+    "insecureTarget": "Dôverovať akémukoľvek certifikátu cieľa",
+    "insecureTargetDesc": "Preskočiť overovanie certifikátov na cieľovej strane. Použite pre služby so samopodpísanými certifikátmi.",
+    "preserveHost": "Zachovať pôvodnú hlavičku Host",
+    "preserveHostDesc": "Odoslať doménu návštevníka na cieľ namiesto adresy cieľa.",
+    "httpsPublicPort": "Verejný HTTPS port",
+    "httpsPublicPortHint": "Použite iba v prípade, že návštevníci pristupujú k HTTPS na porte inom ako 443. Používa sa na presmerovanie. Hodnota 0 znamená port 443.",
+    "headers": "Ďalšie hlavičky požiadavky",
+    "headersHint": "Jedna na riadok vo formáte Názov: hodnota. Odosielajú sa na cieľ.",
+    "allowIps": "Povoliť iba tieto adresy",
+    "allowIpsHint": "IP adresy alebo rozsahy, jedna na riadok. Ak je pole prázdne, povolí sa prístup pre všetkých.",
+    "denyIps": "Zablokovať tieto adresy",
+    "idleSeconds": "Časový limit nečinnosti v sekundách",
+    "idleSecondsHint": "Ukončiť nečinné pripojenie po uplynutí tejto doby. Hodnota 0 použije predvolenú hodnotu.",
+    "enabled": "Povolené"
+  },
+  "list": {
+    "empty": "Žiadne trasy nevyhovujú. Pridajte jednu pomocou tlačidla Pridať trasu.",
+    "deleteTitle": "Vymazať {{name}}?",
+    "deleteDesc": "Trasa sa okamžite zastaví. Certifikáty zostanú.",
+    "deleteFailed": "Trasu sa nepodarilo vymazať.",
+    "hostAddress": "hostiteľ",
+    "disabled": "Vypnuté",
+    "protected": "Prihlásenie",
+    "state": {
+      "running": "Beží",
+      "stopped": "Zastavený",
+      "error": "Problém"
+    },
+    "traffic": "{{count}} pripojení, {{inbound}} prichádzajúce, {{outbound}} odchádzajúce",
+    "toggleFailed": "Trasu sa nepodarilo zmeniť.",
+    "add": "Pridať trasu"
+  },
+  "certs": {
+    "autoNote": "Certifikáty Let's Encrypt sa žiadajú pri pridaní trasy a obnovujú sa automaticky.",
+    "needsEmail": "Pred použitím automatických certifikátov nastavte e-mail pre Let's Encrypt v nastaveniach reverzného proxy servera.",
+    "empty": "Zatiaľ žiadne certifikáty.",
+    "addSelfSigned": "Vlastne podpísaný",
+    "addOwn": "Nahrať",
+    "domains": "Domény",
+    "domainsHint": "Jedna alebo viac domén, oddelených medzerami alebo čiarkami.",
+    "certPem": "Certifikát (PEM)",
+    "keyPem": "Súkromný kľúč (PEM)",
+    "saveFailed": "Certifikát sa nepodarilo uložiť.",
+    "deleteTitle": "Chcete odstrániť certifikát pre {{name}}?",
+    "deleteDesc": "Trasy, ktoré ho používajú, je potrebné najprv zmeniť.",
+    "deleteFailed": "Certifikát sa nepodarilo odstrániť.",
+    "renew": "Požiadať znova",
+    "renewStarted": "Žiadosť o certifikát.",
+    "renewFailed": "Nepodarilo sa spustiť požiadavku.",
+    "expires": "Vyprší {{date}}",
+    "waiting": "Čaká sa na certifikát",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "Vlastne podpísaný",
+      "custom": "Nahraný"
+    },
+    "status": {
+      "pending": "Čaká sa",
+      "ready": "Pripravený",
+      "error": "Problém"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "Spravovať trasy reverzného proxy",
+      "description": "Otvorte kartu Reverzný proxy a pridajte trasy k hostiteľom, ktoré môžete upravovať."
+    },
+    "access": {
+      "title": "Otvoriť chránené trasy",
+      "description": "Prihláste sa do webových trás, ktoré vyžadujú prihlásenie do Termix."
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "HTTP port",
+        "description": "Port, na ktorom tento plugin počúva na HTTP. Zmapujte svoj verejný port 80 naň. Potrebné pre Let's Encrypt."
+      },
+      "httpsPort": {
+        "label": "HTTPS port",
+        "description": "Port, na ktorom tento plugin počúva na HTTPS. Zmapujte svoj verejný port 443 naň."
+      },
+      "bindHost": {
+        "label": "Adresa počúvania",
+        "description": "Použite 0.0.0.0 na prijímanie pripojení z akéhokoľvek miesta alebo 127.0.0.1 na udržiavanie trás lokálne."
+      },
+      "publicBaseUrl": {
+        "label": "Adresa Termix",
+        "description": "Adresa, ktorú používatelia zadávajú na otvorenie Termixu, napr. https://termix.example.com. Vyžaduje sa pre cesty, ktoré žiadajú o prihlásenie do Termixu."
+      },
+      "acmeEmail": {
+        "label": "E-mail pre certifikát",
+        "description": "Let's Encrypt ho používa na odosielanie upozornení na vypršanie platnosti."
+      },
+      "acmeStaging": {
+        "label": "Použiť testovacie prostredie Let's Encrypt",
+        "description": "Testovacie certifikáty, ktorým prehliadače nedôverujú. Používajte počas nastavovania, aby ste sa vyhli limitom počtu požiadaviek."
+      },
+      "cookieHours": {
+        "label": "Dĺžka platnosti prihlásenia v hodinách",
+        "description": "Ako dlho zostane návštevník prihlásený na chránenej ceste."
+      },
+      "acmeDirectoryUrl": {
+        "label": "Vlastná certifikačná autorita",
+        "description": "Adresa ACME adresára inej certifikačnej autority, napr. súkromného step-ca. Nechajte prázdne, ak chcete použiť Let's Encrypt."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "Povoliť cesty reverzného proxy servera",
+        "description": "Trasy pre tento hostiteľ sa spravujú na karte Reverzný proxy. Vypnutím ich zastavíte."
+      },
+      "targetAddress": {
+        "label": "Cieľová adresa",
+        "description": "Kam trasy smerujú premávku. Nechajte prázdne, ak chcete použiť vlastnú adresu tohto hostiteľa. Nastavte ju pre prístup k kontajneru alebo inému zariadeniu."
+      },
+      "defaultAccess": {
+        "label": "Predvolené prihlásenie pre nové webové trasy",
+        "description": "S čím začínajú nové webové trasy na tomto hostiteľovi.",
+        "none": "Ktokoľvek",
+        "user": "Prihlásení používatelia Termixu",
+        "host": "Používatelia s prístupom k tomuto hostiteľovi"
+      }
+    }
+  },
+  "editor": {
+    "traffic": "{{inbound}} dovnútra, {{outbound}} von"
+  }
+}

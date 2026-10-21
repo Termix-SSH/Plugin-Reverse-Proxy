@@ -1,0 +1,200 @@
+{
+  "plugin": {
+    "name": "Reverse Proxy",
+    "description": "Termix 로그인과 무료 인증서를 지원하는 TCP, UDP, HTTP 및 HTTPS용 리버스 프록시입니다. 각 호스트별로 관리할 수 있습니다."
+  },
+  "common": {
+    "save": "저장",
+    "cancel": "취소",
+    "delete": "삭제",
+    "edit": "수정"
+  },
+  "tab": {
+    "title": "리버스 프록시",
+    "error": "리버스 프록시를 로드할 수 없습니다.",
+    "notListening": "끔",
+    "viewRoutes": "라우트",
+    "viewCerts": "인증서",
+    "needsBaseUrl": "일부 경로는 Termix 로그인을 요청하지만 Termix 주소가 설정되지 않았습니다. 리버스 프록시 설정에서 주소를 설정하지 않으면 해당 경로를 열 수 없습니다.",
+    "status": "{{total}}개 중 {{running}}개 실행 중",
+    "refresh": "새로고침",
+    "search": "경로 검색",
+    "filterAll": "전체",
+    "ports": "HTTP {{http}} 및 HTTPS {{https}}에서 수신 중입니다.",
+    "noHost": "호스트에서 리버스 프록시를 엽니다.",
+    "hostOff": "이 호스트의 설정에서 리버스 프록시가 꺼져 있습니다. 기존 경로는 일시 중지됩니다."
+  },
+  "form": {
+    "saveFailed": "경로를 저장할 수 없습니다.",
+    "editTitle": "경로 편집",
+    "addTitle": "경로 추가",
+    "name": "이름",
+    "namePlaceholder": "홈 위키",
+    "type": "유형",
+    "typeHttp": "웹 (HTTP 및 HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "도메인",
+    "domainHint": "이 도메인의 DNS를 이 서버로 연결하세요. *.example.com 와 같은 와일드카드는 라우팅에 사용할 수 있습니다.",
+    "publicPort": "공개 포트",
+    "publicPortHint": "이 서버가 수신 대기하는 포트입니다. Docker 설정에서도 이를 게시하세요.",
+    "targetAddress": "대상 주소",
+    "targetAddressPlaceholder": "호스트 주소",
+    "targetAddressHint": "이 호스트의 자체 주소를 사용하려면 비워 두세요.",
+    "targetPort": "대상 포트",
+    "certificate": "인증서",
+    "certAcme": "Let's Encrypt (자동)",
+    "certSelfSigned": "자체 서명",
+    "certCustom": "내 인증서",
+    "certOff": "없음 (일반 HTTP)",
+    "certHint": {
+      "acme": "무료 인증서가 자동으로 요청되고 갱신됩니다. 포트 80이 이 플러그인의 HTTP 포트에 도달할 수 있어야 합니다.",
+      "selfsigned": "브라우저에서 경고가 표시됩니다. 개인 사용에는 적합합니다.",
+      "custom": "먼저 인증서 뷰에서 인증서를 추가하세요.",
+      "off": "방문자는 암호화 없이 연결됩니다."
+    },
+    "pickCertificate": "인증서",
+    "pickCertificatePlaceholder": "인증서 선택",
+    "forceHttps": "HTTP를 HTTPS로 리디렉션",
+    "forceHttpsDesc": "일반 HTTP를 사용하는 방문자는 보안 주소로 리디렉션됩니다.",
+    "access": "접근 권한",
+    "accessNone": "누구나",
+    "accessUser": "Termix에 로그인한 사용자",
+    "accessHost": "이 호스트에 접근 권한이 있는 사용자",
+    "accessHint": {
+      "none": "이 경로는 로그인 없이 접근할 수 있습니다.",
+      "user": "방문자는 먼저 Termix에 로그인해야 합니다.",
+      "host": "방문자는 Termix에 로그인하고 이 호스트에 연결할 수 있어야 합니다."
+    },
+    "targetHttps": "대상에서 HTTPS 사용",
+    "targetHttpsDesc": "TLS를 사용하여 대상에 연결합니다.",
+    "insecureTarget": "모든 대상 인증서 신뢰",
+    "insecureTargetDesc": "대상 인증서 검증을 건너뜁니다. 자체 서명된 서비스에 사용하세요.",
+    "preserveHost": "원본 Host 헤더 유지",
+    "preserveHostDesc": "대상 주소 대신 방문자의 도메인을 대상에 전송합니다.",
+    "httpsPublicPort": "공개 HTTPS 포트",
+    "httpsPublicPortHint": "방문자가 443이 아닌 다른 포트로 HTTPS에 접근할 경우에만 사용하며 리디렉션에 활용됩니다. 0은 443을 의미합니다.",
+    "headers": "추가 요청 헤더",
+    "headersHint": "Name: value 형식으로 한 줄에 하나씩 입력합니다. 대상에 전송됩니다.",
+    "allowIps": "이 주소만 허용",
+    "allowIpsHint": "IP 또는 범위를 한 줄에 하나씩 입력합니다. 비워두면 모든 사용자를 허용합니다.",
+    "denyIps": "이 주소 차단",
+    "idleSeconds": "유휴 시간(초)",
+    "idleSecondsHint": "이 시간 동안 활동이 없으면 연결을 닫습니다. 0은 기본값을 사용합니다.",
+    "enabled": "사용"
+  },
+  "list": {
+    "empty": "일치하는 경로가 없습니다. 경로 추가 버튼을 눌러 추가하세요.",
+    "deleteTitle": "{{name}}을(를) 삭제하시겠습니까?",
+    "deleteDesc": "경로는 즉시 중지됩니다. 인증서는 유지됩니다.",
+    "deleteFailed": "경로를 삭제할 수 없습니다.",
+    "hostAddress": "호스트",
+    "disabled": "사용 안 함",
+    "protected": "로그인",
+    "state": {
+      "running": "실행 중",
+      "stopped": "중지됨",
+      "error": "문제 발생"
+    },
+    "traffic": "{{count}}개 연결, {{inbound}} 수신, {{outbound}} 송신",
+    "toggleFailed": "라우트를 변경할 수 없습니다.",
+    "add": "라우트 추가"
+  },
+  "certs": {
+    "autoNote": "Let's Encrypt 인증서는 라우트를 추가할 때 요청되며 자동으로 갱신됩니다.",
+    "needsEmail": "자동 인증서를 사용하려면 리버스 프록시 설정에서 Let's Encrypt용 이메일을 설정하세요.",
+    "empty": "아직 인증서가 없습니다.",
+    "addSelfSigned": "자체 서명",
+    "addOwn": "업로드",
+    "domains": "도메인",
+    "domainsHint": "공백 또는 쉼표로 구분된 하나 이상의 도메인.",
+    "certPem": "인증서 (PEM)",
+    "keyPem": "개인 키 (PEM)",
+    "saveFailed": "인증서를 저장할 수 없습니다.",
+    "deleteTitle": "{{name}}의 인증서를 삭제하시겠습니까?",
+    "deleteDesc": "이 인증서를 사용하는 라우트를 먼저 변경해야 합니다.",
+    "deleteFailed": "인증서를 삭제할 수 없습니다.",
+    "renew": "다시 요청",
+    "renewStarted": "인증서를 요청 중입니다.",
+    "renewFailed": "요청을 시작할 수 없습니다.",
+    "expires": "{{date}} 만료",
+    "waiting": "인증서 대기 중",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "자체 서명",
+      "custom": "업로드됨"
+    },
+    "status": {
+      "pending": "대기 중",
+      "ready": "준비 완료",
+      "error": "문제 발생"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "리버스 프록시 경로 관리",
+      "description": "역방향 프록시 탭을 열고 편집할 수 있는 호스트에 라우트를 추가하세요."
+    },
+    "access": {
+      "title": "보호된 라우트 열기",
+      "description": "Termix 로그인을 요청하는 웹 라우트에 로그인합니다."
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "HTTP 포트",
+        "description": "이 플러그인이 HTTP로 수신 대기하는 포트입니다. 공용 포트 80을 이 포트에 매핑하세요. Let's Encrypt에 필요합니다."
+      },
+      "httpsPort": {
+        "label": "HTTPS 포트",
+        "description": "이 플러그인이 HTTPS로 수신 대기하는 포트입니다. 공용 포트 443을 이 포트에 매핑하세요."
+      },
+      "bindHost": {
+        "label": "수신 주소",
+        "description": "어디서든 연결을 받으려면 0.0.0.0을, 라우트를 로컬로 유지하려면 127.0.0.1을 사용하세요."
+      },
+      "publicBaseUrl": {
+        "label": "Termix 주소",
+        "description": "Termix를 열 때 사람들이 사용하는 주소입니다. 예: https://termix.example.com. Termix 로그인을 요청하는 경로에 필요합니다."
+      },
+      "acmeEmail": {
+        "label": "인증서 이메일",
+        "description": "Let's Encrypt는 만료 알림에 이 주소를 사용합니다."
+      },
+      "acmeStaging": {
+        "label": "Let's Encrypt 스테이징 사용",
+        "description": "브라우저가 신뢰하지 않는 테스트 인증서입니다. 속도 제한을 피하기 위해 설정 중에 사용하세요."
+      },
+      "cookieHours": {
+        "label": "로그인 유지 시간(시간)",
+        "description": "보호된 경로에서 방문자가 로그인 상태를 유지하는 시간입니다."
+      },
+      "acmeDirectoryUrl": {
+        "label": "사용자 지정 인증 기관",
+        "description": "사설 step-ca와 같은 다른 CA의 ACME 디렉토리 주소입니다. 비워두면 Let's Encrypt를 사용합니다."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "리버스 프록시 경로 허용",
+        "description": "이 호스트의 경로는 리버스 프록시 탭에서 관리됩니다. 이를 끄면 경로가 중지됩니다."
+      },
+      "targetAddress": {
+        "label": "대상 주소",
+        "description": "경로가 트래픽을 보내는 위치입니다. 이 호스트 자체의 주소를 사용하려면 비워두세요. 컨테이너나 다른 머신에 도달하려면 설정하세요."
+      },
+      "defaultAccess": {
+        "label": "새 웹 경로의 기본 로그인",
+        "description": "이 호스트의 새 웹 경로가 기본적으로 적용하는 설정입니다.",
+        "none": "누구나",
+        "user": "로그인한 Termix 사용자",
+        "host": "이 호스트에 접근 권한이 있는 사용자"
+      }
+    }
+  },
+  "editor": {
+    "connections": "{{count}}개 연결",
+    "traffic": "{{inbound}} 수신, {{outbound}} 전송"
+  }
+}

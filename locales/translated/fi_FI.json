@@ -1,0 +1,199 @@
+{
+  "plugin": {
+    "name": "Käänteinen välityspalvelin",
+    "description": "Käänteinen välityspalvelin TCP-, UDP-, HTTP- ja HTTPS-liikenteelle, jossa on ilmaiset sertifikaatit ja Termix- kirjautuminen, hallittuna isäntäkohtaisesti."
+  },
+  "common": {
+    "save": "Tallenna",
+    "cancel": "Peruuta",
+    "delete": "Poista",
+    "edit": "Muokkaa"
+  },
+  "tab": {
+    "title": "Käänteinen välityspalvelin",
+    "error": "Käänteistä välityspalvelinta ei voitu ladata.",
+    "notListening": "pois päältä",
+    "viewRoutes": "Reitit",
+    "viewCerts": "Sertifikaatit",
+    "needsBaseUrl": "Jotkin reitit vaativat Termixin kirjautumisen, mutta Termixin osoitetta ei ole määritetty. Määritä se käänteisen välityspalvelimen asetuksista, muuten näitä reittejä ei voi avata.",
+    "status": "{{running}}/{{total}} käynnissä",
+    "refresh": "Päivitä",
+    "search": "Hae reittejä",
+    "filterAll": "Kaikki",
+    "ports": "Kuuntelee HTTP-osoitteessa {{http}} ja HTTPS-osoitteessa {{https}}.",
+    "noHost": "Avaa käänteinen välityspalvelin isäntäpalvelimelta.",
+    "hostOff": "Käänteinen välityspalvelin on poistettu käytöstä tämän isäntäpalvelimen asetuksissa. Olemassa olevat reitit on keskeytetty."
+  },
+  "form": {
+    "saveFailed": "Reittiä ei voitu tallentaa.",
+    "editTitle": "Muokkaa reittiä",
+    "addTitle": "Lisää reitti",
+    "name": "Nimi",
+    "namePlaceholder": "Kotivikin",
+    "type": "Tyyppi",
+    "typeHttp": "Web (HTTP ja HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "Verkkotunnus",
+    "domainHint": "Suuntaa tämän verkkotunnuksen DNS-tietueet tähän palvelimeen. Jokerimerkki, kuten *.example.com, toimii reitityksessä.",
+    "publicPort": "Julkinen portti",
+    "publicPortHint": "Portti, jota tämä palvelin kuuntelee. Julkaise se myös Docker-asetuksissasi.",
+    "targetAddress": "Kohdeosoite",
+    "targetAddressPlaceholder": "Palvelimen osoite",
+    "targetAddressHint": "Jätä tyhjäksi käyttääksesi tämän palvelimen omaa osoitetta.",
+    "targetPort": "Kohdeportti",
+    "certificate": "Varmenne",
+    "certAcme": "Let's Encrypt (automaattinen)",
+    "certSelfSigned": "Itse allekirjoitettu",
+    "certCustom": "Oma varmenne",
+    "certOff": "Ei mitään (pelkkä HTTP)",
+    "certHint": {
+      "acme": "Ilmainen varmente pyydetään ja uusitaan puolestasi. Portin 80 on oltava yhteydessä tämän lisäosan HTTP-porttiin.",
+      "selfsigned": "Selaimet varoittavat siitä. Sopii yksityiseen käyttöön.",
+      "custom": "Lisää varmennes ensin Varmenne-näkymään.",
+      "off": "Käyttäjät yhdistävät ilman salauksia."
+    },
+    "pickCertificate": "Varmenne",
+    "pickCertificatePlaceholder": "Valitse varmenne",
+    "forceHttps": "Uudelleenohjaa HTTP HTTPS:ään",
+    "forceHttpsDesc": "Pelkällä HTTP:llä yhdistävät käyttäjät ohjataan suojattuun osoitteeseen.",
+    "access": "Kuka voi avata sen",
+    "accessNone": "Kuka tahansa",
+    "accessUser": "Kirjautuneet Termix-käyttäjät",
+    "accessHost": "Käyttäjillä, joilla on pääsy tähän isäntään",
+    "accessHint": {
+      "none": "Tälle reitille ei vaadita kirjautumista.",
+      "user": "Vierailijat kirjautuvat ensin Termixiin.",
+      "host": "Vierailijat kirjautuvat Termixiin ja heidän on pystyttävä muodostamaan yhteys tähän isäntään."
+    },
+    "targetHttps": "Kohde käyttää HTTPS:ää",
+    "targetHttpsDesc": "Muodosta yhteys kohteeseen TLS-yhteydellä.",
+    "insecureTarget": "Luota mihin tahansa kohteen sertifikaattiin",
+    "insecureTargetDesc": "Ohita kohteen sertifikaattien tarkistus. Käytä itseallejoihin palveluihin.",
+    "preserveHost": "Säilytä alkuperäinen Host-otsikko",
+    "preserveHostDesc": "Lähetä kävijän verkkotunnus kohdeosoitteeseen sen sijaan, että lähetettäisiin kohteen osoitetta.",
+    "httpsPublicPort": "Julkinen HTTPS-portti",
+    "httpsPublicPortHint": "Vain jos kävijät käyttävät HTTPS:ää muuta porttia kuin 443. Käytetään uudelleenohjauksessa. 0 tarkoittaa porttia 443.",
+    "headers": "Lisäpyyntöotsikot",
+    "headersHint": "Yksi riviä kohden muodossa Nimi: arvo. Lähetetään kohteeseen.",
+    "allowIps": "Salli vain nämä osoitteet",
+    "allowIpsHint": "IP-osoitteita tai -alueita, yksi riviä kohden. Tyhjä sallii kaikki.",
+    "denyIps": "Estä nämä osoitteet",
+    "idleSeconds": "Toimettomuusaika sekunneissa",
+    "idleSecondsHint": "Sulje hiljainen yhteys tämän ajan jälkeen. 0 käyttää oletusarvoa.",
+    "enabled": "Käytössä"
+  },
+  "list": {
+    "empty": "Reittejä ei löydy. Lisää reitti Reitin lisääminen-painikkeella.",
+    "deleteTitle": "Haluatko poistaa kohteen {{name}}?",
+    "deleteDesc": "Reitti lopetetaan välittömästi. Sertifikaatit säilyvät.",
+    "deleteFailed": "Reittiä ei voitu poistaa.",
+    "hostAddress": "isäntä",
+    "disabled": "Pois päältä",
+    "protected": "Kirjautuminen",
+    "state": {
+      "running": "Käynnissä",
+      "stopped": "Pysäytetty",
+      "error": "Virhe"
+    },
+    "traffic": "{{count}} yhteyttä, {{inbound}} sisään, {{outbound}} ulos",
+    "toggleFailed": "Reittiä ei voitu muuttaa.",
+    "add": "Lisää reitti"
+  },
+  "certs": {
+    "autoNote": "Let's Encrypt -sertifikaatit pyydetään, kun lisäät reitin, ja ne uusivat itsensä automaattisesti.",
+    "needsEmail": "Aseta sähköpostiosoite Let's Encryptille käänteisen välityspalvelimen asetuksissa ennen automaattisten sertifikaattien käyttöä.",
+    "empty": "Sertifikaatteja ei vielä ole.",
+    "addSelfSigned": "Itse allekirjoitettu",
+    "addOwn": "Lataa",
+    "domains": "Domainit",
+    "domainsHint": "Yksi tai useampi domain, erotettuna välilyönneillä tai pilkuilla.",
+    "certPem": "Varmenne (PEM)",
+    "keyPem": "Yksityinen avain (PEM)",
+    "saveFailed": "Varmennetta ei voitu tallentaa.",
+    "deleteTitle": "Haluatko poistaa varmenteen kohteelle {{name}}?",
+    "deleteDesc": "Sen käyttämät reitit on muutettava ensin.",
+    "deleteFailed": "Varmennetta ei voitu poistaa.",
+    "renew": "Pyydä uudelleen",
+    "renewStarted": "Pyydetään varmenteen.",
+    "renewFailed": "Pyyntöä ei voitu aloittaa.",
+    "expires": "Vanhenee {{date}}",
+    "waiting": "Odottaa sertifikaattia",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "Itseallekirjoitettu",
+      "custom": "Ladattu"
+    },
+    "status": {
+      "pending": "Odottaa",
+      "ready": "Valmis",
+      "error": "Virhe"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "Hallitse käänteisen välityspalvelimen reittejä",
+      "description": "Avaa käänteisen välityspalvelimen välilehti ja lisää reittejä isäntiin, joita voit muokata."
+    },
+    "access": {
+      "title": "Avaa suojatut reitit",
+      "description": "Kirjaudu verkkoreiteille, jotka vaativat Termix-kirjautumisen."
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "HTTP-portti",
+        "description": "Portti, jolla tämä lisäosa kuuntelee HTTP-yhteyksiä. Suuntaa julkinen portti 80 tähän. Tarvitaan Let's Encryptin kanssa."
+      },
+      "httpsPort": {
+        "label": "HTTPS-portti",
+        "description": "Portti, jolla tämä lisäosa kuuntelee HTTPS-yhteyksiä. Suuntaa julkinen portti 443 tähän."
+      },
+      "bindHost": {
+        "label": "Kuunteluosoite",
+        "description": "Käytä osoitetta 0.0.0.0 hyväksyäksesi yhteydet mistä tahansa tai 127.0.0.1 pitääksesi reitit paikallisina."
+      },
+      "publicBaseUrl": {
+        "label": "Termix-osoite",
+        "description": "Osoite, jota ihmiset käyttävät Termixin avaamiseen, kuten https://termix.example.com. Tarvitaan reiteille, jotka vaativat Termix-tilin kirjautumisen."
+      },
+      "acmeEmail": {
+        "label": "Varmuuskirjese-postiosoite",
+        "description": "Let's Encrypt käyttää tätä osoitetta varoitusten lähettämiseen, kun varmenne on pian vanhentumassa."
+      },
+      "acmeStaging": {
+        "label": "Käytä Let's Encryptin testiympäristöä",
+        "description": "Testivarmenneet, joita selaimet eivät luota. Käytä tätä asennuksen aikana välttääksesi nopeusrajoitukset."
+      },
+      "cookieHours": {
+        "label": "Kirjautumisen kesto tunneissa",
+        "description": "Kuinka kauan vierailija pysyy kirjautuneena suojatulla reitillä."
+      },
+      "acmeDirectoryUrl": {
+        "label": "Mukautettu varmenneviranomainen",
+        "description": "Toisen varmenneviranomaisen, kuten yksityisen step-ca:n, ACME-hakemiston osoite. Jätä tyhjäksi käyttääksesi Let's Encryptiä."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "Salli käänteisen välityspalvelimen reitit",
+        "description": "Tämän isäntäkonetta varten luodut reitit hallitaan Käänteinen välityspalvelin -välilehdellä. Poista tämä käytöstä pysäyttääksesi ne."
+      },
+      "targetAddress": {
+        "label": "Kohdeosoite",
+        "description": "Minne reitit ohjaavat liikenteen. Jätä tyhjäksi käyttääksesi tämän isäntäkoneen omaa osoitetta. Aseta se saavuttaaksesi säiliön tai toisen koneen."
+      },
+      "defaultAccess": {
+        "label": "Oletuskirjautuminen uusille verkkoreiteille",
+        "description": "Mikä on uusien verkkoreittien oletusarvo tällä isäntäkoneella.",
+        "none": "Kuka tahansa",
+        "user": "Kirjautuneet Termix-käyttäjät",
+        "host": "Käyttäjät, joilla on pääsy tähän isäntäkoneeseen"
+      }
+    }
+  },
+  "editor": {
+    "traffic": "{{inbound}} sisään, {{outbound}} ulos"
+  }
+}

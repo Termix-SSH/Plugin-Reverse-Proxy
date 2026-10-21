@@ -1,0 +1,200 @@
+{
+  "plugin": {
+    "name": "Obratni proxy",
+    "description": "Obratni proxy za TCP, UDP, HTTP in HTTPS z brezplačnimi certifikati in prijavo v Termix, upravljan na gostiteljski ravni."
+  },
+  "common": {
+    "save": "Shrani",
+    "cancel": "Prekliči",
+    "delete": "Izbriši",
+    "edit": "Uredi"
+  },
+  "tab": {
+    "title": "Obratni proxy",
+    "error": "Obratnega proxyja ni bilo mogoče naložiti.",
+    "notListening": "izklopljen",
+    "viewRoutes": "Poteke",
+    "viewCerts": "Potrdila",
+    "needsBaseUrl": "Nekatere poti zahtevajo prijavo v Termix, vendar naslov Termixa ni nastavljen. Nastavite ga v nastavitvah obratnega proxyja, sicer teh poti ni mogoče odpreti.",
+    "status": "{{running}} od {{total}} deluje",
+    "refresh": "Osveži",
+    "search": "Išči poti",
+    "filterAll": "Vse",
+    "ports": "Posluša na HTTP {{http}} in HTTPS {{https}}.",
+    "noHost": "Obratni proxy odprite iz gostitelja.",
+    "hostOff": "Obratni proxy je za tega gostitelja v nastavitvah izklopljen. Obstoječe poti so začasno ustavljene."
+  },
+  "form": {
+    "saveFailed": "Poti ni bilo mogoče shraniti.",
+    "editTitle": "Uredi pot",
+    "addTitle": "Dodaj pot",
+    "name": "Ime",
+    "namePlaceholder": "Domača wiki",
+    "type": "Vrsta",
+    "typeHttp": "Splet (HTTP in HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "Domena",
+    "domainHint": "Usmerite DNS te domene na ta strežnik. Zaznamo, kot je *.example.com, deluje za usmerjanje.",
+    "publicPort": "Javni port",
+    "publicPortHint": "Port, na katerem posluša strežnik. Objavite ga tudi v svoji Docker konfiguraciji.",
+    "targetAddress": "Ciljni naslov",
+    "targetAddressPlaceholder": "Naslov gostitelja",
+    "targetAddressHint": "Pustite prazno, če želite uporabiti lastni naslov tega gostitelja.",
+    "targetPort": "Ciljni port",
+    "certificate": "Potrdilo",
+    "certAcme": "Let's Encrypt (samodejno)",
+    "certSelfSigned": "Samopodpisano",
+    "certCustom": "Moje lastno potrdilo",
+    "certOff": "Brez (navadno HTTP)",
+    "certHint": {
+      "acme": "Brezplačno potrdilo se zahteva in podaljšuje namesto vas. Vrata 80 morajo biti dostopna do HTTP vrat tega vtičnika.",
+      "selfsigned": "Brskalniki bodo opozorili nanj. Primerno za zasebno uporabo.",
+      "custom": "Najprej dodajte svoje potrdilo na pogled Potrdila.",
+      "off": "Obiskovalci se povežejo brez šifriranja."
+    },
+    "pickCertificate": "Potrdilo",
+    "pickCertificatePlaceholder": "Izberite potrdilo",
+    "forceHttps": "Preusmeri HTTP na HTTPS",
+    "forceHttpsDesc": "Obiskovalci na navadnem HTTP so preusmerjeni na varni naslov.",
+    "access": "Kdo ga lahko odpre",
+    "accessNone": "Vsi",
+    "accessUser": "Prijavljeni uporabniki Termixa",
+    "accessHost": "Uporabniki z dostopom do tega gostitelja",
+    "accessHint": {
+      "none": "Za ta pot ni zahtevana prijava.",
+      "user": "Obiskovalci se najprej prijavijo v Termix.",
+      "host": "Obiskovalci se prijavijo v Termix in morajo imeti možnost povezave s tem gostiteljem."
+    },
+    "targetHttps": "Cilj uporablja HTTPS",
+    "targetHttpsDesc": "Poveži se s ciljem prek TLS.",
+    "insecureTarget": "Zaupaj poljubnemu certifikatu cilja",
+    "insecureTargetDesc": "Preskoči preverjanje certifikatov na cilju. Uporabi za storitve s samopodpisanimi certifikati.",
+    "preserveHost": "Ohrani izvorno glavo Host",
+    "preserveHostDesc": "Pošljite obiskovalčevo domeno cilju namesto naslova cilja.",
+    "httpsPublicPort": "Javni HTTPS port",
+    "httpsPublicPortHint": "Samo, če obiskovalci dostopajo do HTTPS na drugem portu kot 443. Uporablja se za preusmeritev. 0 pomeni 443.",
+    "headers": "Dodatne glave zahtevka",
+    "headersHint": "Po ena na vrstico v obliki Ime: vrednost. Pošlje se cilju.",
+    "allowIps": "Dovoli samo te naslove",
+    "allowIpsHint": "IP-ji ali območja, po eno na vrstico. Prazno omogoča vsem.",
+    "denyIps": "Blokiraj te naslove",
+    "idleSeconds": "Časovna omejitev neaktivnosti v sekundah",
+    "idleSecondsHint": "Zapri neaktivno povezavo po tem času. 0 uporabi privzeto vrednost.",
+    "enabled": "Omogočeno"
+  },
+  "list": {
+    "empty": "Ni ujemajočih poti. Dodajte novo s gumbom Dodaj pot.",
+    "deleteTitle": "Izbrišem {{name}}?",
+    "deleteDesc": "Pot se takoj ustavi. Potrdila ostanejo.",
+    "deleteFailed": "Poti ni bilo mogoče izbrisati.",
+    "hostAddress": "gostitelj",
+    "disabled": "Izklopljeno",
+    "protected": "Prijava",
+    "state": {
+      "running": "Zaženo",
+      "stopped": "Ustavljeno",
+      "error": "Napaka"
+    },
+    "traffic": "{{count}} povezav, {{inbound}} vhodnih, {{outbound}} izhodnih",
+    "toggleFailed": "Usmerjanja ni bilo mogoče spremeniti.",
+    "add": "Dodaj usmerjanje"
+  },
+  "certs": {
+    "autoNote": "Potrdila Let's Encrypt se zahtevajo ob dodajanju usmerjanja in se samodejno podaljšujejo.",
+    "needsEmail": "Pred uporabo samodejnih potrdil nastavite e-pošto za Let's Encrypt v nastavitvah obratnega proxyja.",
+    "empty": "Še ni potrdil.",
+    "addSelfSigned": "Samopodpisano",
+    "addOwn": "Naloži",
+    "domains": "Domena",
+    "domainsHint": "Ena ali več domen, ločenih s presledki ali vejicami.",
+    "certPem": "Potrdilo (PEM)",
+    "keyPem": "Zasebni ključ (PEM)",
+    "saveFailed": "Potrdila ni bilo mogoče shraniti.",
+    "deleteTitle": "Izbrišete potrdilo za {{name}}?",
+    "deleteDesc": "Najprej morate spremeniti poti, ki ga uporabljajo.",
+    "deleteFailed": "Potrdila ni bilo mogoče izbrisati.",
+    "renew": "Znova zahtevaj",
+    "renewStarted": "Zahtevanje potrdila.",
+    "renewFailed": "Ponovno izdajanje certifikata ni uspelo.",
+    "expires": "Poteče {{date}}",
+    "waiting": "Čakam na certifikat",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "Samopodpisan",
+      "custom": "Naložen"
+    },
+    "status": {
+      "pending": "V čakanju",
+      "ready": "Pripravljen",
+      "error": "Napaka"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "Upravljanje poti obratnega proxyja",
+      "description": "Odprite zavihek Obratni proxy in dodajte poti do gostiteljev, ki jih lahko urejate."
+    },
+    "access": {
+      "title": "Odpiranje zaščitenih poti",
+      "description": "Prijavite se na spletne poti, ki zahtevajo prijavo v Termix."
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "HTTP vrata",
+        "description": "Vrata, na katerih ta vtičnik posluša za HTTP. Javno vrata 80 preslikajte nanje. Potrebno za Let's Encrypt."
+      },
+      "httpsPort": {
+        "label": "HTTPS vrata",
+        "description": "Vrata, na katerih ta vtičnik posluša za HTTPS. Javno vrata 443 preslikajte nanje."
+      },
+      "bindHost": {
+        "label": "Naslov poslušanja",
+        "description": "Uporabite 0.0.0.0 za sprejemanje povezav od kjerkoli ali 127.0.0.1, da ohranite poti lokalne."
+      },
+      "publicBaseUrl": {
+        "label": "Naslov Termixa",
+        "description": "Naslov, ki ga uporabniki uporabljajo za odpiranje Termixa, na primer https://termix.example.com. Potreben za poti, ki zahtevajo prijavo v Termix."
+      },
+      "acmeEmail": {
+        "label": "E-poštni naslov za certifikate",
+        "description": "Let's Encrypt ga uporablja za obvestila o poteku veljavnosti."
+      },
+      "acmeStaging": {
+        "label": "Uporabi testno okolje Let's Encrypt",
+        "description": "Testni certifikati, ki jih brskalniki ne zaupajo. Uporabite med nastavitvijo, da se izognete omejitvam hitrosti."
+      },
+      "cookieHours": {
+        "label": "Trajanje prijave v urah",
+        "description": "Kako dolgo ostane obiskovalec prijavljen na zaščitenih poteh."
+      },
+      "acmeDirectoryUrl": {
+        "label": "Prilagojena izdajateljica certifikatov",
+        "description": "Naslov ACME imenika druge izdajateljice certifikatov, na primer zasebnega step-ca. Pustite prazno za uporabo Let's Encrypt."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "Dovoli poti obratnega proxyja",
+        "description": "Poti za tega gostitelja upravljate na zavihku Obratni proxy. Izklopite to, da jih ustavite."
+      },
+      "targetAddress": {
+        "label": "Ciljni naslov",
+        "description": "Kam poti usmerjajo promet. Pustite prazno za uporabo naslova tega gostitelja. Nastavite, da dosežete posode ali drug računalnik."
+      },
+      "defaultAccess": {
+        "label": "Privzeta prijava za nove spletne poti",
+        "description": "S čem se začnejo nove spletne poti na tem gostitelju.",
+        "none": "Vsi",
+        "user": "Prijavljeni uporabniki Termixa",
+        "host": "Uporabniki z dostopom do tega gostitelja"
+      }
+    }
+  },
+  "editor": {
+    "connections": "1 povezava|2 povezavi|3 povezave|{{count}} povezav",
+    "traffic": "{{inbound}} v, {{outbound}} iz"
+  }
+}

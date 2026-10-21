@@ -1,0 +1,199 @@
+{
+  "plugin": {
+    "name": "Proxy invers",
+    "description": "Proxy invers per a TCP, UDP, HTTP i HTTPS amb certificats gratuïts i inici de sessió de Termix, gestionat per amfitrió."
+  },
+  "common": {
+    "save": "Desa",
+    "cancel": "Cancel·la",
+    "delete": "Suprimeix",
+    "edit": "Edita"
+  },
+  "tab": {
+    "title": "Proxy invers",
+    "error": "No s'ha pogut carregar el proxy invers.",
+    "notListening": "desactivat",
+    "viewRoutes": "Rutes",
+    "viewCerts": "Certificats",
+    "needsBaseUrl": "Algunes rutes requereixen l'inici de sessió de Termix, però l'adreça de Termix no està configurada. Estableix-la a la configuració del proxy invers o aquestes rutes no es podran obrir.",
+    "status": "{{running}} de {{total}} en execució",
+    "refresh": "Actualitza",
+    "search": "Cerca rutes",
+    "filterAll": "Totes",
+    "ports": "Escoltant a HTTP {{http}} i HTTPS {{https}}.",
+    "noHost": "Obre el proxy invers des d'un amfitrió.",
+    "hostOff": "El proxy invers està desactivat per a aquest amfitrió a la seva configuració. Les rutes existents estan en pausa."
+  },
+  "form": {
+    "saveFailed": "No s'ha pogut desar la ruta.",
+    "editTitle": "Edita la ruta",
+    "addTitle": "Afegeix una ruta",
+    "name": "Nom",
+    "namePlaceholder": "Wiki principal",
+    "type": "Tipus",
+    "typeHttp": "Web (HTTP i HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "Domini",
+    "domainHint": "Apunta el DNS d'aquest domini a aquest servidor. Un comodí com *.example.com funciona per a l'encaminament.",
+    "publicPort": "Port públic",
+    "publicPortHint": "El port en què escolta aquest servidor. Publica'l també a la teva configuració de Docker.",
+    "targetAddress": "Adreça de destí",
+    "targetAddressPlaceholder": "Adreça de l'amfitrió",
+    "targetAddressHint": "Deixa-ho buit per utilitzar la pròpia adreça d'aquest amfitrió.",
+    "targetPort": "Port de destí",
+    "certificate": "Certificat",
+    "certAcme": "Let's Encrypt (automàtic)",
+    "certSelfSigned": "Autofirmat",
+    "certCustom": "El meu propi certificat",
+    "certOff": "Cap (HTTP pla)",
+    "certHint": {
+      "acme": "Es sol·licita i renova un certificat gratuït per a tu. El port 80 ha d'arribar al port HTTP d'aquest complement.",
+      "selfsigned": "Els navegadors avisaran sobre això. Adequat per a ús privat.",
+      "custom": "Afegeix el teu certificat a la vista de Certificats primer.",
+      "off": "Els visitants es connecten sense xifratge."
+    },
+    "pickCertificate": "Certificat",
+    "pickCertificatePlaceholder": "Tria un certificat",
+    "forceHttps": "Redirigeix HTTP a HTTPS",
+    "forceHttpsDesc": "Els visitants amb HTTP pla són enviats a l'adreça segura.",
+    "access": "Qui pot obrir-lo",
+    "accessNone": "Qualsevol",
+    "accessUser": "Usuaris de Termix amb sessió iniciada",
+    "accessHost": "Usuaris amb accés a aquest amfitrió",
+    "accessHint": {
+      "none": "Cap inici de sessió davant d'aquesta ruta.",
+      "user": "Els visitants inicien sessió amb Termix primer.",
+      "host": "Els visitants inicien sessió amb Termix i han de poder connectar-se a aquest amfitrió."
+    },
+    "targetHttps": "El destí utilitza HTTPS",
+    "targetHttpsDesc": "Connecta al destí amb TLS.",
+    "insecureTarget": "Confia en qualsevol certificat de destí",
+    "insecureTargetDesc": "Omet les comprovacions de certificats al destí. Utilitza-ho per a serveis autofirmats.",
+    "preserveHost": "Mantenir el capçalera Host original",
+    "preserveHostDesc": "Enviar el domini del visitant al destí en lloc de l'adreça del destí.",
+    "httpsPublicPort": "Port públic HTTPS",
+    "httpsPublicPortHint": "Només si els visitants accedeixen a HTTPS en un port diferent del 443. S'utilitza per a la redirecció. 0 significa 443.",
+    "headers": "Capçaleres addicionals de la sol·licitud",
+    "headersHint": "Una per línia com a Nom: valor. S'envien al destí.",
+    "allowIps": "Permetre només aquestes adreces",
+    "allowIpsHint": "IPs o rangs, un per línia. Deixar-ho buit permet tothom.",
+    "denyIps": "Bloquejar aquestes adreces",
+    "idleSeconds": "Temps d'espera d'inactivitat en segons",
+    "idleSecondsHint": "Tanca una connexió inactiva després d'aquest temps. 0 utilitza el valor predeterminat.",
+    "enabled": "Habilitat"
+  },
+  "list": {
+    "empty": "Cap ruta coincideix. Afegeix-ne una amb el botó Afegeix ruta.",
+    "deleteTitle": "Vols suprimir {{name}}?",
+    "deleteDesc": "La ruta s'atura immediatament. Els certificats es mantenen.",
+    "deleteFailed": "No s'ha pogut suprimir la ruta.",
+    "hostAddress": "amfitrió",
+    "disabled": "Desactivat",
+    "protected": "Inici de sessió",
+    "state": {
+      "running": "En execució",
+      "stopped": "Aturat",
+      "error": "Problema"
+    },
+    "traffic": "{{count}} connexions, {{inbound}} d'entrada, {{outbound}} de sortida",
+    "toggleFailed": "No s'ha pogut modificar la ruta.",
+    "add": "Afegeix ruta"
+  },
+  "certs": {
+    "autoNote": "Els certificats de Let's Encrypt es sol·liciten quan afegeixes una ruta i es renoven automàticament.",
+    "needsEmail": "Estableix un correu electrònic per a Let's Encrypt a la configuració del proxy invers abans d'utilitzar certificats automàtics.",
+    "empty": "Encara no hi ha certificats.",
+    "addSelfSigned": "Autosignat",
+    "addOwn": "Pujar",
+    "domains": "Dominis",
+    "domainsHint": "Un o més dominis, separats per espais o comes.",
+    "certPem": "Certificat (PEM)",
+    "keyPem": "Clau privada (PEM)",
+    "saveFailed": "No s'ha pogut desar el certificat.",
+    "deleteTitle": "Vols suprimir el certificat per a {{name}}?",
+    "deleteDesc": "Les rutes que l'utilitzen s'han de modificar primer.",
+    "deleteFailed": "No s'ha pogut suprimir el certificat.",
+    "renew": "Sol·licitar de nou",
+    "renewStarted": "Sol·licitant el certificat.",
+    "renewFailed": "No s'ha pogut iniciar la sol·licitud.",
+    "expires": "Caduca el {{date}}",
+    "waiting": "Esperant el certificat",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "Autosignat",
+      "custom": "Pujat"
+    },
+    "status": {
+      "pending": "Pendent",
+      "ready": "Llest",
+      "error": "Problema"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "Gestionar rutes del proxy invers",
+      "description": "Obre la pestanya Proxy invers i afegeix rutes als amfitrions que puguis editar."
+    },
+    "access": {
+      "title": "Obrir rutes protegides",
+      "description": "Inicia sessió a les rutes web que demanen un inici de sessió de Termix."
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "Port HTTP",
+        "description": "El port en què aquest connector escolta per a HTTP. Mapeja el teu port públic 80 a aquest. Necessari per a Let's Encrypt."
+      },
+      "httpsPort": {
+        "label": "Port HTTPS",
+        "description": "El port en què aquest connector escolta per a HTTPS. Mapeja el teu port públic 443 a aquest."
+      },
+      "bindHost": {
+        "label": "Adreça d'escolta",
+        "description": "Utilitza 0.0.0.0 per acceptar connexions des de qualsevol lloc, o 127.0.0.1 per mantenir les rutes locals."
+      },
+      "publicBaseUrl": {
+        "label": "Adreça de Termix",
+        "description": "La adreça que utilitzen les persones per obrir Termix, com ara https://termix.example.com. Necessària per a les rutes que demanen l'inici de sessió de Termix."
+      },
+      "acmeEmail": {
+        "label": "Correu electrònic del certificat",
+        "description": "Let's Encrypt l'utilitza per a les notificacions de caducitat."
+      },
+      "acmeStaging": {
+        "label": "Utilitzar l'entorn de proves de Let's Encrypt",
+        "description": "Certificats de prova que els navegadors no confien. Utilitza-ho durant la configuració per evitar els límits de taxa."
+      },
+      "cookieHours": {
+        "label": "Durada de la sessió en hores",
+        "description": "Quant de temps es manté iniciada la sessió d'un visitant en una ruta protegida."
+      },
+      "acmeDirectoryUrl": {
+        "label": "Autoritat de certificació personalitzada",
+        "description": "L'adreça del directori ACME d'una altra AC, com ara un step-ca privat. Deixa-ho buit per utilitzar Let's Encrypt."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "Permet rutes de proxy invers",
+        "description": "Les rutes d'aquest amfitrió es gestionen a la pestanya Proxy invers. Desactiva-ho per aturar-les."
+      },
+      "targetAddress": {
+        "label": "Adreça de destinació",
+        "description": "On les rutes envien el trànsit. Deixa-ho buit per utilitzar la pròpia adreça d'aquest amfitrió. Estableix-lo per arribar a un contenidor o una altra màquina."
+      },
+      "defaultAccess": {
+        "label": "Inici de sessió predeterminat per a noves rutes web",
+        "description": "Amb què comencen les noves rutes web d'aquest amfitrió.",
+        "none": "Tothom",
+        "user": "Usuaris de Termix amb sessió iniciada",
+        "host": "Usuaris amb accés a aquest amfitrió"
+      }
+    }
+  },
+  "editor": {
+    "traffic": "{{inbound}} d'entrada, {{outbound}} de sortida"
+  }
+}

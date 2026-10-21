@@ -1,0 +1,199 @@
+{
+  "plugin": {
+    "name": "Omdirigerende proxy",
+    "description": "Omdirigerende proxy for TCP, UDP, HTTP og HTTPS med gratis sertifikater og Termix-innlogging, administrert per vert."
+  },
+  "common": {
+    "save": "Lagre",
+    "cancel": "Avbryt",
+    "delete": "Slett",
+    "edit": "Rediger"
+  },
+  "tab": {
+    "title": "Omdirigerende proxy",
+    "error": "Kunne ikke laste omdirigerende proxy.",
+    "notListening": "av",
+    "viewRoutes": "Ruter",
+    "viewCerts": "Sertifikater",
+    "needsBaseUrl": "Noen ruter krever Termix-innlogging, men Termix-adressen er ikke oppgitt. Angi den i innstillingene for revers proxy, ellers kan ikke disse rutene åpnes.",
+    "status": "{{running}} av {{total}} kjører",
+    "refresh": "Oppdater",
+    "search": "Søk i ruter",
+    "filterAll": "Alle",
+    "ports": "Lytter på HTTP {{http}} og HTTPS {{https}}.",
+    "noHost": "Åpne revers proxy fra en vert.",
+    "hostOff": "Revers proxy er slått av for denne verten i innstillingene. Eksisterende ruter er pauset."
+  },
+  "form": {
+    "saveFailed": "Kunne ikke lagre ruten.",
+    "editTitle": "Rediger rute",
+    "addTitle": "Legg til rute",
+    "name": "Navn",
+    "namePlaceholder": "Hjemme-wiki",
+    "type": "Type",
+    "typeHttp": "Web (HTTP og HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "Domene",
+    "domainHint": "Pek DNS for dette domenet mot denne serveren. En jokertegn som *.example.com fungerer for ruting.",
+    "publicPort": "Offentlig port",
+    "publicPortHint": "Porten denne serveren lytter på. Publiser den også i Docker-oppsætningen din.",
+    "targetAddress": "Måladresse",
+    "targetAddressPlaceholder": "Vertsadresse",
+    "targetAddressHint": "La stå tomt for å bruke vertens egen adresse.",
+    "targetPort": "Målport",
+    "certificate": "Sertifikat",
+    "certAcme": "Let's Encrypt (automatisk)",
+    "certSelfSigned": "Selvsignert",
+    "certCustom": "Eget sertifikat",
+    "certOff": "Ingen (ren HTTP)",
+    "certHint": {
+      "acme": "Et gratis sertifikat blir bestilt og fornyet automatisk. Port 80 må kunne nå HTTP-porten til denne pluginen.",
+      "selfsigned": "Nettlesere vil vise en advarsel. Passer bra for privat bruk.",
+      "custom": "Legg til sertifikatet ditt i Sertifikat-visningen først.",
+      "off": "Besøkende kobler til uten kryptering."
+    },
+    "pickCertificate": "Sertifikat",
+    "pickCertificatePlaceholder": "Velg et sertifikat",
+    "forceHttps": "Omdiriger HTTP til HTTPS",
+    "forceHttpsDesc": "Besøkende på ren HTTP blir sendt til den sikre adressen.",
+    "access": "Hvem kan åpne det",
+    "accessNone": "Alle",
+    "accessUser": "Innloggede Termix-brukere",
+    "accessHost": "Brukere med tilgang til denne verten",
+    "accessHint": {
+      "none": "Ingen pålogging kreves for denne ruten.",
+      "user": "Besøkende må logge inn i Termix først.",
+      "host": "Besøkende må logge inn i Termix og ha tilgang til å koble til denne verten."
+    },
+    "targetHttps": "Målet bruker HTTPS",
+    "targetHttpsDesc": "Koble til målet med TLS.",
+    "insecureTarget": "Stol på alle målsertifikater",
+    "insecureTargetDesc": "Hopp over sertifikatkontroll for målet. Bruk dette for selvsignerte tjenester.",
+    "preserveHost": "Behold den opprinnelige Host-overskriften",
+    "preserveHostDesc": "Send besøkendes domene til målet i stedet for måladressen.",
+    "httpsPublicPort": "Offentlig HTTPS-port",
+    "httpsPublicPortHint": "Kun hvis besøkende når HTTPS på en annen port enn 443. Brukes for omdirigering. 0 betyr 443.",
+    "headers": "Ekstra forespørselsoverskrifter",
+    "headersHint": "Én per linje som Navn: verdi. Sendes til målet.",
+    "allowIps": "Tillat bare disse adressene",
+    "allowIpsHint": "IP-adresser eller områder, én per linje. Tomt tillater alle.",
+    "denyIps": "Blokker disse adressene",
+    "idleSeconds": "Inaktivitetstidsavbrudd i sekunder",
+    "idleSecondsHint": "Lukk en stille tilkobling etter denne tiden. 0 bruker standardverdien.",
+    "enabled": "Aktivert"
+  },
+  "list": {
+    "empty": "Ingen ruter matcher. Legg til en med knappen Legg til rute.",
+    "deleteTitle": "Slett {{name}}?",
+    "deleteDesc": "Ruten stopper med en gang. Sertifikater beholdes.",
+    "deleteFailed": "Kunne ikke slette ruten.",
+    "hostAddress": "vert",
+    "disabled": "Av",
+    "protected": "Innlogging",
+    "state": {
+      "running": "Kjører",
+      "stopped": "Stoppet",
+      "error": "Problem"
+    },
+    "traffic": "{{count}} tilkoblinger, {{inbound}} inn, {{outbound}} ut",
+    "toggleFailed": "Kunne ikke endre ruten.",
+    "add": "Legg til rute"
+  },
+  "certs": {
+    "autoNote": "Let's Encrypt-sertifikater blir forespurt når du legger til en rute og fornyes automatisk.",
+    "needsEmail": "Angi en e-postadresse for Let's Encrypt i innstillingene for omvendt proxy før du bruker automatiske sertifikater.",
+    "empty": "Ingen sertifikater ennå.",
+    "addSelfSigned": "Selvsignert",
+    "addOwn": "Last opp",
+    "domains": "Domener",
+    "domainsHint": "Étt eller flere domener, atskilt med mellomrom eller komma.",
+    "certPem": "Sertifikat (PEM)",
+    "keyPem": "Privat nøkkel (PEM)",
+    "saveFailed": "Kunne ikke lagre sertifikatet.",
+    "deleteTitle": "Vil du slette sertifikatet for {{name}}?",
+    "deleteDesc": "Ruter som bruker det, må endres først.",
+    "deleteFailed": "Kunne ikke slette sertifikatet.",
+    "renew": "Be om nytt",
+    "renewStarted": "Ber om sertifikatet.",
+    "renewFailed": "Kunne ikke starte forespørselen.",
+    "expires": "Utløper {{date}}",
+    "waiting": "Venter på sertifikatet",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "Selvsignert",
+      "custom": "Opplastet"
+    },
+    "status": {
+      "pending": "Venter",
+      "ready": "Klar",
+      "error": "Problem"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "Administrer omvendte proxy-ruter",
+      "description": "Åpne fanen Omvendt proxy og legg til ruter til vertsduer du kan redigere."
+    },
+    "access": {
+      "title": "Åpne beskyttede ruter",
+      "description": "Logg inn på web-ruter som krever en Termix-innlogging."
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "HTTP-port",
+        "description": "Porten denne programtillegget lytter på for HTTP. Kartlegg den offentlige porten 80 til den. Påkrevd for Let's Encrypt."
+      },
+      "httpsPort": {
+        "label": "HTTPS-port",
+        "description": "Porten denne programtillegget lytter på for HTTPS. Kartlegg den offentlige porten 443 til den."
+      },
+      "bindHost": {
+        "label": "Lytt-adresse",
+        "description": "Bruk 0.0.0.0 for å godta tilkoblinger fra alle steder, eller 127.0.0.1 for å holde rutene lokale."
+      },
+      "publicBaseUrl": {
+        "label": "Termix-adresse",
+        "description": "Adressen folk bruker for å åpne Termix, som https://termix.example.com. Nødvendig for ruter som krever innlogging i Termix."
+      },
+      "acmeEmail": {
+        "label": "E-post for sertifikat",
+        "description": "Let's Encrypt bruker den for varsel om utløp."
+      },
+      "acmeStaging": {
+        "label": "Bruk Let's Encrypt staging",
+        "description": "Testsertifikater som nettlesere ikke stoler på. Bruk dette under oppsett for å unngå hastighetsbegrensninger."
+      },
+      "cookieHours": {
+        "label": "Innloggingsvarighet i timer",
+        "description": "Hvor lenge en besøkende forblir innlogget på en beskyttet rute."
+      },
+      "acmeDirectoryUrl": {
+        "label": "Egendefinert sertifikatmyndighet",
+        "description": "ACME-katalogadressen til en annen CA, som en privat step-ca. La stå tom for å bruke Let's Encrypt."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "Tillat omvendte proxyruter",
+        "description": "Ruter for denne verten styres i fanen Omvendt proxy. Slå dette av for å stoppe dem."
+      },
+      "targetAddress": {
+        "label": "Måladresse",
+        "description": "Hvor ruter sender trafikk. La stå tom for å bruke vertens egen adresse. Sett den for å nå en container eller en annen maskin."
+      },
+      "defaultAccess": {
+        "label": "Standardinnlogging for nye web-ruter",
+        "description": "Hva nye web-ruter på denne verten starter med.",
+        "none": "Alle",
+        "user": "Innloggede Termix-brukere",
+        "host": "Brukere med tilgang til denne verten"
+      }
+    }
+  },
+  "editor": {
+    "traffic": "{{inbound}} inn, {{outbound}} ut"
+  }
+}

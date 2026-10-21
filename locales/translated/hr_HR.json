@@ -1,0 +1,199 @@
+{
+  "plugin": {
+    "name": "Obrnuti proxy",
+    "description": "Obrnuti proxy za TCP, UDP, HTTP i HTTPS s besplatnim certifikatima i Termix prijavom, upravljan po hostu."
+  },
+  "common": {
+    "save": "Spremi",
+    "cancel": "Otkaži",
+    "delete": "Izbriši",
+    "edit": "Uredi"
+  },
+  "tab": {
+    "title": "Obrnuti proxy",
+    "error": "Nije moguće učitati obrnuti proxy.",
+    "notListening": "isključeno",
+    "viewRoutes": "Rute",
+    "viewCerts": "Certifikati",
+    "needsBaseUrl": "Neke rute zahtijevaju Termix prijavu, ali Termix adresa nije postavljena. Postavite je u postavkama reverznog proxyja ili te rute neće moći otvoriti.",
+    "status": "{{running}} od {{total}} aktivnih",
+    "refresh": "Osvježi",
+    "search": "Pretraži rute",
+    "filterAll": "Sve",
+    "ports": "Sluša na HTTP {{http}} i HTTPS {{https}}.",
+    "noHost": "Otvorite reverzni proxy s hosta.",
+    "hostOff": "Reverzni proxy je isključen za ovaj host u njegovim postavkama. Postojeće rute su pauzirane."
+  },
+  "form": {
+    "saveFailed": "Ruta se nije mogla spremiti.",
+    "editTitle": "Uredi rutu",
+    "addTitle": "Dodaj rutu",
+    "name": "Naziv",
+    "namePlaceholder": "Wiki za početnu stranicu",
+    "type": "Vrsta",
+    "typeHttp": "Web (HTTP i HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "Domena",
+    "domainHint": "Usmjerite DNS ove domene na ovaj poslužitelj. Zvijezdica poput *.example.com funkcionira za usmjeravanje.",
+    "publicPort": "Javni port",
+    "publicPortHint": "Port na kojem ovaj poslužitelj sluša. Objavite ga i u svojoj Docker postavci.",
+    "targetAddress": "Ciljna adresa",
+    "targetAddressPlaceholder": "Adresa poslužitelja",
+    "targetAddressHint": "Ostavite prazno za korištenje vlastite adrese ovog poslužitelja.",
+    "targetPort": "Ciljni port",
+    "certificate": "Certifikat",
+    "certAcme": "Let's Encrypt (automatski)",
+    "certSelfSigned": "Samopotpisani",
+    "certCustom": "Moj vlastiti certifikat",
+    "certOff": "Nijedan (običan HTTP)",
+    "certHint": {
+      "acme": "Besplatni certifikat se automatski zatraži i obnavlja. Port 80 mora biti dostupan HTTP portu ovog dodatka.",
+      "selfsigned": "Preglednici će upozoriti na to. Prihvatljivo za privatnu upotrebu.",
+      "custom": "Prvo dodajte svoj certifikat u pogledu Certifikati.",
+      "off": "Posjetitelji se povezuju bez šifriranja."
+    },
+    "pickCertificate": "Certifikat",
+    "pickCertificatePlaceholder": "Odaberite certifikat",
+    "forceHttps": "Preusmjeri HTTP na HTTPS",
+    "forceHttpsDesc": "Posjetitelji koji koriste običan HTTP preusmjeravaju se na sigurnu adresu.",
+    "access": "Tko ga može otvoriti",
+    "accessNone": "Svatko",
+    "accessUser": "Prijavljeni Termix korisnici",
+    "accessHost": "Korisnici s pristupom ovom hostu",
+    "accessHint": {
+      "none": "Nema prijave za ovu rutu.",
+      "user": "Posjetitelji se prvo prijavljuju putem Termixa.",
+      "host": "Posjetitelji se prijavljuju putem Termixa i moraju imati mogućnost povezivanja na ovaj host."
+    },
+    "targetHttps": "Cilj koristi HTTPS",
+    "targetHttpsDesc": "Poveži se na cilj putem TLS-a.",
+    "insecureTarget": "Povjeri bilo koji certifikat cilja",
+    "insecureTargetDesc": "Preskoči provjere certifikata na cilju. Koristi za usluge s vlastitim certifikatima.",
+    "preserveHost": "Zadrži izvornu zaglavlje Host",
+    "preserveHostDesc": "Pošalji posjetiteljevu domenu na cilj umjesto adrese cilja.",
+    "httpsPublicPort": "Javni HTTPS port",
+    "httpsPublicPortHint": "Samo ako posjetitelji pristupaju HTTPS-u na portu koji nije 443. Koristi se za preusmjeravanje. 0 znači 443.",
+    "headers": "Dodatne zaglavlja zahtjeva",
+    "headersHint": "Jedno po retku u obliku Ime: vrijednost. Pošalje se na cilj.",
+    "allowIps": "Dopusti samo ove adrese",
+    "allowIpsHint": "IP-ovi ili rasponi, jedan po retku. Prazno dopušta svima.",
+    "denyIps": "Blokiraj ove adrese",
+    "idleSeconds": "Vrijeme neaktivnosti u sekundama",
+    "idleSecondsHint": "Zatvori neaktivnu vezu nakon ovog vremena. 0 koristi zadano.",
+    "enabled": "Omogućeno"
+  },
+  "list": {
+    "empty": "Nema odgovarajućih ruta. Dodajte novu gumbom Dodaj rutu.",
+    "deleteTitle": "Izbrisati {{name}}?",
+    "deleteDesc": "Ruta se odmah zaustavlja. Certifikati ostaju.",
+    "deleteFailed": "Ruta se nije mogla izbrisati.",
+    "hostAddress": "host",
+    "disabled": "Isključeno",
+    "protected": "Prijava",
+    "state": {
+      "running": "Pokreće se",
+      "stopped": "Zaustavljeno",
+      "error": "Problem"
+    },
+    "traffic": "{{count}} veza, {{inbound}} ulazno, {{outbound}} izlazno",
+    "toggleFailed": "Nije moguće promijeniti rutu.",
+    "add": "Dodaj rutu"
+  },
+  "certs": {
+    "autoNote": "Let's Encrypt certifikati se zahtijevaju kada dodate rutu i obnavljaju se automatski.",
+    "needsEmail": "Postavite e-mail adresu za Let's Encrypt u postavkama reverznog proxyja prije korištenja automatskih certifikata.",
+    "empty": "Još nema certifikata.",
+    "addSelfSigned": "Samopotpisani",
+    "addOwn": "Otpremi",
+    "domains": "Domena",
+    "domainsHint": "Jedna ili više domena, odvojene razmacima ili zarezima.",
+    "certPem": "Certifikat (PEM)",
+    "keyPem": "Privatni ključ (PEM)",
+    "saveFailed": "Certifikat se ne može spremiti.",
+    "deleteTitle": "Izbrisati certifikat za {{name}}?",
+    "deleteDesc": "Prvo morate promijeniti rute koje ga koriste.",
+    "deleteFailed": "Certifikat se ne može izbrisati.",
+    "renew": "Zatraži ponovno",
+    "renewStarted": "Zahtjev za certifikat je u tijeku.",
+    "renewFailed": "Nije moguće pokrenuti zahtjev.",
+    "expires": "Istječe {{date}}",
+    "waiting": "Čekanje na certifikat",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "Samopotpisan",
+      "custom": "Otpremljen"
+    },
+    "status": {
+      "pending": "Na čekanju",
+      "ready": "Spreman",
+      "error": "Problem"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "Upravljanje rutama reverznog proxyja",
+      "description": "Otvorite karticu Obrnuto proxy i dodajte rute za hostove koje možete uređivati."
+    },
+    "access": {
+      "title": "Otvori zaštićene rute",
+      "description": "Prijavite se na web rute koje traže Termix prijavu."
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "HTTP port",
+        "description": "Port na kojem ovaj plugin sluša za HTTP. Preslikajte javni port 80 na njega. Potrebno za Let's Encrypt."
+      },
+      "httpsPort": {
+        "label": "HTTPS port",
+        "description": "Port na kojem ovaj plugin sluša za HTTPS. Preslikajte javni port 443 na njega."
+      },
+      "bindHost": {
+        "label": "Adresa slušanja",
+        "description": "Koristite 0.0.0.0 za prihvaćanje veza s bilo kojeg mjesta ili 127.0.0.1 da biste rute zadržali lokalno."
+      },
+      "publicBaseUrl": {
+        "label": "Termix adresa",
+        "description": "Adresa koju ljudi koriste za otvaranje Termixa, poput https://termix.example.com. Potrebna za rute koje zahtijevaju Termix prijavu."
+      },
+      "acmeEmail": {
+        "label": "E-pošta za certifikat",
+        "description": "Let's Encrypt je koristi za obavijesti o isteku."
+      },
+      "acmeStaging": {
+        "label": "Koristi Let's Encrypt staging",
+        "description": "Testni certifikati koje preglednici ne vjeruju. Koristi tijekom postavljanja kako bi izbjegao ograničenja brzine."
+      },
+      "cookieHours": {
+        "label": "Trajanje prijave u satima",
+        "description": "Koliko dugo posjetitelj ostaje prijavljen na zaštićenoj ruti."
+      },
+      "acmeDirectoryUrl": {
+        "label": "Prilagođeni izdavatelj certifikata",
+        "description": "ACME adresa direktorija drugog CA-a, poput privatnog step-ca. Ostavi prazno za korištenje Let's Encrypta."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "Dopusti rute reverznog proxyja",
+        "description": "Rute za ovog hosta upravljaju se na kartici Reverzni proxy. Isključi ovo da bi ih zaustavio."
+      },
+      "targetAddress": {
+        "label": "Ciljana adresa",
+        "description": "Kamo rute šalju promet. Ostavi prazno za korištenje vlastite adrese ovog hosta. Postavi je za pristup kontejneru ili drugom uređaju."
+      },
+      "defaultAccess": {
+        "label": "Zadana prijava za nove web rute",
+        "description": "S čime nove web rute na ovom hostu počinju.",
+        "none": "Svatko",
+        "user": "Prijavljeni Termix korisnici",
+        "host": "Korisnici s pristupom ovom hostu"
+      }
+    }
+  },
+  "editor": {
+    "traffic": "{{inbound}} ulazno, {{outbound}} izlazno"
+  }
+}

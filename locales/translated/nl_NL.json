@@ -1,0 +1,199 @@
+{
+  "plugin": {
+    "name": "Omgekeerde proxy",
+    "description": "Omgekeerde proxy voor TCP, UDP, HTTP en HTTPS met gratis certificaten en Termix-aanmelding, beheerd per host."
+  },
+  "common": {
+    "save": "Opslaan",
+    "cancel": "Annuleren",
+    "delete": "Verwijderen",
+    "edit": "Bewerken"
+  },
+  "tab": {
+    "title": "Omgekeerde proxy",
+    "error": "De omgekeerde proxy kan niet worden geladen.",
+    "notListening": "uit",
+    "viewRoutes": "Routes",
+    "viewCerts": "Certificaten",
+    "needsBaseUrl": "Sommige routes vragen om Termix-inloggegevens, maar het Termix-adres is niet ingesteld. Stel dit in bij de instellingen van de reverse proxy, anders kunnen deze routes niet worden geopend.",
+    "status": "{{running}} van de {{total}} actief",
+    "refresh": "Vernieuwen",
+    "search": "Routes zoeken",
+    "filterAll": "Alles",
+    "ports": "Luistert op HTTP {{http}} en HTTPS {{https}}.",
+    "noHost": "Open de reverse proxy vanaf een host.",
+    "hostOff": "De reverse proxy is uitgeschakeld voor deze host in de instellingen. Bestaande routes zijn gepauzeerd."
+  },
+  "form": {
+    "saveFailed": "De route kon niet worden opgeslagen.",
+    "editTitle": "Route bewerken",
+    "addTitle": "Route toevoegen",
+    "name": "Naam",
+    "namePlaceholder": "Home wiki",
+    "type": "Type",
+    "typeHttp": "Web (HTTP en HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "Domein",
+    "domainHint": "Wijs het DNS-record van dit domein naar deze server. Een wildcard zoals *.example.com werkt voor routing.",
+    "publicPort": "Openbare poort",
+    "publicPortHint": "De poort waarop deze server luistert. Publiceer deze ook in je Docker-configuratie.",
+    "targetAddress": "Doeladres",
+    "targetAddressPlaceholder": "Hostadres",
+    "targetAddressHint": "Laat leeg om het eigen adres van deze host te gebruiken.",
+    "targetPort": "Doelport",
+    "certificate": "Certificaat",
+    "certAcme": "Let's Encrypt (automatisch)",
+    "certSelfSigned": "Zelfondertekend",
+    "certCustom": "Mijn eigen certificaat",
+    "certOff": "Geen (plain HTTP)",
+    "certHint": {
+      "acme": "Er wordt automatisch een gratis certificaat aangevraagd en vernieuwd. Poort 80 moet bereikbaar zijn voor de HTTP-poort van deze plugin.",
+      "selfsigned": "Browsers tonen een waarschuwing. Geschikt voor privégebruik.",
+      "custom": "Voeg eerst uw certificaat toe in het Certificaat-overzicht.",
+      "off": "Bezoekers verbinden zonder encryptie."
+    },
+    "pickCertificate": "Certificaat",
+    "pickCertificatePlaceholder": "Kies een certificaat",
+    "forceHttps": "HTTP omleiden naar HTTPS",
+    "forceHttpsDesc": "Bezoekers via plain HTTP worden doorgestuurd naar het beveiligde adres.",
+    "access": "Wie kan het openen",
+    "accessNone": "Iedereen",
+    "accessUser": "Aangemelde Termix-gebruikers",
+    "accessHost": "Gebruikers met toegang tot deze host",
+    "accessHint": {
+      "none": "Geen inloggen vereist voor deze route.",
+      "user": "Bezoekers loggen eerst in bij Termix.",
+      "host": "Bezoekers loggen in bij Termix en moeten verbinding kunnen maken met deze host."
+    },
+    "targetHttps": "Doel gebruikt HTTPS",
+    "targetHttpsDesc": "Maak verbinding met het doel via TLS.",
+    "insecureTarget": "Vertrouw elk doelcertificaat",
+    "insecureTargetDesc": "Sla certificaatcontroles over voor het doel. Gebruik dit voor zelfondertekende services.",
+    "preserveHost": "Behoud de oorspronkelijke Host-header",
+    "preserveHostDesc": "Stuur het domein van de bezoeker naar de bestemming in plaats van het adres van de bestemming.",
+    "httpsPublicPort": "Openbare HTTPS-poort",
+    "httpsPublicPortHint": "Alleen als bezoekers HTTPS bereiken op een poort anders dan 443. Gebruikt voor de omleiding. 0 betekent 443.",
+    "headers": "Extra verzoekheaders",
+    "headersHint": "Eén per regel als Naam: waarde. Wordt verzonden naar de bestemming.",
+    "allowIps": "Sta alleen deze adressen toe",
+    "allowIpsHint": "IP-adressen of bereiken, één per regel. Leeg staat iedereen toe.",
+    "denyIps": "Blokkeer deze adressen",
+    "idleSeconds": "Inactiviteitstime-out in seconden",
+    "idleSecondsHint": "Sluit een inactieve verbinding na deze tijd. 0 gebruikt de standaardwaarde.",
+    "enabled": "Ingeschakeld"
+  },
+  "list": {
+    "empty": "Geen routes gevonden. Voeg er een toe met de knop Route toevoegen.",
+    "deleteTitle": "Wil je {{name}} verwijderen?",
+    "deleteDesc": "De route stopt onmiddellijk. Certificaten blijven behouden.",
+    "deleteFailed": "De route kon niet worden verwijderd.",
+    "hostAddress": "host",
+    "disabled": "Uit",
+    "protected": "Inloggen",
+    "state": {
+      "running": "Actief",
+      "stopped": "Gestopt",
+      "error": "Probleem"
+    },
+    "traffic": "{{count}} verbindingen, {{inbound}} binnen, {{outbound}} buiten",
+    "toggleFailed": "Het pad kon niet worden gewijzigd.",
+    "add": "Pad toevoegen"
+  },
+  "certs": {
+    "autoNote": "Let's Encrypt-certificaten worden aangevraagd wanneer u een pad toevoegt en worden automatisch vernieuwd.",
+    "needsEmail": "Stel een e-mailadres in voor Let's Encrypt in de instellingen van de reverse proxy voordat u automatische certificaten gebruikt.",
+    "empty": "Nog geen certificaten.",
+    "addSelfSigned": "Zelfondertekend",
+    "addOwn": "Uploaden",
+    "domains": "Domeinen",
+    "domainsHint": "Eén of meer domeinen, gescheiden door spaties of komma’s.",
+    "certPem": "Certificaat (PEM)",
+    "keyPem": "Privésleutel (PEM)",
+    "saveFailed": "Het certificaat kon niet worden opgeslagen.",
+    "deleteTitle": "Certificaat voor {{name}} verwijderen?",
+    "deleteDesc": "Routes die dit certificaat gebruiken, moeten eerst worden aangepast.",
+    "deleteFailed": "Het certificaat kon niet worden verwijderd.",
+    "renew": "Opnieuw aanvragen",
+    "renewStarted": "Certificaat wordt aangevraagd.",
+    "renewFailed": "Kan het verzoek niet starten.",
+    "expires": "Vervalt op {{date}}",
+    "waiting": "Wachten op het certificaat",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "Zelfondertekend",
+      "custom": "Geüpload"
+    },
+    "status": {
+      "pending": "In afwachting",
+      "ready": "Klaar",
+      "error": "Probleem"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "Reverse proxy-routes beheren",
+      "description": "Open het tabblad Reverse Proxy en voeg routes toe aan hosts die je kunt bewerken."
+    },
+    "access": {
+      "title": "Beschermde routes openen",
+      "description": "Meld je aan bij webroutes die om een Termix-inlog vragen."
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "HTTP-poort",
+        "description": "De poort waarop deze plugin luistert voor HTTP. Kaart je openbare poort 80 hierop. Vereist voor Let's Encrypt."
+      },
+      "httpsPort": {
+        "label": "HTTPS-poort",
+        "description": "De poort waarop deze plugin luistert voor HTTPS. Kaart je openbare poort 443 hierop."
+      },
+      "bindHost": {
+        "label": "Luisteradres",
+        "description": "Gebruik 0.0.0.0 om verbindingen van overal toe te staan, of 127.0.0.1 om routes lokaal te houden."
+      },
+      "publicBaseUrl": {
+        "label": "Termix-adres",
+        "description": "Het adres dat mensen gebruiken om Termix te openen, zoals https://termix.example.com. Vereist voor routes die inloggen in Termix vereisen."
+      },
+      "acmeEmail": {
+        "label": "E-mailadres voor certificaten",
+        "description": "Let's Encrypt gebruikt dit voor meldingen over vervaldatum."
+      },
+      "acmeStaging": {
+        "label": "Let's Encrypt staging gebruiken",
+        "description": "Testcertificaten die door browsers niet worden vertrouwd. Gebruik dit tijdens de installatie om rate limits te vermijden."
+      },
+      "cookieHours": {
+        "label": "Inlogduur in uren",
+        "description": "Hoe lang een bezoeker ingelogd blijft op een beveiligde route."
+      },
+      "acmeDirectoryUrl": {
+        "label": "Aangepaste certificeringsinstantie",
+        "description": "Het ACME-directoryadres van een andere CA, zoals een privé step-ca. Laat leeg om Let's Encrypt te gebruiken."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "Reverse proxy-routes toestaan",
+        "description": "Routes voor deze host worden beheerd in het tabblad Reverse Proxy. Zet dit uit om ze te stoppen."
+      },
+      "targetAddress": {
+        "label": "Doeladres",
+        "description": "Waar routes het verkeer naartoe sturen. Laat leeg om het eigen adres van deze host te gebruiken. Stel dit in om een container of een andere machine te bereiken."
+      },
+      "defaultAccess": {
+        "label": "Standaard inlog voor nieuwe webroutes",
+        "description": "Waarmee nieuwe webroutes op deze host beginnen.",
+        "none": "Iedereen",
+        "user": "Ingelogde Termix-gebruikers",
+        "host": "Gebruikers met toegang tot deze host"
+      }
+    }
+  },
+  "editor": {
+    "traffic": "{{inbound}} binnen, {{outbound}} buiten"
+  }
+}

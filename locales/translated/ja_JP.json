@@ -1,0 +1,200 @@
+{
+  "plugin": {
+    "name": "リバースプロキシ",
+    "description": "TCP、UDP、HTTP、HTTPS 用のリバースプロキシ。無料証明書と Termix ログインに対応し、ホストごとに管理します。"
+  },
+  "common": {
+    "save": "保存",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "edit": "編集"
+  },
+  "tab": {
+    "title": "リバースプロキシ",
+    "error": "リバースプロキシを読み込めませんでした。",
+    "notListening": "オフ",
+    "viewRoutes": "ルート",
+    "viewCerts": "証明書",
+    "needsBaseUrl": "一部のルートは Termix のログインを要求しますが、Termix のアドレスが設定されていません。リバースプロキシの設定でアドレスを設定してください。設定しないと、これらのルートを開くことができません。",
+    "status": "{{total}} 件中 {{running}} 件が実行中",
+    "refresh": "更新",
+    "search": "ルートを検索",
+    "filterAll": "すべて",
+    "ports": "HTTP {{http}} と HTTPS {{https}} でリッスンしています。",
+    "noHost": "ホストからリバースプロキシを開いてください。",
+    "hostOff": "このホストの設定でリバースプロキシが無効化されています。既存のルートは一時停止されています。"
+  },
+  "form": {
+    "saveFailed": "ルートを保存できませんでした。",
+    "editTitle": "ルートの編集",
+    "addTitle": "ルートの追加",
+    "name": "名前",
+    "namePlaceholder": "ホームウィキ",
+    "type": "タイプ",
+    "typeHttp": "Web (HTTP および HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "ドメイン",
+    "domainHint": "このドメインの DNS をこのサーバーに向けましょう。*.example.com のようなワイルドカードはルーティングに有効です。",
+    "publicPort": "公開ポート",
+    "publicPortHint": "このサーバーがリッスンするポートです。Docker の設定でも公開してください。",
+    "targetAddress": "ターゲットアドレス",
+    "targetAddressPlaceholder": "ホストアドレス",
+    "targetAddressHint": "このホスト自身のアドレスを使用する場合は空のままにしてください。",
+    "targetPort": "ターゲットポート",
+    "certificate": "証明書",
+    "certAcme": "Let's Encrypt（自動）",
+    "certSelfSigned": "自己署名",
+    "certCustom": "独自の証明書",
+    "certOff": "なし（プレーン HTTP）",
+    "certHint": {
+      "acme": "無料の証明書が自動的に取得・更新されます。ポート 80 からこのプラグインの HTTP ポートに到達可能である必要があります。",
+      "selfsigned": "ブラウザで警告が表示されます。個人利用には問題ありません。",
+      "custom": "まず証明書ビューで証明書を追加してください。",
+      "off": "訪問者は暗号化なしで接続します。"
+    },
+    "pickCertificate": "証明書",
+    "pickCertificatePlaceholder": "証明書を選択",
+    "forceHttps": "HTTP を HTTPS にリダイレクト",
+    "forceHttpsDesc": "プレーン HTTP でアクセスした訪問者は、安全なアドレスにリダイレクトされます。",
+    "access": "アクセス許可",
+    "accessNone": "誰でも",
+    "accessUser": "ログインしている Termix ユーザー",
+    "accessHost": "このホストにアクセスできるユーザー",
+    "accessHint": {
+      "none": "このルートの前にログインは不要です。",
+      "user": "訪問者はまず Termix にログインします。",
+      "host": "訪問者は Termix にログインし、このホストに接続できる必要があります。"
+    },
+    "targetHttps": "ターゲットは HTTPS を使用しています",
+    "targetHttpsDesc": "TLS を使用してターゲットに接続します。",
+    "insecureTarget": "すべてのターゲット証明書に信頼",
+    "insecureTargetDesc": "ターゲットの証明書チェックをスキップします。自己署名サービスに使用します。",
+    "preserveHost": "元の Host ヘッダーを保持する",
+    "preserveHostDesc": "ターゲットのアドレスではなく、訪問者のドメインをターゲットに送信します。",
+    "httpsPublicPort": "公開 HTTPS ポート",
+    "httpsPublicPortHint": "訪問者が443以外のポートでHTTPSにアクセスする場合のみ設定します。リダイレクトに使用されます。0は443を意味します。",
+    "headers": "追加のリクエストヘッダー",
+    "headersHint": "1行に1つ、Name: valueの形式で記述します。ターゲットに送信されます。",
+    "allowIps": "これらのアドレスのみを許可する",
+    "allowIpsHint": "IPアドレスまたは範囲を1行に1つ記述します。空にすると全員を許可します。",
+    "denyIps": "これらのアドレスをブロックする",
+    "idleSeconds": "アイドルタイムアウト（秒）",
+    "idleSecondsHint": "この時間経過後にアイドル状態の接続を閉じます。0 はデフォルト値を使用します。",
+    "enabled": "有効"
+  },
+  "list": {
+    "empty": "一致するルートがありません。「ルートの追加」ボタンで追加してください。",
+    "deleteTitle": "{{name}} を削除しますか？",
+    "deleteDesc": "ルートはすぐに停止します。証明書は保持されます。",
+    "deleteFailed": "ルートを削除できませんでした。",
+    "hostAddress": "ホスト",
+    "disabled": "オフ",
+    "protected": "ログイン",
+    "state": {
+      "running": "実行中",
+      "stopped": "停止中",
+      "error": "エラー"
+    },
+    "traffic": "{{count}} 接続、受信 {{inbound}}、送信 {{outbound}}",
+    "toggleFailed": "ルートを切り替えできませんでした。",
+    "add": "ルートを追加"
+  },
+  "certs": {
+    "autoNote": "Let's Encrypt 証明書は、ルートを追加した際に自動的に取得され、自動更新されます。",
+    "needsEmail": "自動証明書を有効にする前に、リバースプロキシの設定で Let's Encrypt 用のメールアドレスを設定してください。",
+    "empty": "証明書はまだありません。",
+    "addSelfSigned": "自己署名",
+    "addOwn": "アップロード",
+    "domains": "ドメイン",
+    "domainsHint": "スペースまたはカンマで区切った1つ以上のドメイン。",
+    "certPem": "証明書 (PEM)",
+    "keyPem": "秘密鍵 (PEM)",
+    "saveFailed": "証明書を保存できませんでした。",
+    "deleteTitle": "{{name}} の証明書を削除しますか？",
+    "deleteDesc": "それを使用しているルートは事前に変更する必要があります。",
+    "deleteFailed": "証明書を削除できませんでした。",
+    "renew": "再取得",
+    "renewStarted": "証明書の取得中。",
+    "renewFailed": "リクエストを開始できませんでした。",
+    "expires": "{{date}} に期限切れ",
+    "waiting": "証明書の発行を待機中",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "自己署名",
+      "custom": "アップロード済み"
+    },
+    "status": {
+      "pending": "保留中",
+      "ready": "準備完了",
+      "error": "エラー"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "リバースプロキシのルートを管理",
+      "description": "リバースプロキシタブを開き、編集できるホストへのルートを追加します。"
+    },
+    "access": {
+      "title": "保護されたルートを開く",
+      "description": "Termix のログインを要求する Web ルートにサインインします。"
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "HTTP ポート",
+        "description": "このプラグインが HTTP でリッスンするポートです。パブリックポート 80 をこれにマッピングしてください。Let's Encrypt に必要です。"
+      },
+      "httpsPort": {
+        "label": "HTTPS ポート",
+        "description": "このプラグインが HTTPS でリッスンするポートです。パブリックポート 443 をこれにマッピングしてください。"
+      },
+      "bindHost": {
+        "label": "リッスンアドレス",
+        "description": "0.0.0.0 を使用してあらゆる場所からの接続を受け付けるか、127.0.0.1 を使用してルートをローカルに保ちます。"
+      },
+      "publicBaseUrl": {
+        "label": "Termix アドレス",
+        "description": "Termix を開くために使用するアドレス（例：https://termix.example.com）。Termix のログインを要求するルートに必要です。"
+      },
+      "acmeEmail": {
+        "label": "証明書のメールアドレス",
+        "description": "Let's Encrypt は、期限切れの通知にこれを使用します。"
+      },
+      "acmeStaging": {
+        "label": "Let's Encrypt ステージングを使用する",
+        "description": "ブラウザが信頼しないテスト証明書。レート制限を避けるために、セットアップ中に使用します。"
+      },
+      "cookieHours": {
+        "label": "ログインの有効期間（時間）",
+        "description": "保護されたルートで訪問者がサインインした状態を維持する時間。"
+      },
+      "acmeDirectoryUrl": {
+        "label": "カスタム認証局",
+        "description": "プライベートな step-ca などの他の CA の ACME ディレクトリアドレス。空のままにすると、Let's Encrypt が使用されます。"
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "リバースプロキシルートを許可する",
+        "description": "このホストのルートは、リバースプロキシタブで管理されます。これをオフにすると、ルートが停止します。"
+      },
+      "targetAddress": {
+        "label": "ターゲットアドレス",
+        "description": "ルートがトラフィックを送信する先。このホスト自身のアドレスを使用するには空のままにします。コンテナや別のマシンに到達するには設定します。"
+      },
+      "defaultAccess": {
+        "label": "新しい Web ルートのデフォルトログイン",
+        "description": "このホスト上の新しい Web ルートが開始するアクセス設定。",
+        "none": "誰でも",
+        "user": "サインインした Termix ユーザー",
+        "host": "このホストにアクセス権限のあるユーザー"
+      }
+    }
+  },
+  "editor": {
+    "connections": "接続数: {{count}}",
+    "traffic": "受信: {{inbound}}, 送信: {{outbound}}"
+  }
+}

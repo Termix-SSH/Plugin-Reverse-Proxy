@@ -1,0 +1,200 @@
+{
+  "plugin": {
+    "name": "Obrácený proxy",
+    "description": "Obrácený proxy pro TCP, UDP, HTTP a HTTPS s bezplatnými certifikáty a přihlášením do Termixu, spravovaný pro jednotlivé hostitele."
+  },
+  "common": {
+    "save": "Uložit",
+    "cancel": "Zrušit",
+    "delete": "Smazat",
+    "edit": "Upravit"
+  },
+  "tab": {
+    "title": "Obrácený proxy",
+    "error": "Nelze načíst obrácený proxy.",
+    "notListening": "vypnuto",
+    "viewRoutes": "Trasy",
+    "viewCerts": "Certifikáty",
+    "needsBaseUrl": "Některé trasy vyžadují přihlášení do Termixu, ale adresa Termixu není nastavena. Nastavte ji v nastavení reverzního proxy, jinak se tyto trasy neotevřou.",
+    "status": "{{running}} z {{total}} spuštěných",
+    "refresh": "Obnovit",
+    "search": "Hledat trasy",
+    "filterAll": "Vše",
+    "ports": "Poslouchá na HTTP {{http}} a HTTPS {{https}}.",
+    "noHost": "Otevřete reverzní proxy z hostitele.",
+    "hostOff": "Reverzní proxy je pro tohoto hostitele v nastavení vypnuta. Existující trasy jsou pozastaveny."
+  },
+  "form": {
+    "saveFailed": "Trasu se nepodařilo uložit.",
+    "editTitle": "Upravit trasu",
+    "addTitle": "Přidat trasu",
+    "name": "Název",
+    "namePlaceholder": "Domácí wiki",
+    "type": "Typ",
+    "typeHttp": "Web (HTTP a HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "Doména",
+    "domainHint": "Nasměrujte DNS této domény na tento server. Zástupný znak jako *.example.com funguje pro směrování.",
+    "publicPort": "Veřejný port",
+    "publicPortHint": "Port, na kterém tento server naslouchá. Zveřejněte jej také ve svém nastavení Dockeru.",
+    "targetAddress": "Cílová adresa",
+    "targetAddressPlaceholder": "Adresa hostitele",
+    "targetAddressHint": "Ponechte prázdné, pokud chcete použít vlastní adresu tohoto hostitele.",
+    "targetPort": "Cílový port",
+    "certificate": "Certifikát",
+    "certAcme": "Let's Encrypt (automaticky)",
+    "certSelfSigned": "Vlastnoručně podepsaný",
+    "certCustom": "Můj vlastní certifikát",
+    "certOff": "Žádné (čistý HTTP)",
+    "certHint": {
+      "acme": "Bezplatný certifikát je za vás vyžádán a obnovován. Port 80 musí vést na HTTP port tohoto pluginu.",
+      "selfsigned": "Prohlížeče budou upozorňovat na nebezpečí. Vhodné pro soukromé použití.",
+      "custom": "Nejprve přidejte svůj certifikát ve výpisu Certifikáty.",
+      "off": "Navštěvníci se připojují bez šifrování."
+    },
+    "pickCertificate": "Certifikát",
+    "pickCertificatePlaceholder": "Vyberte certifikát",
+    "forceHttps": "Přesměrovat HTTP na HTTPS",
+    "forceHttpsDesc": "Navštěvníci na čistém HTTP jsou přesměrováni na zabezpečenou adresu.",
+    "access": "Kdo ho může otevřít",
+    "accessNone": "Kdokoli",
+    "accessUser": "Přihlášení uživatelé Termixu",
+    "accessHost": "Uživatelé s přístupem k tomuto hostiteli",
+    "accessHint": {
+      "none": "Před touto trasou není vyžadováno přihlášení.",
+      "user": "Návštěvníci se nejprve přihlásí do Termixu.",
+      "host": "Návštěvníci se přihlásí do Termixu a musí mít možnost se k tomuto hostiteli připojit."
+    },
+    "targetHttps": "Cíl používá HTTPS",
+    "targetHttpsDesc": "Připojit se k cíli pomocí TLS.",
+    "insecureTarget": "Důvěřovat libovolnému certifikátu cíle",
+    "insecureTargetDesc": "Přeskočit ověřování certifikátů na cíli. Použijte pro služby se self-signed certifikáty.",
+    "preserveHost": "Ponechat původní hlavičku Host",
+    "preserveHostDesc": "Odeslat doménu návštěvníka na cíl místo adresy cíle.",
+    "httpsPublicPort": "Veřejný HTTPS port",
+    "httpsPublicPortHint": "Pouze pokud návštěvníci přistupují k HTTPS na portu jiném než 443. Používá se pro přesměrování. 0 znamená 443.",
+    "headers": "Další hlavičky požadavku",
+    "headersHint": "Jedna na řádek ve formátu Název: hodnota. Odesílá se na cíl.",
+    "allowIps": "Povolit pouze tyto adresy",
+    "allowIpsHint": "IP adresy nebo rozsahy, jedna na řádek. Prázdné pole povoluje přístup všem.",
+    "denyIps": "Blokovat tyto adresy",
+    "idleSeconds": "Časový limit nečinnosti v sekundách",
+    "idleSecondsHint": "Ukončit neaktivní spojení po této době. Hodnota 0 použije výchozí nastavení.",
+    "enabled": "Povoleno"
+  },
+  "list": {
+    "empty": "Žádné shodující se trasy. Přidejte novou pomocí tlačítka Přidat trasu.",
+    "deleteTitle": "Smazat {{name}}?",
+    "deleteDesc": "Trasa se okamžitě zastaví. Certifikáty zůstanou zachovány.",
+    "deleteFailed": "Nelze smazat trasu.",
+    "hostAddress": "hostitel",
+    "disabled": "Vypnuto",
+    "protected": "Přihlášení",
+    "state": {
+      "running": "Běží",
+      "stopped": "Zastaveno",
+      "error": "Problém"
+    },
+    "traffic": "{{count}} spojení, {{inbound}} příchozí, {{outbound}} odchozí",
+    "toggleFailed": "Trasu se nepodařilo změnit.",
+    "add": "Přidat trasu"
+  },
+  "certs": {
+    "autoNote": "Certifikáty Let's Encrypt jsou vyžádány při přidání trasy a obnovují se automaticky.",
+    "needsEmail": "Před použitím automatických certifikátů nastavte e-mail pro Let's Encrypt v nastavení reverzní proxy.",
+    "empty": "Zatím žádné certifikáty.",
+    "addSelfSigned": "Sebevydaný",
+    "addOwn": "Nahrát",
+    "domains": "Domény",
+    "domainsHint": "Jedna nebo více domén oddělených mezerami nebo čárkami.",
+    "certPem": "Certifikát (PEM)",
+    "keyPem": "Soukromý klíč (PEM)",
+    "saveFailed": "Certifikát se nepodařilo uložit.",
+    "deleteTitle": "Smazat certifikát pro {{name}}?",
+    "deleteDesc": "Nejprve je třeba změnit trasy, které jej používají.",
+    "deleteFailed": "Certifikát se nepodařilo smazat.",
+    "renew": "Požádat znovu",
+    "renewStarted": "Požadavek na certifikát byl odeslán.",
+    "renewFailed": "Nepodařilo se spustit požadavek.",
+    "expires": "Platí do {{date}}",
+    "waiting": "Čeká se na certifikát",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "Vlastně podepsaný",
+      "custom": "Nahráný"
+    },
+    "status": {
+      "pending": "Čeká na zpracování",
+      "ready": "Připraven",
+      "error": "Problém"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "Spravovat trasy reverzní proxy",
+      "description": "Otevřete kartu Reverzní proxy a přidejte trasy k hostitelům, které můžete upravovat."
+    },
+    "access": {
+      "title": "Otevřít chráněné trasy",
+      "description": "Přihlaste se k webovým trasám, které vyžadují přihlášení do Termix."
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "HTTP port",
+        "description": "Port, na kterém tento plugin naslouchá pro HTTP. Přemapujte na něj veřejný port 80. Nutné pro Let's Encrypt."
+      },
+      "httpsPort": {
+        "label": "HTTPS port",
+        "description": "Port, na kterém tento plugin naslouchá pro HTTPS. Přemapujte na něj veřejný port 443."
+      },
+      "bindHost": {
+        "label": "Adresa naslouchání",
+        "description": "Použijte 0.0.0.0 pro přijímání připojení odkudkoli, nebo 127.0.0.1 pro udržení tras lokálních."
+      },
+      "publicBaseUrl": {
+        "label": "Adresa Termix",
+        "description": "Adresa, kterou lidé používají k otevření Termixu, například https://termix.example.com. Potřebná pro trasy, které vyžadují přihlášení k Termixu."
+      },
+      "acmeEmail": {
+        "label": "E-mail pro certifikát",
+        "description": "Let's Encrypt jej používá pro upozornění na vypršení platnosti."
+      },
+      "acmeStaging": {
+        "label": "Použít testovací prostředí Let's Encrypt",
+        "description": "Testovací certifikáty, kterým prohlížeče nedůvěřují. Použijte při nastavování, abyste se vyhnuli limitům počtu požadavků."
+      },
+      "cookieHours": {
+        "label": "Délka přihlášení v hodinách",
+        "description": "Jak dlouho zůstane návštěvník přihlášen na chráněné trase."
+      },
+      "acmeDirectoryUrl": {
+        "label": "Vlastní certifikační autorita",
+        "description": "Adresa adresáře ACME jiné certifikační autority, například soukromého step-ca. Nechte prázdné pro použití Let's Encrypt."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "Povolit trasy reverzní proxy",
+        "description": "Trasy pro tohoto hostitele jsou spravovány na kartě Reverzní proxy. Vypněte tuto možnost, aby se přestaly používat."
+      },
+      "targetAddress": {
+        "label": "Cílová adresa",
+        "description": "Kam trasy směrují provoz. Nechte prázdné pro použití vlastní adresy tohoto hostitele. Nastavte ji pro přístup ke kontejneru nebo jinému stroji."
+      },
+      "defaultAccess": {
+        "label": "Výchozí přihlášení pro nové webové trasy",
+        "description": "S čím začínají nové webové trasy na tomto hostiteli.",
+        "none": "Kdokoli",
+        "user": "Přihlášení uživatelé Termix",
+        "host": "Uživatelé s přístupem k tomuto hostiteli"
+      }
+    }
+  },
+  "editor": {
+    "connections": "1 spojení, 2–4 spojení, 5+ spojení, {{count}} spojení",
+    "traffic": "{{inbound}} ve, {{outbound}} ze"
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "plugin": {
+    "name": "Omgekeerde Proxy",
+    "description": "Omgekeerde proxy vir TCP, UDP, HTTP en HTTPS met gratis sertifikate en Termix-aanmelding, bestuur per gasheer."
+  },
+  "common": {
+    "save": "Stoor",
+    "cancel": "Kanselleer",
+    "delete": "Vee uit",
+    "edit": "Wysig"
+  },
+  "tab": {
+    "title": "Omgekeerde Proxy",
+    "error": "Kon nie die omgekeerde proxy laai nie.",
+    "notListening": "af",
+    "viewRoutes": "Rutes",
+    "viewCerts": "Sertifikate",
+    "needsBaseUrl": "Sommige roetes vra vir Termix-aanmelding, maar die Termix-adres is nie gestel nie. Stel dit in die omgekeerde proxy-instellings, anders kan hierdie roetes nie oopgemaak word nie.",
+    "status": "{{running}} van {{total}} aktief",
+    "refresh": "Verfris",
+    "search": "Soek roetes",
+    "filterAll": "Almal",
+    "ports": "Luister na HTTP {{http}} en HTTPS {{https}}.",
+    "noHost": "Maak die omgekeerde proxy oop vanaf 'n gasheer.",
+    "hostOff": "Die omgekeerde proxy is vir hierdie gasheer in sy instellings afgeskakel. Bestaande roetes is gepouseer."
+  },
+  "form": {
+    "saveFailed": "Kon nie die roete stoor nie.",
+    "editTitle": "Wysig roete",
+    "addTitle": "Voeg roete by",
+    "name": "Naam",
+    "namePlaceholder": "Tuis wiki",
+    "type": "Tipe",
+    "typeHttp": "Web (HTTP en HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "Domein",
+    "domainHint": "Wys die DNS van hierdie domein na hierdie bediener. 'n Wildcard soos *.example.com werk vir roeteer.",
+    "publicPort": "Openbare poort",
+    "publicPortHint": "Die poort waarop hierdie bediener luister. Publikeer dit ook in jou Docker-opstelling.",
+    "targetAddress": "Teikenadres",
+    "targetAddressPlaceholder": "Bedieneradres",
+    "targetAddressHint": "Laat leeg om hierdie bediener se eie adres te gebruik.",
+    "targetPort": "Teikenpoort",
+    "certificate": "Sertifikaat",
+    "certAcme": "Let's Encrypt (outomaties)",
+    "certSelfSigned": "Self-onderteken",
+    "certCustom": "My eie sertifikaat",
+    "certOff": "Geen (gewone HTTP)",
+    "certHint": {
+      "acme": "Daar word 'n gratis sertifikaat vir jou versoek en vernuwe. Poort 80 moet die HTTP-poort van hierdie invoegprogram bereik.",
+      "selfsigned": "Blaaiers sal daaroor waarsku. Geskik vir privaat gebruik.",
+      "custom": "Voeg eers jou sertifikaat by in die Sertifikate-aansig.",
+      "off": "Besoekeers sluit aan sonder enkripsie."
+    },
+    "pickCertificate": "Sertifikaat",
+    "pickCertificatePlaceholder": "Kies 'n sertifikaat",
+    "forceHttps": "Stuur HTTP na HTTPS om",
+    "forceHttpsDesc": "Besoekeers op gewone HTTP word na die veilige adres gestuur.",
+    "access": "Wie kan dit oopmaak",
+    "accessNone": "Enigeen",
+    "accessUser": "Aangemelde Termix-gebruikers",
+    "accessHost": "Gebruikers met toegang tot hierdie gasheer",
+    "accessHint": {
+      "none": "Geen aanmelding voor hierdie roete nie.",
+      "user": "Besoekeerders meld eers aan met Termix.",
+      "host": "Besoekeerders meld aan met Termix en moet in staat wees om met hierdie gasheer te verbind."
+    },
+    "targetHttps": "Teiken gebruik HTTPS",
+    "targetHttpsDesc": "Verbind met die teiken met TLS.",
+    "insecureTarget": "Vertrou enige teiken-sertifikaat",
+    "insecureTargetDesc": "Slaan sertifikaatkontroles op die teiken oor. Gebruik vir self-ondertekende dienste.",
+    "preserveHost": "Behou die oorspronklike Host-opskrif",
+    "preserveHostDesc": "Stuur die besoeker se domein na die teiken in plaas van die teikenadres.",
+    "httpsPublicPort": "Openbare HTTPS-poort",
+    "httpsPublicPortHint": "Slegs as besoekers HTTPS op 'n poort anders as 443 bereik. Gebruik vir die herleiding. 0 beteken 443.",
+    "headers": "Bykomende versoekopskrifte",
+    "headersHint": "Een per lyn as Naam: waarde. Gestuur na die teiken.",
+    "allowIps": "Staaf slegs hierdie adresse toe",
+    "allowIpsHint": "IP's of reekse, een per lyn. Leeg staan almal toe.",
+    "denyIps": "Blokkeer hierdie adresse",
+    "idleSeconds": "Inaktiwiteitstydperk in sekondes",
+    "idleSecondsHint": "Maak 'n stil verbinding na hierdie tyd toe. 0 gebruik die verstek.",
+    "enabled": "Geaktiveer"
+  },
+  "list": {
+    "empty": "Geen roetes pas nie. Voeg een toe met die Voeg roete toe-knoppie.",
+    "deleteTitle": "Vee {{name}} uit?",
+    "deleteDesc": "Die roete stop onmiddellik. Sertifikate bly behoue.",
+    "deleteFailed": "Kon nie die roete uitvee nie.",
+    "hostAddress": "gasheer",
+    "disabled": "Af",
+    "protected": "Aanmeld",
+    "state": {
+      "running": "Besig",
+      "stopped": "Gestop",
+      "error": "Probleem"
+    },
+    "traffic": "{{count}} verbindinge, {{inbound}} in, {{outbound}} uit",
+    "toggleFailed": "Kon nie die roete verander nie.",
+    "add": "Voeg roete toe"
+  },
+  "certs": {
+    "autoNote": "Let's Encrypt-sertifikate word versoek wanneer jy 'n roete byvoeg en hernu hulself outomaties.",
+    "needsEmail": "Stel 'n e-posadres vir Let's Encrypt in die Reverse Proxy-instellings in voordat jy outomatiese sertifikate gebruik.",
+    "empty": "Nog geen sertifikate nie.",
+    "addSelfSigned": "Self-onderteken",
+    "addOwn": "Laai op",
+    "domains": "Domeine",
+    "domainsHint": "Een of meer domeine, geskei deur spasies of kommas.",
+    "certPem": "Sertifikaat (PEM)",
+    "keyPem": "Privaat sleutel (PEM)",
+    "saveFailed": "Kon nie die sertifikaat stoor nie.",
+    "deleteTitle": "Vee die sertifikaat vir {{name}} uit?",
+    "deleteDesc": "Roetes wat dit gebruik, moet eers verander word.",
+    "deleteFailed": "Kon nie die sertifikaat uitvee nie.",
+    "renew": "Versoek weer",
+    "renewStarted": "Versoek die sertifikaat.",
+    "renewFailed": "Kon nie die versoek begin nie.",
+    "expires": "Verval op {{date}}",
+    "waiting": "Wag vir die sertifikaat",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "Self-onderteken",
+      "custom": "Opgelaai"
+    },
+    "status": {
+      "pending": "Hangend",
+      "ready": "Gereed",
+      "error": "Probleem"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "Bestuur reverse proxy-roetes",
+      "description": "Open die Reverse Proxy-oortjie en voeg roetes by na gasheer wat jy kan redigeer."
+    },
+    "access": {
+      "title": "Open beskermde roetes",
+      "description": "Meld aan by webroetes wat om 'n Termix-aanmelding vra."
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "HTTP-poort",
+        "description": "Die poort waarop hierdie invoegprogram luister vir HTTP. Kaart jou openbare poort 80 na dit. Noodsaaklik vir Let's Encrypt."
+      },
+      "httpsPort": {
+        "label": "HTTPS-poort",
+        "description": "Die poort waarop hierdie invoegprogram luister vir HTTPS. Kaart jou openbare poort 443 na dit."
+      },
+      "bindHost": {
+        "label": "Luisteradres",
+        "description": "Gebruik 0.0.0.0 om verbindinge van oral aan te neem, of 127.0.0.1 om roetes plaaslik te hou."
+      },
+      "publicBaseUrl": {
+        "label": "Termix-adres",
+        "description": "Die adres wat mense gebruik om Termix oop te maak, soos https://termix.example.com. Nodig vir roetes wat om Termix-aanmelding vra."
+      },
+      "acmeEmail": {
+        "label": "Sertifikaat-e-pos",
+        "description": "Let's Encrypt gebruik dit vir kennisgewings oor verval."
+      },
+      "acmeStaging": {
+        "label": "Gebruik Let's Encrypt-toetsomgewing",
+        "description": "Toets sertifikate wat browsers nie vertrou nie. Gebruik dit tydens opstelling om tempo-beperkings te vermy."
+      },
+      "cookieHours": {
+        "label": "Aanmeldduur in ure",
+        "description": "Hoe lank 'n besoeker aangemeld bly op 'n beskermde roete."
+      },
+      "acmeDirectoryUrl": {
+        "label": "Aangepaste sertifikaatowerheid",
+        "description": "Die ACME-gidsadres van 'n ander sertifikaatowerheid, soos 'n privaat step-ca. Laat leeg om Let's Encrypt te gebruik."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "Staaf om omgekeerde proxy-roetes toe",
+        "description": "Roetes vir hierdie gasheer word in die Omgekeerde Proxy-oortjie bestuur. Skakel dit af om hulle te stop."
+      },
+      "targetAddress": {
+        "label": "Teikenadres",
+        "description": "Waarheen roetes verkeer stuur. Laat leeg om hierdie gasheer se eie adres te gebruik. Stel dit in om 'n houer of 'n ander masjien te bereik."
+      },
+      "defaultAccess": {
+        "label": "Verstek aanmelding vir nuwe webroetes",
+        "description": "Waarmee nuwe webroetes op hierdie gasheer begin.",
+        "none": "Enigeen",
+        "user": "Aangemelde Termix-gebruikers",
+        "host": "Gebruikers met toegang tot hierdie gasheer"
+      }
+    }
+  },
+  "editor": {
+    "traffic": "{{inbound}} in, {{outbound}} uit"
+  }
+}

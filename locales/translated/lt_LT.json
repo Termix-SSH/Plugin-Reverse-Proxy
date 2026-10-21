@@ -1,0 +1,199 @@
+{
+  "plugin": {
+    "name": "Atvirkštinis šliuzas",
+    "description": "Atvirkštinis šliuzas TCP, UDP, HTTP ir HTTPS protokolams su nemokamais sertifikatais ir Termix prisijungimu, valdomas pagal kiekvieną serverį."
+  },
+  "common": {
+    "save": "Išsaugoti",
+    "cancel": "Atšaukti",
+    "delete": "Pašalinti",
+    "edit": "Redaguoti"
+  },
+  "tab": {
+    "title": "Atvirkštinis šliuzas",
+    "error": "Nepavyko įkelti atvirkstinio šliuzo.",
+    "notListening": "išjungta",
+    "viewRoutes": "Maršrutai",
+    "viewCerts": "Sertifikatai",
+    "needsBaseUrl": "Kai kurios maršrutai reikalauja Termix prisijungimo, tačiau Termix adresas nėra nustatytas. Nustatykite jį atvirkštinio šliuzo nustatymuose, kitaip šie maršrutai negalės būti atidaryti.",
+    "status": "Veikia {{running}} iš {{total}}",
+    "refresh": "Atnaujinti",
+    "search": "Ieškoti maršrutų",
+    "filterAll": "Visi",
+    "ports": "Klausoma HTTP {{http}} ir HTTPS {{https}}.",
+    "noHost": "Atidarykite atvirkštinį šliuzą iš serverio.",
+    "hostOff": "Atvirkštinis šliuzas šiam serveriui išjungtas jo nustatymuose. Esantys maršrutai sustabdyti."
+  },
+  "form": {
+    "saveFailed": "Nepavyko išsaugoti maršruto.",
+    "editTitle": "Redaguoti maršrutą",
+    "addTitle": "Pridėti maršrutą",
+    "name": "Pavadinimas",
+    "namePlaceholder": "Namų wiki",
+    "type": "Tipas",
+    "typeHttp": "Web (HTTP ir HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "Domenas",
+    "domainHint": "Nukreipkite šio domeno DNS į šį serverį. Laukinis simbolis, pvz., *.example.com, tinka maršrutavimui.",
+    "publicPort": "Viešas prievadas",
+    "publicPortHint": "Prievadas, kuriame šis serveris laukia ryšių. Jį taip pat nurodykite savo Docker konfigūracijoje.",
+    "targetAddress": "Tikslinio adresas",
+    "targetAddressPlaceholder": "Tikslinio adresas",
+    "targetAddressHint": "Palikite tuščią, jei norite naudoti šio serverio paties adresą.",
+    "targetPort": "Tikslinio prievadas",
+    "certificate": "Sertifikatas",
+    "certAcme": "Let's Encrypt (automatiškai)",
+    "certSelfSigned": "Savasis pasirašytas",
+    "certCustom": "Mano sertifikatas",
+    "certOff": "Nėra (paprastas HTTP)",
+    "certHint": {
+      "acme": "Nemokamas sertifikatas yra užsakomas ir atnaujinamas automatiškai. 80 prievadas turi būti nukreiptas į šio priedo HTTP prievadą.",
+      "selfsigned": "Naršyklės įspės apie tai. Tinka asmeniniam naudojimui.",
+      "custom": "Pirmiausia pridėkite savo sertifikatą „Sertifikatai“ skiltyje.",
+      "off": "Lankytojai jungiasi be šifravimo."
+    },
+    "pickCertificate": "Sertifikatas",
+    "pickCertificatePlaceholder": "Pasirinkite sertifikatą",
+    "forceHttps": "Perkelti HTTP į HTTPS",
+    "forceHttpsDesc": "Lankytojai, prisijungę per paprastą HTTP, yra nukreipiami į saugų adresą.",
+    "access": "Kas gali tai atidaryti",
+    "accessNone": "Bet kas",
+    "accessUser": "Prisijungę Termix vartotojai",
+    "accessHost": "Vartotojai, turintys prieigą prie šio serverio",
+    "accessHint": {
+      "none": "Šiam maršrutui nereikia prisijungimo.",
+      "user": "Lankytojai pirmiausia prisijungia prie Termix.",
+      "host": "Lankytojai prisijungia prie Termix ir turi turėti teisę jungtis prie šio serverio."
+    },
+    "targetHttps": "Tikslinis serveris naudoja HTTPS",
+    "targetHttpsDesc": "Jungtis prie tikslinio serverio naudojant TLS.",
+    "insecureTarget": "Pasitikėti bet kuriuo tikslinio serverio sertifikatu",
+    "insecureTargetDesc": "Praleisti tikslinio serverio sertifikato patikrinimus. Naudokite pasirašytiems savarankiškai sertifikatams.",
+    "preserveHost": "Išsaugoti originalų „Host“ antraštę",
+    "preserveHostDesc": "Siųsti lankytojo domeną į tikslą, o ne tikslinio adreso vardą.",
+    "httpsPublicPort": "Viešas HTTPS prievadas",
+    "httpsPublicPortHint": "Tik jei lankytojai pasiekia HTTPS per kitą nei 443 prievadą. Naudoma peradresavimui. 0 reiškia 443.",
+    "headers": "Papildomos užklausos antraštės",
+    "headersHint": "Po vieną eilutėje kaip Pavadinimas: reikšmė. Siunčiamos į tikslą.",
+    "allowIps": "Leisti tik šiuos adresus",
+    "allowIpsHint": "IP adresai arba diapazonai, po vieną eilutėje. Tuščia reikšmė leidžia visiems.",
+    "denyIps": "Blokuoti šiuos adresus",
+    "idleSeconds": "Nenaudojimo laikotarpis sekundėmis",
+    "idleSecondsHint": "Uždaryti neaktyvų ryšį po šio laiko. 0 reiškia numatytąją reikšmę.",
+    "enabled": "Įjungta"
+  },
+  "list": {
+    "empty": "Nėra atitinkančių maršrutų. Pridėkite vieną naudodami mygtuką „Pridėti maršrutą“.",
+    "deleteTitle": "Ištrinti „{{name}}“?",
+    "deleteDesc": "Maršrutas bus sustabdytas iš karto. sertifikatai liks.",
+    "deleteFailed": "Nepavyko ištrinti maršruto.",
+    "hostAddress": "šeimininkas",
+    "disabled": "Išjungta",
+    "protected": "Prisijungimas",
+    "state": {
+      "running": "Veikia",
+      "stopped": "Sustabdyta",
+      "error": "Klaida"
+    },
+    "traffic": "{{count}} ryšiai, {{inbound}} įeinant, {{outbound}} išeinant",
+    "toggleFailed": "Nepavyko pakeisti maršruto.",
+    "add": "Pridėti maršrutą"
+  },
+  "certs": {
+    "autoNote": "Let's Encrypt sertifikatai yra prašomi pridedant maršrutą ir atnaujinami automatiškai.",
+    "needsEmail": "Prieš naudodami automatinį sertifikatų generavimą, nustatykite el. pašto adresą Let's Encrypt Reverse Proxy nustatymuose.",
+    "empty": "Sertifikatų dar nėra.",
+    "addSelfSigned": "Saviparaiškas",
+    "addOwn": "Įkelti",
+    "domains": "Sritys",
+    "domainsHint": "Viena ar daugiau sričių, atskirtų tarpais arba kableliais.",
+    "certPem": "Sertifikatas (PEM)",
+    "keyPem": "Privatus raktas (PEM)",
+    "saveFailed": "Nepavyko išsaugoti sertifikato.",
+    "deleteTitle": "Ištrinti sertifikatą sričiai {{name}}?",
+    "deleteDesc": "Pirmiausia reikia pakeisti maršrutus, kurie jo naudoja.",
+    "deleteFailed": "Nepavyko ištrinti sertifikato.",
+    "renew": "Pakartotinai prašyti",
+    "renewStarted": "Prašoma išduoti sertifikatą.",
+    "renewFailed": "Nepavyko pradėti užklausos.",
+    "expires": "Galioja iki {{date}}",
+    "waiting": "Laukiama sertifikato",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "Saviparas",
+      "custom": "Įkeltas"
+    },
+    "status": {
+      "pending": "Laukiama",
+      "ready": "Pasiruošęs",
+      "error": "Problema"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "Tvarkyti atvirkštinio šliuzo maršrutus",
+      "description": "Atidarykite „Reverse Proxy“ skirtuką ir pridėkite maršrutus prie serverių, kuriuos galite redaguoti."
+    },
+    "access": {
+      "title": "Atidaryti apsaugotus maršrutus",
+      "description": "Prisijunkite prie interneto maršrutų, kuriuose prašoma prisijungti prie Termix."
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "HTTP prievadas",
+        "description": "Prievadas, kuriame šis priedas laukia HTTP ryšių. Susiekite jį su viešuoju prievadu 80. Būtina „Let's Encrypt“ veikimui."
+      },
+      "httpsPort": {
+        "label": "HTTPS prievadas",
+        "description": "Prievadas, kuriame šis priedas laukia HTTPS ryšių. Susiekite jį su viešuoju prievadu 443."
+      },
+      "bindHost": {
+        "label": "Klausymo adresas",
+        "description": "Naudokite 0.0.0.0, kad priimtumėte ryšius iš bet kur, arba 127.0.0.1, kad maršrutai liktų vietiniai."
+      },
+      "publicBaseUrl": {
+        "label": "Termix adresas",
+        "description": "Adresas, kurį žmonės naudoja Termix atidaryti, pvz., https://termix.example.com. Reikalingas maršrutams, kurie reikalauja prisijungti prie Termix."
+      },
+      "acmeEmail": {
+        "label": "Sertifikato el. pašto adresas",
+        "description": "Let's Encrypt naudoja jį galiojimo pabaigos pranešimams."
+      },
+      "acmeStaging": {
+        "label": "Naudoti Let's Encrypt testavimo aplinką",
+        "description": "Testavimo sertifikatai, kurių naršyklės nepasitiki. Naudokite nustatymo metu, kad išvengtumėte dažnio limitų."
+      },
+      "cookieHours": {
+        "label": "Prisijungimo trukmė valandomis",
+        "description": "Kaip ilgai lankytojas lieka prisijungęs apsaugotuose maršrutuose."
+      },
+      "acmeDirectoryUrl": {
+        "label": "Nestandartinė sertifikavimo institucija",
+        "description": "Kitos sertifikavimo institucijos ACME katalogo adresas, pvz., privatus step-ca. Palikite tuščią, jei norite naudoti Let's Encrypt."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "Leisti atvirkštinio šliuzo maršrutus",
+        "description": "Šio hosto maršrutai valdomi skirtuke „Atvirkštinis šliuzas“. Išjunkite, jei norite juos sustabdyti."
+      },
+      "targetAddress": {
+        "label": "Tikslinis adresas",
+        "description": "Kur maršrutai nukreipia srautą. Palikite tuščią, jei norite naudoti šio hosto paties adresą. Nustatykite, jei norite pasiekti konteinerį ar kitą kompiuterį."
+      },
+      "defaultAccess": {
+        "label": "Numatytasis prisijungimas naujiems interneto maršrutams",
+        "description": "Kuo prasideda nauji šio hosto interneto maršrutai.",
+        "none": "Visi",
+        "user": "Prisijungę Termix vartotojai",
+        "host": "Vartotojai, turintys prieigą prie šio hosto"
+      }
+    }
+  },
+  "editor": {
+    "traffic": "{{inbound}} į, {{outbound}} iš"
+  }
+}

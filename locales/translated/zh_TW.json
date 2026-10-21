@@ -1,0 +1,200 @@
+{
+  "plugin": {
+    "name": "反向代理",
+    "description": "支援 TCP、UDP、HTTP 與 HTTPS 的反向代理，提供免費憑證與 Termix 登入功能，並可針對每個主機個別管理。"
+  },
+  "common": {
+    "save": "儲存",
+    "cancel": "取消",
+    "delete": "刪除",
+    "edit": "編輯"
+  },
+  "tab": {
+    "title": "反向代理",
+    "error": "無法載入反向代理。",
+    "notListening": "已關閉",
+    "viewRoutes": "路由",
+    "viewCerts": "憑證",
+    "needsBaseUrl": "部分路由需要 Termix 登入，但未設定 Termix 位址。請在反向代理設定中設定，否則這些路由將無法開啟。",
+    "status": "{{running}} / {{total}} 個正在執行",
+    "refresh": "重新整理",
+    "search": "搜尋路由",
+    "filterAll": "全部",
+    "ports": "正在監聽 HTTP {{http}} 與 HTTPS {{https}}。",
+    "noHost": "請從主機開啟反向代理。",
+    "hostOff": "此主機的反向代理已在設定中關閉。現有路由已暫停。"
+  },
+  "form": {
+    "saveFailed": "無法儲存路由。",
+    "editTitle": "編輯路由",
+    "addTitle": "新增路由",
+    "name": "名稱",
+    "namePlaceholder": "首頁維基",
+    "type": "類型",
+    "typeHttp": "網頁 (HTTP 與 HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "網域",
+    "domainHint": "將此網域的 DNS 指向此伺服器。使用萬用字元（如 *.example.com）可進行路由。",
+    "publicPort": "公開埠號",
+    "publicPortHint": "此伺服器監聽的埠號。請在您的 Docker 設定中也將其公開。",
+    "targetAddress": "目標位址",
+    "targetAddressPlaceholder": "主機位址",
+    "targetAddressHint": "留空則使用此主機自身的位址。",
+    "targetPort": "目標埠號",
+    "certificate": "憑證",
+    "certAcme": "Let's Encrypt（自動）",
+    "certSelfSigned": "自簽名",
+    "certCustom": "自訂憑證",
+    "certOff": "無（純 HTTP）",
+    "certHint": {
+      "acme": "系統會為您申請並更新免費憑證。埠號 80 必須能連到此外掛程式的 HTTP 埠號。",
+      "selfsigned": "瀏覽器會顯示警告。適合私人使用。",
+      "custom": "請先在憑證視圖中新增您的憑證。",
+      "off": "訪客將以未加密的方式連線。"
+    },
+    "pickCertificate": "憑證",
+    "pickCertificatePlaceholder": "選擇憑證",
+    "forceHttps": "強制將 HTTP 重新導向至 HTTPS",
+    "forceHttpsDesc": "使用純 HTTP 的訪客將被導向至安全位址。",
+    "access": "存取權限",
+    "accessNone": "任何人",
+    "accessUser": "已登入的 Termix 使用者",
+    "accessHost": "有權存取此主機的使用者",
+    "accessHint": {
+      "none": "此路由前方無需登入。",
+      "user": "訪客需先使用 Termix 登入。",
+      "host": "訪客需使用 Termix 登入，且必須能連線至此主機。"
+    },
+    "targetHttps": "目標使用 HTTPS",
+    "targetHttpsDesc": "使用 TLS 連線至目標。",
+    "insecureTarget": "信任任何目標憑證",
+    "insecureTargetDesc": "跳過目標的憑證檢查。適用於自簽名服務。",
+    "preserveHost": "保留原始 Host 標頭",
+    "preserveHostDesc": "將訪客的網域發送至目標，而非目標位址。",
+    "httpsPublicPort": "公開 HTTPS 連接埠",
+    "httpsPublicPortHint": "僅當訪客透過非 443 連接埠存取 HTTPS 時才需設定。用於重新導向。0 表示 443。",
+    "headers": "額外請求標頭",
+    "headersHint": "每行一個，格式為 名稱: 值。將發送至目標。",
+    "allowIps": "僅允許這些位址",
+    "allowIpsHint": "IP 或範圍，每行一個。留空表示允許所有人。",
+    "denyIps": "封鎖這些位址",
+    "idleSeconds": "閒置逾時秒數",
+    "idleSecondsHint": "在此時間後關閉閒置連線。0 表示使用預設值。",
+    "enabled": "已啟用"
+  },
+  "list": {
+    "empty": "沒有符合的路由。請使用「新增路由」按鈕新增一個。",
+    "deleteTitle": "刪除 {{name}}？",
+    "deleteDesc": "路由將立即停止。憑證將保留。",
+    "deleteFailed": "無法刪除路由。",
+    "hostAddress": "主機",
+    "disabled": "關閉",
+    "protected": "登入",
+    "state": {
+      "running": "執行中",
+      "stopped": "已停止",
+      "error": "問題"
+    },
+    "traffic": "{{count}} 個連線，{{inbound}} 入站，{{outbound}} 出站",
+    "toggleFailed": "無法變更路由。",
+    "add": "新增路由"
+  },
+  "certs": {
+    "autoNote": "新增路由時會自動請求 Let's Encrypt 憑證，並自動續期。",
+    "needsEmail": "在使用自動憑證之前，請先在反向代理設定中設定 Let's Encrypt 的電子郵件。",
+    "empty": "尚無憑證。",
+    "addSelfSigned": "自簽名",
+    "addOwn": "上傳",
+    "domains": "網域",
+    "domainsHint": "一個或多個網域，以空格或逗號分隔。",
+    "certPem": "憑證 (PEM)",
+    "keyPem": "私密金鑰 (PEM)",
+    "saveFailed": "無法儲存憑證。",
+    "deleteTitle": "刪除 {{name}} 的憑證？",
+    "deleteDesc": "使用此憑證的路由必須先進行變更。",
+    "deleteFailed": "無法刪除憑證。",
+    "renew": "再次請求",
+    "renewStarted": "正在請求憑證。",
+    "renewFailed": "無法啟動請求。",
+    "expires": "過期日期：{{date}}",
+    "waiting": "等待憑證",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "自簽名",
+      "custom": "已上傳"
+    },
+    "status": {
+      "pending": "處理中",
+      "ready": "就緒",
+      "error": "問題"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "管理反向代理路由",
+      "description": "開啟反向代理分頁，並為您可編輯的主機新增路由。"
+    },
+    "access": {
+      "title": "開啟受保護的路由",
+      "description": "登入要求 Termix 登入的網頁路由。"
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "HTTP 連接埠",
+        "description": "此插件監聽 HTTP 的連接埠。將您的公開連接埠 80 對應至此。Let's Encrypt 需要此設定。"
+      },
+      "httpsPort": {
+        "label": "HTTPS 連接埠",
+        "description": "此插件監聽 HTTPS 的連接埠。將您的公開連接埠 443 對應至此。"
+      },
+      "bindHost": {
+        "label": "監聽位址",
+        "description": "使用 0.0.0.0 接受來自任何地方的連線，或使用 127.0.0.1 將路由限制在本機。"
+      },
+      "publicBaseUrl": {
+        "label": "Termix 位址",
+        "description": "使用者開啟 Termix 所使用的網址，例如 https://termix.example.com。需要用於要求 Termix 登入的路由。"
+      },
+      "acmeEmail": {
+        "label": "憑證電子郵件",
+        "description": "Let's Encrypt 會使用此地址發送到期通知。"
+      },
+      "acmeStaging": {
+        "label": "使用 Let's Encrypt 測試環境",
+        "description": "瀏覽器不信任的測試憑證。在設定期間使用以避免觸發速率限制。"
+      },
+      "cookieHours": {
+        "label": "登入有效時長（小時）",
+        "description": "訪客在受保護的路由上保持登入狀態的時長。"
+      },
+      "acmeDirectoryUrl": {
+        "label": "自訂憑證授權單位",
+        "description": "其他 CA（例如私人 step-ca）的 ACME 目錄地址。留空則使用 Let's Encrypt。"
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "允許反向代理路由",
+        "description": "此主機的路由在「反向代理」分頁中管理。關閉此選項將停止這些路由。"
+      },
+      "targetAddress": {
+        "label": "目標地址",
+        "description": "路由將流量轉發至此地址。留空則使用此主機自身的地址。設定此項可連線至容器或其他機器。"
+      },
+      "defaultAccess": {
+        "label": "新增網頁路由的預設登入方式",
+        "description": "此主機上新增的網頁路由預設使用的登入方式。",
+        "none": "任何人",
+        "user": "已登入的 Termix 使用者",
+        "host": "有權存取此主機的使用者"
+      }
+    }
+  },
+  "editor": {
+    "connections": "{{count}} 個連線",
+    "traffic": "入站 {{inbound}}，出站 {{outbound}}"
+  }
+}

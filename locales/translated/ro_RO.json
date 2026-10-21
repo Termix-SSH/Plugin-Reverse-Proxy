@@ -1,0 +1,200 @@
+{
+  "plugin": {
+    "name": "Proxy invers",
+    "description": "Proxy invers pentru TCP, UDP, HTTP și HTTPS, cu certificate gratuite și autentificare Termix, gestionat pe fiecare gazdă."
+  },
+  "common": {
+    "save": "Salvează",
+    "cancel": "Anulează",
+    "delete": "Șterge",
+    "edit": "Editează"
+  },
+  "tab": {
+    "title": "Proxy invers",
+    "error": "Nu s-a putut încărca proxy-ul invers.",
+    "notListening": "oprit",
+    "viewRoutes": "Rute",
+    "viewCerts": "Certificat",
+    "needsBaseUrl": "Unele rute necesită autentificarea în Termix, dar adresa Termix nu este setată. Setati-o în setările Reverse Proxy, altfel aceste rute nu se pot deschide.",
+    "status": "{{running}} din {{total}} active",
+    "refresh": "Reîmprospătare",
+    "search": "Caută rute",
+    "filterAll": "Toate",
+    "ports": "Ascultă pe HTTP {{http}} și HTTPS {{https}}.",
+    "noHost": "Deschide proxy-ul invers de pe un gazdă.",
+    "hostOff": "Proxy-ul invers este dezactivat pentru această gazdă în setările sale. Rutele existente sunt în pauză."
+  },
+  "form": {
+    "saveFailed": "Nu s-a putut salva ruta.",
+    "editTitle": "Editează ruta",
+    "addTitle": "Adaugă rută",
+    "name": "Nume",
+    "namePlaceholder": "Wiki principal",
+    "type": "Tip",
+    "typeHttp": "Web (HTTP și HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "Domeniu",
+    "domainHint": "Indreaptă DNS-ul acestui domeniu către acest server. Un wildcard precum *.example.com funcționează pentru rutare.",
+    "publicPort": "Port public",
+    "publicPortHint": "Portul pe care acest server ascultă. Publicați-l și în configurația Docker.",
+    "targetAddress": "Adresa țintă",
+    "targetAddressPlaceholder": "Adresa gazdei",
+    "targetAddressHint": "Lăsați gol pentru a folosi adresa proprie a acestei gazde.",
+    "targetPort": "Port țintă",
+    "certificate": "Certificat",
+    "certAcme": "Let's Encrypt (automat)",
+    "certSelfSigned": "Auto-semnat",
+    "certCustom": "Certificatul meu",
+    "certOff": "Niciunul (HTTP simplu)",
+    "certHint": {
+      "acme": "Un certificat gratuit este solicitat și reînnoit automat pentru dumneavoastră. Portul 80 trebuie să aibă acces la portul HTTP al acestui plugin.",
+      "selfsigned": "Navigatoarele vor afișa avertismente. Este acceptabil pentru uz privat.",
+      "custom": "Adăugați mai întâi certificatul în secțiunea Certificate.",
+      "off": "Vizitatorii se conectează fără criptare."
+    },
+    "pickCertificate": "Certificat",
+    "pickCertificatePlaceholder": "Selectați un certificat",
+    "forceHttps": "Redirecționează HTTP către HTTPS",
+    "forceHttpsDesc": "Vizitatorii care folosesc HTTP simplu sunt redirecționați către adresa securizată.",
+    "access": "Cine poate accesa",
+    "accessNone": "Oricine",
+    "accessUser": "Utilizatorii Termix autentificați",
+    "accessHost": "Utilizatorii cu acces la acest host",
+    "accessHint": {
+      "none": "Nicio autentificare nu este necesară pentru această rută.",
+      "user": "Vizitatorii se autentifică mai întâi în Termix.",
+      "host": "Vizitatorii se autentifică în Termix și trebuie să aibă permisiunea de a se conecta la acest host."
+    },
+    "targetHttps": "Ținta folosește HTTPS",
+    "targetHttpsDesc": "Conectează-te la țintă folosind TLS.",
+    "insecureTarget": "Acceptă orice certificat al țintei",
+    "insecureTargetDesc": "Omite verificarea certificatului pentru țintă. Folosește pentru servicii cu certificat auto-semnat.",
+    "preserveHost": "Păstrează antetul Host original",
+    "preserveHostDesc": "Trimite domeniul vizitatorului către destinație în loc de adresa acesteia.",
+    "httpsPublicPort": "Port HTTPS public",
+    "httpsPublicPortHint": "Doar dacă vizitatorii accesează HTTPS pe un port diferit de 443. Folosit pentru redirecționare. 0 înseamnă 443.",
+    "headers": "Antete suplimentare pentru cerere",
+    "headersHint": "Câte unul pe linie, sub forma Nume: valoare. Trimise către destinație.",
+    "allowIps": "Permite doar aceste adrese",
+    "allowIpsHint": "Adrese IP sau intervale, câte unul pe linie. Dacă este gol, permite accesul tuturor.",
+    "denyIps": "Blochează aceste adrese",
+    "idleSeconds": "Timp de așteptare (idle) în secunde",
+    "idleSecondsHint": "Închide o conexiune inactivă după această perioadă. 0 folosește valoarea implicită.",
+    "enabled": "Activat"
+  },
+  "list": {
+    "empty": "Nicio rută nu corespunde. Adaugă una cu butonul Adaugă rută.",
+    "deleteTitle": "Ștergi {{name}}?",
+    "deleteDesc": "Ruta se oprește imediat. Certificatele rămân.",
+    "deleteFailed": "Nu s-a putut șterge ruta.",
+    "hostAddress": "gazdă",
+    "disabled": "Oprit",
+    "protected": "Autentificare",
+    "state": {
+      "running": "În execuție",
+      "stopped": "Oprit",
+      "error": "Problemă"
+    },
+    "traffic": "{{count}} conexiuni, {{inbound}} intrare, {{outbound}} ieșire",
+    "toggleFailed": "Nu s-a putut modifica ruta.",
+    "add": "Adaugă rută"
+  },
+  "certs": {
+    "autoNote": "Certificatele Let's Encrypt sunt solicitate când adaugi o rută și se reînnoiesc automat.",
+    "needsEmail": "Setează o adresă de e-mail pentru Let's Encrypt în setările Reverse Proxy înainte de a folosi certificatele automate.",
+    "empty": "Încă nu există certificate.",
+    "addSelfSigned": "Auto-semnat",
+    "addOwn": "Încarcă",
+    "domains": "Domenii",
+    "domainsHint": "Unul sau mai multe domenii, separate prin spații sau virgule.",
+    "certPem": "Certificat (PEM)",
+    "keyPem": "Cheie privată (PEM)",
+    "saveFailed": "Nu s-a putut salva certificatul.",
+    "deleteTitle": "Ștergeți certificatul pentru {{name}}?",
+    "deleteDesc": "Rutările care îl folosesc trebuie modificate mai întâi.",
+    "deleteFailed": "Nu s-a putut șterge certificatul.",
+    "renew": "Solicită din nou",
+    "renewStarted": "Se solicită certificatul.",
+    "renewFailed": "Nu s-a putut iniția solicitarea.",
+    "expires": "Expiră la {{date}}",
+    "waiting": "Se așteaptă certificatul",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "Auto-semnat",
+      "custom": "Încărcat"
+    },
+    "status": {
+      "pending": "În așteptare",
+      "ready": "Gata",
+      "error": "Problemă"
+    }
+  },
+  "permissions": {
+    "use": {
+      "title": "Gestionează rutele proxy invers",
+      "description": "Deschideți fila Reverse Proxy și adăugați rute către gazde pe care le puteți edita."
+    },
+    "access": {
+      "title": "Deschideți rutele protejate",
+      "description": "Autentificați-vă pe rutele web care necesită o autentificare Termix."
+    }
+  },
+  "settings": {
+    "admin": {
+      "httpPort": {
+        "label": "Port HTTP",
+        "description": "Portul pe care acest plugin ascultă pentru HTTP. Mapati portul public 80 către acesta. Necesitar pentru Let's Encrypt."
+      },
+      "httpsPort": {
+        "label": "Port HTTPS",
+        "description": "Portul pe care acest plugin ascultă pentru HTTPS. Mapati portul public 443 către acesta."
+      },
+      "bindHost": {
+        "label": "Adresă de ascultare",
+        "description": "Folosiți 0.0.0.0 pentru a accepta conexiuni de oriunde, sau 127.0.0.1 pentru a păstra rutele locale."
+      },
+      "publicBaseUrl": {
+        "label": "Adresa Termix",
+        "description": "Adresa pe care o folosesc utilizatorii pentru a deschide Termix, de exemplu https://termix.example.com. Este necesară pentru rutele care necesită autentificarea în Termix."
+      },
+      "acmeEmail": {
+        "label": "Email pentru certificat",
+        "description": "Let's Encrypt îl folosește pentru notificări de expirare."
+      },
+      "acmeStaging": {
+        "label": "Folosește mediul de testare Let's Encrypt",
+        "description": "Certificat de test pe care browserele nu îl consideră de încredere. Folosește-l în timpul configurării pentru a evita limitele de rată."
+      },
+      "cookieHours": {
+        "label": "Durata sesiunii de autentificare (ore)",
+        "description": "Cât timp rămâne un vizitator autentificat pe o rută protejată."
+      },
+      "acmeDirectoryUrl": {
+        "label": "Autoritate de certificare personalizată",
+        "description": "Adresa directorului ACME a unei alte autorități de certificare, cum ar fi un step-ca privat. Lasă gol pentru a folosi Let's Encrypt."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "Permite rutele proxy invers",
+        "description": "Rutele pentru acest gazdă sunt gestionate în fila Proxy Invers. Dezactivează această opțiune pentru a le opri."
+      },
+      "targetAddress": {
+        "label": "Adresa țintă",
+        "description": "Unde trimit traficul rutele. Lasă gol pentru a folosi adresa proprie a acestei gazde. Setează-o pentru a ajunge la un container sau la un alt dispozitiv."
+      },
+      "defaultAccess": {
+        "label": "Autentificare implicită pentru noile rute web",
+        "description": "Ce setare de acces au noile rute web create pe această gazdă.",
+        "none": "Oricine",
+        "user": "Utilizatorii autentificați în Termix",
+        "host": "Utilizatorii cu acces la această gazdă"
+      }
+    }
+  },
+  "editor": {
+    "connections": "{{count}} conexiuni",
+    "traffic": "{{inbound}} intrare, {{outbound}} ieșire"
+  }
+}
