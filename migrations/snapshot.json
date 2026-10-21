@@ -1,11 +1,21 @@
 {
   "version": 1,
   "tables": {
-    "notes": {
+    "routes": {
       "columns": {
         "id": {
           "type": "id",
           "primaryKey": true,
+          "notNull": true
+        },
+        "uid": {
+          "type": "varchar",
+          "length": 36,
+          "notNull": true,
+          "unique": true
+        },
+        "hostId": {
+          "type": "refHost",
           "notNull": true
         },
         "userId": {
@@ -13,9 +23,57 @@
           "length": 255,
           "notNull": true
         },
-        "text": {
-          "type": "text",
+        "name": {
+          "type": "varchar",
+          "length": 120,
           "notNull": true
+        },
+        "kind": {
+          "type": "varchar",
+          "length": 8,
+          "notNull": true
+        },
+        "domain": {
+          "type": "varchar",
+          "length": 255,
+          "notNull": true,
+          "defaultValue": ""
+        },
+        "listenPort": {
+          "type": "integer"
+        },
+        "targetHost": {
+          "type": "varchar",
+          "length": 255,
+          "notNull": true,
+          "defaultValue": ""
+        },
+        "targetPort": {
+          "type": "integer",
+          "notNull": true
+        },
+        "tlsMode": {
+          "type": "varchar",
+          "length": 16,
+          "notNull": true,
+          "defaultValue": "off"
+        },
+        "certId": {
+          "type": "integer"
+        },
+        "authMode": {
+          "type": "varchar",
+          "length": 8,
+          "notNull": true,
+          "defaultValue": "none"
+        },
+        "options": {
+          "type": "text"
+        },
+        "enabled": {
+          "type": "boolean",
+          "notNull": true,
+          "defaultValue": true
         },
         "createdAt": {
           "type": "timestamp",
@@ -25,10 +83,71 @@
       },
       "indexes": [
         {
-          "name": "idx_p_hello_world_notes_user_id",
-          "columns": ["userId"]
+          "name": "idx_p_reverse_proxy_routes_host_id",
+          "columns": [
+            "hostId"
+          ]
+        },
+        {
+          "name": "idx_p_reverse_proxy_routes_domain",
+          "columns": [
+            "domain"
+          ]
         }
       ]
+    },
+    "certs": {
+      "columns": {
+        "id": {
+          "type": "id",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "uid": {
+          "type": "varchar",
+          "length": 36,
+          "notNull": true,
+          "unique": true
+        },
+        "userId": {
+          "type": "refUser",
+          "length": 255,
+          "notNull": true
+        },
+        "domains": {
+          "type": "text",
+          "notNull": true
+        },
+        "source": {
+          "type": "varchar",
+          "length": 12,
+          "notNull": true
+        },
+        "status": {
+          "type": "varchar",
+          "length": 10,
+          "notNull": true,
+          "defaultValue": "pending"
+        },
+        "error": {
+          "type": "text"
+        },
+        "certPem": {
+          "type": "text"
+        },
+        "keySealed": {
+          "type": "text"
+        },
+        "notAfter": {
+          "type": "timestamp"
+        },
+        "createdAt": {
+          "type": "timestamp",
+          "notNull": true,
+          "defaultNow": true
+        }
+      },
+      "indexes": []
     }
   }
 }

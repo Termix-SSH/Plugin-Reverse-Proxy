@@ -1,27 +1,200 @@
 {
   "plugin": {
-    "name": "Hello World",
-    "description": "A minimal Termix plugin: one tab, one route, one setting and one table."
+    "name": "Reverse Proxy",
+    "description": "Reverse proxy for TCP, UDP, HTTP and HTTPS with free certificates and Termix login, managed per host."
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit"
   },
   "tab": {
-    "title": "Hello World",
-    "empty": "No notes yet.",
-    "placeholder": "Write a note",
-    "add": "Add",
-    "error": "Could not load or save notes."
+    "title": "Reverse Proxy",
+    "error": "Could not load the reverse proxy.",
+    "notListening": "off",
+    "viewRoutes": "Routes",
+    "viewCerts": "Certificates",
+    "needsBaseUrl": "Some routes ask for Termix login, but the Termix address is not set. Set it in the Reverse Proxy settings or those routes cannot open.",
+    "status": "{{running}} of {{total}} running",
+    "refresh": "Refresh",
+    "search": "Search routes",
+    "filterAll": "All",
+    "ports": "Listening on HTTP {{http}} and HTTPS {{https}}.",
+    "noHost": "Open the reverse proxy from a host.",
+    "hostOff": "Reverse proxy is turned off for this host in its settings. Existing routes are paused."
+  },
+  "form": {
+    "saveFailed": "Could not save the route.",
+    "editTitle": "Edit route",
+    "addTitle": "Add route",
+    "name": "Name",
+    "namePlaceholder": "Home wiki",
+    "type": "Type",
+    "typeHttp": "Web (HTTP and HTTPS)",
+    "typeTcp": "TCP",
+    "typeUdp": "UDP",
+    "domain": "Domain",
+    "domainHint": "Point this domain's DNS at this server. A wildcard like *.example.com works for routing.",
+    "publicPort": "Public port",
+    "publicPortHint": "The port this server listens on. Publish it in your Docker setup too.",
+    "targetAddress": "Target address",
+    "targetAddressPlaceholder": "Host address",
+    "targetAddressHint": "Leave empty to use this host's own address.",
+    "targetPort": "Target port",
+    "certificate": "Certificate",
+    "certAcme": "Let's Encrypt (automatic)",
+    "certSelfSigned": "Self-signed",
+    "certCustom": "My own certificate",
+    "certOff": "None (plain HTTP)",
+    "certHint": {
+      "acme": "A free certificate is requested and renewed for you. Port 80 must reach the HTTP port of this plugin.",
+      "selfsigned": "Browsers will warn about it. Fine for private use.",
+      "custom": "Add your certificate on the Certificates view first.",
+      "off": "Visitors connect without encryption."
+    },
+    "pickCertificate": "Certificate",
+    "pickCertificatePlaceholder": "Pick a certificate",
+    "forceHttps": "Redirect HTTP to HTTPS",
+    "forceHttpsDesc": "Visitors on plain HTTP are sent to the secure address.",
+    "access": "Who can open it",
+    "accessNone": "Anyone",
+    "accessUser": "Signed-in Termix users",
+    "accessHost": "Users with access to this host",
+    "accessHint": {
+      "none": "No login in front of this route.",
+      "user": "Visitors sign in with Termix first.",
+      "host": "Visitors sign in with Termix and must be able to connect to this host."
+    },
+    "targetHttps": "Target uses HTTPS",
+    "targetHttpsDesc": "Connect to the target with TLS.",
+    "insecureTarget": "Trust any target certificate",
+    "insecureTargetDesc": "Skip certificate checks on the target. Use for self-signed services.",
+    "preserveHost": "Keep the original Host header",
+    "preserveHostDesc": "Send the visitor's domain to the target instead of the target address.",
+    "httpsPublicPort": "Public HTTPS port",
+    "httpsPublicPortHint": "Only if visitors reach HTTPS on a port other than 443. Used for the redirect. 0 means 443.",
+    "headers": "Extra request headers",
+    "headersHint": "One per line as Name: value. Sent to the target.",
+    "allowIps": "Allow only these addresses",
+    "allowIpsHint": "IPs or ranges, one per line. Empty allows everyone.",
+    "denyIps": "Block these addresses",
+    "idleSeconds": "Idle timeout in seconds",
+    "idleSecondsHint": "Close a quiet connection after this long. 0 uses the default.",
+    "enabled": "Enabled"
+  },
+  "list": {
+    "empty": "No routes match. Add one with the Add route button.",
+    "deleteTitle": "Delete {{name}}?",
+    "deleteDesc": "The route stops right away. Certificates stay.",
+    "deleteFailed": "Could not delete the route.",
+    "hostAddress": "host",
+    "disabled": "Off",
+    "protected": "Login",
+    "state": {
+      "running": "Running",
+      "stopped": "Stopped",
+      "error": "Problem"
+    },
+    "traffic": "{{count}} connections, {{inbound}} in, {{outbound}} out",
+    "toggleFailed": "Could not change the route.",
+    "add": "Add route"
+  },
+  "certs": {
+    "autoNote": "Let's Encrypt certificates are requested when you add a route and renew on their own.",
+    "needsEmail": "Set an email for Let's Encrypt in the Reverse Proxy settings before using automatic certificates.",
+    "empty": "No certificates yet.",
+    "addSelfSigned": "Self-signed",
+    "addOwn": "Upload",
+    "domains": "Domains",
+    "domainsHint": "One or more domains, separated by spaces or commas.",
+    "certPem": "Certificate (PEM)",
+    "keyPem": "Private key (PEM)",
+    "saveFailed": "Could not save the certificate.",
+    "deleteTitle": "Delete the certificate for {{name}}?",
+    "deleteDesc": "Routes that use it must be changed first.",
+    "deleteFailed": "Could not delete the certificate.",
+    "renew": "Request again",
+    "renewStarted": "Requesting the certificate.",
+    "renewFailed": "Could not start the request.",
+    "expires": "Expires {{date}}",
+    "waiting": "Waiting for the certificate",
+    "source": {
+      "acme": "Let's Encrypt",
+      "selfsigned": "Self-signed",
+      "custom": "Uploaded"
+    },
+    "status": {
+      "pending": "Pending",
+      "ready": "Ready",
+      "error": "Problem"
+    }
   },
   "permissions": {
     "use": {
-      "title": "Use Hello World",
-      "description": "Open the Hello World tab and keep notes in it."
+      "title": "Manage reverse proxy routes",
+      "description": "Open the Reverse Proxy tab and add routes to hosts you can edit."
+    },
+    "access": {
+      "title": "Open protected routes",
+      "description": "Sign in to web routes that ask for a Termix login."
     }
   },
   "settings": {
     "admin": {
-      "greeting": {
-        "label": "Greeting",
-        "description": "Shown at the top of the Hello World tab."
+      "httpPort": {
+        "label": "HTTP port",
+        "description": "The port this plugin listens on for HTTP. Map your public port 80 to it. Needed for Let's Encrypt."
+      },
+      "httpsPort": {
+        "label": "HTTPS port",
+        "description": "The port this plugin listens on for HTTPS. Map your public port 443 to it."
+      },
+      "bindHost": {
+        "label": "Listen address",
+        "description": "Use 0.0.0.0 to accept connections from anywhere, or 127.0.0.1 to keep routes local."
+      },
+      "publicBaseUrl": {
+        "label": "Termix address",
+        "description": "The address people use to open Termix, like https://termix.example.com. Needed for routes that ask for Termix login."
+      },
+      "acmeEmail": {
+        "label": "Certificate email",
+        "description": "Let's Encrypt uses it for expiry notices."
+      },
+      "acmeStaging": {
+        "label": "Use Let's Encrypt staging",
+        "description": "Test certificates that browsers do not trust. Use while setting up to avoid rate limits."
+      },
+      "cookieHours": {
+        "label": "Login length in hours",
+        "description": "How long a visitor stays signed in on a protected route."
+      },
+      "acmeDirectoryUrl": {
+        "label": "Custom certificate authority",
+        "description": "The ACME directory address of another CA, like a private step-ca. Leave empty to use Let's Encrypt."
+      }
+    },
+    "host": {
+      "enable": {
+        "label": "Allow reverse proxy routes",
+        "description": "Routes for this host are managed in the Reverse Proxy tab. Turn this off to stop them."
+      },
+      "targetAddress": {
+        "label": "Target address",
+        "description": "Where routes send traffic. Leave empty to use this host's own address. Set it to reach a container or another machine."
+      },
+      "defaultAccess": {
+        "label": "Default login for new web routes",
+        "description": "What new web routes on this host start with.",
+        "none": "Anyone",
+        "user": "Signed-in Termix users",
+        "host": "Users with access to this host"
       }
     }
+  },
+  "editor": {
+    "connections": "{{count}} connections",
+    "traffic": "{{inbound}} in, {{outbound}} out"
   }
 }
