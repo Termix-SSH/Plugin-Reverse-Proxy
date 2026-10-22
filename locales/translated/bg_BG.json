@@ -194,6 +194,15 @@
     }
   },
   "editor": {
+    "connections": "{{count}} връзки",
     "traffic": "{{inbound}} входящ, {{outbound}} изходящ"
+  },
+  "card": {
+    "title": "Обратен прокси",
+    "summary": "{{running}} от {{total}} маршрута работят",
+    "failed": "Неуспешно зареждане на прокси сървъра.",
+    "loading": "Зареждане...",
+    "daysLeft_one": "{{count}} ден остава",
+    "daysLeft_other": "{{count}} дни остават"
   }
 }

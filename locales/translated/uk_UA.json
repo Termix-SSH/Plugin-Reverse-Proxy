@@ -194,6 +194,17 @@
     }
   },
   "editor": {
+    "connections": "{{count}} з'єднань",
     "traffic": "{{inbound}} вхід, {{outbound}} вихід"
+  },
+  "card": {
+    "title": "Зворотній проксі",
+    "summary": "{{running}} з {{total}} маршрутів активних",
+    "failed": "Не вдалося завантажити проксі.",
+    "loading": "Завантаження...",
+    "daysLeft_one": "{{count}} день залишився",
+    "daysLeft_few": "{{count}} дні залишилися",
+    "daysLeft_many": "{{count}} днів залишилося",
+    "daysLeft_other": "{{count}} днів залишилося"
   }
 }

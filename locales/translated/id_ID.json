@@ -196,5 +196,12 @@
   "editor": {
     "connections": "Koneksi {{count}}",
     "traffic": "{{inbound}} masuk, {{outbound}} keluar"
+  },
+  "card": {
+    "title": "Proxy terbalik",
+    "summary": "{{running}} dari {{total}} rute berjalan",
+    "failed": "Gagal memuat proxy.",
+    "loading": "Memuat...",
+    "daysLeft_other": "{{count}} hari tersisa"
   }
 }

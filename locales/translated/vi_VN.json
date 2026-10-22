@@ -196,5 +196,12 @@
   "editor": {
     "connections": "{{count}} kết nối",
     "traffic": "{{inbound}} vào, {{outbound}} ra"
+  },
+  "card": {
+    "title": "Proxy ngược",
+    "summary": "{{running}} trong số {{total}} tuyến đường đang hoạt động",
+    "failed": "Không thể tải proxy.",
+    "loading": "Đang tải...",
+    "daysLeft_other": "{{count}} ngày còn lại"
   }
 }

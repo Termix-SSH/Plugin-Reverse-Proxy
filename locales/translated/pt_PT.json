@@ -196,5 +196,14 @@
   "editor": {
     "connections": "{{count}} ligações",
     "traffic": "{{inbound}} de entrada, {{outbound}} de saída"
+  },
+  "card": {
+    "title": "Proxy reverso",
+    "summary": "{{running}} de {{total}} rotas em execução",
+    "failed": "Não foi possível carregar o proxy.",
+    "loading": "A carregar...",
+    "daysLeft_one": "{{count}} dia restante",
+    "daysLeft_many": "{{count}} dias restantes",
+    "daysLeft_other": "{{count}} dias restantes"
   }
 }

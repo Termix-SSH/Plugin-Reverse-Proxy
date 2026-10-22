@@ -137,5 +137,11 @@
   "settings.host.defaultAccess.none": "9b5641a96c41",
   "settings.host.defaultAccess.user": "1f09fcebf1fb",
   "settings.host.defaultAccess.host": "1534e639210e",
-  "editor.traffic": "38e381b0dcde"
+  "editor.connections": "c9984976e961",
+  "editor.traffic": "38e381b0dcde",
+  "card.title": "0f84a78a9069",
+  "card.summary": "2d0dc202de5b",
+  "card.failed": "951b02993829",
+  "card.loading": "b04ba49f8486",
+  "card.daysLeft": "e4aafc677ced"
 }

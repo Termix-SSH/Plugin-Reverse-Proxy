@@ -194,6 +194,16 @@
     }
   },
   "editor": {
+    "connections": "{{count}} connexions",
     "traffic": "{{inbound}} d'entrada, {{outbound}} de sortida"
+  },
+  "card": {
+    "title": "Proxy invers",
+    "summary": "{{running}} de {{total}} rutes actives",
+    "failed": "No s'ha pogut carregar el proxy.",
+    "loading": "S'està carregant...",
+    "daysLeft_one": "{{count}} dia restant",
+    "daysLeft_many": "{{count}} dies restants",
+    "daysLeft_other": "{{count}} dies restants"
   }
 }

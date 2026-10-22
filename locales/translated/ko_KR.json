@@ -196,5 +196,12 @@
   "editor": {
     "connections": "{{count}}개 연결",
     "traffic": "{{inbound}} 수신, {{outbound}} 전송"
+  },
+  "card": {
+    "title": "리버스 프록시",
+    "summary": "{{total}}개 중 {{running}}개 라우트 실행 중",
+    "failed": "프록시를 로드할 수 없습니다.",
+    "loading": "로딩 중...",
+    "daysLeft_other": "{{count}}일 남음"
   }
 }

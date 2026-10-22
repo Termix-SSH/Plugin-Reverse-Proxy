@@ -194,6 +194,15 @@
     }
   },
   "editor": {
+    "connections": "{{count}} कनेक्शन",
     "traffic": "{{inbound}} आयात, {{outbound}} निर्यात"
+  },
+  "card": {
+    "title": "रिवर्स प्रॉक्सी",
+    "summary": "{{total}} में से {{running}} रूट चल रहे हैं",
+    "failed": "प्रॉक्सी लोड नहीं हो सका।",
+    "loading": "लोड हो रहा है...",
+    "daysLeft_one": "{{count}} दिन बाकी है",
+    "daysLeft_other": "{{count}} दिन बाकी हैं"
   }
 }

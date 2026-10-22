@@ -194,6 +194,15 @@
     }
   },
   "editor": {
+    "connections": "{{count}} verbindingen",
     "traffic": "{{inbound}} binnen, {{outbound}} buiten"
+  },
+  "card": {
+    "title": "Reverse proxy",
+    "summary": "{{running}} van {{total}} routes actief",
+    "failed": "De proxy kan niet worden geladen.",
+    "loading": "Laden...",
+    "daysLeft_one": "{{count}} dag resterend",
+    "daysLeft_other": "{{count}} dagen resterend"
   }
 }

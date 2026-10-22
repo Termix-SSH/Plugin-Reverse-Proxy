@@ -194,6 +194,15 @@
     }
   },
   "editor": {
+    "connections": "{{count}} kapcsolat",
     "traffic": "{{inbound}} be, {{outbound}} ki"
+  },
+  "card": {
+    "title": "Fordított proxy",
+    "summary": "{{running}}/{{total}} útvonal fut",
+    "failed": "A proxy betöltése sikertelen.",
+    "loading": "Betöltés...",
+    "daysLeft_one": "{{count}} nap van hátra",
+    "daysLeft_other": "{{count}} nap van hátra"
   }
 }

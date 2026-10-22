@@ -196,5 +196,15 @@
   "editor": {
     "connections": "1 povezava|2 povezavi|3 povezave|{{count}} povezav",
     "traffic": "{{inbound}} v, {{outbound}} iz"
+  },
+  "card": {
+    "title": "Obratni proxy",
+    "summary": "{{running}} od {{total}} poti deluje",
+    "failed": "Proxyja ni bilo mogoče naložiti.",
+    "loading": "Nalaganje...",
+    "daysLeft_one": "{{count}} dan preostanek",
+    "daysLeft_two": "{{count}} dneva preostanek",
+    "daysLeft_few": "{{count}} dnevi preostanek",
+    "daysLeft_other": "{{count}} dni preostanek"
   }
 }

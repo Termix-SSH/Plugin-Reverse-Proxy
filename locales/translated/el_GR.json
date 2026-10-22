@@ -196,5 +196,13 @@
   "editor": {
     "connections": "Συνδέσεις: {{count}}",
     "traffic": "{{inbound}} εισερχόμενα, {{outbound}} εξερχόμενα"
+  },
+  "card": {
+    "title": "Αντίστροφος διακομιστής μεσολάβησης",
+    "summary": "{{running}} από {{total}} διαδρομές ενεργές",
+    "failed": "Αδυναμία φόρτωσης του διακομιστή μεσολάβησης.",
+    "loading": "Φόρτωση...",
+    "daysLeft_one": "{{count}} ημέρα απομένει",
+    "daysLeft_other": "{{count}} ημέρες απομένουν"
   }
 }

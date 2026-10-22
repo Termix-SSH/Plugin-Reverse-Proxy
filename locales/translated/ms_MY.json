@@ -196,5 +196,12 @@
   "editor": {
     "connections": "{{count}} sambungan",
     "traffic": "{{inbound}} masuk, {{outbound}} keluar"
+  },
+  "card": {
+    "title": "Pelayan songsang",
+    "summary": "{{running}} daripada {{total}} laluan sedang berjalan",
+    "failed": "Tidak dapat memuatkan pelayan songsang.",
+    "loading": "Memuatkan...",
+    "daysLeft_other": "{{count}} hari lagi"
   }
 }

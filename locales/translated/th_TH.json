@@ -196,5 +196,12 @@
   "editor": {
     "connections": "การเชื่อมต่อ {{count}} รายการ",
     "traffic": "{{inbound}} เข้า, {{outbound}} ออก"
+  },
+  "card": {
+    "title": "Reverse proxy",
+    "summary": "เส้นทาง {{running}} จาก {{total}} เส้นทางกำลังทำงาน",
+    "failed": "ไม่สามารถโหลดพร็อกซีได้",
+    "loading": "กำลังโหลด...",
+    "daysLeft_other": "เหลือ {{count}} วัน"
   }
 }

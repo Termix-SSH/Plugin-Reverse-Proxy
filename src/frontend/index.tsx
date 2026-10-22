@@ -2,6 +2,7 @@ import { Waypoints } from "lucide-react";
 import type { TermixApp } from "@termix-ssh/plugin-sdk/frontend";
 import { initApi } from "./api";
 import { ProxyTab } from "./ProxyTab";
+import { ProxyCard } from "./ProxyCard";
 
 const TAB_ID = "reverse-proxy";
 
@@ -35,5 +36,14 @@ export function activate(app: TermixApp): void {
     order: 45,
     tabType: TAB_ID,
     when: (host) => canUse && proxyEnabled(host),
+  });
+
+  app.registerDashboardCard({
+    id: "reverse-proxy",
+    titleKey: "card.title",
+    defaultPanel: "side",
+    defaultHeight: 220,
+    frame: "framed",
+    component: ProxyCard,
   });
 }

@@ -196,5 +196,12 @@
   "editor": {
     "connections": "{{count}} 个连接",
     "traffic": "入站 {{inbound}}，出站 {{outbound}}"
+  },
+  "card": {
+    "title": "反向代理",
+    "summary": "{{running}} / {{total}} 条路由正在运行",
+    "failed": "无法加载代理。",
+    "loading": "加载中...",
+    "daysLeft_other": "剩余 {{count}} 天"
   }
 }

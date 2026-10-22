@@ -194,6 +194,15 @@
     }
   },
   "editor": {
+    "connections": "{{count}} সংযোগ",
     "traffic": "{{inbound}} ইন, {{outbound}} আউট"
+  },
+  "card": {
+    "title": "রিভার্স প্রক্সি",
+    "summary": "{{total}} রুটের মধ্যে {{running}}টি চলছে",
+    "failed": "প্রক্সি লোড করা যায়নি।",
+    "loading": "লোড হচ্ছে...",
+    "daysLeft_one": "{{count}} দিন বাকি",
+    "daysLeft_other": "{{count}} দিন বাকি"
   }
 }

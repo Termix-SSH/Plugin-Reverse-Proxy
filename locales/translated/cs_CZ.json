@@ -196,5 +196,15 @@
   "editor": {
     "connections": "1 spojení, 2–4 spojení, 5+ spojení, {{count}} spojení",
     "traffic": "{{inbound}} ve, {{outbound}} ze"
+  },
+  "card": {
+    "title": "Obrácený proxy",
+    "summary": "{{running}} z {{total}} tras běží",
+    "failed": "Nelze načíst proxy.",
+    "loading": "Načítání...",
+    "daysLeft_one": "{{count}} den zbývá",
+    "daysLeft_few": "{{count}} dny zbývají",
+    "daysLeft_many": "{{count}} dní zbývá",
+    "daysLeft_other": "{{count}} dní zbývá"
   }
 }

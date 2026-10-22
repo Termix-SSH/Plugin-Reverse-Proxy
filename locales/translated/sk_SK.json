@@ -194,6 +194,17 @@
     }
   },
   "editor": {
+    "connections": "{{count}} pripojení",
     "traffic": "{{inbound}} dovnútra, {{outbound}} von"
+  },
+  "card": {
+    "title": "Reverzný proxy",
+    "summary": "{{running}} z {{total}} trás beží",
+    "failed": "Nepodarilo sa načítať proxy.",
+    "loading": "Načítava sa...",
+    "daysLeft_one": "{{count}} deň do uplynutia",
+    "daysLeft_few": "{{count}} dni do uplynutia",
+    "daysLeft_many": "{{count}} dní do uplynutia",
+    "daysLeft_other": "{{count}} dní do uplynutia"
   }
 }

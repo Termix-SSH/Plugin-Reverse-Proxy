@@ -194,6 +194,16 @@
     }
   },
   "editor": {
+    "connections": "{{count}} веза",
     "traffic": "{{inbound}} улаз, {{outbound}} излаз"
+  },
+  "card": {
+    "title": "Реверзни прокси",
+    "summary": "{{running}} од {{total}} рута је активно",
+    "failed": "Није могуће учитати прокси.",
+    "loading": "Учитавање...",
+    "daysLeft_one": "Остала је {{count}} дан",
+    "daysLeft_few": "Остало је {{count}} дана",
+    "daysLeft_other": "Остало је {{count}} дана"
   }
 }

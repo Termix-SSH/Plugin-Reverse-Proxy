@@ -194,6 +194,15 @@
     }
   },
   "editor": {
+    "connections": "{{count}} forbindelser",
     "traffic": "{{inbound}} ind, {{outbound}} ud"
+  },
+  "card": {
+    "title": "Omvendt proxy",
+    "summary": "{{running}} af {{total}} ruter kører",
+    "failed": "Kunne ikke indlæse proxyen.",
+    "loading": "Indlæser...",
+    "daysLeft_one": "{{count}} dag tilbage",
+    "daysLeft_other": "{{count}} dage tilbage"
   }
 }

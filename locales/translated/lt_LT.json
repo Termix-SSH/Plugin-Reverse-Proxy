@@ -194,6 +194,17 @@
     }
   },
   "editor": {
+    "connections": "{{count}} ryšiai",
     "traffic": "{{inbound}} į, {{outbound}} iš"
+  },
+  "card": {
+    "title": "Atvirkštinis šliuzas",
+    "summary": "Veikia {{running}} iš {{total}} maršrutų",
+    "failed": "Nepavyko įkelti šliuzo.",
+    "loading": "Įkeliamas...",
+    "daysLeft_one": "Liko {{count}} diena",
+    "daysLeft_few": "Liko {{count}} dienos",
+    "daysLeft_many": "Liko {{count}} dienų",
+    "daysLeft_other": "Liko {{count}} dienų"
   }
 }

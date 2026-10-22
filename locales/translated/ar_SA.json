@@ -196,5 +196,17 @@
   "editor": {
     "connections": "اتصال {{count}}",
     "traffic": "{{inbound}} داخلي، {{outbound}} خارجي"
+  },
+  "card": {
+    "title": "الوكيل العكسي",
+    "summary": "{{running}} من {{total}} مسارات نشطة",
+    "failed": "تعذر تحميل الوكيل.",
+    "loading": "جارٍ التحميل...",
+    "daysLeft_zero": "لا توجد أيام متبقية",
+    "daysLeft_one": "يوم واحد متبقي",
+    "daysLeft_two": "يومان متبقيان",
+    "daysLeft_few": "{{count}} أيام متبقية",
+    "daysLeft_many": "{{count}} يومًا متبقيًا",
+    "daysLeft_other": "{{count}} أيام متبقية"
   }
 }

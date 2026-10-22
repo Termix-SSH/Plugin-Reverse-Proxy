@@ -194,6 +194,15 @@
     }
   },
   "editor": {
+    "connections": "{{count}} anslutningar",
     "traffic": "{{inbound}} in, {{outbound}} ut"
+  },
+  "card": {
+    "title": "Omvänd proxy",
+    "summary": "{{running}} av {{total}} rutor aktiva",
+    "failed": "Kunde inte ladda proxyn.",
+    "loading": "Laddar...",
+    "daysLeft_one": "{{count}} dag kvar",
+    "daysLeft_other": "{{count}} dagar kvar"
   }
 }

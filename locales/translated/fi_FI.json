@@ -194,6 +194,15 @@
     }
   },
   "editor": {
+    "connections": "{{count}} yhteyttä",
     "traffic": "{{inbound}} sisään, {{outbound}} ulos"
+  },
+  "card": {
+    "title": "Käänteinen välityspalvelin",
+    "summary": "{{running}}/{{total}} reittiä aktiivisena",
+    "failed": "Välityspalvelinta ei voitu ladata.",
+    "loading": "Ladataan...",
+    "daysLeft_one": "{{count}} päivää jäljellä",
+    "daysLeft_other": "{{count}} päivää jäljellä"
   }
 }

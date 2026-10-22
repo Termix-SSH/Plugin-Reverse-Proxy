@@ -196,5 +196,13 @@
   "editor": {
     "connections": "{{count}} bağlantı",
     "traffic": "{{inbound}} giren, {{outbound}} giden"
+  },
+  "card": {
+    "title": "Ters proxy",
+    "summary": "{{total}} rotadan {{running}}'ı çalışıyor",
+    "failed": "Proxy yüklenemedi.",
+    "loading": "Yükleniyor...",
+    "daysLeft_one": "{{count}} gün kaldı",
+    "daysLeft_other": "{{count}} gün kaldı"
   }
 }

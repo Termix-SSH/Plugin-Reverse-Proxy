@@ -1,7 +1,7 @@
 {
   "id": "reverse-proxy",
   "name": "Reverse Proxy",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Reverse proxy for TCP, UDP, HTTP and HTTPS with free certificates and Termix login, managed per host.",
   "author": {
     "name": "Termix"
@@ -17,7 +17,8 @@
     "Free Let's Encrypt certificates that renew on their own, plus self-signed and uploaded certificates",
     "Optional Termix login in front of any web route",
     "WebSocket support, forced HTTPS, custom headers and IP allow and deny lists",
-    "One overview of every route, its status and its certificate"
+    "One overview of every route, its status and its certificate",
+    "A dashboard card with routes that are down and certificates by expiry"
   ],
   "env": [],
   "engine": {
@@ -163,7 +164,14 @@
           }
         ]
       }
-    }
+    },
+    "dashboardCards": [
+      {
+        "id": "reverse-proxy",
+        "titleKey": "card.title",
+        "icon": "Waypoints"
+      }
+    ]
   },
   "locales": "locales",
   "platforms": ["linux", "win32", "darwin"]

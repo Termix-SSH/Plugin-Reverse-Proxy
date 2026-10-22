@@ -194,6 +194,17 @@
     }
   },
   "editor": {
+    "connections": "{{count}} подключений",
     "traffic": "{{inbound}} входящих, {{outbound}} исходящих"
+  },
+  "card": {
+    "title": "Обратный прокси",
+    "summary": "{{running}} из {{total}} маршрутов активны",
+    "failed": "Не удалось загрузить прокси.",
+    "loading": "Загрузка...",
+    "daysLeft_one": "{{count}} день осталось",
+    "daysLeft_few": "{{count}} дня осталось",
+    "daysLeft_many": "{{count}} дней осталось",
+    "daysLeft_other": "{{count}} дней осталось"
   }
 }

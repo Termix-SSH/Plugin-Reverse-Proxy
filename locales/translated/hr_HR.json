@@ -194,6 +194,16 @@
     }
   },
   "editor": {
+    "connections": "{{count}} veza",
     "traffic": "{{inbound}} ulazno, {{outbound}} izlazno"
+  },
+  "card": {
+    "title": "Obrnuti proxy",
+    "summary": "{{running}} od {{total}} ruta aktivno",
+    "failed": "Nije moguće učitati proxy.",
+    "loading": "Učitavanje...",
+    "daysLeft_one": "Preostao je {{count}} dan",
+    "daysLeft_few": "Preostala su {{count}} dana",
+    "daysLeft_other": "Preostalo je {{count}} dana"
   }
 }

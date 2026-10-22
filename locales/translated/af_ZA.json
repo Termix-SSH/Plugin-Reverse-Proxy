@@ -194,6 +194,15 @@
     }
   },
   "editor": {
+    "connections": "{{count}} verbindings",
     "traffic": "{{inbound}} in, {{outbound}} uit"
+  },
+  "card": {
+    "title": "Omgekeerde proxy",
+    "summary": "{{running}} van {{total}} roetes aktief",
+    "failed": "Kon nie die proxy laai nie.",
+    "loading": "Laai tans...",
+    "daysLeft_one": "{{count}} dag oor",
+    "daysLeft_other": "{{count}} dae oor"
   }
 }

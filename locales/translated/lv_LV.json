@@ -196,5 +196,14 @@
   "editor": {
     "connections": "Savienojumi: {{count}}",
     "traffic": "{{inbound}} ienākošs, {{outbound}} izejošs"
+  },
+  "card": {
+    "title": "Apgrieztā starpniekserveris",
+    "summary": "Darbojas {{running}} no {{total}} maršrutiem",
+    "failed": "Neizdevās ielādēt starpniekserveri.",
+    "loading": "Ielādē...",
+    "daysLeft_zero": "Nav atlicis dienu",
+    "daysLeft_one": "Atlicis {{count}} diena",
+    "daysLeft_other": "Atlicis {{count}} dienas"
   }
 }

@@ -194,6 +194,17 @@
     }
   },
   "editor": {
+    "connections": "{{count}} połączeń",
     "traffic": "{{inbound}} w, {{outbound}} w"
+  },
+  "card": {
+    "title": "Serwer odwrotny",
+    "summary": "{{running}} z {{total}} tras aktywnych",
+    "failed": "Nie udało się załadować serwera odwrotnego.",
+    "loading": "Ładowanie...",
+    "daysLeft_one": "Pozostał {{count}} dzień",
+    "daysLeft_few": "Pozostały {{count}} dni",
+    "daysLeft_many": "Pozostało {{count}} dni",
+    "daysLeft_other": "Pozostało {{count}} dni"
   }
 }

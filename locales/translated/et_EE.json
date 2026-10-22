@@ -194,6 +194,15 @@
     }
   },
   "editor": {
+    "connections": "{{count}} ühendust",
     "traffic": "{{inbound}} sisse, {{outbound}} välja"
+  },
+  "card": {
+    "title": "Pöördproksüü",
+    "summary": "{{running}}/{{total}} marsruuti aktiivne",
+    "failed": "Proksüü laadimine ebaõnnestus.",
+    "loading": "Laadimine...",
+    "daysLeft_one": "{{count}} päev jäänud",
+    "daysLeft_other": "{{count}} päeva jäänud"
   }
 }

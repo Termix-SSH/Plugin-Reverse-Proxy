@@ -135,3 +135,18 @@ describe(`${manifest.id} activate`, () => {
     expect(await screen.findByText(locales.tab.error)).toBeTruthy();
   });
 });
+
+describe("reverse proxy dashboard card", () => {
+  it("counts running routes and lists certificates", async () => {
+    rendered = await renderWithApp(plugin, {
+      manifest,
+      locales,
+      permissions: ["reverse-proxy.use"],
+      api: { get: vi.fn(async () => ({ data: state })) } as never,
+    });
+    expect(rendered.registered.dashboardCards()).toEqual(["reverse-proxy"]);
+    rendered.renderDashboardCard("reverse-proxy");
+    expect(await screen.findByText("1 of 1 routes running")).toBeTruthy();
+    expect(screen.getByText("wiki.test")).toBeTruthy();
+  });
+});

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0
+
+### Added
+
+- Reverse proxy dashboard card: how many routes are running, the ones that are not, and certificates by expiry
+
 ## 1.0.0
 
 ### Added

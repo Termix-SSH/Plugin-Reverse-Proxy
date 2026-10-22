@@ -196,5 +196,14 @@
   "editor": {
     "connections": "{{count}} conexiuni",
     "traffic": "{{inbound}} intrare, {{outbound}} ieșire"
+  },
+  "card": {
+    "title": "Proxy invers",
+    "summary": "{{running}} din {{total}} rute active",
+    "failed": "Nu s-a putut încărca proxy-ul.",
+    "loading": "Se încarcă...",
+    "daysLeft_one": "{{count}} zi rămasă",
+    "daysLeft_few": "{{count}} zile rămase",
+    "daysLeft_other": "{{count}} zile rămase"
   }
 }

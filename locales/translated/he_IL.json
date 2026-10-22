@@ -196,5 +196,14 @@
   "editor": {
     "connections": "חיבורים: {{count}}",
     "traffic": "{{inbound}} נכנס, {{outbound}} יוצא"
+  },
+  "card": {
+    "title": "פרוקסי הפוך",
+    "summary": "{{running}} מתוך {{total}} מסלולים פעילים",
+    "failed": "לא ניתן לטעון את הפרוקסי.",
+    "loading": "טוען...",
+    "daysLeft_one": "נותר יום אחד",
+    "daysLeft_two": "נותרו יומיים",
+    "daysLeft_other": "נותרו {{count}} ימים"
   }
 }
