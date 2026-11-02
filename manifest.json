@@ -1,7 +1,7 @@
 {
   "id": "reverse-proxy",
   "name": "Reverse Proxy",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Reverse proxy for TCP, UDP, HTTP and HTTPS with free certificates and Termix login, managed per host.",
   "author": {
     "name": "Termix"

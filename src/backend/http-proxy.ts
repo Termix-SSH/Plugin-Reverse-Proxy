@@ -69,6 +69,37 @@ export function ipAllowed(route: RouteRecord, address: string): boolean {
   return !allow || allow.check(address, type);
 }
 
+/**
+ * Points a redirect from the target back at the address the visitor used.
+ * Apps build absolute redirects from the Host they see, which is the target
+ * unless the route keeps the original host. A plain http redirect to the
+ * public name is moved to https when the visitor came in over https.
+ */
+export function rewriteLocation(
+  location: string,
+  target: { host: string; port: number },
+  publicOrigin: string,
+): string {
+  let url: URL;
+  let pub: URL;
+  try {
+    url = new URL(location);
+    pub = new URL(publicOrigin);
+  } catch {
+    return location;
+  }
+  if (url.protocol !== "http:" && url.protocol !== "https:") return location;
+  const port = Number(url.port || (url.protocol === "https:" ? 443 : 80));
+  const host = url.hostname.replace(/^\[|\]$/g, "");
+  const atTarget = host === target.host.toLowerCase() && port === target.port;
+  const plainPublic =
+    url.host === pub.host &&
+    url.protocol === "http:" &&
+    pub.protocol === "https:";
+  if (!atTarget && !plainPublic) return location;
+  return `${pub.origin}${url.pathname}${url.search}${url.hash}`;
+}
+
 function plain(res: ServerResponse, status: number, message: string) {
   if (res.headersSent) {
     res.destroy();
@@ -232,6 +263,13 @@ export function createHttpHandlers(deps: HttpProxyDeps) {
             for (const [name, value] of Object.entries(proxyRes.headers)) {
               if (HOP_BY_HOP.has(name)) continue;
               out[name] = value;
+            }
+            if (typeof out.location === "string") {
+              out.location = rewriteLocation(
+                out.location,
+                target,
+                `${secure ? "https" : "http"}://${req.headers.host}`,
+              );
             }
             res.writeHead(proxyRes.statusCode ?? 502, out);
             proxyRes.on("data", (chunk: Buffer) =>

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.1
+
+### Fixed
+
+- Redirects from an app no longer send visitors to the target's own address, like a Tailscale IP. They now point at the route's domain, and plain http redirects move to https
+
 ## 1.1.0
 
 ### Added

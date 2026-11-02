@@ -57,6 +57,25 @@ describe("http routes", () => {
     expect(r.manager.status(1).state).toBe("running");
   });
 
+  it("sends a redirect to the target back to the public address", async () => {
+    const r = await boot();
+    const target = await startTarget((req, res) => {
+      res.writeHead(302, { location: `http://${req.headers.host}/login` });
+      res.end();
+    });
+    closers.push(() => target.server.close());
+    await r.repo.createRoute(
+      1,
+      "user-1",
+      routeInput({ targetPort: target.port }),
+    );
+    await r.manager.reload();
+
+    const reply = await get(r.httpPort, "app.test", "/");
+    expect(reply.status).toBe(302);
+    expect(reply.headers.location).toBe("http://app.test/login");
+  });
+
   it("answers 404 for an unknown host and 502 for a dead target", async () => {
     const r = await boot();
     await r.repo.createRoute(
