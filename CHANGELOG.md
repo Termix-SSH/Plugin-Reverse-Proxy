@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.2.0
+
+### Added
+
+- Sign in to Termix right on the login page of a protected route, with password, LDAP, passkeys, two-factor codes and security keys. SSO opens in a new tab and the page continues by itself
+
+### Changed
+
+- The login page in front of a route now looks like the Termix sign in screen and follows your theme, language and branding
+
+### Fixed
+
+- The Open Termix button on the login page opened an error page instead of Termix
+- The Reverse Proxy tab shows a loading message instead of a blank screen while it loads
+
 ## 1.1.1
 
 ### Fixed

@@ -1,3 +1,4 @@
+import { randomBytes } from "node:crypto";
 import { isIP } from "node:net";
 import type { Request, Response, Router } from "express";
 import type { PluginContext } from "@termix-ssh/plugin-sdk/backend";
@@ -6,10 +7,12 @@ import type {
   RouteInput,
   RouteKind,
   RouteOptions,
+  RouteRecord,
   TlsMode,
 } from "../shared/types.js";
 import { AUTH_PATH, type ProxyAuth } from "./auth.js";
 import { domainCovers, type CertManager } from "./certs.js";
+import { GATE_CSP, renderGatePage } from "./gate-page.js";
 import type { ProxyManager } from "./manager.js";
 import type { Repository } from "./repository.js";
 import type { ProxySettings } from "./settings.js";
@@ -160,46 +163,18 @@ export function parseInput(
   return input;
 }
 
-const GATE_PAGE = `<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sign in</title>
-<style>
-:root{color-scheme:light dark}
-body{font-family:system-ui,sans-serif;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#18181b;color:#e4e4e7}
-main{max-width:360px;padding:24px;text-align:center}
-a{color:#e4e4e7;border:1px solid #52525b;padding:8px 14px;text-decoration:none;display:inline-block;margin-top:12px}
-p{color:#a1a1aa}
-</style></head><body><main>
-<h2 id="t">Checking your Termix login</h2><p id="m"></p><div id="a"></div>
-<script>
-(function(){
-var q=new URLSearchParams(location.search);
-var title=document.getElementById("t"),msg=document.getElementById("m"),act=document.getElementById("a");
-var url=new URL("gate/token",location.href);
-url.searchParams.set("route",q.get("route")||"");
-url.searchParams.set("to",q.get("to")||"");
-var timer=null;
-function check(){
-fetch(url,{credentials:"include"}).then(function(r){
-if(r.status===401){
-title.textContent="Sign in to Termix";
-msg.textContent="This page is protected. Sign in to Termix in a new tab and this page continues by itself.";
-if(!act.firstChild){var a=document.createElement("a");a.href="./";a.target="_blank";a.rel="noopener";a.textContent="Open Termix";act.appendChild(a);}
-if(!timer)timer=setInterval(check,2500);
-return null;}
-return r.json().then(function(d){return {status:r.status,data:d};});
-}).then(function(res){
-if(!res)return;
-if(timer)clearInterval(timer);
-if(res.status===200&&res.data.url){location.replace(res.data.url);return;}
-title.textContent="No access";
-msg.textContent=res.data.error||"You cannot open this page.";
-act.textContent="";
-}).catch(function(){msg.textContent="Could not reach Termix.";});
+/** The address a visitor came from, only if it belongs to the route. */
+function gateTarget(route: RouteRecord, to: unknown): URL | null {
+  try {
+    const back = new URL(String(to));
+    return ["http:", "https:"].includes(back.protocol) &&
+      domainCovers(route.domain, back.hostname)
+      ? back
+      : null;
+  } catch {
+    return null;
+  }
 }
-check();
-})();
-</script></main></body></html>`;
 
 export function registerRoutes(
   router: Router,
@@ -686,23 +661,45 @@ export function registerRoutes(
    * @openapi
    * /plugin-api/reverse-proxy/gate:
    *   get:
-   *     summary: Sign in page for a protected route, hands off to the Termix login
+   *     summary: Sign in page for a protected route, signs in to Termix on the page
    *     tags:
    *       - Reverse Proxy
+   *     parameters:
+   *       - in: query
+   *         name: route
+   *         schema:
+   *           type: integer
+   *       - in: query
+   *         name: to
+   *         schema:
+   *           type: string
    *     responses:
    *       200:
    *         description: HTML page
    */
-  router.get("/gate", (_req: Request, res: Response) => {
-    res
-      .set({
-        "content-type": "text/html; charset=utf-8",
-        "cache-control": "no-store",
-        "content-security-policy":
-          "default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'self'",
-        "x-frame-options": "DENY",
-      })
-      .send(GATE_PAGE);
+  router.get("/gate", async (req: Request, res: Response) => {
+    try {
+      // Only a real link names the site, so a made up one can't borrow the page.
+      const route = await repo.getRoute(Number(req.query.route));
+      const usable =
+        route &&
+        route.kind === "http" &&
+        route.enabled &&
+        route.authMode !== "none";
+      const back = usable ? gateTarget(route, req.query.to) : null;
+      const nonce = randomBytes(16).toString("base64");
+      res
+        .set({
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-store",
+          "content-security-policy": GATE_CSP(nonce),
+          "referrer-policy": "no-referrer",
+          "x-frame-options": "DENY",
+        })
+        .send(renderGatePage({ nonce, host: back?.hostname ?? null }));
+    } catch (error) {
+      fail(res, error);
+    }
   });
 
   /**
@@ -737,18 +734,8 @@ export function registerRoutes(
       if (!route || route.kind !== "http" || !route.enabled) {
         return res.status(404).json({ error: "Route not found" });
       }
-      let back: URL;
-      try {
-        back = new URL(String(req.query.to));
-      } catch {
-        return res.status(400).json({ error: "Bad address" });
-      }
-      if (
-        !["http:", "https:"].includes(back.protocol) ||
-        !domainCovers(route.domain, back.hostname)
-      ) {
-        return res.status(400).json({ error: "Bad address" });
-      }
+      const back = gateTarget(route, req.query.to);
+      if (!back) return res.status(400).json({ error: "Bad address" });
       let allowed = false;
       if (route.authMode === "user") {
         allowed = await ctx.rbac.has("access");

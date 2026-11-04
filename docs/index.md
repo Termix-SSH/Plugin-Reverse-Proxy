@@ -62,7 +62,7 @@ Set Who can open it on a web route:
 - Signed-in Termix users: visitors sign in with Termix first.
 - Users with access to this host: visitors also need to be allowed to connect to the host in Termix.
 
-Set Termix address in Settings, for example `https://termix.example.com`. A visitor without a login is sent to a page on Termix, signs in there, and is sent back with a cookie for the route's domain. The cookie lasts as long as Login length in Settings. The cookie is only kept by the plugin and is not sent to your service.
+Set Termix address in Settings, for example `https://termix.example.com`. A visitor without a login is sent to a sign in page on Termix, signs in right there, and is sent back with a cookie for the route's domain. Password, LDAP, passkeys and two-factor codes work on that page. SSO opens in a new tab and the page continues by itself once you are signed in. The cookie lasts as long as Login length in Settings. The cookie is only kept by the plugin and is not sent to your service.
 
 This protects the web page. A TCP or UDP route has no login. Use the allow list on those.
 

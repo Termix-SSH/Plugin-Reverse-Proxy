@@ -92,7 +92,11 @@ export function ProxyTab({ isVisible, host, label }: TabProps) {
   if (failed && !state) {
     return <p className="p-4 text-sm text-destructive">{t("tab.error")}</p>;
   }
-  if (!state) return null;
+  if (!state) {
+    return (
+      <p className="p-4 text-xs text-muted-foreground">{t("common.loading")}</p>
+    );
+  }
 
   const info = state.hosts.find((h) => h.id === hostId);
   const allowed = info?.enabled !== false;
