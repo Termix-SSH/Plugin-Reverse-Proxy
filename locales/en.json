@@ -244,5 +244,25 @@
     "offlineNote": "Check your connection and reload this page.",
     "badLinkTitle": "This link is not valid",
     "badLinkNote": "The page may have moved or sign in may be off for it. Go back to the site and try again."
+  },
+  "operations": {
+    "list": {
+      "title": "List proxy routes"
+    },
+    "failing": {
+      "title": "Proxy routes failing"
+    },
+    "enable": {
+      "title": "Turn a proxy route on"
+    },
+    "disable": {
+      "title": "Turn a proxy route off"
+    },
+    "routes": {
+      "title": "Proxy routes",
+      "domain": "Domain",
+      "target": "Goes to",
+      "kind": "Kind"
+    }
   }
 }

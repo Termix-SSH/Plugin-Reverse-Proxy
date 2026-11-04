@@ -6,6 +6,7 @@ import { readSettings } from "./settings.js";
 import { createAuth } from "./auth.js";
 import { createCertManager } from "./certs.js";
 import { createProxyManager } from "./manager.js";
+import { registerOperations } from "./operations.js";
 import { registerRoutes } from "./routes.js";
 
 const RENEW_CHECK_MS = 12 * 60 * 60 * 1000;
@@ -23,6 +24,13 @@ export async function activate(ctx: PluginContext) {
   certs.setOnIssued(() => void manager.reload());
   ctx.disposables.add(() => manager.dispose());
 
+  registerOperations(ctx, {
+    listRoutes: () => repo.listRoutes(),
+    getRoute: (id) => repo.getRoute(id),
+    updateRoute: (id, input) => repo.updateRoute(id, input),
+    status: (id) => manager.status(id),
+    reload: () => manager.reload(),
+  });
   registerRoutes(ctx.http.router<Router>({ public: ["/gate"] }), ctx, {
     repo,
     certs,

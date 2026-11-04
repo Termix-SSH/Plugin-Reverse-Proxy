@@ -22,7 +22,7 @@
   ],
   "env": [],
   "engine": {
-    "termix": ">=26.10.3",
+    "termix": ">=26.11.1-0",
     "api": "^1.5"
   },
   "capabilities": [
@@ -34,7 +34,8 @@
     "kv:own",
     "notify:send",
     "users:impersonate",
-    "ui:surface"
+    "ui:surface",
+    "operations:provide"
   ],
   "desktop": "server",
   "contributes": {
@@ -171,7 +172,99 @@
         "titleKey": "card.title",
         "icon": "Waypoints"
       }
-    ]
+    ],
+    "operations": {
+      "actions": [
+        {
+          "id": "reverse-proxy.list-routes",
+          "titleKey": "operations.list.title",
+          "scope": "host",
+          "risk": "read",
+          "permission": "use",
+          "hostAccess": "connect",
+          "surfaces": {
+            "assistant": true,
+            "mcp": true,
+            "palette": false
+          }
+        },
+        {
+          "id": "reverse-proxy.failing",
+          "titleKey": "operations.failing.title",
+          "scope": "host",
+          "risk": "read",
+          "permission": "use",
+          "hostAccess": "connect",
+          "surfaces": {
+            "palette": false
+          }
+        },
+        {
+          "id": "reverse-proxy.enable-route",
+          "titleKey": "operations.enable.title",
+          "icon": "Play",
+          "scope": "resource",
+          "resource": "reverse-proxy.route",
+          "risk": "change",
+          "permission": "use",
+          "hostAccess": "edit",
+          "dryRun": "describe",
+          "idempotent": true,
+          "undo": "reverse-proxy.disable-route"
+        },
+        {
+          "id": "reverse-proxy.disable-route",
+          "titleKey": "operations.disable.title",
+          "icon": "Square",
+          "scope": "resource",
+          "resource": "reverse-proxy.route",
+          "risk": "destructive",
+          "permission": "use",
+          "hostAccess": "edit",
+          "dryRun": "describe",
+          "idempotent": true,
+          "undo": "reverse-proxy.enable-route"
+        }
+      ],
+      "resources": [
+        {
+          "id": "reverse-proxy.route",
+          "titleKey": "operations.routes.title",
+          "icon": "Globe",
+          "list": "reverse-proxy.list-routes",
+          "key": "id",
+          "name": "name",
+          "status": "state",
+          "url": "url",
+          "tab": "reverse-proxy",
+          "columns": [
+            {
+              "key": "domain",
+              "titleKey": "operations.routes.domain"
+            },
+            {
+              "key": "target",
+              "titleKey": "operations.routes.target"
+            },
+            {
+              "key": "kind",
+              "titleKey": "operations.routes.kind"
+            }
+          ],
+          "filters": ["state", "kind"]
+        }
+      ],
+      "signals": [
+        {
+          "id": "reverse-proxy.failing",
+          "titleKey": "operations.failing.title",
+          "read": "reverse-proxy.failing",
+          "scope": "host",
+          "kind": "count",
+          "refreshSec": 120
+        }
+      ]
+    }
   },
   "locales": "locales",
   "platforms": ["linux", "win32", "darwin"]
