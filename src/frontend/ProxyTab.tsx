@@ -1,18 +1,15 @@
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-  type ReactNode,
-} from "react";
-import { RefreshCw, Waypoints } from "lucide-react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { Waypoints } from "lucide-react";
 import { useTranslation, type TabProps } from "@termix-ssh/plugin-sdk/frontend";
 import {
   AddButton,
-  Button,
   PanelSearch,
   PanelShell,
   Segmented,
+  EmptyState,
+  PanelFrame,
+  RefreshButton,
+  TabStrip,
 } from "@termix-ssh/plugin-sdk/ui";
 import { getState, type ProxyState, type RouteView } from "./api";
 import { CertsView } from "./CertsView";
@@ -23,16 +20,6 @@ type View = "routes" | "certs";
 type Filter = "all" | "running" | "problem" | "off";
 
 // A fixed height box, so the panel body inside it can scroll.
-function Frame({ children }: { children: ReactNode }) {
-  return (
-    <div className="h-full w-full overflow-hidden">
-      <div className="flex h-full w-full min-h-0 flex-1 flex-col overflow-hidden">
-        {children}
-      </div>
-    </div>
-  );
-}
-
 /** The reverse proxy for one host: its routes, status and certificates. */
 export function ProxyTab({ isVisible, host, label }: TabProps) {
   const { t } = useTranslation();
@@ -85,9 +72,7 @@ export function ProxyTab({ isVisible, host, label }: TabProps) {
   }, [mine, search, filter]);
 
   if (!host) {
-    return (
-      <p className="p-4 text-sm text-muted-foreground">{t("tab.noHost")}</p>
-    );
+    return <EmptyState title={t("tab.noHost")} />;
   }
   if (failed && !state) {
     return <p className="p-4 text-sm text-destructive">{t("tab.error")}</p>;
@@ -103,7 +88,7 @@ export function ProxyTab({ isVisible, host, label }: TabProps) {
 
   if (editing) {
     return (
-      <Frame>
+      <PanelFrame>
         <RouteEditor
           // A fresh editor per route so old form state never carries over.
           key={editing === "new" ? "new" : editing.id}
@@ -114,7 +99,7 @@ export function ProxyTab({ isVisible, host, label }: TabProps) {
           onClose={() => setEditing(null)}
           reload={() => void load()}
         />
-      </Frame>
+      </PanelFrame>
     );
   }
 
@@ -124,25 +109,18 @@ export function ProxyTab({ isVisible, host, label }: TabProps) {
   const ports = state.ports.running;
 
   return (
-    <Frame>
+    <PanelFrame>
       <PanelShell
         icon={<Waypoints className="size-4" />}
         title={label || info?.name || t("tab.title")}
         status={t("tab.status", { running, total: mine.length })}
         actions={
           <>
-            <Button
-              variant="ghost"
-              size="icon"
+            <RefreshButton
               onClick={() => void load()}
-              disabled={loading}
-              title={t("tab.refresh")}
-              className="text-accent-brand"
-            >
-              <RefreshCw
-                className={`size-4 ${loading ? "animate-spin" : ""}`}
-              />
-            </Button>
+              loading={loading}
+              label={t("tab.refresh")}
+            />
             <AddButton
               label={t("list.add")}
               onClick={() => setEditing("new")}
@@ -150,53 +128,52 @@ export function ProxyTab({ isVisible, host, label }: TabProps) {
             />
           </>
         }
-        toolbar={
-          <>
-            <Segmented<View>
-              value={view}
-              onChange={setView}
-              options={[
-                { value: "routes", label: t("tab.viewRoutes") },
-                { value: "certs", label: t("tab.viewCerts") },
-              ]}
-            />
-            {view === "routes" && (
-              <>
-                <PanelSearch
-                  value={search}
-                  onChange={setSearch}
-                  placeholder={t("tab.search")}
-                />
-                <Segmented<Filter>
-                  value={filter}
-                  onChange={setFilter}
-                  options={[
-                    { value: "all", label: t("tab.filterAll") },
-                    { value: "running", label: t("list.state.running") },
-                    { value: "problem", label: t("list.state.error") },
-                    { value: "off", label: t("list.disabled") },
-                  ]}
-                />
-              </>
-            )}
-          </>
+        tabs={
+          <TabStrip
+            tabs={[
+              { id: "routes", label: t("tab.viewRoutes") },
+              { id: "certs", label: t("tab.viewCerts") },
+            ]}
+            activeTab={view}
+            onTabChange={(id) => setView(id as View)}
+          />
         }
-        className="gap-2 p-2.5"
+        toolbar={
+          view === "routes" ? (
+            <>
+              <PanelSearch
+                value={search}
+                onChange={setSearch}
+                placeholder={t("tab.search")}
+              />
+              <Segmented<Filter>
+                value={filter}
+                onChange={setFilter}
+                options={[
+                  { value: "all", label: t("tab.filterAll") },
+                  { value: "running", label: t("list.state.running") },
+                  { value: "problem", label: t("list.state.error") },
+                  { value: "off", label: t("list.disabled") },
+                ]}
+              />
+            </>
+          ) : undefined
+        }
       >
-        <div className="flex shrink-0 flex-col gap-2">
-          <p className="text-xs text-muted-foreground">
+        <div className="flex shrink-0 flex-col">
+          <p className="border-b border-border px-3 py-2 text-xs text-muted-foreground">
             {t("tab.ports", {
               http: ports.http ?? t("tab.notListening"),
               https: ports.https ?? t("tab.notListening"),
             })}
           </p>
           {!allowed && (
-            <p className="mb-2 border border-border p-2 text-xs text-muted-foreground">
+            <p className="border-b border-border px-3 py-2 text-xs text-muted-foreground">
               {t("tab.hostOff")}
             </p>
           )}
           {state.needsBaseUrl && mine.some((r) => r.authMode !== "none") && (
-            <p className="mb-2 border border-border p-2 text-xs text-muted-foreground">
+            <p className="border-b border-border px-3 py-2 text-xs text-muted-foreground">
               {t("tab.needsBaseUrl")}
             </p>
           )}
@@ -215,6 +192,6 @@ export function ProxyTab({ isVisible, host, label }: TabProps) {
           )}
         </div>
       </PanelShell>
-    </Frame>
+    </PanelFrame>
   );
 }

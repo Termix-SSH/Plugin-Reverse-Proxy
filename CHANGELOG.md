@@ -10,6 +10,7 @@
 ### Changed
 
 - The login page in front of a route now looks like the Termix sign in screen and follows your theme, language and branding
+- Pages use the Termix tile look, with lines between sections instead of separate boxes
 
 ### Fixed
 

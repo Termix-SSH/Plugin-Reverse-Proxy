@@ -5,6 +5,7 @@ import {
   Facts,
   PanelShell,
   useConfirm,
+  TileStack,
 } from "@termix-ssh/plugin-sdk/ui";
 import type { AuthMode, CertRecord } from "../shared/types";
 import { errorMessage, removeRoute, type RouteView } from "./api";
@@ -57,11 +58,10 @@ export function RouteEditor({
       leading={<BackButton onClick={onClose} />}
       title={route ? route.name : t("form.addTitle")}
       status={route ? routeFrom(route) : undefined}
-      className="gap-2 p-2.5"
     >
-      <div className="flex shrink-0 flex-col gap-3">
+      <TileStack>
         {route && runtime && (
-          <div className="mb-3 flex flex-col gap-1 border border-border p-3 text-xs">
+          <div className="flex flex-col gap-1 p-3 text-xs">
             <Facts>
               <span>
                 {route.enabled
@@ -107,7 +107,7 @@ export function RouteEditor({
           }}
           onDelete={route ? () => void remove() : undefined}
         />
-      </div>
+      </TileStack>
     </PanelShell>
   );
 }

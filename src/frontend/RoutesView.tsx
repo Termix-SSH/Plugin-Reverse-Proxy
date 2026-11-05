@@ -44,7 +44,7 @@ export function RoutesView({
 
   if (routes.length === 0) {
     return (
-      <p className="px-1 py-6 text-center text-xs text-muted-foreground/60">
+      <p className="px-3 py-6 text-center text-xs text-muted-foreground/60">
         {t("list.empty")}
       </p>
     );
