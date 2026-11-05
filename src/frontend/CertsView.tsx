@@ -164,7 +164,7 @@ export function CertsView({
         </div>
       </div>
       {certs.length === 0 ? (
-        <p className="text-xs text-muted-foreground/60 px-1 py-2">
+        <p className="text-xs text-muted-foreground/60 px-3 py-2">
           {t("certs.empty")}
         </p>
       ) : (
