@@ -166,6 +166,7 @@
         ]
       }
     },
+    "uses": ["homepage.widgets"],
     "dashboardCards": [
       {
         "id": "reverse-proxy",
@@ -210,7 +211,11 @@
           "hostAccess": "edit",
           "dryRun": "describe",
           "idempotent": true,
-          "undo": "reverse-proxy.disable-route"
+          "undo": "reverse-proxy.disable-route",
+          "surfaces": {
+            "assistant": true,
+            "mcp": true
+          }
         },
         {
           "id": "reverse-proxy.disable-route",
@@ -223,7 +228,11 @@
           "hostAccess": "edit",
           "dryRun": "describe",
           "idempotent": true,
-          "undo": "reverse-proxy.enable-route"
+          "undo": "reverse-proxy.enable-route",
+          "surfaces": {
+            "assistant": true,
+            "mcp": true
+          }
         }
       ],
       "resources": [

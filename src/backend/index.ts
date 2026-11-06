@@ -8,6 +8,7 @@ import { createCertManager } from "./certs.js";
 import { createProxyManager } from "./manager.js";
 import { registerOperations } from "./operations.js";
 import { registerRoutes } from "./routes.js";
+import { startProxyAlerts } from "./alerts.js";
 
 const RENEW_CHECK_MS = 12 * 60 * 60 * 1000;
 
@@ -30,6 +31,11 @@ export async function activate(ctx: PluginContext) {
     updateRoute: (id, input) => repo.updateRoute(id, input),
     status: (id) => manager.status(id),
     reload: () => manager.reload(),
+  });
+  startProxyAlerts(ctx, {
+    listRoutes: () => repo.listRoutes(),
+    listCerts: () => repo.listCerts(),
+    status: (id) => manager.status(id),
   });
   registerRoutes(ctx.http.router<Router>({ public: ["/gate"] }), ctx, {
     repo,

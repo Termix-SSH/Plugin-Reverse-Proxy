@@ -150,3 +150,21 @@ describe("reverse proxy dashboard card", () => {
     expect(screen.getByText("wiki.test")).toBeTruthy();
   });
 });
+
+describe("host page tile and widget", () => {
+  it("shows the host's routes and offers a homepage widget", async () => {
+    rendered = await renderWithApp(plugin, {
+      manifest,
+      locales,
+      permissions: ["reverse-proxy.use"],
+      api: { get: vi.fn(async () => ({ data: state })) } as never,
+    });
+    expect(rendered.registered.slot("host-page.tiles")).toHaveLength(1);
+    expect(rendered.registered.extensions("homepage.widgets")).toEqual([
+      "reverse_proxy",
+    ]);
+    await new Promise((done) => setTimeout(done, 0));
+    rendered.renderSlot("host-page.tiles", { hostId: 1, isVisible: true });
+    expect(await screen.findByText("Wiki")).toBeTruthy();
+  });
+});

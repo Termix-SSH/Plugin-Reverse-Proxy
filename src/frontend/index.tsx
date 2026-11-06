@@ -1,8 +1,11 @@
+import type { ComponentType } from "react";
 import { Waypoints } from "lucide-react";
 import type { TermixApp } from "@termix-ssh/plugin-sdk/frontend";
 import { initApi } from "./api";
 import { ProxyTab } from "./ProxyTab";
 import { ProxyCard } from "./ProxyCard";
+import { ProxyHostTile } from "./HostTile";
+import { proxyWidget } from "./HomepageWidget";
 
 const TAB_ID = "reverse-proxy";
 
@@ -46,4 +49,18 @@ export function activate(app: TermixApp): void {
     frame: "framed",
     component: ProxyCard,
   });
+
+  app.registerSlotContribution("host-page.tiles", {
+    actionId: "reverse-proxy.hostTile",
+    titleKey: "tile.title",
+    icon: Waypoints,
+    kind: "component",
+    component: ProxyHostTile as unknown as ComponentType<
+      Record<string, unknown>
+    >,
+    when: (context?: { host?: unknown }) =>
+      canUse && (!context?.host || proxyEnabled(context.host as object)),
+  });
+
+  app.registerExtension("homepage.widgets", proxyWidget(app.t));
 }
