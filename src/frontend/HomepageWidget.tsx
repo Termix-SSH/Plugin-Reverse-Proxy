@@ -5,7 +5,11 @@ import {
   type ExtensionContribution,
   type TermixApp,
 } from "@termix-ssh/plugin-sdk/frontend";
-import { StatusDot, WidgetTitle } from "@termix-ssh/plugin-sdk/ui";
+import {
+  StatusDot,
+  WidgetTitle,
+  LoadingState,
+} from "@termix-ssh/plugin-sdk/ui";
 import { getState, type ProxyState } from "./api";
 
 const GRID_SIZE = 30;
@@ -53,7 +57,7 @@ function ProxyWidget({ widget }: WidgetProps) {
         onMouseDown={(event) => event.stopPropagation()}
       >
         {!state ? (
-          <p className="text-muted-foreground">{t("card.loading")}</p>
+          <LoadingState compact label={t("card.loading")} />
         ) : (
           <>
             <div className="flex items-center gap-2">

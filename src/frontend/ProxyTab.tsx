@@ -10,6 +10,7 @@ import {
   PanelFrame,
   RefreshButton,
   TabStrip,
+  LoadingState,
 } from "@termix-ssh/plugin-sdk/ui";
 import { getState, type ProxyState, type RouteView } from "./api";
 import { CertsView } from "./CertsView";
@@ -78,9 +79,7 @@ export function ProxyTab({ isVisible, host, label }: TabProps) {
     return <p className="p-4 text-sm text-destructive">{t("tab.error")}</p>;
   }
   if (!state) {
-    return (
-      <p className="p-4 text-xs text-muted-foreground">{t("common.loading")}</p>
-    );
+    return <LoadingState label={t("common.loading")} />;
   }
 
   const info = state.hosts.find((h) => h.id === hostId);
@@ -160,7 +159,7 @@ export function ProxyTab({ isVisible, host, label }: TabProps) {
           ) : undefined
         }
       >
-        <div className="flex shrink-0 flex-col">
+        <div className="flex flex-1 shrink-0 flex-col">
           <p className="border-b border-border px-3 py-2 text-xs text-muted-foreground">
             {t("tab.ports", {
               http: ports.http ?? t("tab.notListening"),

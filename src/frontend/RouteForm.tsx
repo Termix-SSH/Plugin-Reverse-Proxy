@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { Waypoints } from "lucide-react";
 import { useTranslation } from "@termix-ssh/plugin-sdk/frontend";
 import {
@@ -115,6 +115,7 @@ export function RouteForm({
   onDone,
   onCancel,
   onDelete,
+  children,
 }: {
   hostId: number;
   defaultAccess: AuthMode;
@@ -123,6 +124,8 @@ export function RouteForm({
   onDone: () => void;
   onCancel: () => void;
   onDelete?: () => void;
+  /** Places the form and its Save bar, so the bar can be pinned. */
+  children: (parts: { form: ReactNode; footer: ReactNode }) => ReactNode;
 }) {
   const { t } = useTranslation();
   const [form, setForm] = useState<FormState>(() => {
@@ -151,7 +154,19 @@ export function RouteForm({
 
   const customCerts = certs.filter((c) => c.status === "ready");
 
-  return (
+  const footer = (
+    <FormFooter
+      onCancel={onCancel}
+      onSave={save}
+      saving={saving}
+      saveLabel={t("common.save")}
+      cancelLabel={t("common.cancel")}
+      onDelete={onDelete}
+      deleteLabel={t("common.delete")}
+    />
+  );
+
+  const body = (
     <SectionCard
       title={route ? t("form.editTitle") : t("form.addTitle")}
       icon={<Waypoints className="size-3.5" />}
@@ -334,16 +349,9 @@ export function RouteForm({
           onChange={(enabled) => set({ enabled })}
         />
         {error && <p className="text-xs text-destructive">{error}</p>}
-        <FormFooter
-          onCancel={onCancel}
-          onSave={save}
-          saving={saving}
-          saveLabel={t("common.save")}
-          cancelLabel={t("common.cancel")}
-          onDelete={onDelete}
-          deleteLabel={t("common.delete")}
-        />
       </div>
     </SectionCard>
   );
+
+  return children({ form: body, footer });
 }

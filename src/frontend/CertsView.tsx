@@ -12,6 +12,7 @@ import {
   TextAreaField,
   TextField,
   useConfirm,
+  PanelShell,
 } from "@termix-ssh/plugin-sdk/ui";
 import type { CertRecord } from "../shared/types";
 import {
@@ -98,42 +99,9 @@ export function CertsView({
 
   if (adding) {
     return (
-      <SectionCard
-        title={
-          adding === "selfsigned" ? t("certs.addSelfSigned") : t("certs.addOwn")
-        }
-        icon={<ShieldCheck className="size-3.5" />}
-      >
-        <div className="flex flex-col gap-3 py-3">
-          {adding === "selfsigned" ? (
-            <TextField
-              label={t("certs.domains")}
-              value={domains}
-              onChange={setDomains}
-              placeholder="app.example.com"
-              hint={t("certs.domainsHint")}
-              mono
-            />
-          ) : (
-            <>
-              <TextAreaField
-                label={t("certs.certPem")}
-                value={pem}
-                onChange={setPem}
-                placeholder="-----BEGIN CERTIFICATE-----"
-                rows={5}
-                mono
-              />
-              <TextAreaField
-                label={t("certs.keyPem")}
-                value={key}
-                onChange={setKey}
-                placeholder="-----BEGIN PRIVATE KEY-----"
-                rows={5}
-                mono
-              />
-            </>
-          )}
+      <PanelShell
+        chrome={false}
+        footer={
           <FormFooter
             onCancel={() => setAdding(null)}
             onSave={() => void submit()}
@@ -141,8 +109,49 @@ export function CertsView({
             saveLabel={t("common.save")}
             cancelLabel={t("common.cancel")}
           />
-        </div>
-      </SectionCard>
+        }
+      >
+        <SectionCard
+          title={
+            adding === "selfsigned"
+              ? t("certs.addSelfSigned")
+              : t("certs.addOwn")
+          }
+          icon={<ShieldCheck className="size-3.5" />}
+        >
+          <div className="flex flex-col gap-3 py-3">
+            {adding === "selfsigned" ? (
+              <TextField
+                label={t("certs.domains")}
+                value={domains}
+                onChange={setDomains}
+                placeholder="app.example.com"
+                hint={t("certs.domainsHint")}
+                mono
+              />
+            ) : (
+              <>
+                <TextAreaField
+                  label={t("certs.certPem")}
+                  value={pem}
+                  onChange={setPem}
+                  placeholder="-----BEGIN CERTIFICATE-----"
+                  rows={5}
+                  mono
+                />
+                <TextAreaField
+                  label={t("certs.keyPem")}
+                  value={key}
+                  onChange={setKey}
+                  placeholder="-----BEGIN PRIVATE KEY-----"
+                  rows={5}
+                  mono
+                />
+              </>
+            )}
+          </div>
+        </SectionCard>
+      </PanelShell>
     );
   }
 

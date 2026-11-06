@@ -7,7 +7,12 @@ import {
   useTranslation,
   type DashboardCardProps,
 } from "@termix-ssh/plugin-sdk/frontend";
-import { ListBadge, ListRow, PanelList } from "@termix-ssh/plugin-sdk/ui";
+import {
+  ListBadge,
+  ListRow,
+  PanelList,
+  LoadingState,
+} from "@termix-ssh/plugin-sdk/ui";
 import { errorMessage, getState, type ProxyState } from "./api";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -47,9 +52,7 @@ export function ProxyCard({ isVisible }: DashboardCardProps) {
   if (!allowed) return null;
   if (failed) return <p className="p-3 text-xs text-destructive">{failed}</p>;
   if (!state) {
-    return (
-      <p className="p-3 text-xs text-muted-foreground">{t("card.loading")}</p>
-    );
+    return <LoadingState compact label={t("card.loading")} />;
   }
 
   const enabled = state.routes.filter((route) => route.enabled);
