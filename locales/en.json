@@ -167,6 +167,10 @@
         "label": "Use Let's Encrypt staging",
         "description": "Test certificates that browsers do not trust. Use while setting up to avoid rate limits."
       },
+      "endpointDomain": {
+        "label": "Web endpoint domain",
+        "description": "A domain with a wildcard DNS record pointing at this proxy, like *.apps.example.com. Web Endpoint's Through Termix mode opens each page on its own temporary name under it. Needs the Termix address above. Add a port after a colon if visitors use one."
+      },
       "cookieHours": {
         "label": "Login length in hours",
         "description": "How long a visitor stays signed in on a protected route."

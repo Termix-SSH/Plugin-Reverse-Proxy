@@ -25,6 +25,10 @@ services:
 
 Change the HTTP and HTTPS ports in Settings, under Reverse Proxy.
 
+## Web endpoint domain
+
+Set Web endpoint domain in the admin settings to a domain with a wildcard DNS record pointing at this proxy, like `*.apps.example.com`, and set the Termix address. Web Endpoint's Through Termix mode then opens each page on its own temporary name under that domain, so you add one DNS record once and no route per app. Behind a tunnel or another proxy that handles HTTPS, point the wildcard name at the HTTP port. To serve HTTPS here, add a route for the wildcard name with a certificate for it. These temporary routes need a Termix login and connect access to the host, and end after 10 idle minutes.
+
 ## Manage routes
 
 Open Reverse Proxy from a host's menu. The tab belongs to that host and lists only its routes, with status and traffic. Search, filter by status, switch a route on or off, or click one to see and change everything about it. Certificates are on their own view in the same tab.

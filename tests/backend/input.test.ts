@@ -13,6 +13,7 @@ const settings: ProxySettings = {
   acmeStaging: false,
   acmeDirectoryUrl: "",
   cookieHours: 12,
+  endpointDomain: "",
 };
 
 describe("parseInput", () => {

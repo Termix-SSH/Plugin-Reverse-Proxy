@@ -3,6 +3,7 @@ import https from "node:https";
 import { BlockList, isIP, type Socket } from "node:net";
 import type { Duplex } from "node:stream";
 import type { RouteRecord } from "../shared/types.js";
+import { isEndpointRoute } from "./endpoints.js";
 import {
   AUTH_PATH,
   COOKIE_NAME,
@@ -194,6 +195,10 @@ export function createHttpHandlers(deps: HttpProxyDeps) {
     if (deps.auth.verify(cookie, "cookie", route)) return false;
 
     if (!res) return answer(401, "Unauthorized");
+    // A short lived route has no gate: Termix hands out its only way in.
+    if (isEndpointRoute(route)) {
+      return answer(403, "This link has ended. Open it again from Termix.");
+    }
     const gate = gateUrl(route, req, secure);
     if (!gate) {
       return answer(

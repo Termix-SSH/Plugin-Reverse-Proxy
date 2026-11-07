@@ -4,6 +4,7 @@ import { certs as certsTable, routes as routesTable } from "./tables.js";
 import { createRepository } from "./repository.js";
 import { readSettings } from "./settings.js";
 import { createAuth } from "./auth.js";
+import { createEndpointService } from "./endpoint-service.js";
 import { createCertManager } from "./certs.js";
 import { createProxyManager } from "./manager.js";
 import { registerOperations } from "./operations.js";
@@ -45,7 +46,18 @@ export async function activate(ctx: PluginContext) {
     getSettings,
   });
 
-  for (const key of ["httpPort", "httpsPort", "bindHost", "publicBaseUrl"]) {
+  ctx.services.provide(
+    "reverse-proxy.endpoints",
+    createEndpointService(ctx, { manager, auth, getSettings }),
+  );
+
+  for (const key of [
+    "httpPort",
+    "httpsPort",
+    "bindHost",
+    "publicBaseUrl",
+    "endpointDomain",
+  ]) {
     ctx.settings.onChange(key, () => void manager.reload());
   }
 

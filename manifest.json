@@ -25,6 +25,13 @@
     "termix": ">=26.11.1-0",
     "api": "^1.15"
   },
+  "provides": [
+    {
+      "service": "reverse-proxy.endpoints",
+      "version": "1.0.0",
+      "permission": "reverse-proxy.access"
+    }
+  ],
   "capabilities": [
     "hosts:read",
     "db:own",
@@ -124,6 +131,13 @@
           "default": 12,
           "min": 1,
           "max": 720
+        },
+        {
+          "key": "endpointDomain",
+          "type": "string",
+          "labelKey": "settings.admin.endpointDomain.label",
+          "descriptionKey": "settings.admin.endpointDomain.description",
+          "default": ""
         }
       ],
       "host": {

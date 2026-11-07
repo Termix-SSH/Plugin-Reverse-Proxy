@@ -10,6 +10,7 @@ export interface ProxySettings {
   acmeStaging: boolean;
   acmeDirectoryUrl: string;
   cookieHours: number;
+  endpointDomain: string;
 }
 
 function port(value: unknown, fallback: number): number {
@@ -31,5 +32,6 @@ export async function readSettings(ctx: PluginContext): Promise<ProxySettings> {
     acmeStaging: (await get<boolean>("acmeStaging")) === true,
     acmeDirectoryUrl: ((await get<string>("acmeDirectoryUrl")) || "").trim(),
     cookieHours: Number.isFinite(hours) && hours > 0 ? hours : 12,
+    endpointDomain: ((await get<string>("endpointDomain")) || "").trim(),
   };
 }

@@ -4,6 +4,7 @@
 
 ### Added
 
+- Web endpoint domain: one wildcard domain that lets Web Endpoint open internal web pages through Termix, with no route or DNS record per app (Plugin-Web-Endpoint #7)
 - Proxy routes across hosts in the All hosts table with their addresses, turning routes on and off through Termix actions, and failing routes as a status tile
 - Sign in to Termix right on the login page of a protected route, with password, LDAP, passkeys, two-factor codes and security keys. SSO opens in a new tab and the page continues by itself
 
