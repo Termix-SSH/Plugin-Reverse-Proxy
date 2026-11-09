@@ -7,7 +7,8 @@
     "save": "Salvează",
     "cancel": "Anulează",
     "delete": "Șterge",
-    "edit": "Editează"
+    "edit": "Editează",
+    "loading": "Se încarcă..."
   },
   "tab": {
     "title": "Proxy invers",
@@ -166,6 +167,10 @@
         "label": "Folosește mediul de testare Let's Encrypt",
         "description": "Certificat de test pe care browserele nu îl consideră de încredere. Folosește-l în timpul configurării pentru a evita limitele de rată."
       },
+      "endpointDomain": {
+        "label": "Domeniu punct final web",
+        "description": "Un domeniu cu un înregistrare DNS wildcard care pointează către acest proxy, de exemplu *.apps.example.com. Modul „Prin Termix” al punctului final web deschide fiecare pagină pe un nume temporar propriu sub acesta. Necesită adresa Termix de mai sus. Adăugați un port după două puncte dacă vizitatorii folosesc unul."
+      },
       "cookieHours": {
         "label": "Durata sesiunii de autentificare (ore)",
         "description": "Cât timp rămâne un vizitator autentificat pe o rută protejată."
@@ -197,6 +202,15 @@
     "connections": "{{count}} conexiuni",
     "traffic": "{{inbound}} intrare, {{outbound}} ieșire"
   },
+  "tile": {
+    "title": "Rute proxy",
+    "empty": "Nu există rute proxy pe acest gazdă.",
+    "off": "oprit"
+  },
+  "widget": {
+    "name": "Proxy invers",
+    "description": "Câte rute proxy sunt active."
+  },
   "card": {
     "title": "Proxy invers",
     "summary": "{{running}} din {{total}} rute active",
@@ -205,5 +219,64 @@
     "daysLeft_one": "{{count}} zi rămasă",
     "daysLeft_few": "{{count}} zile rămase",
     "daysLeft_other": "{{count}} zile rămase"
+  },
+  "gate": {
+    "tagline": "Gestiune server auto-găzduită, bazată pe plugin-uri.",
+    "title": "Autentificați-vă pentru a continua",
+    "subtitle": "Autentificați-vă în Termix pentru a deschide {{host}}",
+    "username": "Nume utilizator",
+    "password": "Parolă",
+    "showPassword": "Afișează parola",
+    "rememberMe": "Ține minte dispozitivul timp de 30 de zile (include TOTP)",
+    "signIn": "Autentificare",
+    "signInWith": "Autentificare cu {{name}}",
+    "passkey": "Autentificare cu passkey",
+    "external": "Extern",
+    "otherOptions": "Trebuie să resetați parola sau să vă înregistrați?",
+    "openTermix": "Deschide Termix",
+    "loading": "Se încarcă...",
+    "required": "Introduceți numele de utilizator și parola.",
+    "loginFailed": "Autentificarea a eșuat. Încercați din nou.",
+    "badCode": "Acest cod nu a funcționat. Încercați din nou.",
+    "factorTitle": "Autentificare cu doi factori",
+    "factorNote": "Încă un pas pentru a finaliza autentificarea.",
+    "code": "Cod de verificare",
+    "backupHint": "Puteți introduce și unul dintre codurile de rezervă.",
+    "verify": "Verifică",
+    "keyPrompt": "Atingeți cheia de securitate sau folosiți passkey-ul pentru a finaliza autentificarea.",
+    "useKey": "Folosește cheia de securitate",
+    "factorInTermix": "Acest pas nu poate fi efectuat aici. Deschideți Termix pentru a vă autentifica, iar această pagină se va continua automat.",
+    "factorCode": "Cod",
+    "factorKey": "Cheie de securitate",
+    "factorOther": "Altele",
+    "back": "Înapoi",
+    "noAccess": "Fără acces",
+    "noAccessNote": "Contul dvs. Termix nu poate deschide această pagină.",
+    "stuckTitle": "Autentificat, dar nu s-a putut continua",
+    "stuckNote": "Contul dvs. poate necesita mai întâi o configurare suplimentară. Deschideți Termix pentru a finaliza, apoi încercați din nou această pagină.",
+    "offlineTitle": "Nu s-a putut contacta Termix",
+    "offlineNote": "Verificați conexiunea și reîncărcați această pagină.",
+    "badLinkTitle": "Acest link nu este valid",
+    "badLinkNote": "Pagina s-ar fi putut muta sau autentificarea ar fi putut fi dezactivată pentru ea. Mergeți înapoi la site și încercați din nou."
+  },
+  "operations": {
+    "list": {
+      "title": "Listează rutele proxy"
+    },
+    "failing": {
+      "title": "Rute proxy cu erori"
+    },
+    "enable": {
+      "title": "Activează o rută proxy"
+    },
+    "disable": {
+      "title": "Dezactivează o rută proxy"
+    },
+    "routes": {
+      "title": "Rute proxy",
+      "domain": "Domeniu",
+      "target": "Merge către",
+      "kind": "Tip"
+    }
   }
 }

@@ -7,7 +7,8 @@
     "save": "Išsaugoti",
     "cancel": "Atšaukti",
     "delete": "Pašalinti",
-    "edit": "Redaguoti"
+    "edit": "Redaguoti",
+    "loading": "Kraunama..."
   },
   "tab": {
     "title": "Atvirkštinis šliuzas",
@@ -166,6 +167,10 @@
         "label": "Naudoti Let's Encrypt testavimo aplinką",
         "description": "Testavimo sertifikatai, kurių naršyklės nepasitiki. Naudokite nustatymo metu, kad išvengtumėte dažnio limitų."
       },
+      "endpointDomain": {
+        "label": "Tinklalapio galinio taško domenas",
+        "description": "Domenas su laisvojo pasirinkimo DNS įrašu, nukreipiančiu į šį tarpinį serverį, pvz., *.apps.example.com. „Per Termix“ režimas atveria kiekvieną puslapį su savo laikinu pavadinimu po šio domeno. Reikia aukščiau nurodytos Termix adreso. Jei lankytojai naudoja portą, pridėkite jį po dvitaškio."
+      },
       "cookieHours": {
         "label": "Prisijungimo trukmė valandomis",
         "description": "Kaip ilgai lankytojas lieka prisijungęs apsaugotuose maršrutuose."
@@ -197,6 +202,15 @@
     "connections": "{{count}} ryšiai",
     "traffic": "{{inbound}} į, {{outbound}} iš"
   },
+  "tile": {
+    "title": "Tarpinio serverio maršrutai",
+    "empty": "Šiame serveryje nėra tarpinio serverio maršrutų.",
+    "off": "išjungta"
+  },
+  "widget": {
+    "name": "Atvirkštinis tarpinis serveris",
+    "description": "Kiek veikia tarpinio serverio maršrutų."
+  },
   "card": {
     "title": "Atvirkštinis šliuzas",
     "summary": "Veikia {{running}} iš {{total}} maršrutų",
@@ -206,5 +220,64 @@
     "daysLeft_few": "Liko {{count}} dienos",
     "daysLeft_many": "Liko {{count}} dienų",
     "daysLeft_other": "Liko {{count}} dienų"
+  },
+  "gate": {
+    "tagline": "Savaiminis, papildinių pagrindu veikiantis serverio valdymas.",
+    "title": "Prisijunkite, kad tęstumėte",
+    "subtitle": "Prisijunkite prie Termix, kad atidarytumėte {{host}}",
+    "username": "Vartotojo vardas",
+    "password": "Slaptažodis",
+    "showPassword": "Rodyti slaptažodį",
+    "rememberMe": "Prisiminti įrenginį 30 dienų (įskaitant TOTP)",
+    "signIn": "Prisijungti",
+    "signInWith": "Prisijungti su {{name}}",
+    "passkey": "Prisijungti su prisijungimo raktu",
+    "external": "Išorinis",
+    "otherOptions": "Reikia atstatyti slaptažodį ar užsiregistruoti?",
+    "openTermix": "Atidaryti Termix",
+    "loading": "Kraunama...",
+    "required": "Įveskite savo vartotojo vardą ir slaptažodį.",
+    "loginFailed": "Nepavyko prisijungti. Bandykite dar kartą.",
+    "badCode": "Šis kodas neveikė. Bandykite dar kartą.",
+    "factorTitle": "Dvejetainė autentifikacija",
+    "factorNote": "Dar vienas žingsnis, kad užbaigtumėte prisijungimą.",
+    "code": "Patvirtinimo kodas",
+    "backupHint": "Taip pat galite įvesti vieną iš savo atsarginių kodų.",
+    "verify": "Patvirtinti",
+    "keyPrompt": "Palieskite saugumo raktą arba naudokite prisijungimo raktą, kad užbaigtumėte prisijungimą.",
+    "useKey": "Naudoti saugumo raktą",
+    "factorInTermix": "Šio žingsnio negalima atlikti čia. Atidarykite Termix, kad prisijungtumėte, ir šis puslapis tęsis automatiškai.",
+    "factorCode": "Kodas",
+    "factorKey": "Saugumo raktas",
+    "factorOther": "Kita",
+    "back": "Atgal",
+    "noAccess": "Nėra prieigos",
+    "noAccessNote": "Jūsų Termix paskyra negali atidaryti šio puslapio.",
+    "stuckTitle": "Prisijungta, bet nepavyko tęsti",
+    "stuckNote": "Jūsų paskyra gali pirmiausia reikalauti daugiau nustatymų. Atidarykite Termix, kad užbaigtumėte, tada bandykite šį puslapį dar kartą.",
+    "offlineTitle": "Nepavyko pasiekti Termix",
+    "offlineNote": "Patikrinkite savo ryšį ir perkraukite šį puslapį.",
+    "badLinkTitle": "Ši nuoroda nėra galiojanti",
+    "badLinkNote": "Puslapis galėjo persikelti arba prisijungimas gali būti išjungtas. Grįžkite į svetainę ir bandykite dar kartą."
+  },
+  "operations": {
+    "list": {
+      "title": "Rodyti tarpinio serverio maršrutų sąrašą"
+    },
+    "failing": {
+      "title": "Tarpinio serverio maršrutai neveikia"
+    },
+    "enable": {
+      "title": "Įjungti tarpinio serverio maršrutą"
+    },
+    "disable": {
+      "title": "Išjungti tarpinio serverio maršrutą"
+    },
+    "routes": {
+      "title": "Tarpinio serverio maršrutai",
+      "domain": "Domenas",
+      "target": "Nukreipia į",
+      "kind": "Rūšis"
+    }
   }
 }

@@ -7,7 +7,8 @@
     "save": "Uložiť",
     "cancel": "Zrušiť",
     "delete": "Odstrániť",
-    "edit": "Upraviť"
+    "edit": "Upraviť",
+    "loading": "Načítava sa..."
   },
   "tab": {
     "title": "Reverzný proxy",
@@ -166,6 +167,10 @@
         "label": "Použiť testovacie prostredie Let's Encrypt",
         "description": "Testovacie certifikáty, ktorým prehliadače nedôverujú. Používajte počas nastavovania, aby ste sa vyhli limitom počtu požiadaviek."
       },
+      "endpointDomain": {
+        "label": "Doména webového koncového bodu",
+        "description": "Doména s wildcard DNS záznamom smerujúcim na tento proxy server, napr. *.apps.example.com. Režim cez Termix pre webové koncové body otvára každú stránku pod vlastným dočasným menom v rámci tejto domény. Vyžaduje adresu Termix uvedenú vyššie. Ak návštevníci používajú port, pridajte ho za dvojbodku."
+      },
       "cookieHours": {
         "label": "Dĺžka platnosti prihlásenia v hodinách",
         "description": "Ako dlho zostane návštevník prihlásený na chránenej ceste."
@@ -197,6 +202,15 @@
     "connections": "{{count}} pripojení",
     "traffic": "{{inbound}} dovnútra, {{outbound}} von"
   },
+  "tile": {
+    "title": "Proxy trasy",
+    "empty": "Na tomto hostiteľovi nie sú žiadne proxy trasy.",
+    "off": "vypnuté"
+  },
+  "widget": {
+    "name": "Reverzný proxy server",
+    "description": "Koľko proxy trás je spustených."
+  },
   "card": {
     "title": "Reverzný proxy",
     "summary": "{{running}} z {{total}} trás beží",
@@ -206,5 +220,64 @@
     "daysLeft_few": "{{count}} dni do uplynutia",
     "daysLeft_many": "{{count}} dní do uplynutia",
     "daysLeft_other": "{{count}} dní do uplynutia"
+  },
+  "gate": {
+    "tagline": "Self-hosted správa serverov založená na pluginoch.",
+    "title": "Prihláste sa pre pokračovanie",
+    "subtitle": "Prihláste sa do Termix pre otvorenie {{host}}",
+    "username": "Meno používateľa",
+    "password": "Heslo",
+    "showPassword": "Zobraziť heslo",
+    "rememberMe": "Zapamätať si zariadenie na 30 dní (vrátane TOTP)",
+    "signIn": "Prihlásiť sa",
+    "signInWith": "Prihlásiť sa cez {{name}}",
+    "passkey": "Prihlásiť sa pomocou passkey",
+    "external": "Externé",
+    "otherOptions": "Potrebujete obnoviť heslo alebo sa zaregistrovať?",
+    "openTermix": "Otvoriť Termix",
+    "loading": "Načítava sa...",
+    "required": "Zadajte svoje používateľské meno a heslo.",
+    "loginFailed": "Nepodarilo sa prihlásiť. Skúste to znova.",
+    "badCode": "Tento kód nefungoval. Skúste to znova.",
+    "factorTitle": "Dvojfaktorové overenie",
+    "factorNote": "Ešte jeden krok na dokončenie prihlásenia.",
+    "code": "Overovací kód",
+    "backupHint": "Môžete zadať aj jeden zo svojich záložných kódov.",
+    "verify": "Overiť",
+    "keyPrompt": "Dotknite sa bezpečnostného kľúča alebo použite passkey na dokončenie prihlásenia.",
+    "useKey": "Použiť bezpečnostný kľúč",
+    "factorInTermix": "Tento krok sa tu nedá vykonať. Otvorte Termix na prihlásenie a táto stránka sa pokračuje automaticky.",
+    "factorCode": "Kód",
+    "factorKey": "Bezpečnostný kľúč",
+    "factorOther": "Iné",
+    "back": "Späť",
+    "noAccess": "Žiadny prístup",
+    "noAccessNote": "Váš účet Termix nemôže otvoriť túto stránku.",
+    "stuckTitle": "Prihlásené, ale nemožno pokračovať",
+    "stuckNote": "Váš účet môže vyžadovať ďalšie nastavenie. Otvorte Termix na dokončenie a potom skúste túto stránku znova.",
+    "offlineTitle": "Nedá sa dosiahnuť Termix",
+    "offlineNote": "Skontrolujte svoje pripojenie a obnovte túto stránku.",
+    "badLinkTitle": "Tento odkaz nie je platný",
+    "badLinkNote": "Stránka sa mohla presunúť alebo pre ňu môže byť vypnuté prihlasovanie. Vráťte sa na stránku a skúste to znova."
+  },
+  "operations": {
+    "list": {
+      "title": "Zoznam proxy trás"
+    },
+    "failing": {
+      "title": "Proxy trasy zlyhávajú"
+    },
+    "enable": {
+      "title": "Zapnúť proxy trasu"
+    },
+    "disable": {
+      "title": "Vypnúť proxy trasu"
+    },
+    "routes": {
+      "title": "Proxy trasy",
+      "domain": "Doména",
+      "target": "Smeruje na",
+      "kind": "Typ"
+    }
   }
 }

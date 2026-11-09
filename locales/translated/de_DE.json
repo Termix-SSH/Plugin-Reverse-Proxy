@@ -7,7 +7,8 @@
     "save": "Speichern",
     "cancel": "Abbrechen",
     "delete": "Löschen",
-    "edit": "Bearbeiten"
+    "edit": "Bearbeiten",
+    "loading": "Laden..."
   },
   "tab": {
     "title": "Umgekehrter Proxy",
@@ -166,6 +167,10 @@
         "label": "Let's Encrypt-Staging-Umgebung verwenden",
         "description": "Testzertifikate, denen Browser nicht vertrauen. Während der Einrichtung verwenden, um Ratenbegrenzungen zu vermeiden."
       },
+      "endpointDomain": {
+        "label": "Domain des Web-Endpunkts",
+        "description": "Eine Domain mit einem Wildcard-DNS-Eintrag, der auf diesen Proxy verweist, z. B. *.apps.example.com. Der Modus „Durch Termix“ von Web-Endpunkten öffnet jede Seite unter einem eigenen temporären Namen in dieser Domain. Erfordert die Termix-Adresse oben. Fügen Sie nach einem Doppelpunkt einen Port hinzu, falls Besucher einen verwenden."
+      },
       "cookieHours": {
         "label": "Anmeldedauer in Stunden",
         "description": "Wie lange ein Besucher auf einer geschützten Route angemeldet bleibt."
@@ -197,6 +202,15 @@
     "connections": "{{count}} Verbindungen",
     "traffic": "{{inbound}} rein, {{outbound}} raus"
   },
+  "tile": {
+    "title": "Proxy-Routen",
+    "empty": "Keine Proxy-Routen auf diesem Host.",
+    "off": "aus"
+  },
+  "widget": {
+    "name": "Reverse-Proxy",
+    "description": "Wie viele Proxy-Routen aktiv sind."
+  },
   "card": {
     "title": "Reverse-Proxy",
     "summary": "{{running}} von {{total}} Routen aktiv",
@@ -204,5 +218,64 @@
     "loading": "Wird geladen...",
     "daysLeft_one": "{{count}} Tag verbleibend",
     "daysLeft_other": "{{count}} Tage verbleibend"
+  },
+  "gate": {
+    "tagline": "Selbst gehostetes, plugin-basiertes Server-Management.",
+    "title": "Anmelden, um fortzufahren",
+    "subtitle": "Bei Termix anmelden, um {{host}} zu öffnen",
+    "username": "Benutzername",
+    "password": "Passwort",
+    "showPassword": "Passwort anzeigen",
+    "rememberMe": "Gerät für 30 Tage merken (inkl. TOTP)",
+    "signIn": "Anmelden",
+    "signInWith": "Mit {{name}} anmelden",
+    "passkey": "Mit Passkey anmelden",
+    "external": "Extern",
+    "otherOptions": "Passwort zurücksetzen oder registrieren?",
+    "openTermix": "Termix öffnen",
+    "loading": "Laden...",
+    "required": "Geben Sie Ihren Benutzernamen und Ihr Passwort ein.",
+    "loginFailed": "Anmeldung fehlgeschlagen. Bitte erneut versuchen.",
+    "badCode": "Dieser Code war ungültig. Bitte erneut versuchen.",
+    "factorTitle": "Zwei-Faktor-Authentifizierung",
+    "factorNote": "Noch ein Schritt, um die Anmeldung abzuschließen.",
+    "code": "Bestätigungscode",
+    "backupHint": "Sie können auch einen Ihrer Wiederherstellungscodes eingeben.",
+    "verify": "Bestätigen",
+    "keyPrompt": "Berühren Sie Ihren Sicherheitsschlüssel oder verwenden Sie Ihren Passkey, um die Anmeldung abzuschließen.",
+    "useKey": "Sicherheitsschlüssel verwenden",
+    "factorInTermix": "Dieser Schritt kann hier nicht durchgeführt werden. Öffnen Sie Termix, um sich anzumelden, und diese Seite wird automatisch fortgesetzt.",
+    "factorCode": "Code",
+    "factorKey": "Sicherheitsschlüssel",
+    "factorOther": "Andere",
+    "back": "Zurück",
+    "noAccess": "Kein Zugriff",
+    "noAccessNote": "Ihr Termix-Konto kann diese Seite nicht öffnen.",
+    "stuckTitle": "Angemeldet, konnte jedoch nicht fortfahren",
+    "stuckNote": "Ihr Konto muss möglicherweise zuerst weiter eingerichtet werden. Öffnen Sie Termix, um dies abzuschließen, und versuchen Sie es dann erneut auf dieser Seite.",
+    "offlineTitle": "Termix konnte nicht erreicht werden",
+    "offlineNote": "Überprüfen Sie Ihre Verbindung und laden Sie diese Seite neu.",
+    "badLinkTitle": "Dieser Link ist ungültig",
+    "badLinkNote": "Die Seite wurde möglicherweise verschoben oder die Anmeldung ist dafür deaktiviert. Gehen Sie zurück zur Website und versuchen Sie es erneut."
+  },
+  "operations": {
+    "list": {
+      "title": "Proxy-Routen auflisten"
+    },
+    "failing": {
+      "title": "Proxy-Routen fehlerhaft"
+    },
+    "enable": {
+      "title": "Proxy-Route aktivieren"
+    },
+    "disable": {
+      "title": "Proxy-Route deaktivieren"
+    },
+    "routes": {
+      "title": "Proxy-Routen",
+      "domain": "Domain",
+      "target": "Ziel",
+      "kind": "Typ"
+    }
   }
 }

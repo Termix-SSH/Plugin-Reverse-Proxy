@@ -7,7 +7,8 @@
     "save": "Salvar",
     "cancel": "Cancelar",
     "delete": "Excluir",
-    "edit": "Editar"
+    "edit": "Editar",
+    "loading": "Carregando..."
   },
   "tab": {
     "title": "Proxy Reverso",
@@ -166,6 +167,10 @@
         "label": "Usar ambiente de teste do Let's Encrypt",
         "description": "Certificados de teste que os navegadores não confiam. Use durante a configuração para evitar limites de taxa."
       },
+      "endpointDomain": {
+        "label": "Domínio do endpoint web",
+        "description": "Um domínio com um registro DNS curinga apontando para este proxy, como *.apps.example.com. O modo 'Através do Termix' do Web Endpoint abre cada página em seu próprio nome temporário sob esse domínio. Requer o endereço do Termix acima. Adicione uma porta após dois pontos se os visitantes usarem uma."
+      },
       "cookieHours": {
         "label": "Duração do login em horas",
         "description": "Por quanto tempo um visitante permanece conectado em uma rota protegida."
@@ -197,6 +202,15 @@
     "connections": "{{count}} conexões",
     "traffic": "{{inbound}} de entrada, {{outbound}} de saída"
   },
+  "tile": {
+    "title": "Rotas do proxy",
+    "empty": "Nenhuma rota de proxy neste host.",
+    "off": "desativado"
+  },
+  "widget": {
+    "name": "Proxy reverso",
+    "description": "Quantas rotas de proxy estão em execução."
+  },
   "card": {
     "title": "Proxy reverso",
     "summary": "{{running}} de {{total}} rotas ativas",
@@ -205,5 +219,64 @@
     "daysLeft_one": "{{count}} dia restante",
     "daysLeft_many": "{{count}} dias restantes",
     "daysLeft_other": "{{count}} dias restantes"
+  },
+  "gate": {
+    "tagline": "Gerenciamento de servidor auto-hospedado e baseado em plugins.",
+    "title": "Faça login para continuar",
+    "subtitle": "Faça login no Termix para abrir {{host}}",
+    "username": "Nome de usuário",
+    "password": "Senha",
+    "showPassword": "Mostrar senha",
+    "rememberMe": "Lembrar dispositivo por 30 dias (inclui TOTP)",
+    "signIn": "Entrar",
+    "signInWith": "Entrar com {{name}}",
+    "passkey": "Entrar com passkey",
+    "external": "Externo",
+    "otherOptions": "Precisa redefinir a senha ou se registrar?",
+    "openTermix": "Abrir Termix",
+    "loading": "Carregando...",
+    "required": "Digite seu nome de usuário e senha.",
+    "loginFailed": "Não foi possível fazer login. Tente novamente.",
+    "badCode": "Esse código não funcionou. Tente novamente.",
+    "factorTitle": "Autenticação de dois fatores",
+    "factorNote": "Mais um passo para concluir o login.",
+    "code": "Código de verificação",
+    "backupHint": "Você também pode inserir um de seus códigos de backup.",
+    "verify": "Verificar",
+    "keyPrompt": "Toque na sua chave de segurança ou use sua passkey para concluir o login.",
+    "useKey": "Usar chave de segurança",
+    "factorInTermix": "Esta etapa não pode ser concluída aqui. Abra o Termix para fazer login e esta página continuará automaticamente.",
+    "factorCode": "Código",
+    "factorKey": "Chave de segurança",
+    "factorOther": "Outro",
+    "back": "Voltar",
+    "noAccess": "Sem acesso",
+    "noAccessNote": "Sua conta do Termix não pode abrir esta página.",
+    "stuckTitle": "Logado, mas não foi possível continuar",
+    "stuckNote": "Sua conta pode precisar de mais configuração primeiro. Abra o Termix para concluir e tente esta página novamente.",
+    "offlineTitle": "Não foi possível alcançar o Termix",
+    "offlineNote": "Verifique sua conexão e recarregue esta página.",
+    "badLinkTitle": "Este link não é válido",
+    "badLinkNote": "A página pode ter sido movida ou o login pode estar desativado para ela. Volte ao site e tente novamente."
+  },
+  "operations": {
+    "list": {
+      "title": "Listar rotas do proxy"
+    },
+    "failing": {
+      "title": "Rotas do proxy falhando"
+    },
+    "enable": {
+      "title": "Ativar uma rota do proxy"
+    },
+    "disable": {
+      "title": "Desativar uma rota do proxy"
+    },
+    "routes": {
+      "title": "Rotas do proxy",
+      "domain": "Domínio",
+      "target": "Vai para",
+      "kind": "Tipo"
+    }
   }
 }

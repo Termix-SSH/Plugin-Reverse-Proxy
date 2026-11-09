@@ -7,7 +7,8 @@
     "save": "Uložit",
     "cancel": "Zrušit",
     "delete": "Smazat",
-    "edit": "Upravit"
+    "edit": "Upravit",
+    "loading": "Načítání..."
   },
   "tab": {
     "title": "Obrácený proxy",
@@ -166,6 +167,10 @@
         "label": "Použít testovací prostředí Let's Encrypt",
         "description": "Testovací certifikáty, kterým prohlížeče nedůvěřují. Použijte při nastavování, abyste se vyhnuli limitům počtu požadavků."
       },
+      "endpointDomain": {
+        "label": "Doména webového koncového bodu",
+        "description": "Doména s wildcard DNS záznamem směřujícím na tento proxy server, například *.apps.example.com. Režim „Přes Termix“ u webových koncových bodů otevře každou stránku pod jejím vlastním dočasným názvem v rámci této domény. Vyžaduje adresu Termix uvedenou výše. Pokud návštěvníci používají port, přidejte jej za dvojtečku."
+      },
       "cookieHours": {
         "label": "Délka přihlášení v hodinách",
         "description": "Jak dlouho zůstane návštěvník přihlášen na chráněné trase."
@@ -197,6 +202,15 @@
     "connections": "1 spojení, 2–4 spojení, 5+ spojení, {{count}} spojení",
     "traffic": "{{inbound}} ve, {{outbound}} ze"
   },
+  "tile": {
+    "title": "Proxy trasy",
+    "empty": "Na tomto hostiteli nejsou žádné proxy trasy.",
+    "off": "vypnuto"
+  },
+  "widget": {
+    "name": "Reverzní proxy",
+    "description": "Kolik proxy tras právě běží."
+  },
   "card": {
     "title": "Obrácený proxy",
     "summary": "{{running}} z {{total}} tras běží",
@@ -206,5 +220,64 @@
     "daysLeft_few": "{{count}} dny zbývají",
     "daysLeft_many": "{{count}} dní zbývá",
     "daysLeft_other": "{{count}} dní zbývá"
+  },
+  "gate": {
+    "tagline": "Self-hosted správa serverů založená na pluginu.",
+    "title": "Přihlaste se pro pokračování",
+    "subtitle": "Přihlaste se do Termix pro otevření {{host}}",
+    "username": "Uživatelské jméno",
+    "password": "Heslo",
+    "showPassword": "Zobrazit heslo",
+    "rememberMe": "Zapamatovat zařízení na 30 dní (včetně TOTP)",
+    "signIn": "Přihlásit se",
+    "signInWith": "Přihlásit se pomocí {{name}}",
+    "passkey": "Přihlásit se pomocí passkey",
+    "external": "Externí",
+    "otherOptions": "Potřebujete resetovat heslo nebo se zaregistrovat?",
+    "openTermix": "Otevřít Termix",
+    "loading": "Načítání...",
+    "required": "Zadejte své uživatelské jméno a heslo.",
+    "loginFailed": "Přihlášení se nezdařilo. Zkuste to znovu.",
+    "badCode": "Tento kód nefungoval. Zkuste to znovu.",
+    "factorTitle": "Dvoufázové ověřování",
+    "factorNote": "Ještě jeden krok k dokončení přihlášení.",
+    "code": "Ověřovací kód",
+    "backupHint": "Můžete také zadat jeden ze svých záložních kódů.",
+    "verify": "Ověřit",
+    "keyPrompt": "Dotkněte se svého bezpečnostního klíče nebo použijte passkey k dokončení přihlášení.",
+    "useKey": "Použít bezpečnostní klíč",
+    "factorInTermix": "Tento krok nelze provést zde. Otevřete Termix pro přihlášení a tato stránka se dokončí automaticky.",
+    "factorCode": "Kód",
+    "factorKey": "Bezpečnostní klíč",
+    "factorOther": "Jiné",
+    "back": "Zpět",
+    "noAccess": "Žádný přístup",
+    "noAccessNote": "Váš účet Termix nemůže otevřít tuto stránku.",
+    "stuckTitle": "Přihlášení úspěšné, ale nelze pokračovat",
+    "stuckNote": "Váš účet může vyžadovat další nastavení. Otevřete Termix pro dokončení a poté zkuste tuto stránku znovu.",
+    "offlineTitle": "Nelze se připojit k Termix",
+    "offlineNote": "Zkontrolujte své připojení a obnovte tuto stránku.",
+    "badLinkTitle": "Tento odkaz není platný",
+    "badLinkNote": "Stránka mohla být přesunuta nebo pro ni může být vypnuto přihlašování. Vraťte se na web a zkuste to znovu."
+  },
+  "operations": {
+    "list": {
+      "title": "Seznam proxy tras"
+    },
+    "failing": {
+      "title": "Selhání proxy tras"
+    },
+    "enable": {
+      "title": "Zapnout proxy trasu"
+    },
+    "disable": {
+      "title": "Vypnout proxy trasu"
+    },
+    "routes": {
+      "title": "Proxy trasy",
+      "domain": "Doména",
+      "target": "Směrováno na",
+      "kind": "Typ"
+    }
   }
 }

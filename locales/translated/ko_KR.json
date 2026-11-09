@@ -7,7 +7,8 @@
     "save": "저장",
     "cancel": "취소",
     "delete": "삭제",
-    "edit": "수정"
+    "edit": "수정",
+    "loading": "로딩 중..."
   },
   "tab": {
     "title": "리버스 프록시",
@@ -166,6 +167,10 @@
         "label": "Let's Encrypt 스테이징 사용",
         "description": "브라우저가 신뢰하지 않는 테스트 인증서입니다. 속도 제한을 피하기 위해 설정 중에 사용하세요."
       },
+      "endpointDomain": {
+        "label": "웹 엔드포인트 도메인",
+        "description": "이 프록시로 향하는 와일드카드 DNS 레코드가 있는 도메인(예: *.apps.example.com)입니다. 웹 엔드포인트의 'Through Termix' 모드는 각 페이지를 해당 도메인 하위의 임시 이름으로 엽니다. 위의 Termix 주소가 필요합니다. 방문자가 포트를 사용하는 경우 콜론 뒤에 포트를 추가하세요."
+      },
       "cookieHours": {
         "label": "로그인 유지 시간(시간)",
         "description": "보호된 경로에서 방문자가 로그인 상태를 유지하는 시간입니다."
@@ -197,11 +202,79 @@
     "connections": "{{count}}개 연결",
     "traffic": "{{inbound}} 수신, {{outbound}} 전송"
   },
+  "tile": {
+    "title": "프록시 라우트",
+    "empty": "이 호스트에 프록시 라우트가 없습니다.",
+    "off": "끔"
+  },
+  "widget": {
+    "name": "리버스 프록시",
+    "description": "실행 중인 프록시 라우트 수입니다."
+  },
   "card": {
     "title": "리버스 프록시",
     "summary": "{{total}}개 중 {{running}}개 라우트 실행 중",
     "failed": "프록시를 로드할 수 없습니다.",
     "loading": "로딩 중...",
     "daysLeft_other": "{{count}}일 남음"
+  },
+  "gate": {
+    "tagline": "플러그인 기반의 자체 호스팅 서버 관리.",
+    "title": "계속하려면 로그인하세요",
+    "subtitle": "{{host}}를 열려면 Termix에 로그인하세요",
+    "username": "사용자 이름",
+    "password": "비밀번호",
+    "showPassword": "비밀번호 표시",
+    "rememberMe": "30일 동안 기기 기억하기 (TOTP 포함)",
+    "signIn": "로그인",
+    "signInWith": "{{name}}(으)로 로그인",
+    "passkey": "패스키로 로그인",
+    "external": "외부",
+    "otherOptions": "비밀번호를 재설정하거나 가입해야 하나요?",
+    "openTermix": "Termix 열기",
+    "loading": "로딩 중...",
+    "required": "사용자 이름과 비밀번호를 입력하세요.",
+    "loginFailed": "로그인할 수 없습니다. 다시 시도하세요.",
+    "badCode": "그 코드는 작동하지 않았습니다. 다시 시도하세요.",
+    "factorTitle": "이중 인증",
+    "factorNote": "로그인을 완료하려면 한 단계 더 진행해야 합니다.",
+    "code": "인증 코드",
+    "backupHint": "백업 코드 중 하나를 입력할 수도 있습니다.",
+    "verify": "확인",
+    "keyPrompt": "보안 키를 터치하거나 패스키를 사용하여 로그인을 완료하세요.",
+    "useKey": "보안 키 사용",
+    "factorInTermix": "이 단계는 여기서 수행할 수 없습니다. Termix를 열어 로그인하면 이 페이지가 자동으로 계속됩니다.",
+    "factorCode": "코드",
+    "factorKey": "보안 키",
+    "factorOther": "기타",
+    "back": "뒤로",
+    "noAccess": "접근 권한 없음",
+    "noAccessNote": "Termix 계정에서 이 페이지를 열 수 없습니다.",
+    "stuckTitle": "로그인되었으나 계속할 수 없습니다",
+    "stuckNote": "계정에 먼저 추가 설정이 필요할 수 있습니다. Termix를 열어 설정을 완료한 후 이 페이지를 다시 시도하세요.",
+    "offlineTitle": "Termix에 연결할 수 없습니다",
+    "offlineNote": "연결 상태를 확인하고 이 페이지를 새로고침하세요.",
+    "badLinkTitle": "이 링크는 유효하지 않습니다",
+    "badLinkNote": "페이지가 이동되었거나 로그인 기능이 꺼져 있을 수 있습니다. 사이트로 돌아가서 다시 시도하세요."
+  },
+  "operations": {
+    "list": {
+      "title": "프록시 라우트 목록"
+    },
+    "failing": {
+      "title": "프록시 라우트 실패"
+    },
+    "enable": {
+      "title": "프록시 라우트 켜기"
+    },
+    "disable": {
+      "title": "프록시 라우트 끄기"
+    },
+    "routes": {
+      "title": "프록시 라우트",
+      "domain": "도메인",
+      "target": "대상",
+      "kind": "종류"
+    }
   }
 }

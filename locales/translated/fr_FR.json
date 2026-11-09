@@ -7,7 +7,8 @@
     "save": "Enregistrer",
     "cancel": "Annuler",
     "delete": "Supprimer",
-    "edit": "Modifier"
+    "edit": "Modifier",
+    "loading": "Chargement..."
   },
   "tab": {
     "title": "Proxy inverse",
@@ -166,6 +167,10 @@
         "label": "Utiliser l'environnement de test de Let's Encrypt",
         "description": "Certificats de test non reconnus par les navigateurs. À utiliser pendant la configuration pour éviter les limites de taux."
       },
+      "endpointDomain": {
+        "label": "Domaine du point de terminaison Web",
+        "description": "Un domaine avec un enregistrement DNS générique pointant vers ce proxy, comme *.apps.example.com. Le mode « Via Termix » des points de terminaison Web ouvre chaque page sous un nom temporaire unique sous ce domaine. Nécessite l'adresse Termix ci-dessus. Ajoutez un port après deux-points si les visiteurs en utilisent un."
+      },
       "cookieHours": {
         "label": "Durée de connexion en heures",
         "description": "Durée pendant laquelle un visiteur reste connecté sur une route protégée."
@@ -197,6 +202,15 @@
     "connections": "{{count}} connexion",
     "traffic": "{{inbound}} entrant, {{outbound}} sortant"
   },
+  "tile": {
+    "title": "Itinéraires du proxy",
+    "empty": "Aucun itinéraire de proxy sur cet hôte.",
+    "off": "désactivé"
+  },
+  "widget": {
+    "name": "Proxy inverse",
+    "description": "Nombre d'itinéraires de proxy en cours d'exécution."
+  },
   "card": {
     "title": "Proxy inverse",
     "summary": "{{running}} de {{total}} routes actives",
@@ -205,5 +219,64 @@
     "daysLeft_one": "{{count}} jour restant",
     "daysLeft_many": "{{count}} jours restants",
     "daysLeft_other": "{{count}} jours restants"
+  },
+  "gate": {
+    "tagline": "Gestion de serveurs auto-hébergée et basée sur des plugins.",
+    "title": "Connectez-vous pour continuer",
+    "subtitle": "Connectez-vous à Termix pour ouvrir {{host}}",
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "showPassword": "Afficher le mot de passe",
+    "rememberMe": "Se souvenir de l'appareil pendant 30 jours (inclut TOTP)",
+    "signIn": "Connexion",
+    "signInWith": "Se connecter avec {{name}}",
+    "passkey": "Se connecter avec une clé d'identification",
+    "external": "Externe",
+    "otherOptions": "Besoin de réinitialiser un mot de passe ou de vous inscrire ?",
+    "openTermix": "Ouvrir Termix",
+    "loading": "Chargement...",
+    "required": "Entrez votre nom d'utilisateur et votre mot de passe.",
+    "loginFailed": "Échec de la connexion. Réessayez.",
+    "badCode": "Ce code n'a pas fonctionné. Réessayez.",
+    "factorTitle": "Authentification à deux facteurs",
+    "factorNote": "Une dernière étape pour finaliser la connexion.",
+    "code": "Code de vérification",
+    "backupHint": "Vous pouvez également entrer l'un de vos codes de secours.",
+    "verify": "Vérifier",
+    "keyPrompt": "Touchez votre clé de sécurité ou utilisez votre clé d'identification pour finaliser la connexion.",
+    "useKey": "Utiliser la clé de sécurité",
+    "factorInTermix": "Cette étape ne peut pas être effectuée ici. Ouvrez Termix pour vous connecter et cette page se poursuivra automatiquement.",
+    "factorCode": "Code",
+    "factorKey": "Clé de sécurité",
+    "factorOther": "Autre",
+    "back": "Retour",
+    "noAccess": "Aucun accès",
+    "noAccessNote": "Votre compte Termix ne peut pas ouvrir cette page.",
+    "stuckTitle": "Connecté, mais impossible de continuer",
+    "stuckNote": "Votre compte peut nécessiter une configuration supplémentaire. Ouvrez Termix pour terminer, puis réessayez cette page.",
+    "offlineTitle": "Impossible d'atteindre Termix",
+    "offlineNote": "Vérifiez votre connexion et rechargez cette page.",
+    "badLinkTitle": "Ce lien n'est pas valide",
+    "badLinkNote": "La page a peut-être été déplacée ou la connexion est désactivée pour elle. Retournez sur le site et réessayez."
+  },
+  "operations": {
+    "list": {
+      "title": "Lister les itinéraires du proxy"
+    },
+    "failing": {
+      "title": "Itinéraires du proxy en échec"
+    },
+    "enable": {
+      "title": "Activer un itinéraire de proxy"
+    },
+    "disable": {
+      "title": "Désactiver un itinéraire de proxy"
+    },
+    "routes": {
+      "title": "Itinéraires du proxy",
+      "domain": "Domaine",
+      "target": "Redirige vers",
+      "kind": "Type"
+    }
   }
 }

@@ -7,7 +7,8 @@
     "save": "儲存",
     "cancel": "取消",
     "delete": "刪除",
-    "edit": "編輯"
+    "edit": "編輯",
+    "loading": "載入中..."
   },
   "tab": {
     "title": "反向代理",
@@ -166,6 +167,10 @@
         "label": "使用 Let's Encrypt 測試環境",
         "description": "瀏覽器不信任的測試憑證。在設定期間使用以避免觸發速率限制。"
       },
+      "endpointDomain": {
+        "label": "Web 端點網域",
+        "description": "一個具有萬用字元 DNS 記錄且指向此代理伺服器的網域，例如 *.apps.example.com。Web 端點的「透過 Termix」模式會在其下為每個頁面開啟獨立的臨時名稱。需要上述的 Termix 位址。如果訪客使用特定連接埠，請在冒號後加上連接埠號碼。"
+      },
       "cookieHours": {
         "label": "登入有效時長（小時）",
         "description": "訪客在受保護的路由上保持登入狀態的時長。"
@@ -197,11 +202,79 @@
     "connections": "{{count}} 個連線",
     "traffic": "入站 {{inbound}}，出站 {{outbound}}"
   },
+  "tile": {
+    "title": "代理路由",
+    "empty": "此主機上沒有代理路由。",
+    "off": "關閉"
+  },
+  "widget": {
+    "name": "反向代理",
+    "description": "正在執行的代理路由數量。"
+  },
   "card": {
     "title": "反向代理",
     "summary": "{{running}} / {{total}} 個路由正在執行",
     "failed": "無法載入代理伺服器。",
     "loading": "載入中...",
     "daysLeft_other": "剩餘 {{count}} 天"
+  },
+  "gate": {
+    "tagline": "自架式、基於外掛的伺服器管理工具。",
+    "title": "登入以繼續",
+    "subtitle": "登入 Termix 以開啟 {{host}}",
+    "username": "使用者名稱",
+    "password": "密碼",
+    "showPassword": "顯示密碼",
+    "rememberMe": "30 天內記住此裝置（包含 TOTP）",
+    "signIn": "登入",
+    "signInWith": "使用 {{name}} 登入",
+    "passkey": "使用通行金鑰登入",
+    "external": "外部",
+    "otherOptions": "需要重設密碼或註冊嗎？",
+    "openTermix": "開啟 Termix",
+    "loading": "載入中...",
+    "required": "請輸入您的使用者名稱和密碼。",
+    "loginFailed": "無法登入。請再試一次。",
+    "badCode": "該驗證碼無效。請再試一次。",
+    "factorTitle": "兩步驟驗證",
+    "factorNote": "再完成一個步驟即可登入。",
+    "code": "驗證碼",
+    "backupHint": "您也可以輸入其中一個備用碼。",
+    "verify": "驗證",
+    "keyPrompt": "觸碰您的安全金鑰或使用通行金鑰以完成登入。",
+    "useKey": "使用安全金鑰",
+    "factorInTermix": "此步驟無法在此處完成。請開啟 Termix 進行登入，此頁面將自動繼續。",
+    "factorCode": "驗證碼",
+    "factorKey": "安全金鑰",
+    "factorOther": "其他",
+    "back": "返回",
+    "noAccess": "無存取權限",
+    "noAccessNote": "您的 Termix 帳戶無法開啟此頁面。",
+    "stuckTitle": "已登入，但無法繼續",
+    "stuckNote": "您的帳戶可能需要先完成更多設定。請開啟 Termix 完成設定，然後再試一次此頁面。",
+    "offlineTitle": "無法連線至 Termix",
+    "offlineNote": "請檢查您的連線並重新載入此頁面。",
+    "badLinkTitle": "此連結無效",
+    "badLinkNote": "頁面可能已移動，或該頁面的登入功能已關閉。請返回網站並再試一次。"
+  },
+  "operations": {
+    "list": {
+      "title": "列出代理路由"
+    },
+    "failing": {
+      "title": "代理路由失敗"
+    },
+    "enable": {
+      "title": "開啟代理路由"
+    },
+    "disable": {
+      "title": "關閉代理路由"
+    },
+    "routes": {
+      "title": "代理路由",
+      "domain": "網域",
+      "target": "指向",
+      "kind": "類型"
+    }
   }
 }

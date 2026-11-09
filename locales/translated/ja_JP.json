@@ -7,7 +7,8 @@
     "save": "保存",
     "cancel": "キャンセル",
     "delete": "削除",
-    "edit": "編集"
+    "edit": "編集",
+    "loading": "読み込み中..."
   },
   "tab": {
     "title": "リバースプロキシ",
@@ -166,6 +167,10 @@
         "label": "Let's Encrypt ステージングを使用する",
         "description": "ブラウザが信頼しないテスト証明書。レート制限を避けるために、セットアップ中に使用します。"
       },
+      "endpointDomain": {
+        "label": "Web エンドポイントのドメイン",
+        "description": "このプロキシを指すワイルドカード DNS レコードを持つドメイン（例：*.apps.example.com）。Web エンドポイントの「Termix 経由」モードでは、各ページはこのドメイン配下の一時的な名前で開かれます。上記の Termix アドレスが必要です。訪問者がポートを使用する場合は、コロン（:）の後にポート番号を追加してください。"
+      },
       "cookieHours": {
         "label": "ログインの有効期間（時間）",
         "description": "保護されたルートで訪問者がサインインした状態を維持する時間。"
@@ -197,11 +202,79 @@
     "connections": "接続数: {{count}}",
     "traffic": "受信: {{inbound}}, 送信: {{outbound}}"
   },
+  "tile": {
+    "title": "プロキシ ルート",
+    "empty": "このホストにはプロキシ ルートがありません。",
+    "off": "オフ"
+  },
+  "widget": {
+    "name": "リバース プロキシ",
+    "description": "実行中のプロキシ ルートの数を表示します。"
+  },
   "card": {
     "title": "リバースプロキシ",
     "summary": "{{total}} 件中 {{running}} 件のルートが実行中",
     "failed": "プロキシを読み込めませんでした。",
     "loading": "読み込み中...",
     "daysLeft_other": "{{count}} 日残っています"
+  },
+  "gate": {
+    "tagline": "プラグインベースのセルフホスト型サーバー管理。",
+    "title": "続行するにはサインインしてください",
+    "subtitle": "{{host}} を開くには Termix にサインインしてください",
+    "username": "ユーザー名",
+    "password": "パスワード",
+    "showPassword": "パスワードを表示",
+    "rememberMe": "30 日間デバイスを記憶（TOTP を含む）",
+    "signIn": "ログイン",
+    "signInWith": "{{name}} でログイン",
+    "passkey": "パスキーでサインイン",
+    "external": "外部",
+    "otherOptions": "パスワードのリセットや新規登録が必要ですか？",
+    "openTermix": "Termix を開く",
+    "loading": "読み込み中...",
+    "required": "ユーザー名とパスワードを入力してください。",
+    "loginFailed": "サインインできませんでした。もう一度お試しください。",
+    "badCode": "そのコードは有効ではありませんでした。もう一度お試しください。",
+    "factorTitle": "二段階認証",
+    "factorNote": "サインインを完了するにはあと一歩です。",
+    "code": "認証コード",
+    "backupHint": "バックアップコードのいずれかを入力することもできます。",
+    "verify": "確認",
+    "keyPrompt": "セキュリティ キーに触れるか、パスキーを使用してサインインを完了してください。",
+    "useKey": "セキュリティ キーを使用",
+    "factorInTermix": "この手順はここで実行できません。Termix を開いてサインインすると、このページは自動的に続行されます。",
+    "factorCode": "コード",
+    "factorKey": "セキュリティ キー",
+    "factorOther": "その他",
+    "back": "戻る",
+    "noAccess": "アクセス権がありません",
+    "noAccessNote": "あなたの Termix アカウントではこのページを開くことができません。",
+    "stuckTitle": "サインインしましたが、続行できませんでした",
+    "stuckNote": "アカウントの追加設定が必要かもしれません。Termix を開いて設定を完了し、その後このページを再試行してください。",
+    "offlineTitle": "Termix に接続できませんでした",
+    "offlineNote": "接続を確認し、このページを再読み込みしてください。",
+    "badLinkTitle": "このリンクは無効です",
+    "badLinkNote": "ページが移動したか、サインインが無効になっている可能性があります。サイトに戻って再試行してください。"
+  },
+  "operations": {
+    "list": {
+      "title": "プロキシ ルートの一覧"
+    },
+    "failing": {
+      "title": "プロキシ ルートの失敗"
+    },
+    "enable": {
+      "title": "プロキシ ルートをオンにする"
+    },
+    "disable": {
+      "title": "プロキシ ルートをオフにする"
+    },
+    "routes": {
+      "title": "プロキシ ルート",
+      "domain": "ドメイン",
+      "target": "宛先",
+      "kind": "種類"
+    }
   }
 }

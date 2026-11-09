@@ -25,6 +25,10 @@ services:
 
 Change the HTTP and HTTPS ports in Settings, under Reverse Proxy.
 
+## Web endpoint domain
+
+Set Web endpoint domain in the admin settings to a domain with a wildcard DNS record pointing at this proxy, like `*.apps.example.com`, and set the Termix address. Web Endpoint's Through Termix mode then opens each page on its own temporary name under that domain, so you add one DNS record once and no route per app. Behind a tunnel or another proxy that handles HTTPS, point the wildcard name at the HTTP port. To serve HTTPS here, add a route for the wildcard name with a certificate for it. These temporary routes need a Termix login and connect access to the host, and end after 10 idle minutes.
+
 ## Manage routes
 
 Open Reverse Proxy from a host's menu. The tab belongs to that host and lists only its routes, with status and traffic. Search, filter by status, switch a route on or off, or click one to see and change everything about it. Certificates are on their own view in the same tab.
@@ -62,7 +66,7 @@ Set Who can open it on a web route:
 - Signed-in Termix users: visitors sign in with Termix first.
 - Users with access to this host: visitors also need to be allowed to connect to the host in Termix.
 
-Set Termix address in Settings, for example `https://termix.example.com`. A visitor without a login is sent to a page on Termix, signs in there, and is sent back with a cookie for the route's domain. The cookie lasts as long as Login length in Settings. The cookie is only kept by the plugin and is not sent to your service.
+Set Termix address in Settings, for example `https://termix.example.com`. A visitor without a login is sent to a sign in page on Termix, signs in right there, and is sent back with a cookie for the route's domain. Password, LDAP, passkeys and two-factor codes work on that page. SSO opens in a new tab and the page continues by itself once you are signed in. The cookie lasts as long as Login length in Settings. The cookie is only kept by the plugin and is not sent to your service.
 
 This protects the web page. A TCP or UDP route has no login. Use the allow list on those.
 

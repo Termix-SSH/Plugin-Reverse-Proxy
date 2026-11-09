@@ -7,7 +7,8 @@
     "save": "Shrani",
     "cancel": "Prekliči",
     "delete": "Izbriši",
-    "edit": "Uredi"
+    "edit": "Uredi",
+    "loading": "Nalaganje..."
   },
   "tab": {
     "title": "Obratni proxy",
@@ -166,6 +167,10 @@
         "label": "Uporabi testno okolje Let's Encrypt",
         "description": "Testni certifikati, ki jih brskalniki ne zaupajo. Uporabite med nastavitvijo, da se izognete omejitvam hitrosti."
       },
+      "endpointDomain": {
+        "label": "Domena spletnega končnega točka",
+        "description": "Domena z divjo DNS vnosa, ki kaže na ta proxy, na primer *.apps.example.com. Način Through Termix za spletni končni toček odpre vsako stran pod svojo začasno ime znotraj te domene. Zahteva naslov Termix zgoraj. Če obiskovalci uporabljajo vrata, dodajte vrata za dvopičjem."
+      },
       "cookieHours": {
         "label": "Trajanje prijave v urah",
         "description": "Kako dolgo ostane obiskovalec prijavljen na zaščitenih poteh."
@@ -197,6 +202,15 @@
     "connections": "1 povezava|2 povezavi|3 povezave|{{count}} povezav",
     "traffic": "{{inbound}} v, {{outbound}} iz"
   },
+  "tile": {
+    "title": "Proxy poti",
+    "empty": "Na tem gostitelju ni proxy poti.",
+    "off": "izklopljeno"
+  },
+  "widget": {
+    "name": "Obratni proxy",
+    "description": "Koliko proxy poti je aktivnih."
+  },
   "card": {
     "title": "Obratni proxy",
     "summary": "{{running}} od {{total}} poti deluje",
@@ -206,5 +220,64 @@
     "daysLeft_two": "{{count}} dneva preostanek",
     "daysLeft_few": "{{count}} dnevi preostanek",
     "daysLeft_other": "{{count}} dni preostanek"
+  },
+  "gate": {
+    "tagline": "Samostojno gostovano upravljanje strežnikov z vtičniki.",
+    "title": "Prijavite se za nadaljevanje",
+    "subtitle": "Prijavite se v Termix za odpiranje {{host}}",
+    "username": "Uporabniško ime",
+    "password": "Geslo",
+    "showPassword": "Prikaži geslo",
+    "rememberMe": "Zapomni si napravo za 30 dni (vključuje TOTP)",
+    "signIn": "Prijava",
+    "signInWith": "Prijava z {{name}}",
+    "passkey": "Prijava s passkey",
+    "external": "Zunanje",
+    "otherOptions": "Potrebujete ponastavitev gesla ali registracijo?",
+    "openTermix": "Odpri Termix",
+    "loading": "Nalaganje...",
+    "required": "Vnesite svoje uporabniško ime in geslo.",
+    "loginFailed": "Prijava ni uspela. Poskusite znova.",
+    "badCode": "Ta koda ni delovala. Poskusite znova.",
+    "factorTitle": "Dvofaktorska avtentikacija",
+    "factorNote": "Še en korak za dokončanje prijave.",
+    "code": "Preveritvena koda",
+    "backupHint": "Lahko vnesete tudi eno od svojih rezervnih kod.",
+    "verify": "Preveri",
+    "keyPrompt": "Dotaknite se varnostnega ključa ali uporabite passkey za dokončanje prijave.",
+    "useKey": "Uporabi varnostni ključ",
+    "factorInTermix": "Tega koraka ni mogoče opraviti tukaj. Odprite Termix za prijavo in ta stran se bo nadaljevala samodejno.",
+    "factorCode": "Koda",
+    "factorKey": "Varnostni ključ",
+    "factorOther": "Drugo",
+    "back": "Nazaj",
+    "noAccess": "Brez dostopa",
+    "noAccessNote": "Vaš račun Termix ne more odpreti te strani.",
+    "stuckTitle": "Prijavljeni, vendar nadaljevanje ni uspelo",
+    "stuckNote": "Vaš račun morda potrebuje dodatno nastavitev. Odprite Termix za dokončanje, nato poskusite znova s to stranjo.",
+    "offlineTitle": "Termix ni mogoče doseči",
+    "offlineNote": "Preverite svojo povezavo in osvežite to stran.",
+    "badLinkTitle": "Ta povezava ni veljavna",
+    "badLinkNote": "Stran se je morda premaknila ali pa je prijava za njo onemogočena. Vrnite se na spletno mesto in poskusite znova."
+  },
+  "operations": {
+    "list": {
+      "title": "Seznam proxy poti"
+    },
+    "failing": {
+      "title": "Proxy poti ne delujejo"
+    },
+    "enable": {
+      "title": "Vklopi proxy pot"
+    },
+    "disable": {
+      "title": "Izklopi proxy pot"
+    },
+    "routes": {
+      "title": "Proxy poti",
+      "domain": "Domena",
+      "target": "Usmeri na",
+      "kind": "Vrsta"
+    }
   }
 }

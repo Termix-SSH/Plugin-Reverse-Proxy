@@ -7,7 +7,8 @@
     "save": "Opslaan",
     "cancel": "Annuleren",
     "delete": "Verwijderen",
-    "edit": "Bewerken"
+    "edit": "Bewerken",
+    "loading": "Laden..."
   },
   "tab": {
     "title": "Omgekeerde proxy",
@@ -166,6 +167,10 @@
         "label": "Let's Encrypt staging gebruiken",
         "description": "Testcertificaten die door browsers niet worden vertrouwd. Gebruik dit tijdens de installatie om rate limits te vermijden."
       },
+      "endpointDomain": {
+        "label": "Domein web-eindpunt",
+        "description": "Een domein met een wildcard DNS-record dat naar deze proxy wijst, zoals *.apps.example.com. De modus 'Via Termix' van Web-eindpunten opent elke pagina onder een eigen tijdelijke naam binnen dit domein. Vereist het Termix-adres hierboven. Voeg een poort toe na een dubbele punt als bezoekers er een gebruiken."
+      },
       "cookieHours": {
         "label": "Inlogduur in uren",
         "description": "Hoe lang een bezoeker ingelogd blijft op een beveiligde route."
@@ -197,6 +202,15 @@
     "connections": "{{count}} verbindingen",
     "traffic": "{{inbound}} binnen, {{outbound}} buiten"
   },
+  "tile": {
+    "title": "Proxyroutes",
+    "empty": "Geen proxyroutes op deze host.",
+    "off": "uit"
+  },
+  "widget": {
+    "name": "Reverse proxy",
+    "description": "Hoeveel proxyroutes actief zijn."
+  },
   "card": {
     "title": "Reverse proxy",
     "summary": "{{running}} van {{total}} routes actief",
@@ -204,5 +218,64 @@
     "loading": "Laden...",
     "daysLeft_one": "{{count}} dag resterend",
     "daysLeft_other": "{{count}} dagen resterend"
+  },
+  "gate": {
+    "tagline": "Zelfgehost serverbeheer op basis van plugins.",
+    "title": "Inloggen om door te gaan",
+    "subtitle": "Log in bij Termix om {{host}} te openen",
+    "username": "Gebruikersnaam",
+    "password": "Wachtwoord",
+    "showPassword": "Wachtwoord tonen",
+    "rememberMe": "Apparaat 30 dagen onthouden (inclusief TOTP)",
+    "signIn": "Inloggen",
+    "signInWith": "Inloggen met {{name}}",
+    "passkey": "Inloggen met passkey",
+    "external": "Extern",
+    "otherOptions": "Wachtwoord resetten of registreren?",
+    "openTermix": "Termix openen",
+    "loading": "Laden...",
+    "required": "Voer je gebruikersnaam en wachtwoord in.",
+    "loginFailed": "Inloggen mislukt. Probeer het opnieuw.",
+    "badCode": "Die code werkte niet. Probeer het opnieuw.",
+    "factorTitle": "Tweefactorauthenticatie",
+    "factorNote": "Nog één stap om in te loggen.",
+    "code": "Verificatiecode",
+    "backupHint": "Je kunt ook een van je back-upcodes invoeren.",
+    "verify": "Verifiëren",
+    "keyPrompt": "Raak je beveiligingssleutel aan of gebruik je passkey om in te loggen.",
+    "useKey": "Beveiligingssleutel gebruiken",
+    "factorInTermix": "Deze stap kan hier niet worden uitgevoerd. Open Termix om in te loggen; deze pagina gaat dan automatisch verder.",
+    "factorCode": "Code",
+    "factorKey": "Beveiligingssleutel",
+    "factorOther": "Anders",
+    "back": "Terug",
+    "noAccess": "Geen toegang",
+    "noAccessNote": "Je Termix-account heeft geen toegang tot deze pagina.",
+    "stuckTitle": "Ingelogd, maar kon niet doorgaan",
+    "stuckNote": "Je account moet mogelijk eerst worden ingesteld. Open Termix om dit af te ronden en probeer deze pagina opnieuw.",
+    "offlineTitle": "Kon geen verbinding maken met Termix",
+    "offlineNote": "Controleer je verbinding en herlaad deze pagina.",
+    "badLinkTitle": "Deze link is ongeldig",
+    "badLinkNote": "De pagina is mogelijk verplaatst of inloggen is uitgeschakeld. Ga terug naar de site en probeer het opnieuw."
+  },
+  "operations": {
+    "list": {
+      "title": "Proxyroutes weergeven"
+    },
+    "failing": {
+      "title": "Proxyroutes mislukt"
+    },
+    "enable": {
+      "title": "Proxyroute inschakelen"
+    },
+    "disable": {
+      "title": "Proxyroute uitschakelen"
+    },
+    "routes": {
+      "title": "Proxyroutes",
+      "domain": "Domein",
+      "target": "Doel",
+      "kind": "Type"
+    }
   }
 }

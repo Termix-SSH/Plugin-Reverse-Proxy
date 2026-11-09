@@ -7,7 +7,8 @@
     "save": "Spara",
     "cancel": "Avbryt",
     "delete": "Ta bort",
-    "edit": "Redigera"
+    "edit": "Redigera",
+    "loading": "Laddar..."
   },
   "tab": {
     "title": "Omvänd proxy",
@@ -166,6 +167,10 @@
         "label": "Använd Let's Encrypt staging",
         "description": "Testcertifikat som webbläsare inte litar på. Använd under installation för att undvika hastighetsbegränsningar."
       },
+      "endpointDomain": {
+        "label": "Domän för webbadress",
+        "description": "En domän med ett jokertecken-DNS-post som pekar på denna proxy, till exempel *.apps.example.com. Webbadressens läge \"Via Termix\" öppnar varje sida på ett eget tillfälligt namn under den. Kräver Termix-adressen ovan. Lägg till en port efter ett kolon om besökare använder en."
+      },
       "cookieHours": {
         "label": "Inloggningslängd i timmar",
         "description": "Hur länge en besökare förblir inloggad på en skyddad ruta."
@@ -197,6 +202,15 @@
     "connections": "{{count}} anslutningar",
     "traffic": "{{inbound}} in, {{outbound}} ut"
   },
+  "tile": {
+    "title": "Proxyvägar",
+    "empty": "Inga proxyvägar på denna värd.",
+    "off": "av"
+  },
+  "widget": {
+    "name": "Omvänd proxy",
+    "description": "Hur många proxyvägar som körs."
+  },
   "card": {
     "title": "Omvänd proxy",
     "summary": "{{running}} av {{total}} rutor aktiva",
@@ -204,5 +218,64 @@
     "loading": "Laddar...",
     "daysLeft_one": "{{count}} dag kvar",
     "daysLeft_other": "{{count}} dagar kvar"
+  },
+  "gate": {
+    "tagline": "Självhostad serverhantering baserad på plugins.",
+    "title": "Logga in för att fortsätta",
+    "subtitle": "Logga in på Termix för att öppna {{host}}",
+    "username": "Användarnamn",
+    "password": "Lösenord",
+    "showPassword": "Visa lösenord",
+    "rememberMe": "Kom ihåg enheten i 30 dagar (inklusive TOTP)",
+    "signIn": "Logga in",
+    "signInWith": "Logga in med {{name}}",
+    "passkey": "Logga in med passkey",
+    "external": "Extern",
+    "otherOptions": "Behöver du återställa ett lösenord eller registrera dig?",
+    "openTermix": "Öppna Termix",
+    "loading": "Laddar...",
+    "required": "Ange ditt användarnamn och lösenord.",
+    "loginFailed": "Kunde inte logga in. Försök igen.",
+    "badCode": "Den koden fungerade inte. Försök igen.",
+    "factorTitle": "Tvåfaktorsautentisering",
+    "factorNote": "Ett steg till för att slutföra inloggningen.",
+    "code": "Verifieringskod",
+    "backupHint": "Du kan också ange en av dina reservkoder.",
+    "verify": "Verifiera",
+    "keyPrompt": "Tryck på din säkerhetsnyckel eller använd ditt passkey för att slutföra inloggningen.",
+    "useKey": "Använd säkerhetsnyckel",
+    "factorInTermix": "Detta steg kan inte utföras här. Öppna Termix för att logga in, så fortsätter denna sida automatiskt.",
+    "factorCode": "Kod",
+    "factorKey": "Säkerhetsnyckel",
+    "factorOther": "Övrigt",
+    "back": "Tillbaka",
+    "noAccess": "Ingen åtkomst",
+    "noAccessNote": "Ditt Termix-konto kan inte öppna denna sida.",
+    "stuckTitle": "Inloggad, men kunde inte fortsätta",
+    "stuckNote": "Ditt konto kan behöva mer konfiguration först. Öppna Termix för att slutföra, och försök sedan med denna sida igen.",
+    "offlineTitle": "Kunde inte nå Termix",
+    "offlineNote": "Kontrollera din anslutning och ladda om denna sida.",
+    "badLinkTitle": "Denna länk är inte giltig",
+    "badLinkNote": "Sidan kan ha flyttats eller så är inloggningen inaktiverad för den. Gå tillbaka till webbplatsen och försök igen."
+  },
+  "operations": {
+    "list": {
+      "title": "Lista proxyvägar"
+    },
+    "failing": {
+      "title": "Proxyvägar misslyckas"
+    },
+    "enable": {
+      "title": "Aktivera en proxyväg"
+    },
+    "disable": {
+      "title": "Inaktivera en proxyväg"
+    },
+    "routes": {
+      "title": "Proxyvägar",
+      "domain": "Domän",
+      "target": "Går till",
+      "kind": "Typ"
+    }
   }
 }

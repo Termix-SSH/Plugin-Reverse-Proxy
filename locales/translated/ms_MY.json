@@ -7,7 +7,8 @@
     "save": "Simpan",
     "cancel": "Batal",
     "delete": "Padam",
-    "edit": "Sunting"
+    "edit": "Sunting",
+    "loading": "Memuatkan..."
   },
   "tab": {
     "title": "Pelayan Songsang",
@@ -166,6 +167,10 @@
         "label": "Gunakan persekitaran ujian Let's Encrypt",
         "description": "Sijil ujian yang tidak dipercayai oleh pelayar. Gunakan semasa persediaan untuk mengelakkan had kadar."
       },
+      "endpointDomain": {
+        "label": "Domain titik akhir web",
+        "description": "Domain dengan rekod DNS wildcard yang menunjuk ke pelayan ini, seperti *.apps.example.com. Mod Melalui Termix Titik Akhir Web membuka setiap halaman pada nama sementara di bawahnya. Memerlukan alamat Termix di atas. Tambah port selepas titik dua jika pelawat menggunakannya."
+      },
       "cookieHours": {
         "label": "Tempoh log masuk dalam jam",
         "description": "Lama pelawat kekal log masuk pada laluan yang dilindungi."
@@ -197,11 +202,79 @@
     "connections": "{{count}} sambungan",
     "traffic": "{{inbound}} masuk, {{outbound}} keluar"
   },
+  "tile": {
+    "title": "Laluan pelayan",
+    "empty": "Tiada laluan pelayan pada hos ini.",
+    "off": "mati"
+  },
+  "widget": {
+    "name": "Pelayan songsang",
+    "description": "Berapa banyak laluan pelayan sedang berjalan."
+  },
   "card": {
     "title": "Pelayan songsang",
     "summary": "{{running}} daripada {{total}} laluan sedang berjalan",
     "failed": "Tidak dapat memuatkan pelayan songsang.",
     "loading": "Memuatkan...",
     "daysLeft_other": "{{count}} hari lagi"
+  },
+  "gate": {
+    "tagline": "Pengurusan pelayan berasaskan plugin, hos sendiri.",
+    "title": "Log masuk untuk meneruskan",
+    "subtitle": "Log masuk ke Termix untuk membuka {{host}}",
+    "username": "Nama pengguna",
+    "password": "Kata laluan",
+    "showPassword": "Paparkan kata laluan",
+    "rememberMe": "Ingat Peranti selama 30 Hari (termasuk TOTP)",
+    "signIn": "Log masuk",
+    "signInWith": "Log masuk dengan {{name}}",
+    "passkey": "Log masuk dengan kunci laluan",
+    "external": "Luaran",
+    "otherOptions": "Perlu menetapkan semula kata laluan atau mendaftar?",
+    "openTermix": "Buka Termix",
+    "loading": "Memuatkan...",
+    "required": "Masukkan nama pengguna dan kata laluan anda.",
+    "loginFailed": "Tidak dapat log masuk. Cuba lagi.",
+    "badCode": "Kod itu tidak berfungsi. Cuba lagi.",
+    "factorTitle": "Pengesahan Dua Faktor",
+    "factorNote": "Satu langkah lagi untuk menyelesaikan log masuk.",
+    "code": "Kod pengesahan",
+    "backupHint": "Anda juga boleh memasukkan salah satu kod sandaran anda.",
+    "verify": "Pengesahan",
+    "keyPrompt": "Sentuh kunci keselamatan anda atau gunakan kunci laluan untuk menyelesaikan log masuk.",
+    "useKey": "Gunakan kunci keselamatan",
+    "factorInTermix": "Langkah ini tidak boleh dilakukan di sini. Buka Termix untuk log masuk dan halaman ini akan diteruskan secara automatik.",
+    "factorCode": "Kod",
+    "factorKey": "Kunci keselamatan",
+    "factorOther": "Lain-lain",
+    "back": "Kembali",
+    "noAccess": "Tiada akses",
+    "noAccessNote": "Akaun Termix anda tidak dapat membuka halaman ini.",
+    "stuckTitle": "Telah log masuk, tetapi tidak dapat meneruskan",
+    "stuckNote": "Akaun anda mungkin memerlukan lebih banyak persediaan terlebih dahulu. Buka Termix untuk menyelesaikan, kemudian cuba halaman ini lagi.",
+    "offlineTitle": "Tidak dapat menghubungi Termix",
+    "offlineNote": "Semak sambungan anda dan muat semula halaman ini.",
+    "badLinkTitle": "Pautan ini tidak sah",
+    "badLinkNote": "Halaman mungkin telah berpindah atau log masuk mungkin dimatikan untuknya. Kembali ke laman web dan cuba lagi."
+  },
+  "operations": {
+    "list": {
+      "title": "Senaraikan laluan pelayan"
+    },
+    "failing": {
+      "title": "Laluan pelayan gagal"
+    },
+    "enable": {
+      "title": "Hidupkan laluan pelayan"
+    },
+    "disable": {
+      "title": "Matikan laluan pelayan"
+    },
+    "routes": {
+      "title": "Laluan pelayan",
+      "domain": "Domain",
+      "target": "Pergi ke",
+      "kind": "Jenis"
+    }
   }
 }

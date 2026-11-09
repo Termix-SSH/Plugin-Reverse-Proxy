@@ -179,6 +179,45 @@ describe("gate", () => {
     expect(page.text).toContain("gate/token");
   });
 
+  it("names the site only for a real link to a protected route", async () => {
+    const route = await rig.repo.createRoute(
+      1,
+      "user-1",
+      routeInput({ authMode: "user" }),
+    );
+    const good = await call(
+      "GET",
+      `/gate?route=${route.id}&to=${encodeURIComponent("https://app.test/x")}`,
+    );
+    expect(good.text).toContain('"host":"app.test"');
+
+    const wrongSite = await call(
+      "GET",
+      `/gate?route=${route.id}&to=${encodeURIComponent("https://evil.test/")}`,
+    );
+    expect(wrongSite.text).toContain('"host":null');
+    expect((await call("GET", "/gate")).text).toContain('"host":null');
+  });
+
+  it("runs its scripts under a per request nonce", async () => {
+    const first = await fetch(`http://127.0.0.1:${port}/gate`);
+    const second = await fetch(`http://127.0.0.1:${port}/gate`);
+    const policy = first.headers.get("content-security-policy") ?? "";
+    expect(policy).not.toContain("unsafe-inline");
+    expect(policy).not.toBe(second.headers.get("content-security-policy"));
+
+    const nonce = /nonce-([^']+)'/.exec(policy)![1];
+    const html = await first.text();
+    const scripts = [
+      ...html.matchAll(/<script nonce="([^"]+)">([\s\S]*?)<\/script>/g),
+    ];
+    expect(scripts.length).toBeGreaterThan(0);
+    for (const [, scriptNonce, code] of scripts) {
+      expect(scriptNonce).toBe(nonce);
+      expect(() => new Function(code!)).not.toThrow();
+    }
+  });
+
   it("hands a signed-in user a link for their route domain only", async () => {
     const route = await rig.repo.createRoute(
       1,

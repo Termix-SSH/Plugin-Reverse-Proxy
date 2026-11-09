@@ -7,7 +7,8 @@
     "save": "Stoor",
     "cancel": "Kanselleer",
     "delete": "Vee uit",
-    "edit": "Wysig"
+    "edit": "Wysig",
+    "loading": "Laai tans..."
   },
   "tab": {
     "title": "Omgekeerde Proxy",
@@ -166,6 +167,10 @@
         "label": "Gebruik Let's Encrypt-toetsomgewing",
         "description": "Toets sertifikate wat browsers nie vertrou nie. Gebruik dit tydens opstelling om tempo-beperkings te vermy."
       },
+      "endpointDomain": {
+        "label": "Web-eindpunt-domein",
+        "description": "'n Domein met 'n wildkaard-DNS-inskrywing wat na hierdie proxy wys, soos *.apps.example.com. Web-eindpunte se \"Deur Termix\"-modus open elke bladsy op sy eie tydelike naam daaronder. Vereis die Termix-adres hierbo. Voeg 'n poort na 'n kolon by as besoekers een gebruik."
+      },
       "cookieHours": {
         "label": "Aanmeldduur in ure",
         "description": "Hoe lank 'n besoeker aangemeld bly op 'n beskermde roete."
@@ -197,6 +202,15 @@
     "connections": "{{count}} verbindings",
     "traffic": "{{inbound}} in, {{outbound}} uit"
   },
+  "tile": {
+    "title": "Proxy-rutes",
+    "empty": "Geen proxy-rutes op hierdie gasheer nie.",
+    "off": "af"
+  },
+  "widget": {
+    "name": "Omgekeerde proxy",
+    "description": "Hoeveel proxy-rutes loop tans."
+  },
   "card": {
     "title": "Omgekeerde proxy",
     "summary": "{{running}} van {{total}} roetes aktief",
@@ -204,5 +218,64 @@
     "loading": "Laai tans...",
     "daysLeft_one": "{{count}} dag oor",
     "daysLeft_other": "{{count}} dae oor"
+  },
+  "gate": {
+    "tagline": "Self-gehoste, plug-in-gebaseerde bedienerbestuur.",
+    "title": "Meld aan om voort te gaan",
+    "subtitle": "Meld aan by Termix om {{host}} oop te maak",
+    "username": "Gebruikersnaam",
+    "password": "Wagwoord",
+    "showPassword": "Wys wagwoord",
+    "rememberMe": "Onthou toestel vir 30 dae (sluit TOTP in)",
+    "signIn": "Meld aan",
+    "signInWith": "Meld aan met {{name}}",
+    "passkey": "Meld aan met passkey",
+    "external": "Eksterne",
+    "otherOptions": "Moet jy 'n wagwoord herstel of registreer?",
+    "openTermix": "Maak Termix oop",
+    "loading": "Laai tans...",
+    "required": "Voer jou gebruikersnaam en wagwoord in.",
+    "loginFailed": "Kon nie aanmeld nie. Probeer weer.",
+    "badCode": "Daardie kode het nie gewerk nie. Probeer weer.",
+    "factorTitle": "Twee-faktor-verifikasie",
+    "factorNote": "Nog een stap om aanmelding te voltooi.",
+    "code": "Verifikasiekode",
+    "backupHint": "Jy kan ook een van jou rugsteunkodes invoer.",
+    "verify": "Verifieer",
+    "keyPrompt": "Raak jou sekuriteitsleutel aan of gebruik jou passkey om aanmelding te voltooi.",
+    "useKey": "Gebruik sekuriteitsleutel",
+    "factorInTermix": "Hierdie stap kan nie hier gedoen word nie. Maak Termix oop om aan te meld, en hierdie bladsy gaan self voort.",
+    "factorCode": "Kode",
+    "factorKey": "Sekuriteitsleutel",
+    "factorOther": "Ander",
+    "back": "Terug",
+    "noAccess": "Geen toegang nie",
+    "noAccessNote": "Jou Termix-rekening kan nie hierdie bladsy oopmaak nie.",
+    "stuckTitle": "Aangemeld, maar kon nie voortgaan nie",
+    "stuckNote": "Jou rekening mag dalk eers meer opstelling benodig. Maak Termix oop om dit te voltooi, en probeer hierdie bladsy weer.",
+    "offlineTitle": "Kon nie Termix bereik nie",
+    "offlineNote": "Kontroleer jou verbinding en laai hierdie bladsy herlaai.",
+    "badLinkTitle": "Hierdie skakel is ongeldig",
+    "badLinkNote": "Die bladsy mag dalk verskuif het of aanmelding mag af wees. Gaan terug na die webwerf en probeer weer."
+  },
+  "operations": {
+    "list": {
+      "title": "Lys proxy-rutes"
+    },
+    "failing": {
+      "title": "Proxy-rutes faal"
+    },
+    "enable": {
+      "title": "Skakel 'n proxy-roete aan"
+    },
+    "disable": {
+      "title": "Skakel 'n proxy-roete af"
+    },
+    "routes": {
+      "title": "Proxy-rutes",
+      "domain": "Domein",
+      "target": "Gaan na",
+      "kind": "Tipe"
+    }
   }
 }

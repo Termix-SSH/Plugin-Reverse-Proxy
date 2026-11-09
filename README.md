@@ -4,7 +4,7 @@
 
 <h1>Reverse Proxy</h1>
 
-<p>Reverse proxy for TCP, UDP, HTTP and HTTPS with free certificates and Termix login, managed in one tab</p>
+<p>Reverse proxy for TCP, UDP, HTTP and HTTPS with free certificates and Termix login, managed per host</p>
 
 <!-- VIDEO:START -->
 
@@ -31,6 +31,7 @@ Read the [docs](https://docs.termix.site/plugins/reverse-proxy) to set it up and
 - Optional Termix login in front of any web route
 - WebSocket support, forced HTTPS, custom headers and IP allow and block lists
 - One overview of every route, its status and its certificate
+- Routes across hosts in the All hosts table, and failing routes as a status tile
 
 <br />
 

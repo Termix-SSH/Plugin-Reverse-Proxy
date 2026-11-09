@@ -5,6 +5,7 @@ import {
   Facts,
   PanelShell,
   useConfirm,
+  TileStack,
 } from "@termix-ssh/plugin-sdk/ui";
 import type { AuthMode, CertRecord } from "../shared/types";
 import { errorMessage, removeRoute, type RouteView } from "./api";
@@ -52,62 +53,70 @@ export function RouteEditor({
   const cert = route?.certId ? certs.find((c) => c.id === route.certId) : null;
 
   return (
-    <PanelShell
-      icon={<Waypoints className="size-4" />}
-      leading={<BackButton onClick={onClose} />}
-      title={route ? route.name : t("form.addTitle")}
-      status={route ? routeFrom(route) : undefined}
-      className="gap-2 p-2.5"
+    <RouteForm
+      hostId={hostId}
+      defaultAccess={defaultAccess}
+      route={route}
+      certs={certs}
+      onCancel={onClose}
+      onDone={() => {
+        reload();
+        onClose();
+      }}
+      onDelete={route ? () => void remove() : undefined}
     >
-      <div className="flex shrink-0 flex-col gap-3">
-        {route && runtime && (
-          <div className="mb-3 flex flex-col gap-1 border border-border p-3 text-xs">
-            <Facts>
-              <span>
-                {route.enabled
-                  ? t(`list.state.${runtime.state}`)
-                  : t("list.disabled")}
-              </span>
-              {runtime.listening && <span>{runtime.listening}</span>}
-              <span>
-                {t("editor.connections", { count: runtime.connections ?? 0 })}
-              </span>
-              <span>
-                {t("editor.traffic", {
-                  inbound: formatBytes(runtime.bytesIn ?? 0),
-                  outbound: formatBytes(runtime.bytesOut ?? 0),
-                })}
-              </span>
-              {cert && (
-                <span>
-                  {t(`certs.status.${cert.status}`)}
-                  {cert.notAfter
-                    ? ` | ${t("certs.expires", {
-                        date: new Date(cert.notAfter).toLocaleDateString(),
-                      })}`
-                    : ""}
-                </span>
-              )}
-            </Facts>
-            {route.enabled && runtime.error && (
-              <p className="text-destructive">{runtime.error}</p>
+      {({ form, footer }) => (
+        <PanelShell
+          icon={<Waypoints className="size-4" />}
+          leading={<BackButton onClick={onClose} />}
+          title={route ? route.name : t("form.addTitle")}
+          status={route ? routeFrom(route) : undefined}
+          footer={footer}
+        >
+          <TileStack>
+            {route && runtime && (
+              <div className="flex flex-col gap-1 p-3 text-xs">
+                <Facts>
+                  <span>
+                    {route.enabled
+                      ? t(`list.state.${runtime.state}`)
+                      : t("list.disabled")}
+                  </span>
+                  {runtime.listening && <span>{runtime.listening}</span>}
+                  <span>
+                    {t("editor.connections", {
+                      count: runtime.connections ?? 0,
+                    })}
+                  </span>
+                  <span>
+                    {t("editor.traffic", {
+                      inbound: formatBytes(runtime.bytesIn ?? 0),
+                      outbound: formatBytes(runtime.bytesOut ?? 0),
+                    })}
+                  </span>
+                  {cert && (
+                    <span>
+                      {t(`certs.status.${cert.status}`)}
+                      {cert.notAfter
+                        ? ` | ${t("certs.expires", {
+                            date: new Date(cert.notAfter).toLocaleDateString(),
+                          })}`
+                        : ""}
+                    </span>
+                  )}
+                </Facts>
+                {route.enabled && runtime.error && (
+                  <p className="text-destructive">{runtime.error}</p>
+                )}
+                {cert?.error && (
+                  <p className="text-destructive">{cert.error}</p>
+                )}
+              </div>
             )}
-            {cert?.error && <p className="text-destructive">{cert.error}</p>}
-          </div>
-        )}
-        <RouteForm
-          hostId={hostId}
-          defaultAccess={defaultAccess}
-          route={route}
-          certs={certs}
-          onCancel={onClose}
-          onDone={() => {
-            reload();
-            onClose();
-          }}
-          onDelete={route ? () => void remove() : undefined}
-        />
-      </div>
-    </PanelShell>
+            {form}
+          </TileStack>
+        </PanelShell>
+      )}
+    </RouteForm>
   );
 }

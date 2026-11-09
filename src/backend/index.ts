@@ -4,9 +4,12 @@ import { certs as certsTable, routes as routesTable } from "./tables.js";
 import { createRepository } from "./repository.js";
 import { readSettings } from "./settings.js";
 import { createAuth } from "./auth.js";
+import { createEndpointService } from "./endpoint-service.js";
 import { createCertManager } from "./certs.js";
 import { createProxyManager } from "./manager.js";
+import { registerOperations } from "./operations.js";
 import { registerRoutes } from "./routes.js";
+import { startProxyAlerts } from "./alerts.js";
 
 const RENEW_CHECK_MS = 12 * 60 * 60 * 1000;
 
@@ -23,6 +26,18 @@ export async function activate(ctx: PluginContext) {
   certs.setOnIssued(() => void manager.reload());
   ctx.disposables.add(() => manager.dispose());
 
+  registerOperations(ctx, {
+    listRoutes: () => repo.listRoutes(),
+    getRoute: (id) => repo.getRoute(id),
+    updateRoute: (id, input) => repo.updateRoute(id, input),
+    status: (id) => manager.status(id),
+    reload: () => manager.reload(),
+  });
+  startProxyAlerts(ctx, {
+    listRoutes: () => repo.listRoutes(),
+    listCerts: () => repo.listCerts(),
+    status: (id) => manager.status(id),
+  });
   registerRoutes(ctx.http.router<Router>({ public: ["/gate"] }), ctx, {
     repo,
     certs,
@@ -31,7 +46,18 @@ export async function activate(ctx: PluginContext) {
     getSettings,
   });
 
-  for (const key of ["httpPort", "httpsPort", "bindHost", "publicBaseUrl"]) {
+  ctx.services.provide(
+    "reverse-proxy.endpoints",
+    createEndpointService(ctx, { manager, auth, getSettings }),
+  );
+
+  for (const key of [
+    "httpPort",
+    "httpsPort",
+    "bindHost",
+    "publicBaseUrl",
+    "endpointDomain",
+  ]) {
     ctx.settings.onChange(key, () => void manager.reload());
   }
 

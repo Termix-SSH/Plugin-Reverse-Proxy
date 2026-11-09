@@ -7,7 +7,8 @@
     "save": "Simpan",
     "cancel": "Batal",
     "delete": "Hapus",
-    "edit": "Sunting"
+    "edit": "Sunting",
+    "loading": "Memuat..."
   },
   "tab": {
     "title": "Proxy Balik",
@@ -166,6 +167,10 @@
         "label": "Gunakan staging Let's Encrypt",
         "description": "Sertifikat uji yang tidak dipercaya oleh browser. Gunakan saat pengaturan untuk menghindari batas laju."
       },
+      "endpointDomain": {
+        "label": "Domain titik akhir web",
+        "description": "Domain dengan catatan DNS wildcard yang mengarah ke proxy ini, seperti *.apps.example.com. Mode Melalui Termix dari Titik Akhir Web membuka setiap halaman pada nama sementara di bawahnya. Membutuhkan alamat Termix di atas. Tambahkan port setelah titik dua jika pengunjung menggunakannya."
+      },
       "cookieHours": {
         "label": "Durasi login dalam jam",
         "description": "Seberapa lama pengunjung tetap masuk di rute yang dilindungi."
@@ -197,11 +202,79 @@
     "connections": "Koneksi {{count}}",
     "traffic": "{{inbound}} masuk, {{outbound}} keluar"
   },
+  "tile": {
+    "title": "Rute proxy",
+    "empty": "Tidak ada rute proxy pada host ini.",
+    "off": "mati"
+  },
+  "widget": {
+    "name": "Proxy terbalik",
+    "description": "Berapa banyak rute proxy yang sedang berjalan."
+  },
   "card": {
     "title": "Proxy terbalik",
     "summary": "{{running}} dari {{total}} rute berjalan",
     "failed": "Gagal memuat proxy.",
     "loading": "Memuat...",
     "daysLeft_other": "{{count}} hari tersisa"
+  },
+  "gate": {
+    "tagline": "Pengelolaan server berbasis plugin yang di-host sendiri.",
+    "title": "Masuk untuk melanjutkan",
+    "subtitle": "Masuk ke Termix untuk membuka {{host}}",
+    "username": "Nama pengguna",
+    "password": "Kata sandi",
+    "showPassword": "Tampilkan kata sandi",
+    "rememberMe": "Ingat Perangkat selama 30 Hari (termasuk TOTP)",
+    "signIn": "Masuk",
+    "signInWith": "Masuk dengan {{name}}",
+    "passkey": "Masuk dengan passkey",
+    "external": "Eksternal",
+    "otherOptions": "Perlu mengatur ulang kata sandi atau mendaftar?",
+    "openTermix": "Buka Termix",
+    "loading": "Memuat...",
+    "required": "Masukkan nama pengguna dan kata sandi Anda.",
+    "loginFailed": "Gagal masuk. Coba lagi.",
+    "badCode": "Kode tersebut tidak berhasil. Coba lagi.",
+    "factorTitle": "Autentikasi Dua Faktor",
+    "factorNote": "Satu langkah lagi untuk menyelesaikan proses masuk.",
+    "code": "Kode verifikasi",
+    "backupHint": "Anda juga dapat memasukkan salah satu kode cadangan Anda.",
+    "verify": "Verifikasi",
+    "keyPrompt": "Sentuh kunci keamanan Anda atau gunakan passkey untuk menyelesaikan proses masuk.",
+    "useKey": "Gunakan kunci keamanan",
+    "factorInTermix": "Langkah ini tidak dapat dilakukan di sini. Buka Termix untuk masuk dan halaman ini akan berlanjut secara otomatis.",
+    "factorCode": "Kode",
+    "factorKey": "Kunci keamanan",
+    "factorOther": "Lainnya",
+    "back": "Kembali",
+    "noAccess": "Tidak ada akses",
+    "noAccessNote": "Akun Termix Anda tidak dapat membuka halaman ini.",
+    "stuckTitle": "Sudah masuk, tetapi tidak dapat melanjutkan",
+    "stuckNote": "Akun Anda mungkin memerlukan pengaturan lebih lanjut terlebih dahulu. Buka Termix untuk menyelesaikannya, lalu coba halaman ini lagi.",
+    "offlineTitle": "Tidak dapat menghubungi Termix",
+    "offlineNote": "Periksa koneksi Anda dan muat ulang halaman ini.",
+    "badLinkTitle": "Tautan ini tidak valid",
+    "badLinkNote": "Halaman mungkin telah berpindah atau proses masuk mungkin dinonaktifkan untuknya. Kembali ke situs dan coba lagi."
+  },
+  "operations": {
+    "list": {
+      "title": "Daftar rute proxy"
+    },
+    "failing": {
+      "title": "Rute proxy gagal"
+    },
+    "enable": {
+      "title": "Nyalakan rute proxy"
+    },
+    "disable": {
+      "title": "Matikan rute proxy"
+    },
+    "routes": {
+      "title": "Rute proxy",
+      "domain": "Domain",
+      "target": "Menuju ke",
+      "kind": "Jenis"
+    }
   }
 }

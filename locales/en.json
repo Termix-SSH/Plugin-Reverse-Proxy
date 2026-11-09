@@ -7,7 +7,8 @@
     "save": "Save",
     "cancel": "Cancel",
     "delete": "Delete",
-    "edit": "Edit"
+    "edit": "Edit",
+    "loading": "Loading..."
   },
   "tab": {
     "title": "Reverse Proxy",
@@ -166,6 +167,10 @@
         "label": "Use Let's Encrypt staging",
         "description": "Test certificates that browsers do not trust. Use while setting up to avoid rate limits."
       },
+      "endpointDomain": {
+        "label": "Web endpoint domain",
+        "description": "A domain with a wildcard DNS record pointing at this proxy, like *.apps.example.com. Web Endpoint's Through Termix mode opens each page on its own temporary name under it. Needs the Termix address above. Add a port after a colon if visitors use one."
+      },
       "cookieHours": {
         "label": "Login length in hours",
         "description": "How long a visitor stays signed in on a protected route."
@@ -197,6 +202,15 @@
     "connections": "{{count}} connections",
     "traffic": "{{inbound}} in, {{outbound}} out"
   },
+  "tile": {
+    "title": "Proxy routes",
+    "empty": "No proxy routes on this host.",
+    "off": "off"
+  },
+  "widget": {
+    "name": "Reverse proxy",
+    "description": "How many proxy routes are running."
+  },
   "card": {
     "title": "Reverse proxy",
     "summary": "{{running}} of {{total}} routes running",
@@ -204,5 +218,64 @@
     "loading": "Loading...",
     "daysLeft_one": "{{count}} day left",
     "daysLeft_other": "{{count}} days left"
+  },
+  "gate": {
+    "tagline": "Self-hosted, plugin-based server management.",
+    "title": "Sign in to continue",
+    "subtitle": "Sign in to Termix to open {{host}}",
+    "username": "Username",
+    "password": "Password",
+    "showPassword": "Show password",
+    "rememberMe": "Remember Device for 30 Days (includes TOTP)",
+    "signIn": "Login",
+    "signInWith": "Login with {{name}}",
+    "passkey": "Sign in with passkey",
+    "external": "External",
+    "otherOptions": "Need to reset a password or sign up?",
+    "openTermix": "Open Termix",
+    "loading": "Loading...",
+    "required": "Enter your username and password.",
+    "loginFailed": "Could not sign in. Try again.",
+    "badCode": "That code did not work. Try again.",
+    "factorTitle": "Two-Factor Authentication",
+    "factorNote": "One more step to finish signing in.",
+    "code": "Verification code",
+    "backupHint": "You can also enter one of your backup codes.",
+    "verify": "Verify",
+    "keyPrompt": "Touch your security key or use your passkey to finish signing in.",
+    "useKey": "Use security key",
+    "factorInTermix": "This step can't be done here. Open Termix to sign in and this page continues by itself.",
+    "factorCode": "Code",
+    "factorKey": "Security key",
+    "factorOther": "Other",
+    "back": "Back",
+    "noAccess": "No access",
+    "noAccessNote": "Your Termix account cannot open this page.",
+    "stuckTitle": "Signed in, but could not continue",
+    "stuckNote": "Your account may need more setup first. Open Termix to finish, then try this page again.",
+    "offlineTitle": "Could not reach Termix",
+    "offlineNote": "Check your connection and reload this page.",
+    "badLinkTitle": "This link is not valid",
+    "badLinkNote": "The page may have moved or sign in may be off for it. Go back to the site and try again."
+  },
+  "operations": {
+    "list": {
+      "title": "List proxy routes"
+    },
+    "failing": {
+      "title": "Proxy routes failing"
+    },
+    "enable": {
+      "title": "Turn a proxy route on"
+    },
+    "disable": {
+      "title": "Turn a proxy route off"
+    },
+    "routes": {
+      "title": "Proxy routes",
+      "domain": "Domain",
+      "target": "Goes to",
+      "kind": "Kind"
+    }
   }
 }

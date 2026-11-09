@@ -7,7 +7,8 @@
     "save": "Gem",
     "cancel": "Annuller",
     "delete": "Slet",
-    "edit": "Rediger"
+    "edit": "Rediger",
+    "loading": "Indlæser..."
   },
   "tab": {
     "title": "Omvendt proxy",
@@ -166,6 +167,10 @@
         "label": "Brug Let's Encrypt staging",
         "description": "Testcertifikater, som browsere ikke stoler på. Brug det under opsætning for at undgå grænser for antal forespørgsler."
       },
+      "endpointDomain": {
+        "label": "Domæne for web-endepunkt",
+        "description": "Et domæne med et wildcard-DNS-record, der peger på denne proxy, f.eks. *.apps.example.com. Web Endpoint's 'Through Termix'-tilstand åbner hver side under sit eget midlertidige navn under dette domæne. Kræver Termix-adressen ovenfor. Tilføj en port efter et kolon, hvis besøgende bruger en."
+      },
       "cookieHours": {
         "label": "Logins længde i timer",
         "description": "Hvor længe en besøgende forbliver logget ind på en beskyttet rute."
@@ -197,6 +202,15 @@
     "connections": "{{count}} forbindelser",
     "traffic": "{{inbound}} ind, {{outbound}} ud"
   },
+  "tile": {
+    "title": "Proxy-ruter",
+    "empty": "Ingen proxy-ruter på denne vært.",
+    "off": "fra"
+  },
+  "widget": {
+    "name": "Omvendt proxy",
+    "description": "Hvor mange proxy-ruter der kører."
+  },
   "card": {
     "title": "Omvendt proxy",
     "summary": "{{running}} af {{total}} ruter kører",
@@ -204,5 +218,64 @@
     "loading": "Indlæser...",
     "daysLeft_one": "{{count}} dag tilbage",
     "daysLeft_other": "{{count}} dage tilbage"
+  },
+  "gate": {
+    "tagline": "Selvhostet serverstyring baseret på plugins.",
+    "title": "Log ind for at fortsætte",
+    "subtitle": "Log ind på Termix for at åbne {{host}}",
+    "username": "Brugernavn",
+    "password": "Adgangskode",
+    "showPassword": "Vis adgangskode",
+    "rememberMe": "Husk enhed i 30 dage (inkl. TOTP)",
+    "signIn": "Log ind",
+    "signInWith": "Log ind med {{name}}",
+    "passkey": "Log ind med passkey",
+    "external": "Ekstern",
+    "otherOptions": "Har du brug for at nulstille en adgangskode eller oprette en konto?",
+    "openTermix": "Åbn Termix",
+    "loading": "Indlæser...",
+    "required": "Indtast dit brugernavn og adgangskode.",
+    "loginFailed": "Kunne ikke logge ind. Prøv igen.",
+    "badCode": "Den kode virkede ikke. Prøv igen.",
+    "factorTitle": "To-faktor-godkendelse",
+    "factorNote": "Én sidste trin for at afslutte login.",
+    "code": "Bekræftelseskode",
+    "backupHint": "Du kan også indtaste en af dine backup-koder.",
+    "verify": "Bekræft",
+    "keyPrompt": "Berør din sikkerhedsnøgle eller brug din passkey for at afslutte login.",
+    "useKey": "Brug sikkerhedsnøgle",
+    "factorInTermix": "Dette trin kan ikke udføres her. Åbn Termix for at logge ind, og denne side fortsætter automatisk.",
+    "factorCode": "Kode",
+    "factorKey": "Sikkerhedsnøgle",
+    "factorOther": "Andet",
+    "back": "Tilbage",
+    "noAccess": "Ingen adgang",
+    "noAccessNote": "Din Termix-konto har ikke adgang til denne side.",
+    "stuckTitle": "Logget ind, men kunne ikke fortsætte",
+    "stuckNote": "Din konto skal muligvis konfigureres yderligere først. Åbn Termix for at afslutte opsætningen, og prøv denne side igen.",
+    "offlineTitle": "Kunne ikke nå Termix",
+    "offlineNote": "Tjek din forbindelse og genindlæs denne side.",
+    "badLinkTitle": "Dette link er ikke gyldigt",
+    "badLinkNote": "Siden er muligvis flyttet, eller login er deaktiveret for den. Gå tilbage til hjemmesiden og prøv igen."
+  },
+  "operations": {
+    "list": {
+      "title": "Liste over proxy-ruter"
+    },
+    "failing": {
+      "title": "Proxy-ruter fejler"
+    },
+    "enable": {
+      "title": "Aktivér en proxy-rute"
+    },
+    "disable": {
+      "title": "Deaktiver en proxy-rute"
+    },
+    "routes": {
+      "title": "Proxy-ruter",
+      "domain": "Domæne",
+      "target": "Går til",
+      "kind": "Type"
+    }
   }
 }

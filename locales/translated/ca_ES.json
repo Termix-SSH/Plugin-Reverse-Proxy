@@ -7,7 +7,8 @@
     "save": "Desa",
     "cancel": "Cancel·la",
     "delete": "Suprimeix",
-    "edit": "Edita"
+    "edit": "Edita",
+    "loading": "Carregant..."
   },
   "tab": {
     "title": "Proxy invers",
@@ -166,6 +167,10 @@
         "label": "Utilitzar l'entorn de proves de Let's Encrypt",
         "description": "Certificats de prova que els navegadors no confien. Utilitza-ho durant la configuració per evitar els límits de taxa."
       },
+      "endpointDomain": {
+        "label": "Domini del punt final web",
+        "description": "Un domini amb un registre DNS comodí que apunti a aquest proxy, com *.apps.example.com. El mode «A través de Termix» del punt final web obre cada pàgina amb el seu propi nom temporal sota aquest domini. Cal l'adreça de Termix indicada a dalt. Afegeix un port després d'una dosi si els visitants en fan servir un."
+      },
       "cookieHours": {
         "label": "Durada de la sessió en hores",
         "description": "Quant de temps es manté iniciada la sessió d'un visitant en una ruta protegida."
@@ -197,6 +202,15 @@
     "connections": "{{count}} connexions",
     "traffic": "{{inbound}} d'entrada, {{outbound}} de sortida"
   },
+  "tile": {
+    "title": "Rutes del proxy",
+    "empty": "No hi ha rutes de proxy en aquest host.",
+    "off": "desactivat"
+  },
+  "widget": {
+    "name": "Proxy invers",
+    "description": "Quantes rutes de proxy s'estan executant."
+  },
   "card": {
     "title": "Proxy invers",
     "summary": "{{running}} de {{total}} rutes actives",
@@ -205,5 +219,64 @@
     "daysLeft_one": "{{count}} dia restant",
     "daysLeft_many": "{{count}} dies restants",
     "daysLeft_other": "{{count}} dies restants"
+  },
+  "gate": {
+    "tagline": "Gestió de servidors autoallotjada basada en plugins.",
+    "title": "Inicia la sessió per continuar",
+    "subtitle": "Inicia la sessió a Termix per obrir {{host}}",
+    "username": "Nom d'usuari",
+    "password": "Contrasenya",
+    "showPassword": "Mostra la contrasenya",
+    "rememberMe": "Recorda aquest dispositiu durant 30 dies (inclou TOTP)",
+    "signIn": "Inicia la sessió",
+    "signInWith": "Inicia la sessió amb {{name}}",
+    "passkey": "Inicia la sessió amb passkey",
+    "external": "Extern",
+    "otherOptions": "Necessites restablir una contrasenya o registrar-te?",
+    "openTermix": "Obre Termix",
+    "loading": "Carregant...",
+    "required": "Introdueix el teu nom d'usuari i contrasenya.",
+    "loginFailed": "No s'ha pogut iniciar la sessió. Torna-ho a provar.",
+    "badCode": "Aquest codi no ha funcionat. Torna-ho a provar.",
+    "factorTitle": "Autenticació de dos factors",
+    "factorNote": "Un pas més per acabar d'iniciar la sessió.",
+    "code": "Codi de verificació",
+    "backupHint": "També pots introduir un dels teus codis de còpia de seguretat.",
+    "verify": "Verifica",
+    "keyPrompt": "Toca la teva clau de seguretat o fes servir la teva passkey per acabar d'iniciar la sessió.",
+    "useKey": "Fes servir la clau de seguretat",
+    "factorInTermix": "Aquest pas no es pot fer aquí. Obre Termix per iniciar la sessió i aquesta pàgina continuarà automàticament.",
+    "factorCode": "Codi",
+    "factorKey": "Clau de seguretat",
+    "factorOther": "Altres",
+    "back": "Enrere",
+    "noAccess": "Sense accés",
+    "noAccessNote": "El teu compte de Termix no pot obrir aquesta pàgina.",
+    "stuckTitle": "Sessió iniciada, però no s'ha pogut continuar",
+    "stuckNote": "Potser el teu compte necessita més configuració primer. Obre Termix per acabar-ho de configurar i torna a provar aquesta pàgina.",
+    "offlineTitle": "No s'ha pogut connectar a Termix",
+    "offlineNote": "Comprova la teva connexió i recarrega aquesta pàgina.",
+    "badLinkTitle": "Aquest enllaç no és vàlid",
+    "badLinkNote": "La pàgina pot haver-se mogut o l'inici de sessió pot estar desactivat per a ella. Torna al lloc web i torna-ho a provar."
+  },
+  "operations": {
+    "list": {
+      "title": "Llista les rutes del proxy"
+    },
+    "failing": {
+      "title": "Rutes del proxy fallides"
+    },
+    "enable": {
+      "title": "Activa una ruta del proxy"
+    },
+    "disable": {
+      "title": "Desactiva una ruta del proxy"
+    },
+    "routes": {
+      "title": "Rutes del proxy",
+      "domain": "Domini",
+      "target": "Va a",
+      "kind": "Tipus"
+    }
   }
 }

@@ -7,7 +7,8 @@
     "save": "Tallenna",
     "cancel": "Peruuta",
     "delete": "Poista",
-    "edit": "Muokkaa"
+    "edit": "Muokkaa",
+    "loading": "Ladataan..."
   },
   "tab": {
     "title": "Käänteinen välityspalvelin",
@@ -166,6 +167,10 @@
         "label": "Käytä Let's Encryptin testiympäristöä",
         "description": "Testivarmenneet, joita selaimet eivät luota. Käytä tätä asennuksen aikana välttääksesi nopeusrajoitukset."
       },
+      "endpointDomain": {
+        "label": "Web-lohdepisteen verkkotunnus",
+        "description": "Verkkotunnus, jossa on jokerimerkkidns-tietue, joka osoittaa tähän välityspalvelimeen, kuten *.apps.example.com. Web-lohdepisteen ”Through Termix” -tila avaa jokaisen sivun omalla väliaikaisella nimellä sen alla. Vaatii yllä olevan Termix-osoitteen. Lisää portti kaksoispisteen jälkeen, jos kävijät käyttävät sitä."
+      },
       "cookieHours": {
         "label": "Kirjautumisen kesto tunneissa",
         "description": "Kuinka kauan vierailija pysyy kirjautuneena suojatulla reitillä."
@@ -197,6 +202,15 @@
     "connections": "{{count}} yhteyttä",
     "traffic": "{{inbound}} sisään, {{outbound}} ulos"
   },
+  "tile": {
+    "title": "Välityspalvelinreitit",
+    "empty": "Tällä isäntäpalvelimella ei ole välityspalvelinreittejä.",
+    "off": "pois päältä"
+  },
+  "widget": {
+    "name": "Käänteinen välityspalvelin",
+    "description": "Kuinka monta välityspalvelinreittiä on käynnissä."
+  },
   "card": {
     "title": "Käänteinen välityspalvelin",
     "summary": "{{running}}/{{total}} reittiä aktiivisena",
@@ -204,5 +218,64 @@
     "loading": "Ladataan...",
     "daysLeft_one": "{{count}} päivää jäljellä",
     "daysLeft_other": "{{count}} päivää jäljellä"
+  },
+  "gate": {
+    "tagline": "Itse isännöity, liitännäispohjainen palvelinhallinta.",
+    "title": "Kirjaudu sisään jatkaaksesi",
+    "subtitle": "Kirjaudu Termixiin avataksesi kohteen {{host}}",
+    "username": "Käyttäjänimi",
+    "password": "Salasana",
+    "showPassword": "Näytä salasana",
+    "rememberMe": "Muista laite 30 päivän ajan (sisältää TOTP:n)",
+    "signIn": "Kirjaudu sisään",
+    "signInWith": "Kirjaudu sisään palvelulla {{name}}",
+    "passkey": "Kirjaudu sisään passkeyllä",
+    "external": "Ulkoinen",
+    "otherOptions": "Tarvitsetko salasanan nollauksen tai rekisteröitymisen?",
+    "openTermix": "Avaa Termix",
+    "loading": "Ladataan...",
+    "required": "Syötä käyttäjänimesi ja salasanasi.",
+    "loginFailed": "Kirjautuminen epäonnistui. Yritä uudelleen.",
+    "badCode": "Koodi ei toiminut. Yritä uudelleen.",
+    "factorTitle": "Kaksivaiheinen tunnistautuminen",
+    "factorNote": "Yksi vaihe jäljellä kirjautumisen viimeistelemiseksi.",
+    "code": "Varmennuskoodi",
+    "backupHint": "Voit myös syöttää yhden varmuuskopiokodeistasi.",
+    "verify": "Varmenna",
+    "keyPrompt": "Kosketa turvavälineesi tai käytä passkeytäsi viimeistelläksesi kirjautumisen.",
+    "useKey": "Käytä turvavälinettä",
+    "factorInTermix": "Tätä vaihetta ei voi suorittaa täällä. Avaa Termix kirjautuaksesi sisään, ja tämä sivu jatkuu automaattisesti.",
+    "factorCode": "Koodi",
+    "factorKey": "Turvaväline",
+    "factorOther": "Muu",
+    "back": "Takaisin",
+    "noAccess": "Ei pääsyä",
+    "noAccessNote": "Termix-tililläsi ei ole pääsyä tähän sivuun.",
+    "stuckTitle": "Kirjauduttu sisään, mutta eteneminen epäonnistui",
+    "stuckNote": "Tilisi saattaa vaatia lisäasetuksia. Avaa Termix viimeistelemään, ja yritä tätä sivua uudelleen.",
+    "offlineTitle": "Termixiin ei saatu yhteyttä",
+    "offlineNote": "Tarkista yhteys ja lataa sivu uudelleen.",
+    "badLinkTitle": "Tämä linkki ei ole voimassa",
+    "badLinkNote": "Sivu on saattanut muuttua tai kirjautuminen on poissa käytöstä. Palaa sivustolle ja yritä uudelleen."
+  },
+  "operations": {
+    "list": {
+      "title": "Listaa välityspalvelinreitit"
+    },
+    "failing": {
+      "title": "Välityspalvelinreitit epäonnistuvat"
+    },
+    "enable": {
+      "title": "Ota välityspalvelinreitti käyttöön"
+    },
+    "disable": {
+      "title": "Poista välityspalvelinreitti käytöstä"
+    },
+    "routes": {
+      "title": "Välityspalvelinreitit",
+      "domain": "Verkkotunnus",
+      "target": "Ohjaa kohteeseen",
+      "kind": "Tyyppi"
+    }
   }
 }

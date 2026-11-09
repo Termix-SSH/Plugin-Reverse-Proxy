@@ -119,6 +119,9 @@ export function createRepository(
     },
 
     async getRoute(id: number): Promise<RouteRecord | null> {
+      // Postgres refuses NaN, so a bad id from a URL finds nothing.
+      if (!Number.isSafeInteger(id)) return null;
+
       const rows = await (
         await client()
       )
@@ -169,6 +172,9 @@ export function createRepository(
     },
 
     async getCert(id: number): Promise<CertRow | null> {
+      // Postgres refuses NaN, so a bad id from a URL finds nothing.
+      if (!Number.isSafeInteger(id)) return null;
+
       const rows = await (
         await client()
       )

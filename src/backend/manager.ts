@@ -5,6 +5,7 @@ import type { PluginContext } from "@termix-ssh/plugin-sdk/backend";
 import type { RouteRecord, RouteRuntime } from "../shared/types.js";
 import type { ProxyAuth } from "./auth.js";
 import { domainCovers, type CertManager } from "./certs.js";
+import { createEndpointRoutes } from "./endpoints.js";
 import { createHttpHandlers } from "./http-proxy.js";
 import type { Repository } from "./repository.js";
 import type { ProxySettings } from "./settings.js";
@@ -64,7 +65,10 @@ export function createProxyManager(ctx: PluginContext, deps: ManagerDeps) {
   let disposed = false;
   let chain: Promise<void> = Promise.resolve();
 
+  const endpoints = createEndpointRoutes();
+
   const count = (routeId: number, key: keyof Counters, amount: number) => {
+    if (routeId < 0) return;
     let entry = counters.get(routeId);
     if (!entry) {
       entry = { in: 0, out: 0, conn: 0 };
@@ -104,6 +108,8 @@ export function createProxyManager(ctx: PluginContext, deps: ManagerDeps) {
 
   const handlers = createHttpHandlers({
     routeForHost: (host) => {
+      const endpoint = endpoints.find(host);
+      if (endpoint) return endpoint;
       const exact = byDomain.get(host);
       if (exact) return exact;
       for (const route of routes) {
@@ -124,7 +130,7 @@ export function createProxyManager(ctx: PluginContext, deps: ManagerDeps) {
   async function syncWeb(next: ProxySettings) {
     const httpRoutes = routes.filter((r) => r.kind === "http");
     const tlsRoutes = httpRoutes.filter((r) => r.tlsMode !== "off");
-    const wantHttp = httpRoutes.length > 0;
+    const wantHttp = httpRoutes.length > 0 || !!next.endpointDomain;
     const wantHttps = tlsRoutes.length > 0;
     const errors: string[] = [];
 
@@ -318,6 +324,7 @@ export function createProxyManager(ctx: PluginContext, deps: ManagerDeps) {
     status,
     dispose,
     forgetTarget: (hostId: number) => targets.delete(hostId),
+    openEndpoint: endpoints.create,
     ports: () => ({
       http: httpServer ? settings?.httpPort : undefined,
       https: httpsServer ? settings?.httpsPort : undefined,

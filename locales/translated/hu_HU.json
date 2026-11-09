@@ -7,7 +7,8 @@
     "save": "Mentés",
     "cancel": "Mégse",
     "delete": "Törlés",
-    "edit": "Szerkesztés"
+    "edit": "Szerkesztés",
+    "loading": "Betöltés..."
   },
   "tab": {
     "title": "Fordított proxy",
@@ -166,6 +167,10 @@
         "label": "Let's Encrypt teszt környezet használata",
         "description": "Olyan teszt tanúsítványok, amelyeket a böngészők nem bíznak meg. Használja beállítás közben a sebességkorlátozások elkerülése érdekében."
       },
+      "endpointDomain": {
+        "label": "Web végpont domainje",
+        "description": "Egy olyan domain, amelynek van egy wildcard DNS bejegyzése, ami erre a proxyra mutat, például *.apps.example.com. A Web végpont „Termix-en keresztüli” módja minden oldalt egyedi, ideiglenes néven nyit meg ezen a domain alatt. Ehhez szükség van a fenti Termix címre. Ha a látogatók portot használnak, adjon hozzá egy kettőspontot és a portszámot."
+      },
       "cookieHours": {
         "label": "Bejelentkezési időtartam órákban",
         "description": "Meddig marad bejelentkezve egy látogató egy védett útvonalon."
@@ -197,6 +202,15 @@
     "connections": "{{count}} kapcsolat",
     "traffic": "{{inbound}} be, {{outbound}} ki"
   },
+  "tile": {
+    "title": "Proxy útvonalak",
+    "empty": "Nincsenek proxy útvonalak ezen a hoszton.",
+    "off": "kikapcsolva"
+  },
+  "widget": {
+    "name": "Fordított proxy",
+    "description": "Hány proxy útvonal fut éppen."
+  },
   "card": {
     "title": "Fordított proxy",
     "summary": "{{running}}/{{total}} útvonal fut",
@@ -204,5 +218,64 @@
     "loading": "Betöltés...",
     "daysLeft_one": "{{count}} nap van hátra",
     "daysLeft_other": "{{count}} nap van hátra"
+  },
+  "gate": {
+    "tagline": "Önhostolt, bővítményalapú szerverkezelés.",
+    "title": "Jelentkezzen be a folytatáshoz",
+    "subtitle": "Jelentkezzen be a Termixbe a(z) {{host}} megnyitásához",
+    "username": "Felhasználónév",
+    "password": "Jelszó",
+    "showPassword": "Jelszó megjelenítése",
+    "rememberMe": "Eszköz megjegyzése 30 napra (beleértve a TOTP-ot is)",
+    "signIn": "Bejelentkezés",
+    "signInWith": "Bejelentkezés a(z) {{name}} segítségével",
+    "passkey": "Bejelentkezés passkey-vel",
+    "external": "Külső",
+    "otherOptions": "Jelszó visszaállítására vagy regisztrációra van szüksége?",
+    "openTermix": "Termix megnyitása",
+    "loading": "Betöltés...",
+    "required": "Adja meg a felhasználónevét és jelszavát.",
+    "loginFailed": "Nem sikerült bejelentkezni. Próbálja újra.",
+    "badCode": "Ez a kód nem működött. Próbálja újra.",
+    "factorTitle": "Kétfaktoros hitelesítés",
+    "factorNote": "Még egy lépés a bejelentkezés befejezéséhez.",
+    "code": "Ellenőrző kód",
+    "backupHint": "Beírhatja az egyik biztonsági kódját is.",
+    "verify": "Ellenőrzés",
+    "keyPrompt": "Érintse meg a biztonsági kulcsát, vagy használja a passkey-jét a bejelentkezés befejezéséhez.",
+    "useKey": "Biztonsági kulcs használata",
+    "factorInTermix": "Ezt a lépést itt nem lehet elvégezni. Nyissa meg a Termixet a bejelentkezéshez, és ez az oldal automatikusan folytatódik.",
+    "factorCode": "Kód",
+    "factorKey": "Biztonsági kulcs",
+    "factorOther": "Egyéb",
+    "back": "Vissza",
+    "noAccess": "Nincs hozzáférés",
+    "noAccessNote": "A Termix-fiókja nem nyithatja meg ezt az oldalt.",
+    "stuckTitle": "Bejelentkezett, de nem tudott folytatni",
+    "stuckNote": "Lehet, hogy a fióknak először további beállításra van szüksége. Nyissa meg a Termixet a befejezéshez, majd próbálja meg újra ezt az oldalt.",
+    "offlineTitle": "Nem sikerült elérni a Termixet",
+    "offlineNote": "Ellenőrizze a kapcsolatot, és töltsön újra az oldalt.",
+    "badLinkTitle": "Ez a hivatkozás érvénytelen",
+    "badLinkNote": "Az oldal átköltözhetett, vagy a bejelentkezés letiltható számára. Térjen vissza az oldalra, és próbálja újra."
+  },
+  "operations": {
+    "list": {
+      "title": "Proxy útvonalak listázása"
+    },
+    "failing": {
+      "title": "Proxy útvonalak hibája"
+    },
+    "enable": {
+      "title": "Proxy útvonal bekapcsolása"
+    },
+    "disable": {
+      "title": "Proxy útvonal kikapcsolása"
+    },
+    "routes": {
+      "title": "Proxy útvonalak",
+      "domain": "Domain",
+      "target": "Cél",
+      "kind": "Típus"
+    }
   }
 }

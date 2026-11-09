@@ -7,7 +7,8 @@
     "save": "Lưu",
     "cancel": "Hủy",
     "delete": "Xóa",
-    "edit": "Chỉnh sửa"
+    "edit": "Chỉnh sửa",
+    "loading": "Đang tải..."
   },
   "tab": {
     "title": "Reverse Proxy",
@@ -166,6 +167,10 @@
         "label": "Sử dụng môi trường thử nghiệm của Let's Encrypt",
         "description": "Chứng chỉ thử nghiệm mà trình duyệt không tin cậy. Sử dụng trong quá trình thiết lập để tránh giới hạn tốc độ."
       },
+      "endpointDomain": {
+        "label": "Tên miền điểm cuối web",
+        "description": "Một tên miền có bản ghi DNS wildcard trỏ đến proxy này, ví dụ: *.apps.example.com. Chế độ Through Termix của Web Endpoint sẽ mở mỗi trang trên một tên tạm thời riêng dưới tên miền đó. Cần địa chỉ Termix ở trên. Thêm cổng sau dấu hai chấm nếu người dùng truy cập qua cổng cụ thể."
+      },
       "cookieHours": {
         "label": "Thời gian đăng nhập (giờ)",
         "description": "Thời gian một khách truy cập vẫn được đăng nhập trên các tuyến đường được bảo vệ."
@@ -197,11 +202,79 @@
     "connections": "{{count}} kết nối",
     "traffic": "{{inbound}} vào, {{outbound}} ra"
   },
+  "tile": {
+    "title": "Tuyến đường proxy",
+    "empty": "Không có tuyến đường proxy nào trên máy chủ này.",
+    "off": "tắt"
+  },
+  "widget": {
+    "name": "Proxy ngược",
+    "description": "Số lượng tuyến đường proxy đang chạy."
+  },
   "card": {
     "title": "Proxy ngược",
     "summary": "{{running}} trong số {{total}} tuyến đường đang hoạt động",
     "failed": "Không thể tải proxy.",
     "loading": "Đang tải...",
     "daysLeft_other": "{{count}} ngày còn lại"
+  },
+  "gate": {
+    "tagline": "Quản lý máy chủ tự lưu trữ, dựa trên plugin.",
+    "title": "Đăng nhập để tiếp tục",
+    "subtitle": "Đăng nhập vào Termix để mở {{host}}",
+    "username": "Tên người dùng",
+    "password": "Mật khẩu",
+    "showPassword": "Hiển thị mật khẩu",
+    "rememberMe": "Ghi nhớ thiết bị trong 30 ngày (bao gồm TOTP)",
+    "signIn": "Đăng nhập",
+    "signInWith": "Đăng nhập bằng {{name}}",
+    "passkey": "Đăng nhập bằng passkey",
+    "external": "Bên ngoài",
+    "otherOptions": "Cần đặt lại mật khẩu hoặc đăng ký?",
+    "openTermix": "Mở Termix",
+    "loading": "Đang tải...",
+    "required": "Nhập tên người dùng và mật khẩu của bạn.",
+    "loginFailed": "Không thể đăng nhập. Vui lòng thử lại.",
+    "badCode": "Mã đó không hoạt động. Vui lòng thử lại.",
+    "factorTitle": "Xác thực hai yếu tố",
+    "factorNote": "Một bước nữa để hoàn tất đăng nhập.",
+    "code": "Mã xác minh",
+    "backupHint": "Bạn cũng có thể nhập một trong các mã dự phòng của mình.",
+    "verify": "Xác minh",
+    "keyPrompt": "Chạm vào khóa bảo mật hoặc sử dụng passkey để hoàn tất đăng nhập.",
+    "useKey": "Sử dụng khóa bảo mật",
+    "factorInTermix": "Bước này không thể thực hiện ở đây. Mở Termix để đăng nhập và trang này sẽ tự động tiếp tục.",
+    "factorCode": "Mã",
+    "factorKey": "Khóa bảo mật",
+    "factorOther": "Khác",
+    "back": "Quay lại",
+    "noAccess": "Không có quyền truy cập",
+    "noAccessNote": "Tài khoản Termix của bạn không thể mở trang này.",
+    "stuckTitle": "Đã đăng nhập nhưng không thể tiếp tục",
+    "stuckNote": "Tài khoản của bạn có thể cần thiết lập thêm. Mở Termix để hoàn tất, sau đó thử lại trang này.",
+    "offlineTitle": "Không thể kết nối đến Termix",
+    "offlineNote": "Kiểm tra kết nối và tải lại trang này.",
+    "badLinkTitle": "Liên kết này không hợp lệ",
+    "badLinkNote": "Trang có thể đã di chuyển hoặc tính năng đăng nhập có thể bị tắt. Quay lại trang web và thử lại."
+  },
+  "operations": {
+    "list": {
+      "title": "Liệt kê tuyến đường proxy"
+    },
+    "failing": {
+      "title": "Tuyến đường proxy gặp lỗi"
+    },
+    "enable": {
+      "title": "Bật một tuyến đường proxy"
+    },
+    "disable": {
+      "title": "Tắt một tuyến đường proxy"
+    },
+    "routes": {
+      "title": "Tuyến đường proxy",
+      "domain": "Tên miền",
+      "target": "Trỏ đến",
+      "kind": "Loại"
+    }
   }
 }

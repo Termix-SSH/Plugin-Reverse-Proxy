@@ -7,7 +7,8 @@
     "save": "Salvesta",
     "cancel": "Tühista",
     "delete": "Kustuta",
-    "edit": "Muuda"
+    "edit": "Muuda",
+    "loading": "Laadimine..."
   },
   "tab": {
     "title": "Pöördproksüü",
@@ -166,6 +167,10 @@
         "label": "Kasuta Let's Encrypti testkeskkonda",
         "description": "Testsertifikaadid, mida brauserid ei usalda. Kasuta seadistamise ajal, et vältida kiiruspiiranguid."
       },
+      "endpointDomain": {
+        "label": "Veebi lõpppunkti domeen",
+        "description": "Domeen, millel on jätkuv DNS-i kirje, mis suunab sellele proksile, näiteks *.apps.example.com. Veebi lõpppunkti režiim „Kaudu Termix“ avab iga lehe oma ajutise nime all selle domeeni all. Vajab ülaltoodud Termixi aadressi. Lisa port kooloni järgi, kui külastajad seda kasutavad."
+      },
       "cookieHours": {
         "label": "Sisselogimise kestus tundides",
         "description": "Kui kaua külastaja jääb kaitstud marsruudil sisse logitud."
@@ -197,6 +202,15 @@
     "connections": "{{count}} ühendust",
     "traffic": "{{inbound}} sisse, {{outbound}} välja"
   },
+  "tile": {
+    "title": "Proksi marsruudid",
+    "empty": "Sellel hostil pole proksi marsruute.",
+    "off": "väljas"
+  },
+  "widget": {
+    "name": "Pöördproksi",
+    "description": "Kui palju proksi marsruute töötab."
+  },
   "card": {
     "title": "Pöördproksüü",
     "summary": "{{running}}/{{total}} marsruuti aktiivne",
@@ -204,5 +218,64 @@
     "loading": "Laadimine...",
     "daysLeft_one": "{{count}} päev jäänud",
     "daysLeft_other": "{{count}} päeva jäänud"
+  },
+  "gate": {
+    "tagline": "Enesemajutatud, pistikprogrammidega serverihaldus.",
+    "title": "Jätkamiseks logi sisse",
+    "subtitle": "Logi sisse Termixi, et avada {{host}}",
+    "username": "Kasutajanimi",
+    "password": "Parool",
+    "showPassword": "Kuva parool",
+    "rememberMe": "Jäta seade 30 päevaks meelde (sisaldab TOTP-i)",
+    "signIn": "Logi sisse",
+    "signInWith": "Logi sisse kasutades {{name}}",
+    "passkey": "Logi sisse passkey-ga",
+    "external": "Väline",
+    "otherOptions": "Kas vajad parooli lähtestamist või registreerumist?",
+    "openTermix": "Ava Termix",
+    "loading": "Laadimine...",
+    "required": "Sisesta oma kasutajanimi ja parool.",
+    "loginFailed": "Sisselogimine ebaõnnestus. Proovi uuesti.",
+    "badCode": "See kood ei töötanud. Proovi uuesti.",
+    "factorTitle": "Kaheastmeline autentimine",
+    "factorNote": "Veel üks samm sisselogimise lõpuleviimiseks.",
+    "code": "Kinnituskood",
+    "backupHint": "Sa saad sisestada ka ühe oma varukoodi.",
+    "verify": "Kinnita",
+    "keyPrompt": "Puuduta oma turvavõtit või kasuta passkey-d, et sisselogimine lõpetada.",
+    "useKey": "Kasuta turvavõtit",
+    "factorInTermix": "Seda sammu ei saa siin teha. Ava Termix, et sisse logida, ja see leht jätkab ise.",
+    "factorCode": "Kood",
+    "factorKey": "Turvavõti",
+    "factorOther": "Muu",
+    "back": "Tagasi",
+    "noAccess": "Pääs puudub",
+    "noAccessNote": "Sinu Termixi konto ei saa seda lehte avada.",
+    "stuckTitle": "Sisse logitud, kuid ei saanud jätkata",
+    "stuckNote": "Sinu konto võib vajada esmalt rohkem seadistamist. Ava Termix, et lõpetada, ja proovi seda lehte uuesti.",
+    "offlineTitle": "Termixi ei saavutatud",
+    "offlineNote": "Kontrolli oma ühendust ja laadi see leht uuesti.",
+    "badLinkTitle": "See link ei kehti",
+    "badLinkNote": "Leht võib olla liigutatud või sisselogimine võib olla selle jaoks väljas. Mine tagasi saidile ja proovi uuesti."
+  },
+  "operations": {
+    "list": {
+      "title": "Loetle proksi marsruudid"
+    },
+    "failing": {
+      "title": "Proksi marsruudid ebaõnnestuvad"
+    },
+    "enable": {
+      "title": "Lülita proksi marsruut sisse"
+    },
+    "disable": {
+      "title": "Lülita proksi marsruut välja"
+    },
+    "routes": {
+      "title": "Proksi marsruudid",
+      "domain": "Domeen",
+      "target": "Suunab",
+      "kind": "Liik"
+    }
   }
 }

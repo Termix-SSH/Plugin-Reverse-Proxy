@@ -7,7 +7,8 @@
     "save": "Zapisz",
     "cancel": "Anuluj",
     "delete": "Usuń",
-    "edit": "Edytuj"
+    "edit": "Edytuj",
+    "loading": "Ładowanie..."
   },
   "tab": {
     "title": "Proxy odwrotny",
@@ -166,6 +167,10 @@
         "label": "Użyj środowiska testowego Let's Encrypt",
         "description": "Certyfikaty testowe, którym przeglądarki nie ufają. Używaj podczas konfiguracji, aby uniknąć limitów zapytań."
       },
+      "endpointDomain": {
+        "label": "Domena punktu końcowego sieci Web",
+        "description": "Domena z rekordem DNS typu wildcard wskazującym na ten proxy, np. *.apps.example.com. Tryb „Przez Termix” w punkcie końcowym sieci Web otwiera każdą stronę pod własną, tymczasową nazwą w ramach tej domeny. Wymaga adresu Termix podanego powyżej. Jeśli odwiedzający używają portu, dodaj go po dwukropku."
+      },
       "cookieHours": {
         "label": "Czas trwania sesji (godziny)",
         "description": "Jak długo odwiedzający pozostaje zalogowany na chronionej trasie."
@@ -197,6 +202,15 @@
     "connections": "{{count}} połączeń",
     "traffic": "{{inbound}} w, {{outbound}} w"
   },
+  "tile": {
+    "title": "Trasy proxy",
+    "empty": "Brak tras proxy na tym hoście.",
+    "off": "wyłączony"
+  },
+  "widget": {
+    "name": "Proxy odwrotne",
+    "description": "Ile tras proxy jest uruchomionych."
+  },
   "card": {
     "title": "Serwer odwrotny",
     "summary": "{{running}} z {{total}} tras aktywnych",
@@ -206,5 +220,64 @@
     "daysLeft_few": "Pozostały {{count}} dni",
     "daysLeft_many": "Pozostało {{count}} dni",
     "daysLeft_other": "Pozostało {{count}} dni"
+  },
+  "gate": {
+    "tagline": "Zarządzanie serwerem oparte na wtyczkach, hostowane lokalnie.",
+    "title": "Zaloguj się, aby kontynuować",
+    "subtitle": "Zaloguj się do Termix, aby otworzyć {{host}}",
+    "username": "Nazwa użytkownika",
+    "password": "Hasło",
+    "showPassword": "Pokaż hasło",
+    "rememberMe": "Zapamiętaj urządzenie na 30 dni (w tym TOTP)",
+    "signIn": "Zaloguj się",
+    "signInWith": "Zaloguj się przez {{name}}",
+    "passkey": "Zaloguj się za pomocą klucza dostępu",
+    "external": "Zewnętrzne",
+    "otherOptions": "Potrzebujesz zresetować hasło lub się zarejestrować?",
+    "openTermix": "Otwórz Termix",
+    "loading": "Ładowanie...",
+    "required": "Wprowadź nazwę użytkownika i hasło.",
+    "loginFailed": "Nie udało się zalogować. Spróbuj ponownie.",
+    "badCode": "Ten kod nie zadziałał. Spróbuj ponownie.",
+    "factorTitle": "Uwierzytelnianie dwuskładnikowe",
+    "factorNote": "Jeszcze jeden krok, aby zakończyć logowanie.",
+    "code": "Kod weryfikacyjny",
+    "backupHint": "Możesz również wprowadzić jeden z kodów awaryjnych.",
+    "verify": "Zweryfikuj",
+    "keyPrompt": "Dotknij się klucza bezpieczeństwa lub użyj klucza dostępu, aby zakończyć logowanie.",
+    "useKey": "Użyj klucza bezpieczeństwa",
+    "factorInTermix": "Tego kroku nie można wykonać tutaj. Otwórz Termix, aby się zalogować, a ta strona przejdzie dalej automatycznie.",
+    "factorCode": "Kod",
+    "factorKey": "Klucz bezpieczeństwa",
+    "factorOther": "Inne",
+    "back": "Wstecz",
+    "noAccess": "Brak dostępu",
+    "noAccessNote": "Twoje konto Termix nie może otworzyć tej strony.",
+    "stuckTitle": "Zalogowano, ale nie można kontynuować",
+    "stuckNote": "Twoje konto może wymagać dodatkowej konfiguracji. Otwórz Termix, aby ją ukończyć, a następnie spróbuj ponownie otworzyć tę stronę.",
+    "offlineTitle": "Nie udało się połączyć z Termix",
+    "offlineNote": "Sprawdź połączenie i odśwież tę stronę.",
+    "badLinkTitle": "Ten link jest nieprawidłowy",
+    "badLinkNote": "Strona mogła zostać przeniesiona lub logowanie do niej jest wyłączone. Wróć na stronę i spróbuj ponownie."
+  },
+  "operations": {
+    "list": {
+      "title": "Lista tras proxy"
+    },
+    "failing": {
+      "title": "Trasy proxy nie działają"
+    },
+    "enable": {
+      "title": "Włącz trasę proxy"
+    },
+    "disable": {
+      "title": "Wyłącz trasę proxy"
+    },
+    "routes": {
+      "title": "Trasy proxy",
+      "domain": "Domena",
+      "target": "Przekierowuje do",
+      "kind": "Typ"
+    }
   }
 }

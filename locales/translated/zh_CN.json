@@ -7,7 +7,8 @@
     "save": "保存",
     "cancel": "取消",
     "delete": "删除",
-    "edit": "编辑"
+    "edit": "编辑",
+    "loading": "加载中..."
   },
   "tab": {
     "title": "反向代理",
@@ -166,6 +167,10 @@
         "label": "使用 Let's Encrypt 测试环境",
         "description": "浏览器不信任的测试证书。在设置期间使用以避免速率限制。"
       },
+      "endpointDomain": {
+        "label": "Web 端点域名",
+        "description": "一个带有通配符 DNS 记录并指向此代理的域名，例如 *.apps.example.com。Web 端点的“通过 Termix”模式会在其下为每个页面打开一个临时名称。需要上述 Termix 地址。如果访问者使用端口，请在冒号后添加端口号。"
+      },
       "cookieHours": {
         "label": "登录保持时长（小时）",
         "description": "访客在受保护路由上保持登录状态的时间。"
@@ -197,11 +202,79 @@
     "connections": "{{count}} 个连接",
     "traffic": "入站 {{inbound}}，出站 {{outbound}}"
   },
+  "tile": {
+    "title": "代理路由",
+    "empty": "此主机上没有代理路由。",
+    "off": "已关闭"
+  },
+  "widget": {
+    "name": "反向代理",
+    "description": "正在运行的代理路由数量。"
+  },
   "card": {
     "title": "反向代理",
     "summary": "{{running}} / {{total}} 条路由正在运行",
     "failed": "无法加载代理。",
     "loading": "加载中...",
     "daysLeft_other": "剩余 {{count}} 天"
+  },
+  "gate": {
+    "tagline": "自托管、基于插件的服务器管理。",
+    "title": "登录以继续",
+    "subtitle": "登录 Termix 以打开 {{host}}",
+    "username": "用户名",
+    "password": "密码",
+    "showPassword": "显示密码",
+    "rememberMe": "记住设备 30 天（包括 TOTP）",
+    "signIn": "登录",
+    "signInWith": "使用 {{name}} 登录",
+    "passkey": "使用 Passkey 登录",
+    "external": "外部",
+    "otherOptions": "需要重置密码或注册？",
+    "openTermix": "打开 Termix",
+    "loading": "加载中...",
+    "required": "请输入您的用户名和密码。",
+    "loginFailed": "无法登录。请重试。",
+    "badCode": "该代码无效。请重试。",
+    "factorTitle": "双因素认证",
+    "factorNote": "再完成一步即可登录。",
+    "code": "验证码",
+    "backupHint": "您也可以输入其中一个备用代码。",
+    "verify": "验证",
+    "keyPrompt": "触摸您的安全密钥或使用 Passkey 完成登录。",
+    "useKey": "使用安全密钥",
+    "factorInTermix": "此步骤无法在此处完成。打开 Termix 进行登录，此页面将自动继续。",
+    "factorCode": "代码",
+    "factorKey": "安全密钥",
+    "factorOther": "其他",
+    "back": "返回",
+    "noAccess": "无访问权限",
+    "noAccessNote": "您的 Termix 账户无法打开此页面。",
+    "stuckTitle": "已登录，但无法继续",
+    "stuckNote": "您的账户可能需要先进行更多设置。打开 Termix 完成设置，然后重试此页面。",
+    "offlineTitle": "无法连接到 Termix",
+    "offlineNote": "请检查您的网络连接并重新加载此页面。",
+    "badLinkTitle": "此链接无效",
+    "badLinkNote": "页面可能已移动或已关闭登录功能。请返回网站并重试。"
+  },
+  "operations": {
+    "list": {
+      "title": "列出代理路由"
+    },
+    "failing": {
+      "title": "代理路由失败"
+    },
+    "enable": {
+      "title": "启用代理路由"
+    },
+    "disable": {
+      "title": "禁用代理路由"
+    },
+    "routes": {
+      "title": "代理路由",
+      "domain": "域名",
+      "target": "目标",
+      "kind": "类型"
+    }
   }
 }

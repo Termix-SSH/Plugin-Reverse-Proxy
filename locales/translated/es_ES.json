@@ -7,7 +7,8 @@
     "save": "Guardar",
     "cancel": "Cancelar",
     "delete": "Eliminar",
-    "edit": "Editar"
+    "edit": "Editar",
+    "loading": "Cargando..."
   },
   "tab": {
     "title": "Proxy inverso",
@@ -166,6 +167,10 @@
         "label": "Usar entorno de pruebas de Let's Encrypt",
         "description": "Certificados de prueba que los navegadores no confían. Úsalo durante la configuración para evitar los límites de tasa."
       },
+      "endpointDomain": {
+        "label": "Dominio del punto final web",
+        "description": "Un dominio con un registro DNS comodín que apunte a este proxy, como *.apps.ejemplo.com. El modo «A través de Termix» de Web Endpoint abre cada página con su propio nombre temporal bajo este dominio. Necesita la dirección de Termix indicada arriba. Añade un puerto después de dos puntos si los visitantes usan uno."
+      },
       "cookieHours": {
         "label": "Duración de la sesión en horas",
         "description": "Cuánto tiempo permanece un visitante conectado en una ruta protegida."
@@ -197,6 +202,15 @@
     "connections": "{{count}} conexiones",
     "traffic": "{{inbound}} de entrada, {{outbound}} de salida"
   },
+  "tile": {
+    "title": "Rutas del proxy",
+    "empty": "No hay rutas de proxy en este host.",
+    "off": "desactivado"
+  },
+  "widget": {
+    "name": "Proxy inverso",
+    "description": "Cuántas rutas de proxy están en ejecución."
+  },
   "card": {
     "title": "Proxy inverso",
     "summary": "{{running}} de {{total}} rutas activas",
@@ -205,5 +219,64 @@
     "daysLeft_one": "Queda {{count}} día",
     "daysLeft_many": "Quedan {{count}} días",
     "daysLeft_other": "Quedan {{count}} días"
+  },
+  "gate": {
+    "tagline": "Gestión de servidores autoalojada y basada en complementos.",
+    "title": "Inicia sesión para continuar",
+    "subtitle": "Inicia sesión en Termix para abrir {{host}}",
+    "username": "Nombre de usuario",
+    "password": "Contraseña",
+    "showPassword": "Mostrar contraseña",
+    "rememberMe": "Recordar dispositivo durante 30 días (incluye TOTP)",
+    "signIn": "Iniciar sesión",
+    "signInWith": "Iniciar sesión con {{name}}",
+    "passkey": "Iniciar sesión con passkey",
+    "external": "Externo",
+    "otherOptions": "¿Necesitas restablecer una contraseña o registrarte?",
+    "openTermix": "Abrir Termix",
+    "loading": "Cargando...",
+    "required": "Introduce tu nombre de usuario y contraseña.",
+    "loginFailed": "No se ha podido iniciar sesión. Inténtalo de nuevo.",
+    "badCode": "Ese código no ha funcionado. Inténtalo de nuevo.",
+    "factorTitle": "Autenticación de dos factores",
+    "factorNote": "Un paso más para finalizar el inicio de sesión.",
+    "code": "Código de verificación",
+    "backupHint": "También puedes introducir uno de tus códigos de respaldo.",
+    "verify": "Verificar",
+    "keyPrompt": "Toca tu llave de seguridad o usa tu passkey para finalizar el inicio de sesión.",
+    "useKey": "Usar llave de seguridad",
+    "factorInTermix": "Este paso no se puede realizar aquí. Abre Termix para iniciar sesión y esta página continuará automáticamente.",
+    "factorCode": "Código",
+    "factorKey": "Llave de seguridad",
+    "factorOther": "Otro",
+    "back": "Atrás",
+    "noAccess": "Sin acceso",
+    "noAccessNote": "Tu cuenta de Termix no puede abrir esta página.",
+    "stuckTitle": "Has iniciado sesión, pero no se ha podido continuar",
+    "stuckNote": "Es posible que tu cuenta necesite más configuración primero. Abre Termix para finalizarla y vuelve a intentar esta página.",
+    "offlineTitle": "No se ha podido conectar con Termix",
+    "offlineNote": "Comprueba tu conexión y recarga esta página.",
+    "badLinkTitle": "Este enlace no es válido",
+    "badLinkNote": "La página puede haberse movido o el inicio de sesión puede estar desactivado para ella. Vuelve al sitio e inténtalo de nuevo."
+  },
+  "operations": {
+    "list": {
+      "title": "Listar rutas del proxy"
+    },
+    "failing": {
+      "title": "Rutas del proxy fallando"
+    },
+    "enable": {
+      "title": "Activar una ruta del proxy"
+    },
+    "disable": {
+      "title": "Desactivar una ruta del proxy"
+    },
+    "routes": {
+      "title": "Rutas del proxy",
+      "domain": "Dominio",
+      "target": "Destino",
+      "kind": "Tipo"
+    }
   }
 }

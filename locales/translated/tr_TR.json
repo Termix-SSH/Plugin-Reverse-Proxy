@@ -7,7 +7,8 @@
     "save": "Kaydet",
     "cancel": "İptal",
     "delete": "Sil",
-    "edit": "Düzenle"
+    "edit": "Düzenle",
+    "loading": "Yükleniyor..."
   },
   "tab": {
     "title": "Ters Proxy",
@@ -166,6 +167,10 @@
         "label": "Let's Encrypt test ortamını kullan",
         "description": "Tarayıcıların güvenmediği test sertifikaları. Kotaları aşmamak için kurulum sırasında kullanın."
       },
+      "endpointDomain": {
+        "label": "Web uç noktası alan adı",
+        "description": "Bu proxy'yi işaret eden joker karakterli bir DNS kaydı olan bir alan adı, örneğin *.apps.example.com. Web Uç Noktası'nın Termix Üzerinden modu, her sayfayı bunun altında kendi geçici adıyla açar. Yukarıdaki Termix adresini gerektirir. Ziyaretçiler bir port kullanıyorsa iki nokta üst üste işaretinden sonra portu ekleyin."
+      },
       "cookieHours": {
         "label": "Oturum süresi (saat)",
         "description": "Bir ziyaretçinin korunan bir yolda ne kadar süre oturum açık kalır."
@@ -197,6 +202,15 @@
     "connections": "{{count}} bağlantı",
     "traffic": "{{inbound}} giren, {{outbound}} giden"
   },
+  "tile": {
+    "title": "Proxy yönlendirmeleri",
+    "empty": "Bu ana bilgisayarda proxy yönlendirmesi yok.",
+    "off": "kapalı"
+  },
+  "widget": {
+    "name": "Ters proxy",
+    "description": "Kaç proxy yönlendirmesinin çalıştığı."
+  },
   "card": {
     "title": "Ters proxy",
     "summary": "{{total}} rotadan {{running}}'ı çalışıyor",
@@ -204,5 +218,64 @@
     "loading": "Yükleniyor...",
     "daysLeft_one": "{{count}} gün kaldı",
     "daysLeft_other": "{{count}} gün kaldı"
+  },
+  "gate": {
+    "tagline": "Kendi kendine barındırılan, eklenti tabanlı sunucu yönetimi.",
+    "title": "Devam etmek için giriş yapın",
+    "subtitle": "{{host}} açmak için Termix'e giriş yapın",
+    "username": "Kullanıcı adı",
+    "password": "Şifre",
+    "showPassword": "Şifreyi göster",
+    "rememberMe": "Cihazı 30 Gün Hatırla (TOTP dahil)",
+    "signIn": "Giriş yap",
+    "signInWith": "{{name}} ile giriş yap",
+    "passkey": "Geçit anahtarı ile giriş yap",
+    "external": "Harici",
+    "otherOptions": "Şifre sıfırlama veya kayıt olma gerekiyor mu?",
+    "openTermix": "Termix'i aç",
+    "loading": "Yükleniyor...",
+    "required": "Kullanıcı adınızı ve şifrenizi girin.",
+    "loginFailed": "Giriş yapılamadı. Tekrar deneyin.",
+    "badCode": "Bu kod çalışmadı. Tekrar deneyin.",
+    "factorTitle": "İki Faktörlü Kimlik Doğrulama",
+    "factorNote": "Girişi tamamlamak için bir adım daha.",
+    "code": "Doğrulama kodu",
+    "backupHint": "Yedek kodlarınızdan birini de girebilirsiniz.",
+    "verify": "Doğrula",
+    "keyPrompt": "Girişi tamamlamak için güvenlik anahtarınıza dokunun veya geçit anahtarınızı kullanın.",
+    "useKey": "Güvenlik anahtarı kullan",
+    "factorInTermix": "Bu adım burada yapılamaz. Giriş yapmak için Termix'i açın, bu sayfa kendiliğinden devam eder.",
+    "factorCode": "Kod",
+    "factorKey": "Güvenlik anahtarı",
+    "factorOther": "Diğer",
+    "back": "Geri",
+    "noAccess": "Erişim yok",
+    "noAccessNote": "Termix hesabınız bu sayfayı açamıyor.",
+    "stuckTitle": "Giriş yapıldı, ancak devam edilemedi",
+    "stuckNote": "Hesabınız önce daha fazla yapılandırma gerektiriyor olabilir. Tamamlamak için Termix'i açın, ardından bu sayfayı tekrar deneyin.",
+    "offlineTitle": "Termix'e ulaşılamadı",
+    "offlineNote": "Bağlantınızı kontrol edin ve bu sayfayı yeniden yükleyin.",
+    "badLinkTitle": "Bu bağlantı geçerli değil",
+    "badLinkNote": "Sayfa taşınmış olabilir veya giriş için bu sayfa devre dışı bırakılmış olabilir. Siteye geri dönün ve tekrar deneyin."
+  },
+  "operations": {
+    "list": {
+      "title": "Proxy yönlendirmelerini listele"
+    },
+    "failing": {
+      "title": "Proxy yönlendirmeleri başarısız oluyor"
+    },
+    "enable": {
+      "title": "Bir proxy yönlendirmesini aç"
+    },
+    "disable": {
+      "title": "Bir proxy yönlendirmesini kapat"
+    },
+    "routes": {
+      "title": "Proxy yönlendirmeleri",
+      "domain": "Alan adı",
+      "target": "Gidiş yeri",
+      "kind": "Tür"
+    }
   }
 }

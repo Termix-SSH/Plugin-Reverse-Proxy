@@ -7,7 +7,8 @@
     "save": "Saglabāt",
     "cancel": "Atcelt",
     "delete": "Dzēst",
-    "edit": "Rediģēt"
+    "edit": "Rediģēt",
+    "loading": "Ielādē..."
   },
   "tab": {
     "title": "Apgrieztā starpniekserveris",
@@ -166,6 +167,10 @@
         "label": "Izmantot Let's Encrypt testvidi",
         "description": "Testa sertifikāti, kurus pārlūkprogrammas neuzticas. Izmantojiet iestatīšanas laikā, lai izvairītos no ātruma ierobežojumiem."
       },
+      "endpointDomain": {
+        "label": "Tīmekļa gala punkta domēns",
+        "description": "Domēns ar visaptverošu DNS ierakstu, kas norāda uz šo starpniekserveri, piemēram, *.apps.example.com. Tīmekļa gala punkta režīms „caur Termix” katru lapu atver savā pagaidu nosaukumā zem šī domēna. Nepieciešama iepriekš minētā Termix adrese. Pieskaitiet portu aiz divpunkta, ja apmeklētāji to izmanto."
+      },
       "cookieHours": {
         "label": "Pieteikšanās ilgums stundās",
         "description": "Cik ilgi apmeklētājs paliek pieteikts aizsargātā maršrutā."
@@ -197,6 +202,15 @@
     "connections": "Savienojumi: {{count}}",
     "traffic": "{{inbound}} ienākošs, {{outbound}} izejošs"
   },
+  "tile": {
+    "title": "Starpniekservera maršruti",
+    "empty": "Šajā hostē nav starpniekservera maršrutu.",
+    "off": "izslēgts"
+  },
+  "widget": {
+    "name": "Apvērsta starpniekservera",
+    "description": "Cik starpniekservera maršruti darbojas."
+  },
   "card": {
     "title": "Apgrieztā starpniekserveris",
     "summary": "Darbojas {{running}} no {{total}} maršrutiem",
@@ -205,5 +219,64 @@
     "daysLeft_zero": "Nav atlicis dienu",
     "daysLeft_one": "Atlicis {{count}} diena",
     "daysLeft_other": "Atlicis {{count}} dienas"
+  },
+  "gate": {
+    "tagline": "Pašhostēta, ar spraudņiem balstīta servera pārvaldība.",
+    "title": "Pierakstieties, lai turpinātu",
+    "subtitle": "Pierakstieties Termix, lai atvērtu {{host}}",
+    "username": "Lietotājvārds",
+    "password": "Parole",
+    "showPassword": "Rādīt paroli",
+    "rememberMe": "Atcerēties ierīci 30 dienas (ieskaitot TOTP)",
+    "signIn": "Pierakstīties",
+    "signInWith": "Pierakstīties ar {{name}}",
+    "passkey": "Pierakstīties ar piekļuves atslēgu",
+    "external": "Ārējs",
+    "otherOptions": "Vajag atiestatīt paroli vai reģistrēties?",
+    "openTermix": "Atvērt Termix",
+    "loading": "Ielādē...",
+    "required": "Ievadiet savu lietotājvārdu un paroli.",
+    "loginFailed": "Neizdevās pierakstīties. Mēģiniet vēlreiz.",
+    "badCode": "Šis kods nestrādāja. Mēģiniet vēlreiz.",
+    "factorTitle": "Divu faktoru autentifikācija",
+    "factorNote": "Vēl viens solis, lai pabeigtu pierakstīšanos.",
+    "code": "Verifikācijas kods",
+    "backupHint": "Varat arī ievadīt vienu no saviem rezerves kodiem.",
+    "verify": "Verificēt",
+    "keyPrompt": "Pieskarieties savai drošības atslēgai vai izmantojiet piekļuves atslēgu, lai pabeigtu pierakstīšanos.",
+    "useKey": "Izmantot drošības atslēgu",
+    "factorInTermix": "Šo soli nevar veikt šeit. Atveriet Termix, lai pierakstītos, un šī lapa turpināsies automātiski.",
+    "factorCode": "Kods",
+    "factorKey": "Drošības atslēga",
+    "factorOther": "Cits",
+    "back": "Atpakaļ",
+    "noAccess": "Nav piekļuves",
+    "noAccessNote": "Jūsu Termix konts nevar atvērt šo lapu.",
+    "stuckTitle": "Pierakstījies, bet nevarēja turpināt",
+    "stuckNote": "Jūsu kontam varbūt vispirms ir nepieciešama papildu iestatīšana. Atveriet Termix, lai pabeigtu, un pēc tam mēģiniet šo lapu vēlreiz.",
+    "offlineTitle": "Nevarēja sasniegt Termix",
+    "offlineNote": "Pārbaudiet savu savienojumu un atjauniniet šo lapu.",
+    "badLinkTitle": "Šī saite nav derīga",
+    "badLinkNote": "Lapa varētu būt pārvietota, vai pierakstīšanās tai varētu būt izslēgta. Atgriezieties vietnē un mēģiniet vēlreiz."
+  },
+  "operations": {
+    "list": {
+      "title": "Uzskaitīt starpniekservera maršrutus"
+    },
+    "failing": {
+      "title": "Starpniekservera maršruti neizdodas"
+    },
+    "enable": {
+      "title": "Ieslēgt starpniekservera maršrutu"
+    },
+    "disable": {
+      "title": "Izslēgt starpniekservera maršrutu"
+    },
+    "routes": {
+      "title": "Starpniekservera maršruti",
+      "domain": "Domēns",
+      "target": "Veda uz",
+      "kind": "Veids"
+    }
   }
 }
