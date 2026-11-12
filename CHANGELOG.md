@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.1
+
+### Fixed
+
+- Updated node-forge and follow-redirects to releases with security fixes
+
 ## 1.2.0
 
 ### Added
