@@ -59,6 +59,23 @@ function listFor(entries: string[] | undefined): BlockList | null {
   return list;
 }
 
+/**
+ * A path on this same site to send the browser to after sign in. Browsers
+ * read a backslash as a slash, so "/\host" would leave the site.
+ */
+export function safeRedirectPath(to: string | null | undefined): string {
+  if (!to || !to.startsWith("/") || /[\\\u0000-\u001f\u007f]/.test(to)) {
+    return "/";
+  }
+  try {
+    const parsed = new URL(to, "http://placeholder");
+    if (parsed.host !== "placeholder") return "/";
+    return `${parsed.pathname}${parsed.search}${parsed.hash}`;
+  } catch {
+    return "/";
+  }
+}
+
 /** True when the route's allow and deny lists let this address in. */
 export function ipAllowed(route: RouteRecord, address: string): boolean {
   const family = isIP(address);
@@ -180,8 +197,7 @@ export function createHttpHandlers(deps: HttpProxyDeps) {
         return answer(403, "This sign in link has expired. Try again.");
       }
       const cookie = deps.auth.mint("cookie", route, deps.cookieHours());
-      const to = url.searchParams.get("to") ?? "/";
-      const safe = to.startsWith("/") && !to.startsWith("//") ? to : "/";
+      const safe = safeRedirectPath(url.searchParams.get("to"));
       res.writeHead(302, {
         location: safe,
         "set-cookie": `${COOKIE_NAME}=${cookie}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${deps.cookieHours() * 3600}${secure ? "; Secure" : ""}`,

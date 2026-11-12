@@ -5,6 +5,7 @@
 ### Fixed
 
 - Updated node-forge and follow-redirects to releases with security fixes
+- After signing in to a route, the browser always stays on that route's site
 
 ## 1.2.0
 
