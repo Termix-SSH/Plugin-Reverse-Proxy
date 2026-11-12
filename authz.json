@@ -1,0 +1,112 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Termix-SSH/Termix/main/scripts/authz/authz.schema.json",
+  "seed": [
+    {
+      "as": "admin",
+      "method": "POST",
+      "path": "/plugin-api/reverse-proxy/routes",
+      "body": {
+        "name": "authz-own-route",
+        "kind": "http",
+        "domain": "authz.test",
+        "targetPort": 8080,
+        "targetHost": "127.0.0.1",
+        "tlsMode": "off",
+        "authMode": "none",
+        "hostId": "{{host}}"
+      },
+      "capture": {
+        "reverse-proxy.routes": "route.id"
+      }
+    }
+  ],
+  "routes": {
+    "DELETE /plugin-api/reverse-proxy/certs/:id": {
+      "access": "user",
+      "destructive": true
+    },
+    "POST /plugin-api/reverse-proxy/certs/:id/renew": {
+      "access": "user",
+      "resource": {
+        "kind": "own",
+        "fixture": "reverse-proxy.certs"
+      },
+      "params": {
+        "id": "=authz-none"
+      },
+      "allowed": "any",
+      "note": "No certs in the test data (needs a real certificate); only session, permission and unknown id refusals are checked"
+    },
+    "POST /plugin-api/reverse-proxy/certs/selfsigned": {
+      "access": "user"
+    },
+    "POST /plugin-api/reverse-proxy/certs/upload": {
+      "access": "user"
+    },
+    "GET /plugin-api/reverse-proxy/gate": {
+      "access": "public"
+    },
+    "GET /plugin-api/reverse-proxy/gate/token": {
+      "access": "user",
+      "query": {
+        "route": "{{reverse-proxy.routes}}",
+        "to": "http://authz.test/"
+      },
+      "expect": {
+        "share-connect": "refuse",
+        "share-view": "refuse",
+        "share-edit": "refuse",
+        "share-manage": "refuse",
+        "owner": "refuse",
+        "key-ops-read": "refuse",
+        "key-ops-run": "refuse",
+        "other": "refuse"
+      },
+      "note": "Only users the route lets in; the test route lets in nobody but admins",
+      "allowed": "any"
+    },
+    "POST /plugin-api/reverse-proxy/routes": {
+      "access": "user",
+      "resource": {
+        "kind": "host",
+        "min": "connect",
+        "key": "hostId"
+      }
+    },
+    "DELETE /plugin-api/reverse-proxy/routes/:id": {
+      "access": "user",
+      "resource": {
+        "kind": "own",
+        "fixture": "reverse-proxy.routes"
+      },
+      "params": {
+        "id": "reverse-proxy.routes"
+      },
+      "destructive": true
+    },
+    "PUT /plugin-api/reverse-proxy/routes/:id": {
+      "access": "user",
+      "resource": {
+        "kind": "own",
+        "fixture": "reverse-proxy.routes"
+      },
+      "params": {
+        "id": "reverse-proxy.routes"
+      }
+    },
+    "PATCH /plugin-api/reverse-proxy/routes/:id/enabled": {
+      "access": "user",
+      "resource": {
+        "kind": "own",
+        "fixture": "reverse-proxy.routes"
+      },
+      "params": {
+        "id": "reverse-proxy.routes"
+      }
+    },
+    "GET /plugin-api/reverse-proxy/state": {
+      "access": "user",
+      "permission": "reverse-proxy.use"
+    }
+  }
+}
