@@ -17,6 +17,7 @@ describe("proxy alerts", () => {
     const mock = createMockCtx({
       pluginId: manifest.id,
       manifest,
+      sandbox: true,
       capabilities: manifest.capabilities,
     });
     const soon = new Date(Date.now() + 2 * 86_400_000).toISOString();
@@ -46,6 +47,7 @@ describe("proxy alerts", () => {
     const mock = createMockCtx({
       pluginId: manifest.id,
       manifest,
+      sandbox: true,
       capabilities: manifest.capabilities,
     });
     const alerts = startProxyAlerts(mock.ctx, {

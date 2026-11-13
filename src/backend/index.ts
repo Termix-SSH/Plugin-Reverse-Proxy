@@ -74,7 +74,7 @@ export async function activate(ctx: PluginContext) {
         await certs.renewDue();
         await manager.reload();
       },
-      { jitterMs: 60_000 },
+      { id: "renew", jitterMs: 60_000 },
     ),
   );
 

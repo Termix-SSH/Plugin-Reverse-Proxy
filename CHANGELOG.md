@@ -2,6 +2,10 @@
 
 ## 1.2.1
 
+### Changed
+
+- Runs in its own process on Termix 26.11.2 and later. It asks for the new Open its own network connections permission, which its listeners need
+
 ### Fixed
 
 - Updated node-forge and follow-redirects to releases with security fixes

@@ -74,7 +74,7 @@ export function startProxyAlerts(ctx: PluginContext, deps: Deps) {
         tick().catch((error) =>
           ctx.log.debug(`Alert check failed: ${String(error)}`),
         ),
-      { jitterMs: 10_000 },
+      { id: "alerts", jitterMs: 10_000 },
     ),
   );
   return { tick };

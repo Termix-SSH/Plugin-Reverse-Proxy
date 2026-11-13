@@ -22,8 +22,8 @@
   ],
   "env": [],
   "engine": {
-    "termix": ">=26.11.1-0",
-    "api": "^1.15"
+    "termix": ">=26.11.2-0",
+    "api": "^2.0.0"
   },
   "provides": [
     {
@@ -37,6 +37,7 @@
     "db:own",
     "network:serve",
     "network:outbound",
+    "network:sockets",
     "secrets:own",
     "kv:own",
     "notify:send",
@@ -44,6 +45,19 @@
     "ui:surface",
     "operations:provide"
   ],
+  "sandbox": {
+    "alwaysOn": true,
+    "schedules": [
+      {
+        "id": "renew",
+        "every": 43200000
+      },
+      {
+        "id": "alerts",
+        "every": 300000
+      }
+    ]
+  },
   "desktop": "server",
   "contributes": {
     "tabs": [
