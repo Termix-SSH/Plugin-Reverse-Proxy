@@ -180,10 +180,12 @@ export function createCertManager(
 
   async function createSelfSigned(userId: string, domains: string[]) {
     const cert = await repo.createCert(userId, domains, "selfsigned");
-    const pems = selfsigned.generate(
+    const notAfterDate = new Date();
+    notAfterDate.setDate(notAfterDate.getDate() + 825);
+    const pems = await selfsigned.generate(
       [{ name: "commonName", value: domains[0] }],
       {
-        days: 825,
+        notAfterDate,
         keySize: 2048,
         algorithm: "sha256",
         extensions: [
