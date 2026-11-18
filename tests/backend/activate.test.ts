@@ -25,6 +25,7 @@ describe("reverse proxy activate", () => {
     mock = createMockCtx({
       pluginId: manifest.id,
       manifest,
+      sandbox: true,
       capabilities: manifest.capabilities,
       db: db.database,
       router: () => express.Router(),
@@ -38,6 +39,7 @@ describe("reverse proxy activate", () => {
     mock = createMockCtx({
       pluginId: manifest.id,
       manifest,
+      sandbox: true,
       capabilities: manifest.capabilities.filter((c) => c !== "network:serve"),
       db: db.database,
       router: () => express.Router(),
